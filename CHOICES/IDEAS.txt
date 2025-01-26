@@ -1,0 +1,24 @@
+- Sometimes what you choose is not what you get
+- Portal A and B leads to each other creating a loop
+- Narrative Level Design to decipher the "right" choice
+	> Zaratousthra and the "evaluating" man
+- What you make of it is more important than the choice itself
+	> choice is secondary. the bounce is primordial.
+- Sometimes a choice is just an illusion
+- Many choices always lead to two choice ultimately
+- No choice can still lead to a choice ( to do or not to do )
+- Win some lose some at every choice, no matter what you do
+
+
+- Question the obvious
+
+
+- ENIGME 1
+The less polygon, the older the object is (in the world)
+	> Maybe make world assets lower in resolution if they don't change for a while
+	> Maybe make a low poly grumpy old man that is angry cuz he old ( thats obvious now?? Look at my poly count I'm close to death thats certain" )
+
+At some point, make the player encounter a puzzle where he needs to order a simple shaped object  by age ( associate them with a number for example to avoid having on obvious serie )
+
+- ENIGME 2
+Two passages, one is blocked by ordered blocks and "unblocks" when chaos induce noise in positioning, the other one is unordered and forms a path/bridge when ordered
