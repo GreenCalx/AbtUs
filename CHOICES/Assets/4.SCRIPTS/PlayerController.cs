@@ -51,8 +51,7 @@ public class PlayerController : MonoBehaviour
         playerDoRun = Input.GetButton("Run");
         playerDoAction = Input.GetButton("DoAction");
 
-        freezeToggle  = Input.GetKeyUp("f");
-
+        freezeToggle  = Input.GetButton("Freeze");
 
         isMoving = (hMove!=0f)||(vMove!=0f);
     }
@@ -64,10 +63,10 @@ public class PlayerController : MonoBehaviour
         if (freeze_inputs)
         { return; }
 
-        if (!!self_rb && !isMoving)
+        if (!!self_rb && !isMoving && isGrounded())
         {
-            // self_rb.linearVelocity = new Vector3(0f, self_rb.linearVelocity.y, 0f);
-            // self_rb.angularVelocity = Vector3.zero;
+            self_rb.linearVelocity = new Vector3(0f, 0f, 0f);
+            self_rb.angularVelocity = Vector3.zero;
         }
 
         if (playerDoRun && !isRunning)
@@ -116,5 +115,10 @@ public class PlayerController : MonoBehaviour
         cameraVRot = Mathf.Clamp(cameraVRot, -90f, 90f);
         FPSCamera.transform.localEulerAngles = Vector3.right * cameraVRot;
 
+    }
+
+    private bool isGrounded()
+    {
+        return Physics.Raycast(transform.position, -Vector3.up, 0.1f);
     }
 }

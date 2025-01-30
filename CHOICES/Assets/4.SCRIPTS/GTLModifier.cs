@@ -3,16 +3,17 @@ using UnityEngine.Rendering;
 
 public class GTLModifier : MonoBehaviour
 {
-    public enum VOL_TYPE { EXTRA = 0, MAIN = 1}
+    public enum GTL_TYPE { EXTRA = 0, MAIN = 1, SUN=2, LIGHT=4, WATER=3}
     public Volume volume;
-    public VOL_TYPE volumeType = VOL_TYPE.EXTRA;
+    public GTL_TYPE gtlType = GTL_TYPE.EXTRA;
     private float m_weight;
     public float weight
     {
         get { return m_weight; }
         set {
             m_weight = Mathf.Clamp(value, 0f,1f);
-            volume.weight = m_weight;
+            if (volume!=null)
+                volume.weight = m_weight;
         }
     }
     public bool isActive = false;
@@ -30,6 +31,11 @@ public class GTLModifier : MonoBehaviour
     {
         volume.sharedProfile = iVProfile;
         weight = 0f;
+    }
+
+    public void CrossfadeSun(GTLModifier iTarget, float iFader)
+    {
+
     }
 
     public void Deactivate()

@@ -15,6 +15,13 @@ public class OTCLookupTable : MonoBehaviour
         // CHAOS
         NOISE
         }
+    public readonly List<SPREAD_SHAPE> orderShapes = new List<SPREAD_SHAPE>()
+    {   SPREAD_SHAPE.ALIGN_X, SPREAD_SHAPE.ALIGN_Z, SPREAD_SHAPE.TRIANGLE, 
+        SPREAD_SHAPE.SQR, SPREAD_SHAPE.CIRCLE, SPREAD_SHAPE.GRID, SPREAD_SHAPE.HEX 
+    };
+    public readonly List<SPREAD_SHAPE> chaosShapes = new List<SPREAD_SHAPE>()
+    { SPREAD_SHAPE.NOISE };
+
     [Serializable]
     public class OTCLookupUnit
     {
@@ -30,22 +37,37 @@ public class OTCLookupTable : MonoBehaviour
     [Tooltip("X :  [0,0.5[ , Y is lerp factor between init pos and target pos ")]
     public AnimationCurve orderFactorCurve;
 
-    public void ComputeSpreadShape(OTCCluster iCluster, float iOTC, SPREAD_SHAPE iForceShape = SPREAD_SHAPE.NONE)
+    public bool ShapeIsOrder(SPREAD_SHAPE iShape) { return orderShapes.Contains(iShape); }
+    public bool ShapeIsChaos(SPREAD_SHAPE iShape) { return chaosShapes.Contains(iShape); }
+
+    public void ComputeSpreadShape(OTCCluster iCluster, float iOTC, SPREAD_SHAPE iForceShapeOrder = SPREAD_SHAPE.NONE, SPREAD_SHAPE iForceShapeChaos = SPREAD_SHAPE.NONE)
     {
+        bool askForChaos = (iOTC > NeutralVal);
+        bool askForOrder = (iOTC < NeutralVal);
+
+        // Don't recompute shape if the computed one already fits
+        if (askForOrder && ShapeIsOrder(iCluster.currSpreadShape))
+        { return; }
+        if (askForChaos && ShapeIsChaos(iCluster.currSpreadShape))
+        { return; }
+
         List<SPREAD_SHAPE> eligibleShapes = new List<SPREAD_SHAPE>();
-        if (iForceShape!=SPREAD_SHAPE.NONE)
+        if ((iForceShapeOrder!=SPREAD_SHAPE.NONE)&&(iOTC < NeutralVal))
         {
-            eligibleShapes.Add(iForceShape);
+                eligibleShapes.Add(iForceShapeOrder);
+        } else if((iForceShapeChaos!=SPREAD_SHAPE.NONE)&&(iOTC > NeutralVal))
+        {
+            eligibleShapes.Add(iForceShapeChaos);
         }
         else
         {
             foreach(OTCLookupUnit u in units)
             {
-                if (iOTC > NeutralVal)
+                if (askForChaos)
                 { // CHAOS
                     if (iOTC > u.OtC_Factor)
                         eligibleShapes.Add(u.spreadShape);
-                } else if (iOTC < NeutralVal) 
+                } else if (askForOrder) 
                 {
                     // ORDER
                     if (iOTC < u.OtC_Factor)
@@ -56,6 +78,9 @@ public class OTCLookupTable : MonoBehaviour
 
         if (eligibleShapes.Count==0)
             eligibleShapes.Add(SPREAD_SHAPE.NONE);
+
+
+
         SPREAD_SHAPE selectedShape = eligibleShapes[UnityEngine.Random.Range(0,eligibleShapes.Count)];
         iCluster.currSpreadShape = selectedShape;
     }
@@ -180,6 +205,9 @@ public class OTCLookupTable : MonoBehaviour
         {
             Vector3 idealPos = new Vector3(m.transform.position.x, m.transform.position.y, iCluster.clusterBounds.center.z );
             m.targetPos = Vector3.Lerp( m.initPos, idealPos, iOrderFactor);
+
+            m.targetPos.x = Mathf.Clamp(m.targetPos.x, iCluster.clusterBounds.min.x, iCluster.clusterBounds.max.x);
+            m.targetPos.z = Mathf.Clamp(m.targetPos.z, iCluster.clusterBounds.min.z, iCluster.clusterBounds.max.z);
         }
     }
 
@@ -189,6 +217,9 @@ public class OTCLookupTable : MonoBehaviour
         {
             Vector3 idealPos = new Vector3(iCluster.clusterBounds.center.x, m.transform.position.y, m.transform.position.z );
             m.targetPos = Vector3.Lerp( m.initPos, idealPos, iOrderFactor);
+            
+            m.targetPos.x = Mathf.Clamp(m.targetPos.x, iCluster.clusterBounds.min.x, iCluster.clusterBounds.max.x);
+            m.targetPos.z = Mathf.Clamp(m.targetPos.z, iCluster.clusterBounds.min.z, iCluster.clusterBounds.max.z);
         }
     }
 
@@ -217,9 +248,9 @@ public class OTCLookupTable : MonoBehaviour
         foreach(OTCModifier m in iCluster.mods)
         {
             m.targetPos = new Vector3(
-                m.initPos.x + UnityEngine.Random.Range(-iChaosFactor, iChaosFactor), 
-                m.initPos.y + UnityEngine.Random.Range(-iChaosFactor, iChaosFactor), 
-                m.initPos.z + UnityEngine.Random.Range(-iChaosFactor, iChaosFactor) );
+                m.initPos.x + UnityEngine.Random.Range(-iChaosFactor*iCluster.noiseShapeMultiplier, iChaosFactor*iCluster.noiseShapeMultiplier)*m.initScale.x, 
+                m.initPos.y + UnityEngine.Random.Range(-iChaosFactor*iCluster.noiseShapeMultiplier, iChaosFactor*iCluster.noiseShapeMultiplier)*m.initScale.y, 
+                m.initPos.z + UnityEngine.Random.Range(-iChaosFactor*iCluster.noiseShapeMultiplier, iChaosFactor*iCluster.noiseShapeMultiplier)*m.initScale.z );
         }
     }
     #endregion

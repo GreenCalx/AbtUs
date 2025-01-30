@@ -28,7 +28,7 @@ public class OTCModifier : MonoBehaviour
     {
         OverWorldControl.Instance.SubscribeOTC(this);
 
-        initPos = transform.position;
+        initPos = transform.localPosition;
         initScale = transform.localScale;
         initRot = transform.localRotation;
 
@@ -57,7 +57,7 @@ public class OTCModifier : MonoBehaviour
         GoToTarget = true;
         elapsedTime = 0f;
 
-        launchPos = transform.position;
+        launchPos = transform.localPosition;
         launchRot = transform.localRotation;
         launchScale = transform.localScale;
     }
@@ -71,11 +71,11 @@ public class OTCModifier : MonoBehaviour
             {
                 Vector3 lastStep = targetPos;
                 lastStep.y = cluster.relatedTerrain.SampleHeight(lastStep);
-                transform.position = lastStep;
+                transform.localPosition = lastStep;
             }
             else
             {
-                transform.position = targetPos;
+                transform.localPosition = targetPos;
             }
             return true;
         }
@@ -85,7 +85,7 @@ public class OTCModifier : MonoBehaviour
         {
             nextStep.y = cluster.relatedTerrain.SampleHeight(nextStep);
         }
-        transform.position = nextStep;
+        transform.localPosition = nextStep;
 
         return false;
     }
@@ -93,7 +93,7 @@ public class OTCModifier : MonoBehaviour
     public bool ChangeRotation()
     {
         float journeyFrac = elapsedTime / TimeToReachTarget;
-        if (journeyFrac==1f)
+        if (journeyFrac>=1f)
         {
             transform.localRotation = targetRot;
             return true;

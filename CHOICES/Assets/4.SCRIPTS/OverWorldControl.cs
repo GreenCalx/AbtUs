@@ -68,6 +68,7 @@ public class OverWorldControl : MonoBehaviour
     [Header("Modifier References")]
     public GTLModifier MainGTL_A;
     public GTLModifier MainGTL_B;
+    public GTLModifier ActiveSunGTL;
     public List<GTLModifier> extraGTLMods;
     public List<MTOModifier> mtoModifiers;
     public List<OTCModifier> otcModifiers;
@@ -76,8 +77,10 @@ public class OverWorldControl : MonoBehaviour
     public float gtlCrossfadeTime = 10f;
 
     [Header("Internals")]
-    private Coroutine gtlCrossfadeCo;
-    private bool crossfadingDone = true;
+    private Coroutine gtlCrossfadeVolCo;
+    private Coroutine gtlCrossfadeSunsCo;
+    private bool crossfadingVolDone = true;
+    private bool crossfadingSunDone = true;
     private static OverWorldControl instance = null;
     public static OverWorldControl Instance => instance;
 
@@ -160,49 +163,79 @@ public class OverWorldControl : MonoBehaviour
     }
     public void RefreshGTLMods()
     {
-        if (crossfadingDone)
+        if (crossfadingVolDone)
         {
-            if (gtlCrossfadeCo!=null)
+            if (gtlCrossfadeVolCo!=null)
             {
-                StopCoroutine(gtlCrossfadeCo);
-                gtlCrossfadeCo = null;
+                StopCoroutine(gtlCrossfadeVolCo);
+                gtlCrossfadeVolCo = null;
             }
 
             if (MainGTL_A.isActive)
             {
                 if (gtlLookupTable.TryUpdateProfile(MainGTL_B, MainGTL_A.volume.sharedProfile, GloomyToLush))
                 {
-                    gtlCrossfadeCo = StartCoroutine(CrossfadeVolCo(MainGTL_A, MainGTL_B));
+                    gtlCrossfadeVolCo = StartCoroutine(CrossfadeVolCo(MainGTL_A, MainGTL_B));
                 }
             }
             else if (MainGTL_B.isActive)
             {
                 if (gtlLookupTable.TryUpdateProfile(MainGTL_A, MainGTL_B.volume.sharedProfile, GloomyToLush))
                 {
-                    gtlCrossfadeCo = StartCoroutine(CrossfadeVolCo(MainGTL_B, MainGTL_A));
+                    gtlCrossfadeVolCo = StartCoroutine(CrossfadeVolCo(MainGTL_B, MainGTL_A));
                 }
             }
         }
 
-        // extra volumes
-        // TODO
-        // foreach (GTLModifier mod in extraGTLMods)
-        // {
-        //     // Main volumes
-        //     if (mod.volumeType == extraGTLMods.VOL_TYPE.MAIN)
-        //     {
-        //         if (mod.isActive)
-        //             continue;
-        //         if (gtlLookupTable.TryUpdateProfile(mod, GloomyToLush))
-        //         {
-        //             if (mod)
-        //         }
-        //     }
+        // extra volumes, sun, water
+        
+        foreach (GTLModifier mod in extraGTLMods)
+        {
+            // Main volumes is separate pipeline
+            if (mod.gtlType == GTLModifier.GTL_TYPE.MAIN)
+                continue;
+            // Suns
+            if (crossfadingSunDone)
+            {
+                if (gtlCrossfadeSunsCo!=null)
+                {
+                    StopCoroutine(gtlCrossfadeSunsCo);
+                    gtlCrossfadeSunsCo = null;
+                }
+                if (mod.gtlType == GTLModifier.GTL_TYPE.SUN)
+                {
+                    if (gtlLookupTable.TryUpdateSun(mod, ActiveSunGTL, GloomyToLush))
+                        CrossfadeSunsCo(gtlCrossfadeTime, ActiveSunGTL, mod);
+                }
+            }
+
+            // Extra volumes
+
+        }
+    }
+
+    public IEnumerator CrossfadeSunsCo(float iCrossfadeTime, GTLModifier iFrom, GTLModifier iTo)
+    {
+        crossfadingSunDone = false;
+        float elapsedTime = 0f;
+        while ( elapsedTime < iCrossfadeTime )
+        {
+            elapsedTime += Time.deltaTime;
+            float frac = elapsedTime / iCrossfadeTime;
+            iFrom.weight = 1f - frac;
+            iTo.weight = frac;
+            
+            iFrom.CrossfadeSun(iTo, frac);
+            yield return null;
+        }
+        iFrom.isActive = false;
+        iTo.isActive = true;
+        crossfadingSunDone = true;
     }
 
     public IEnumerator CrossfadeVolCo(GTLModifier iFrom, GTLModifier iTo)
     {
-        crossfadingDone = false;
+        crossfadingVolDone = false;
         float elapsedTime = 0f;
         while ( elapsedTime < gtlCrossfadeTime )
         {
@@ -214,7 +247,7 @@ public class OverWorldControl : MonoBehaviour
         }
         iFrom.isActive = false;
         iTo.isActive = true;
-        crossfadingDone = true;
+        crossfadingVolDone = true;
     }
     #endregion
 

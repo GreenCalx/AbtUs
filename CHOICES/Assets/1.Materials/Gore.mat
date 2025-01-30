@@ -409,7 +409,7 @@ Material:
     - _SPECULAR_IOR: 1.13
     - _SPECULAR_ROTATION: 0
     - _SPECULAR_ROUGHNESS: 0.074
-    - _SPECULAR_WEIGHT: 1
+    - _SPECULAR_WEIGHT: 0.679
     - _SVBRDF_BRDFType: 1
     - _SVBRDF_BRDFType_DiffuseType: 1
     - _SVBRDF_BRDFType_SpecularType: 0
@@ -484,7 +484,7 @@ Material:
     - _MappingMask: {r: 1, g: 0, b: 0, a: 0}
     - _Material_SO: {r: 1, g: 1, b: 0, a: 0}
     - _REFLECTIONS_COLOR: {r: 1, g: 1, b: 1, a: 1}
-    - _SPECULAR_COLOR: {r: 1, g: 1, b: 1, a: 0}
+    - _SPECULAR_COLOR: {r: 1, g: 0.7971698, b: 0.7971698, a: 1}
     - _SVBRDF_AlphaMap_SO: {r: 1, g: 1, b: 0, a: 0}
     - _SVBRDF_AnisoRotationMap_SO: {r: 1, g: 1, b: 0, a: 0}
     - _SVBRDF_ClearcoatColorMap_SO: {r: 1, g: 1, b: 0, a: 0}

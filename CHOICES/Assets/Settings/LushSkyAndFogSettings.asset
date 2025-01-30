@@ -66,7 +66,7 @@ MonoBehaviour:
     m_Value: 0.243
   airTint:
     m_OverrideState: 1
-    m_Value: {r: 0.8132388, g: 0.612985, b: 0.8962264, a: 1}
+    m_Value: {r: 1, g: 0.7479653, b: 0.41037738, a: 1}
   airMaximumAltitude:
     m_OverrideState: 1
     m_Value: 100000000
@@ -117,7 +117,7 @@ MonoBehaviour:
     m_Value: {x: 0, y: 0, z: 0}
   colorSaturation:
     m_OverrideState: 1
-    m_Value: 0.697
+    m_Value: 1
   alphaSaturation:
     m_OverrideState: 0
     m_Value: 1
@@ -170,7 +170,7 @@ MonoBehaviour:
     m_Value: {r: 0.5, g: 0.5, b: 0.5, a: 1}
   tint:
     m_OverrideState: 1
-    m_Value: {r: 1, g: 0.7459708, b: 0, a: 1}
+    m_Value: {r: 1, g: 0.9119799, b: 0.6650944, a: 1}
   maxFogDistance:
     m_OverrideState: 0
     m_Value: 5000
@@ -197,7 +197,7 @@ MonoBehaviour:
     m_Value: 1
   albedo:
     m_OverrideState: 1
-    m_Value: {r: 0.9858491, g: 0.99714226, b: 1, a: 1}
+    m_Value: {r: 1, g: 0.8760515, b: 0.5896226, a: 1}
   globalLightProbeDimmer:
     m_OverrideState: 0
     m_Value: 1
@@ -276,7 +276,7 @@ MonoBehaviour:
     m_Value: 1
   planetRadius:
     m_OverrideState: 1
-    m_Value: 20000
+    m_Value: 2000000
   renderingSpace:
     m_OverrideState: 0
     m_Value: 1
@@ -308,7 +308,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 7e9e4ed5a6f56fb4ebd693e39684f36f, type: 3}
   m_Name: VolumetricClouds
   m_EditorClassIdentifier: 
-  active: 1
+  active: 0
   enable:
     m_OverrideState: 1
     m_Value: 1

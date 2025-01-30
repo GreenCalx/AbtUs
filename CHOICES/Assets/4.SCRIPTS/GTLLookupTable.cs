@@ -3,6 +3,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.Rendering;
+using UnityEngine.Rendering.HighDefinition;
 
 public class GTLLookupTable : MonoBehaviour
 {
@@ -11,15 +12,33 @@ public class GTLLookupTable : MonoBehaviour
     [Serializable]
     public class GTLLookupUnit
     {
-        public VolumeProfile volumeProfile;
         public float GtL_Factor;
+        
     }
-    public List<GTLLookupUnit> units;
+    [Serializable]
+    public class GTLLookupVolumeUnit : GTLLookupUnit
+    {
+        public VolumeProfile volumeProfile;
+    }
+    [Serializable]
+    public class GTLLookupLightUnit : GTLLookupUnit
+    {
+        public Light light;
+    }
+    [Serializable]
+    public class GTLLookupWaterUnit : GTLLookupUnit
+    {
+        public WaterSurface water;
+    }
+
+    public List<GTLLookupVolumeUnit> volumeUnits;
+    public List<GTLLookupLightUnit> lightUnits;
+    public List<GTLLookupWaterUnit> waterUnits;
 
     public bool TryUpdateProfile(GTLModifier iMod, VolumeProfile iActiveProfile, float iGTLFactor)
     {
         List<VolumeProfile> eligibleProfiles = new List<VolumeProfile>();
-        foreach(GTLLookupUnit u in units)
+        foreach(GTLLookupVolumeUnit u in volumeUnits)
         {
             if (u.volumeProfile == iActiveProfile)
                 continue;
@@ -49,6 +68,40 @@ public class GTLLookupTable : MonoBehaviour
         
         int selectedProfile = UnityEngine.Random.Range(0,eligibleProfiles.Count);
         iMod.ChangeVolume(eligibleProfiles[selectedProfile]);
+        return true;
+    }
+
+    public bool TryUpdateSun(GTLModifier iSunMod, GTLModifier iActiveSun, float iGTLFactor)
+    {
+        List<Light> eligibleSuns = new List<Light>();
+        foreach(GTLLookupLightUnit u in lightUnits)
+        {
+            if (u.light == iActiveSun)
+                continue;
+
+            if (iGTLFactor == NeutralVal)
+            {
+                if (u.GtL_Factor == NeutralVal)
+                    eligibleSuns.Add(u.light);
+            }
+            else if (iGTLFactor > NeutralVal)
+            {
+                if (iGTLFactor > u.GtL_Factor)
+                    eligibleSuns.Add(u.light);
+            } 
+            else if (iGTLFactor < NeutralVal)
+            {
+                if (iGTLFactor < u.GtL_Factor)
+                    eligibleSuns.Add(u.light);
+            }
+        }
+        
+        if (eligibleSuns.Count==0)
+            return false;
+
+        int selectedSun = UnityEngine.Random.Range(0,eligibleSuns.Count);
+
+
         return true;
     }
 }
