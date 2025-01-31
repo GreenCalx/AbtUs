@@ -11,6 +11,8 @@ GameObject:
   - component: {fileID: 6713510498469400784}
   - component: {fileID: 2347003353081361280}
   - component: {fileID: 6867457432002551375}
+  - component: {fileID: 3034557205929055404}
+  - component: {fileID: 7379151664745080422}
   m_Layer: 0
   m_Name: Player
   m_TagString: Player
@@ -88,6 +90,34 @@ Rigidbody:
   m_Interpolate: 0
   m_Constraints: 112
   m_CollisionDetection: 0
+--- !u!114 &3034557205929055404
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 276230515874768378}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 939b72ba9330544409f2e6de03b32927, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  Init_Glow: 0
+--- !u!114 &7379151664745080422
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 276230515874768378}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 88f00807c9a4af844864efc0707a9761, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  OTC: 0
+  MTO: 0
+  GTL: 0
 --- !u!1 &1827127282738228877
 GameObject:
   m_ObjectHideFlags: 0
