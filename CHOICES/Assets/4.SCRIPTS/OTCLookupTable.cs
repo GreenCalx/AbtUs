@@ -225,7 +225,7 @@ public class OTCLookupTable : MonoBehaviour
 
     public void Triangulate()
     {
-
+        
     }
 
     public void Square()
