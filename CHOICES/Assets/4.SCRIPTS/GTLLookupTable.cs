@@ -35,7 +35,7 @@ public class GTLLookupTable : MonoBehaviour
     public List<GTLLookupLightUnit> lightUnits;
     public List<GTLLookupWaterUnit> waterUnits;
 
-    public bool TryUpdateProfile(GTLModifier iMod, VolumeProfile iActiveProfile, float iGTLFactor)
+    public bool TryUpdateProfile(GTLVolumeMod iMod, VolumeProfile iActiveProfile, float iGTLFactor)
     {
         List<VolumeProfile> eligibleProfiles = new List<VolumeProfile>();
         foreach(GTLLookupVolumeUnit u in volumeUnits)
@@ -58,27 +58,24 @@ public class GTLLookupTable : MonoBehaviour
                 //GLOOMY
                 if (iGTLFactor < u.GtL_Factor)
                     eligibleProfiles.Add(u.volumeProfile);
-            } else {
-                if (NeutralVal==u.GtL_Factor)
-                    eligibleProfiles.Add(u.volumeProfile);
             }
         }
         if (eligibleProfiles.Count==0)
             return false;
         
         int selectedProfile = UnityEngine.Random.Range(0,eligibleProfiles.Count);
-        iMod.ChangeVolume(eligibleProfiles[selectedProfile]);
+        iMod.ChangeTarget(eligibleProfiles[selectedProfile]);
         return true;
     }
 
-    public bool TryUpdateSun(GTLModifier iSunMod, GTLModifier iActiveSun, float iGTLFactor)
+    public bool TryUpdateSun(GTLLightMod iSunMod, Light iActiveSunLight, float iGTLFactor)
     {
         List<Light> eligibleSuns = new List<Light>();
         foreach(GTLLookupLightUnit u in lightUnits)
         {
-            if (u.light == iActiveSun)
+            if (u.light == iActiveSunLight)
                 continue;
-
+            
             if (iGTLFactor == NeutralVal)
             {
                 if (u.GtL_Factor == NeutralVal)
@@ -100,7 +97,7 @@ public class GTLLookupTable : MonoBehaviour
             return false;
 
         int selectedSun = UnityEngine.Random.Range(0,eligibleSuns.Count);
-
+        iSunMod.ChangeTarget(eligibleSuns[selectedSun]);
 
         return true;
     }

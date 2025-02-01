@@ -52,9 +52,9 @@ MonoBehaviour:
   m_FrameSpace: 0
   m_AnchorPositionOverride: {fileID: 0}
   m_AnchorPositionOffset: {x: 0, y: 0, z: 0}
-  m_Yaw: 179.18028
-  m_Pitch: 81.07988
-  m_Roll: -40.24002
+  m_Yaw: 0
+  m_Pitch: 82.63205
+  m_Roll: 0
 --- !u!108 &5864075208016676106
 Light:
   m_ObjectHideFlags: 0
