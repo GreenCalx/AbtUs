@@ -474,6 +474,7 @@ MonoBehaviour:
   targetPos: {x: 0, y: 0, z: 0}
   targetRot: {x: 0, y: 0, z: 0, w: 0}
   targetScale: {x: 0, y: 0, z: 0}
+  parentPos: {x: 0, y: 0, z: 0}
   launchPos: {x: 0, y: 0, z: 0}
   launchRot: {x: 0, y: 0, z: 0, w: 0}
   launchScale: {x: 0, y: 0, z: 0}
@@ -598,6 +599,7 @@ MonoBehaviour:
   targetPos: {x: 0, y: 0, z: 0}
   targetRot: {x: 0, y: 0, z: 0, w: 0}
   targetScale: {x: 0, y: 0, z: 0}
+  parentPos: {x: 0, y: 0, z: 0}
   launchPos: {x: 0, y: 0, z: 0}
   launchRot: {x: 0, y: 0, z: 0, w: 0}
   launchScale: {x: 0, y: 0, z: 0}
@@ -728,6 +730,7 @@ MonoBehaviour:
   targetPos: {x: 0, y: 0, z: 0}
   targetRot: {x: 0, y: 0, z: 0, w: 0}
   targetScale: {x: 0, y: 0, z: 0}
+  parentPos: {x: 0, y: 0, z: 0}
   launchPos: {x: 0, y: 0, z: 0}
   launchRot: {x: 0, y: 0, z: 0, w: 0}
   launchScale: {x: 0, y: 0, z: 0}
@@ -858,6 +861,7 @@ MonoBehaviour:
   targetPos: {x: 0, y: 0, z: 0}
   targetRot: {x: 0, y: 0, z: 0, w: 0}
   targetScale: {x: 0, y: 0, z: 0}
+  parentPos: {x: 0, y: 0, z: 0}
   launchPos: {x: 0, y: 0, z: 0}
   launchRot: {x: 0, y: 0, z: 0, w: 0}
   launchScale: {x: 0, y: 0, z: 0}
@@ -999,6 +1003,7 @@ MonoBehaviour:
   targetPos: {x: 0, y: 0, z: 0}
   targetRot: {x: 0, y: 0, z: 0, w: 0}
   targetScale: {x: 0, y: 0, z: 0}
+  parentPos: {x: 0, y: 0, z: 0}
   launchPos: {x: 0, y: 0, z: 0}
   launchRot: {x: 0, y: 0, z: 0, w: 0}
   launchScale: {x: 0, y: 0, z: 0}
@@ -1123,6 +1128,7 @@ MonoBehaviour:
   targetPos: {x: 0, y: 0, z: 0}
   targetRot: {x: 0, y: 0, z: 0, w: 0}
   targetScale: {x: 0, y: 0, z: 0}
+  parentPos: {x: 0, y: 0, z: 0}
   launchPos: {x: 0, y: 0, z: 0}
   launchRot: {x: 0, y: 0, z: 0, w: 0}
   launchScale: {x: 0, y: 0, z: 0}
@@ -1253,6 +1259,7 @@ MonoBehaviour:
   targetPos: {x: 0, y: 0, z: 0}
   targetRot: {x: 0, y: 0, z: 0, w: 0}
   targetScale: {x: 0, y: 0, z: 0}
+  parentPos: {x: 0, y: 0, z: 0}
   launchPos: {x: 0, y: 0, z: 0}
   launchRot: {x: 0, y: 0, z: 0, w: 0}
   launchScale: {x: 0, y: 0, z: 0}
@@ -1283,12 +1290,12 @@ PrefabInstance:
     - target: {fileID: -8679921383154817045, guid: 0bbe6ed835dd4334889f1369171c83a6,
         type: 3}
       propertyPath: m_LocalPosition.z
-      value: -406.9
+      value: -400.4
       objectReference: {fileID: 0}
     - target: {fileID: -8679921383154817045, guid: 0bbe6ed835dd4334889f1369171c83a6,
         type: 3}
       propertyPath: m_LocalRotation.w
-      value: 0.70658296
+      value: 0.7386632
       objectReference: {fileID: 0}
     - target: {fileID: -8679921383154817045, guid: 0bbe6ed835dd4334889f1369171c83a6,
         type: 3}
@@ -1298,7 +1305,7 @@ PrefabInstance:
     - target: {fileID: -8679921383154817045, guid: 0bbe6ed835dd4334889f1369171c83a6,
         type: 3}
       propertyPath: m_LocalRotation.y
-      value: 0.7076303
+      value: 0.6740747
       objectReference: {fileID: 0}
     - target: {fileID: -8679921383154817045, guid: 0bbe6ed835dd4334889f1369171c83a6,
         type: 3}
@@ -1313,18 +1320,43 @@ PrefabInstance:
     - target: {fileID: -8679921383154817045, guid: 0bbe6ed835dd4334889f1369171c83a6,
         type: 3}
       propertyPath: m_LocalEulerAnglesHint.y
-      value: 90.085
+      value: 84.765
       objectReference: {fileID: 0}
     - target: {fileID: -8679921383154817045, guid: 0bbe6ed835dd4334889f1369171c83a6,
         type: 3}
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: -3107723282305026465, guid: 0bbe6ed835dd4334889f1369171c83a6,
+        type: 3}
+      propertyPath: 'm_Materials.Array.data[0]'
+      value: 
+      objectReference: {fileID: 2100000, guid: 2587da7fe92f87044bcf6fec06500b78, type: 2}
+    - target: {fileID: -3107723282305026465, guid: 0bbe6ed835dd4334889f1369171c83a6,
+        type: 3}
+      propertyPath: 'm_Materials.Array.data[1]'
+      value: 
+      objectReference: {fileID: 2100000, guid: 62d4d7ec6c38a3c44b7d2e298136db17, type: 2}
     - target: {fileID: 919132149155446097, guid: 0bbe6ed835dd4334889f1369171c83a6,
         type: 3}
       propertyPath: m_Name
       value: facility1
       objectReference: {fileID: 0}
+    - target: {fileID: 2300823793349840173, guid: 0bbe6ed835dd4334889f1369171c83a6,
+        type: 3}
+      propertyPath: 'm_Materials.Array.data[0]'
+      value: 
+      objectReference: {fileID: 2100000, guid: 2587da7fe92f87044bcf6fec06500b78, type: 2}
+    - target: {fileID: 2300823793349840173, guid: 0bbe6ed835dd4334889f1369171c83a6,
+        type: 3}
+      propertyPath: 'm_Materials.Array.data[1]'
+      value: 
+      objectReference: {fileID: 2100000, guid: 62d4d7ec6c38a3c44b7d2e298136db17, type: 2}
+    - target: {fileID: 4518117363909615855, guid: 0bbe6ed835dd4334889f1369171c83a6,
+        type: 3}
+      propertyPath: 'm_Materials.Array.data[0]'
+      value: 
+      objectReference: {fileID: 2100000, guid: f80676ae70544a84b94a07232cd67e53, type: 2}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
@@ -1337,7 +1369,39 @@ PrefabInstance:
         type: 3}
       insertIndex: -1
       addedObject: {fileID: 5956922397049326799}
+    - targetCorrespondingSourceObject: {fileID: -6092523581420273211, guid: 0bbe6ed835dd4334889f1369171c83a6,
+        type: 3}
+      insertIndex: -1
+      addedObject: {fileID: 6398628251228156141}
   m_SourcePrefab: {fileID: 100100000, guid: 0bbe6ed835dd4334889f1369171c83a6, type: 3}
+--- !u!1 &780762507090093907 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: -6092523581420273211, guid: 0bbe6ed835dd4334889f1369171c83a6,
+    type: 3}
+  m_PrefabInstance: {fileID: 2424855557070218902}
+  m_PrefabAsset: {fileID: 0}
+--- !u!64 &6398628251228156141
+MeshCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 780762507090093907}
+  m_Material: {fileID: 0}
+  m_IncludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_ExcludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_LayerOverridePriority: 0
+  m_IsTrigger: 0
+  m_ProvidesContacts: 0
+  m_Enabled: 1
+  serializedVersion: 5
+  m_Convex: 0
+  m_CookingOptions: 30
+  m_Mesh: {fileID: 6853511930059930085, guid: 0bbe6ed835dd4334889f1369171c83a6, type: 3}
 --- !u!1 &1186727426741893451 stripped
 GameObject:
   m_CorrespondingSourceObject: {fileID: 3593532781514498013, guid: 0bbe6ed835dd4334889f1369171c83a6,
@@ -1527,6 +1591,7 @@ MonoBehaviour:
   targetPos: {x: 0, y: 0, z: 0}
   targetRot: {x: 0, y: 0, z: 0, w: 0}
   targetScale: {x: 0, y: 0, z: 0}
+  parentPos: {x: 0, y: 0, z: 0}
   launchPos: {x: 0, y: 0, z: 0}
   launchRot: {x: 0, y: 0, z: 0, w: 0}
   launchScale: {x: 0, y: 0, z: 0}
@@ -1657,6 +1722,7 @@ MonoBehaviour:
   targetPos: {x: 0, y: 0, z: 0}
   targetRot: {x: 0, y: 0, z: 0, w: 0}
   targetScale: {x: 0, y: 0, z: 0}
+  parentPos: {x: 0, y: 0, z: 0}
   launchPos: {x: 0, y: 0, z: 0}
   launchRot: {x: 0, y: 0, z: 0, w: 0}
   launchScale: {x: 0, y: 0, z: 0}
@@ -1787,6 +1853,7 @@ MonoBehaviour:
   targetPos: {x: 0, y: 0, z: 0}
   targetRot: {x: 0, y: 0, z: 0, w: 0}
   targetScale: {x: 0, y: 0, z: 0}
+  parentPos: {x: 0, y: 0, z: 0}
   launchPos: {x: 0, y: 0, z: 0}
   launchRot: {x: 0, y: 0, z: 0, w: 0}
   launchScale: {x: 0, y: 0, z: 0}
@@ -1916,6 +1983,7 @@ MonoBehaviour:
   targetPos: {x: 0, y: 0, z: 0}
   targetRot: {x: 0, y: 0, z: 0, w: 0}
   targetScale: {x: 0, y: 0, z: 0}
+  parentPos: {x: 0, y: 0, z: 0}
   launchPos: {x: 0, y: 0, z: 0}
   launchRot: {x: 0, y: 0, z: 0, w: 0}
   launchScale: {x: 0, y: 0, z: 0}
@@ -2046,6 +2114,7 @@ MonoBehaviour:
   targetPos: {x: 0, y: 0, z: 0}
   targetRot: {x: 0, y: 0, z: 0, w: 0}
   targetScale: {x: 0, y: 0, z: 0}
+  parentPos: {x: 0, y: 0, z: 0}
   launchPos: {x: 0, y: 0, z: 0}
   launchRot: {x: 0, y: 0, z: 0, w: 0}
   launchScale: {x: 0, y: 0, z: 0}
@@ -2182,6 +2251,7 @@ MonoBehaviour:
   targetPos: {x: 0, y: 0, z: 0}
   targetRot: {x: 0, y: 0, z: 0, w: 0}
   targetScale: {x: 0, y: 0, z: 0}
+  parentPos: {x: 0, y: 0, z: 0}
   launchPos: {x: 0, y: 0, z: 0}
   launchRot: {x: 0, y: 0, z: 0, w: 0}
   launchScale: {x: 0, y: 0, z: 0}
@@ -2317,6 +2387,7 @@ MonoBehaviour:
   targetPos: {x: 0, y: 0, z: 0}
   targetRot: {x: 0, y: 0, z: 0, w: 0}
   targetScale: {x: 0, y: 0, z: 0}
+  parentPos: {x: 0, y: 0, z: 0}
   launchPos: {x: 0, y: 0, z: 0}
   launchRot: {x: 0, y: 0, z: 0, w: 0}
   launchScale: {x: 0, y: 0, z: 0}
@@ -2441,6 +2512,7 @@ MonoBehaviour:
   targetPos: {x: 0, y: 0, z: 0}
   targetRot: {x: 0, y: 0, z: 0, w: 0}
   targetScale: {x: 0, y: 0, z: 0}
+  parentPos: {x: 0, y: 0, z: 0}
   launchPos: {x: 0, y: 0, z: 0}
   launchRot: {x: 0, y: 0, z: 0, w: 0}
   launchScale: {x: 0, y: 0, z: 0}
@@ -2582,6 +2654,7 @@ MonoBehaviour:
   targetPos: {x: 0, y: 0, z: 0}
   targetRot: {x: 0, y: 0, z: 0, w: 0}
   targetScale: {x: 0, y: 0, z: 0}
+  parentPos: {x: 0, y: 0, z: 0}
   launchPos: {x: 0, y: 0, z: 0}
   launchRot: {x: 0, y: 0, z: 0, w: 0}
   launchScale: {x: 0, y: 0, z: 0}
@@ -2711,6 +2784,7 @@ MonoBehaviour:
   targetPos: {x: 0, y: 0, z: 0}
   targetRot: {x: 0, y: 0, z: 0, w: 0}
   targetScale: {x: 0, y: 0, z: 0}
+  parentPos: {x: 0, y: 0, z: 0}
   launchPos: {x: 0, y: 0, z: 0}
   launchRot: {x: 0, y: 0, z: 0, w: 0}
   launchScale: {x: 0, y: 0, z: 0}
@@ -2846,6 +2920,7 @@ MonoBehaviour:
   targetPos: {x: 0, y: 0, z: 0}
   targetRot: {x: 0, y: 0, z: 0, w: 0}
   targetScale: {x: 0, y: 0, z: 0}
+  parentPos: {x: 0, y: 0, z: 0}
   launchPos: {x: 0, y: 0, z: 0}
   launchRot: {x: 0, y: 0, z: 0, w: 0}
   launchScale: {x: 0, y: 0, z: 0}
@@ -2981,6 +3056,7 @@ MonoBehaviour:
   targetPos: {x: 0, y: 0, z: 0}
   targetRot: {x: 0, y: 0, z: 0, w: 0}
   targetScale: {x: 0, y: 0, z: 0}
+  parentPos: {x: 0, y: 0, z: 0}
   launchPos: {x: 0, y: 0, z: 0}
   launchRot: {x: 0, y: 0, z: 0, w: 0}
   launchScale: {x: 0, y: 0, z: 0}
@@ -3111,6 +3187,7 @@ MonoBehaviour:
   targetPos: {x: 0, y: 0, z: 0}
   targetRot: {x: 0, y: 0, z: 0, w: 0}
   targetScale: {x: 0, y: 0, z: 0}
+  parentPos: {x: 0, y: 0, z: 0}
   launchPos: {x: 0, y: 0, z: 0}
   launchRot: {x: 0, y: 0, z: 0, w: 0}
   launchScale: {x: 0, y: 0, z: 0}
@@ -3252,6 +3329,7 @@ MonoBehaviour:
   targetPos: {x: 0, y: 0, z: 0}
   targetRot: {x: 0, y: 0, z: 0, w: 0}
   targetScale: {x: 0, y: 0, z: 0}
+  parentPos: {x: 0, y: 0, z: 0}
   launchPos: {x: 0, y: 0, z: 0}
   launchRot: {x: 0, y: 0, z: 0, w: 0}
   launchScale: {x: 0, y: 0, z: 0}
@@ -3387,6 +3465,7 @@ MonoBehaviour:
   targetPos: {x: 0, y: 0, z: 0}
   targetRot: {x: 0, y: 0, z: 0, w: 0}
   targetScale: {x: 0, y: 0, z: 0}
+  parentPos: {x: 0, y: 0, z: 0}
   launchPos: {x: 0, y: 0, z: 0}
   launchRot: {x: 0, y: 0, z: 0, w: 0}
   launchScale: {x: 0, y: 0, z: 0}
@@ -3517,6 +3596,7 @@ MonoBehaviour:
   targetPos: {x: 0, y: 0, z: 0}
   targetRot: {x: 0, y: 0, z: 0, w: 0}
   targetScale: {x: 0, y: 0, z: 0}
+  parentPos: {x: 0, y: 0, z: 0}
   launchPos: {x: 0, y: 0, z: 0}
   launchRot: {x: 0, y: 0, z: 0, w: 0}
   launchScale: {x: 0, y: 0, z: 0}
@@ -3647,6 +3727,7 @@ MonoBehaviour:
   targetPos: {x: 0, y: 0, z: 0}
   targetRot: {x: 0, y: 0, z: 0, w: 0}
   targetScale: {x: 0, y: 0, z: 0}
+  parentPos: {x: 0, y: 0, z: 0}
   launchPos: {x: 0, y: 0, z: 0}
   launchRot: {x: 0, y: 0, z: 0, w: 0}
   launchScale: {x: 0, y: 0, z: 0}
@@ -3777,6 +3858,7 @@ MonoBehaviour:
   targetPos: {x: 0, y: 0, z: 0}
   targetRot: {x: 0, y: 0, z: 0, w: 0}
   targetScale: {x: 0, y: 0, z: 0}
+  parentPos: {x: 0, y: 0, z: 0}
   launchPos: {x: 0, y: 0, z: 0}
   launchRot: {x: 0, y: 0, z: 0, w: 0}
   launchScale: {x: 0, y: 0, z: 0}
@@ -3906,6 +3988,7 @@ MonoBehaviour:
   targetPos: {x: 0, y: 0, z: 0}
   targetRot: {x: 0, y: 0, z: 0, w: 0}
   targetScale: {x: 0, y: 0, z: 0}
+  parentPos: {x: 0, y: 0, z: 0}
   launchPos: {x: 0, y: 0, z: 0}
   launchRot: {x: 0, y: 0, z: 0, w: 0}
   launchScale: {x: 0, y: 0, z: 0}
@@ -4041,6 +4124,7 @@ MonoBehaviour:
   targetPos: {x: 0, y: 0, z: 0}
   targetRot: {x: 0, y: 0, z: 0, w: 0}
   targetScale: {x: 0, y: 0, z: 0}
+  parentPos: {x: 0, y: 0, z: 0}
   launchPos: {x: 0, y: 0, z: 0}
   launchRot: {x: 0, y: 0, z: 0, w: 0}
   launchScale: {x: 0, y: 0, z: 0}
