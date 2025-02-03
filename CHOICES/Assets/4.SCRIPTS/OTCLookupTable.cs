@@ -11,13 +11,13 @@ public class OTCLookupTable : MonoBehaviour
     public enum SPREAD_SHAPE { 
         NONE,
         // ORDER
-        ALIGN_X, ALIGN_Z, TRIANGLE, SQR, CIRCLE, GRID, HEX,
+        ALIGN_X, ALIGN_Z, TRIANGLE, SQR, CIRCLE, GRID, HEX, ARCH,
         // CHAOS
         NOISE
         }
     public readonly List<SPREAD_SHAPE> orderShapes = new List<SPREAD_SHAPE>()
     {   SPREAD_SHAPE.ALIGN_X, SPREAD_SHAPE.ALIGN_Z, SPREAD_SHAPE.TRIANGLE, 
-        SPREAD_SHAPE.SQR, SPREAD_SHAPE.CIRCLE, SPREAD_SHAPE.GRID, SPREAD_SHAPE.HEX 
+        SPREAD_SHAPE.SQR, SPREAD_SHAPE.CIRCLE, SPREAD_SHAPE.GRID, SPREAD_SHAPE.HEX, SPREAD_SHAPE.ARCH 
     };
     public readonly List<SPREAD_SHAPE> chaosShapes = new List<SPREAD_SHAPE>()
     { SPREAD_SHAPE.NOISE };
@@ -96,20 +96,28 @@ public class OTCLookupTable : MonoBehaviour
         switch (iCluster.currSpreadShape)
         {
             case SPREAD_SHAPE.ALIGN_X:
-                AlignOnX(iCluster, orderFactorCurve.Evaluate(iOTC));
+                Align(iCluster, orderFactorCurve.Evaluate(iOTC));
                 break;
             case SPREAD_SHAPE.ALIGN_Z:
-                AlignOnZ(iCluster, orderFactorCurve.Evaluate(iOTC));
+                Align(iCluster, orderFactorCurve.Evaluate(iOTC));
                 break;
             case SPREAD_SHAPE.TRIANGLE:
+                Triangulate(iCluster, orderFactorCurve.Evaluate(iOTC));
                 break;
             case SPREAD_SHAPE.SQR:
+                Square(iCluster, orderFactorCurve.Evaluate(iOTC));
                 break;
             case SPREAD_SHAPE.CIRCLE:
+                Circle(iCluster, orderFactorCurve.Evaluate(iOTC));
                 break;
             case SPREAD_SHAPE.GRID:
+                Grid(iCluster, orderFactorCurve.Evaluate(iOTC));
                 break;
             case SPREAD_SHAPE.HEX:
+                break;
+            case SPREAD_SHAPE.ARCH:
+                Arch(iCluster, orderFactorCurve.Evaluate(iOTC));
+                Debug.Log("called arch");
                 break;
             case SPREAD_SHAPE.NOISE:
                 Noise(iCluster, chaosFactorCurve.Evaluate(iOTC));
@@ -145,13 +153,18 @@ public class OTCLookupTable : MonoBehaviour
                 AlignRotWithCenter(iCluster, orderFactorCurve.Evaluate(iOTC));
                 break;
             case SPREAD_SHAPE.GRID:
+                AlignRotWithCenter(iCluster, orderFactorCurve.Evaluate(iOTC));
                 break;
             case SPREAD_SHAPE.HEX:
                 AlignRotWithCenter(iCluster, orderFactorCurve.Evaluate(iOTC));
                 break;
+            case SPREAD_SHAPE.ARCH:
+                AlignRotOnZ(iCluster, orderFactorCurve.Evaluate(iOTC));
+                break;
             case SPREAD_SHAPE.NOISE:
                 
                 break;
+
             default:
                 break;
         }
@@ -188,59 +201,166 @@ public class OTCLookupTable : MonoBehaviour
             case SPREAD_SHAPE.HEX:
                 HarmonizeScales(iCluster, orderFactorCurve.Evaluate(iOTC));            
                 break;
+            case SPREAD_SHAPE.ARCH:
+                RandomizeScales(iCluster, orderFactorCurve.Evaluate(iOTC));
+                break;
             case SPREAD_SHAPE.NOISE:
                 RandomizeScales(iCluster, orderFactorCurve.Evaluate(iOTC));    
                 break;
+
             default:
                 break;
         }
     }
 
     #region POS_SPREADS
-    public void AlignOnZ(OTCCluster iCluster, float iOrderFactor)
+    public void Align(OTCCluster iCluster, float iOrderFactor)
     {
         // Vector2 P0 = new Vector2(clusterPlan.minXZ.x, clusterPlan.center.y);
         // Vector2 P1 = new Vector2(clusterPlan.maxXZ.x, clusterPlan.center.y);
         foreach(OTCModifier m in iCluster.mods)
         {
-            Vector3 idealPos = new Vector3(m.transform.position.x, m.transform.position.y, iCluster.clusterBounds.center.z );
+            Vector3 idealPos = new Vector3(m.transform.localPosition.x, m.transform.localPosition.y, iCluster.clusterBounds.center.z );
+            Debug.Log(idealPos);
             m.targetPos = Vector3.Lerp( m.initPos, idealPos, iOrderFactor);
 
-            m.targetPos.x = Mathf.Clamp(m.targetPos.x, iCluster.clusterBounds.min.x, iCluster.clusterBounds.max.x);
-            m.targetPos.z = Mathf.Clamp(m.targetPos.z, iCluster.clusterBounds.min.z, iCluster.clusterBounds.max.z);
+            m.targetPos.x = Mathf.Clamp(m.targetPos.x, - iCluster.clusterBounds.size.x, iCluster.clusterBounds.size.x);
+            m.targetPos.z = Mathf.Clamp(m.targetPos.z, -iCluster.clusterBounds.size.z, iCluster.clusterBounds.max.z);
         }
     }
 
-    public void AlignOnX(OTCCluster iCluster, float iOrderFactor)
+
+    public void Triangulate(OTCCluster iCluster, float iOrderFactor)
     {
-        foreach(OTCModifier m in iCluster.mods)
+        int order = 0;
+        int count = iCluster.mods.Count;
+        float minDim = Mathf.Min(iCluster.clusterBounds.extents.x, iCluster.clusterBounds.extents.y, iCluster.clusterBounds.extents.z);
+        float sideLength = Mathf.Sqrt(2f) * minDim;
+        int sideCount= Mathf.CeilToInt(count / 3f);
+        float step = sideLength / sideCount;
+        Vector3 TargetPosition = (2 / 3f) * sideLength * new Vector3(0,1,0);
+
+        foreach (OTCModifier m in iCluster.mods)
         {
-            Vector3 idealPos = new Vector3(iCluster.clusterBounds.center.x, m.transform.position.y, m.transform.position.z );
-            m.targetPos = Vector3.Lerp( m.initPos, idealPos, iOrderFactor);
-            
-            m.targetPos.x = Mathf.Clamp(m.targetPos.x, iCluster.clusterBounds.min.x, iCluster.clusterBounds.max.x);
-            m.targetPos.z = Mathf.Clamp(m.targetPos.z, iCluster.clusterBounds.min.z, iCluster.clusterBounds.max.z);
+            m.targetPos = TargetPosition;
+            if(order < sideCount)
+            {
+                TargetPosition.x += step * Mathf.Cos(5.23599f);
+                TargetPosition.y += step * Mathf.Sin(5.23599f);
+            }
+            else if (order < 2 * sideCount)
+            {
+                TargetPosition.x -= step;
+            }
+            else
+            {
+                float angle = 4 * Mathf.PI / 3;
+                TargetPosition.x -= step * Mathf.Cos(angle);
+                TargetPosition.y -= step * Mathf.Sin(angle);
+            }
+            order++;
         }
     }
 
-    public void Triangulate()
+    public void Square(OTCCluster iCluster, float iOrderFactor)
     {
-        
+        int count = iCluster.mods.Count;
+        int innerSquareSize =Mathf.CeilToInt((count - 4) / 4);
+        int gridSize = innerSquareSize + 2;
+        Debug.Log(gridSize);
+        float minDim = Mathf.Min(iCluster.clusterBounds.extents.x, iCluster.clusterBounds.extents.y, iCluster.clusterBounds.extents.z);
+        float spacing = minDim / (gridSize - 1);
+        Vector3 relative_center = iCluster.clusterBounds.center - iCluster.transform.position;
+        int row = 0, col = 0;
+
+        foreach (OTCModifier m in iCluster.mods)
+        {
+            m.targetPos = new Vector3(
+                relative_center.x - minDim + col * spacing,
+                relative_center.y,
+                relative_center.z - minDim + row * spacing
+            );
+
+            if(row != 0 && row != gridSize -1 && col != gridSize - 1)
+            {
+                col = gridSize - 1;
+            }
+            else
+            {
+                col++;
+            }
+            if (col >= gridSize) 
+            {
+                col = 0;
+                row++;
+            }
+        }
     }
 
-    public void Square()
+    public void Arch(OTCCluster iCluster, float iOrderFactor)
     {
 
+        int order = 0;
+        int count = iCluster.mods.Count;
+        int pillarCount = Mathf.FloorToInt(count / 3f);
+        float step = Mathf.PI / (count + 1 - 2 * pillarCount);
+        float pillarSize = Mathf.Min(iCluster.clusterBounds.extents.x, iCluster.clusterBounds.extents.y, iCluster.clusterBounds.extents.z);
+        float pillarStep = pillarSize / pillarCount;
+        Vector3 relative_center = iCluster.clusterBounds.center - iCluster.transform.position;
+        foreach (OTCModifier m in iCluster.mods)
+        {
+            if(order < pillarCount)
+            {
+                m.targetPos = new Vector3(pillarSize / 2, -pillarSize / 2 + order * pillarStep, 0);// + relative_center;
+            }
+            else if(order >= pillarCount && order < count - pillarCount)
+            {
+                m.targetPos = new Vector3(Mathf.Cos(step * (1 + order - pillarCount)) * pillarSize / 2, pillarSize / 2 - pillarStep + Mathf.Sin(step * (1 + order - pillarCount)) * pillarSize / 3, 0);// + relative_center;
+            }
+            else
+            {
+                m.targetPos = new Vector3(-pillarSize / 2, -(pillarSize / 2) + (order - count + pillarCount) * pillarStep, 0);// + relative_center;
+            }
+            order += 1;
+        }
+    }
+    public void Circle(OTCCluster iCluster, float iOrderFactor)
+    {
+        float step = 2 * Mathf.PI / iCluster.mods.Count;
+        float order = 0;
+        float radius = Mathf.Min(iCluster.clusterBounds.extents.x, iCluster.clusterBounds.extents.y, iCluster.clusterBounds.extents.z);
+        Vector3 relative_center = iCluster.clusterBounds.center - iCluster.transform.position;
+        foreach (OTCModifier m in iCluster.mods)
+        {
+            m.targetPos = new Vector3(relative_center.x  + Mathf.Cos(step * order) * radius, relative_center.y, relative_center.z + + Mathf.Sin(step * order) * radius);
+            order += 1;
+        }
     }
 
-    public void Circle()
+    public void Grid(OTCCluster iCluster, float iOrderFactor)
     {
+        int count = iCluster.mods.Count;
+        int gridSize = Mathf.CeilToInt(Mathf.Sqrt(count)); // Déterminer la taille de la grille (carré)
+        float minDim = Mathf.Min(iCluster.clusterBounds.extents.x, iCluster.clusterBounds.extents.y, iCluster.clusterBounds.extents.z);
+        float spacing = minDim / (gridSize - 1);
+        Vector3 relative_center = iCluster.clusterBounds.center - iCluster.transform.position;
+        int row = 0, col = 0;
 
-    }
+        foreach (OTCModifier m in iCluster.mods)
+        {
+            m.targetPos = new Vector3(
+                relative_center.x - minDim + col * spacing,
+                relative_center.y,
+                relative_center.z - minDim + row * spacing
+            );
 
-    public void Grid()
-    {
-
+            col++;
+            if (col >= gridSize)  // Passer à la ligne suivante
+            {
+                col = 0;
+                row++;
+            }
+        }
     }
 
     public void Noise(OTCCluster iCluster, float iChaosFactor)

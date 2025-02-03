@@ -19,6 +19,8 @@ public class OTCModifier : MonoBehaviour
     public Quaternion targetRot;
     public Vector3 targetScale;
 
+    public Vector3 parentPos;
+
     public Vector3 launchPos;
     public Quaternion launchRot;
     public Vector3 launchScale;
@@ -31,7 +33,7 @@ public class OTCModifier : MonoBehaviour
         initPos = transform.localPosition;
         initScale = transform.localScale;
         initRot = transform.localRotation;
-
+        parentPos = GetComponentInParent<Transform>().position;
         GoToTarget = false;
     }
 
@@ -69,8 +71,9 @@ public class OTCModifier : MonoBehaviour
         {
             if (FollowTerrainHeight)
             {
-                Vector3 lastStep = targetPos;
-                lastStep.y = cluster.relatedTerrain.SampleHeight(lastStep);
+                Vector3 lastStep = targetPos - parentPos;
+                lastStep.y = cluster.relatedTerrain.SampleHeight(lastStep) - parentPos.y;
+                Debug.Log(lastStep.y);
                 transform.localPosition = lastStep;
             }
             else
@@ -81,9 +84,10 @@ public class OTCModifier : MonoBehaviour
         }
 
         Vector3 nextStep = Vector3.Lerp(launchPos, targetPos, journeyFrac);
+        Debug.Log(nextStep);
         if (FollowTerrainHeight)
         {
-            nextStep.y = cluster.relatedTerrain.SampleHeight(nextStep);
+            nextStep.y = cluster.relatedTerrain.SampleHeight(nextStep) - parentPos.y;
         }
         transform.localPosition = nextStep;
 
