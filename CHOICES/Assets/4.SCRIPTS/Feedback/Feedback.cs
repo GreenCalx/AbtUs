@@ -26,7 +26,7 @@ public class Feedback : MonoBehaviour
         p_gtl += GTL;
     }
 
-    public void try_use()
+    public void use()
     {
         fbm.ChangeOWC(this);
     }

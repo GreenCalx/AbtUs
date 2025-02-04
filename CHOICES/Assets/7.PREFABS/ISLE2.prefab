@@ -61,13 +61,14 @@ MonoBehaviour:
   retrieveModsInChildren: 1
   mods: []
   relatedTerrain: {fileID: 554623647496681676}
-  orderForcedShape: 2
-  chaosForcedShape: 8
+  orderForcedShape: 1
+  chaosForcedShape: 9
   currSpreadShape: 0
   clusterBounds:
     m_Center: {x: 0, y: 0, z: 0}
     m_Extent: {x: 0, y: 0, z: 0}
   clusterPool: {fileID: 0}
+  completeShapeThreshold: 0.5
 --- !u!1 &5467414638763895220
 GameObject:
   m_ObjectHideFlags: 0
@@ -148,6 +149,7 @@ MonoBehaviour:
     m_Center: {x: 0, y: 0, z: 0}
     m_Extent: {x: 0, y: 0, z: 0}
   clusterPool: {fileID: 0}
+  completeShapeThreshold: 0.5
 --- !u!1 &6318245981238230367
 GameObject:
   m_ObjectHideFlags: 0
@@ -174,7 +176,7 @@ Transform:
   m_GameObject: {fileID: 6318245981238230367}
   serializedVersion: 2
   m_LocalRotation: {x: -0, y: 0.30305472, z: -0, w: 0.9529732}
-  m_LocalPosition: {x: 699.3251, y: 0, z: 358.49768}
+  m_LocalPosition: {x: 877, y: 32.4, z: -979}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children:
@@ -207,12 +209,13 @@ MonoBehaviour:
   - {fileID: 6544136779334219286}
   relatedTerrain: {fileID: 554623647496681676}
   orderForcedShape: 1
-  chaosForcedShape: 8
+  chaosForcedShape: 9
   currSpreadShape: 0
   clusterBounds:
     m_Center: {x: 0, y: 0, z: 0}
     m_Extent: {x: 0, y: 0, z: 0}
   clusterPool: {fileID: 0}
+  completeShapeThreshold: 0.5
 --- !u!1 &7704413394454468417
 GameObject:
   m_ObjectHideFlags: 0
@@ -368,17 +371,17 @@ PrefabInstance:
     - target: {fileID: -8679921383154817045, guid: 125c5128a4438ff4c904c13eb21b52f2,
         type: 3}
       propertyPath: m_LocalPosition.x
-      value: 909.5
+      value: -48.3
       objectReference: {fileID: 0}
     - target: {fileID: -8679921383154817045, guid: 125c5128a4438ff4c904c13eb21b52f2,
         type: 3}
       propertyPath: m_LocalPosition.y
-      value: 12.24
+      value: -5.6
       objectReference: {fileID: 0}
     - target: {fileID: -8679921383154817045, guid: 125c5128a4438ff4c904c13eb21b52f2,
         type: 3}
       propertyPath: m_LocalPosition.z
-      value: -938.6
+      value: -1.6
       objectReference: {fileID: 0}
     - target: {fileID: -8679921383154817045, guid: 125c5128a4438ff4c904c13eb21b52f2,
         type: 3}
@@ -474,10 +477,10 @@ MonoBehaviour:
   targetPos: {x: 0, y: 0, z: 0}
   targetRot: {x: 0, y: 0, z: 0, w: 0}
   targetScale: {x: 0, y: 0, z: 0}
-  parentPos: {x: 0, y: 0, z: 0}
   launchPos: {x: 0, y: 0, z: 0}
   launchRot: {x: 0, y: 0, z: 0, w: 0}
   launchScale: {x: 0, y: 0, z: 0}
+  debug: 0
 --- !u!1001 &649903739747401437
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -504,17 +507,17 @@ PrefabInstance:
     - target: {fileID: -8679921383154817045, guid: 7a14e8e09fcbc5543974eae6b52ca61d,
         type: 3}
       propertyPath: m_LocalPosition.x
-      value: 914.10986
+      value: 11
       objectReference: {fileID: 0}
     - target: {fileID: -8679921383154817045, guid: 7a14e8e09fcbc5543974eae6b52ca61d,
         type: 3}
       propertyPath: m_LocalPosition.y
-      value: 13.098
+      value: 5
       objectReference: {fileID: 0}
     - target: {fileID: -8679921383154817045, guid: 7a14e8e09fcbc5543974eae6b52ca61d,
         type: 3}
       propertyPath: m_LocalPosition.z
-      value: -953.188
+      value: -2.5
       objectReference: {fileID: 0}
     - target: {fileID: -8679921383154817045, guid: 7a14e8e09fcbc5543974eae6b52ca61d,
         type: 3}
@@ -599,10 +602,10 @@ MonoBehaviour:
   targetPos: {x: 0, y: 0, z: 0}
   targetRot: {x: 0, y: 0, z: 0, w: 0}
   targetScale: {x: 0, y: 0, z: 0}
-  parentPos: {x: 0, y: 0, z: 0}
   launchPos: {x: 0, y: 0, z: 0}
   launchRot: {x: 0, y: 0, z: 0, w: 0}
   launchScale: {x: 0, y: 0, z: 0}
+  debug: 0
 --- !u!4 &1048869769176553782 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: -8679921383154817045, guid: 7a14e8e09fcbc5543974eae6b52ca61d,
@@ -730,10 +733,10 @@ MonoBehaviour:
   targetPos: {x: 0, y: 0, z: 0}
   targetRot: {x: 0, y: 0, z: 0, w: 0}
   targetScale: {x: 0, y: 0, z: 0}
-  parentPos: {x: 0, y: 0, z: 0}
   launchPos: {x: 0, y: 0, z: 0}
   launchRot: {x: 0, y: 0, z: 0, w: 0}
   launchScale: {x: 0, y: 0, z: 0}
+  debug: 0
 --- !u!4 &910750927766620511 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: -8679921383154817045, guid: 7a14e8e09fcbc5543974eae6b52ca61d,
@@ -861,10 +864,10 @@ MonoBehaviour:
   targetPos: {x: 0, y: 0, z: 0}
   targetRot: {x: 0, y: 0, z: 0, w: 0}
   targetScale: {x: 0, y: 0, z: 0}
-  parentPos: {x: 0, y: 0, z: 0}
   launchPos: {x: 0, y: 0, z: 0}
   launchRot: {x: 0, y: 0, z: 0, w: 0}
   launchScale: {x: 0, y: 0, z: 0}
+  debug: 0
 --- !u!4 &678257399244943341 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: -8679921383154817045, guid: 7a14e8e09fcbc5543974eae6b52ca61d,
@@ -996,17 +999,17 @@ MonoBehaviour:
   initPos: {x: 0, y: 0, z: 0}
   initScale: {x: 0, y: 0, z: 0}
   initRot: {x: 0, y: 0, z: 0, w: 0}
-  FollowTerrainHeight: 1
+  FollowTerrainHeight: 0
   SeedRadius: 5
   TimeToReachTarget: 5
   GoToTarget: 0
   targetPos: {x: 0, y: 0, z: 0}
   targetRot: {x: 0, y: 0, z: 0, w: 0}
   targetScale: {x: 0, y: 0, z: 0}
-  parentPos: {x: 0, y: 0, z: 0}
   launchPos: {x: 0, y: 0, z: 0}
   launchRot: {x: 0, y: 0, z: 0, w: 0}
   launchScale: {x: 0, y: 0, z: 0}
+  debug: 0
 --- !u!1001 &2087487900750932239
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -1128,10 +1131,10 @@ MonoBehaviour:
   targetPos: {x: 0, y: 0, z: 0}
   targetRot: {x: 0, y: 0, z: 0, w: 0}
   targetScale: {x: 0, y: 0, z: 0}
-  parentPos: {x: 0, y: 0, z: 0}
   launchPos: {x: 0, y: 0, z: 0}
   launchRot: {x: 0, y: 0, z: 0, w: 0}
   launchScale: {x: 0, y: 0, z: 0}
+  debug: 0
 --- !u!4 &1977790877200944868 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: -8679921383154817045, guid: 7a14e8e09fcbc5543974eae6b52ca61d,
@@ -1259,10 +1262,10 @@ MonoBehaviour:
   targetPos: {x: 0, y: 0, z: 0}
   targetRot: {x: 0, y: 0, z: 0, w: 0}
   targetScale: {x: 0, y: 0, z: 0}
-  parentPos: {x: 0, y: 0, z: 0}
   launchPos: {x: 0, y: 0, z: 0}
   launchRot: {x: 0, y: 0, z: 0, w: 0}
   launchScale: {x: 0, y: 0, z: 0}
+  debug: 0
 --- !u!4 &1871445340052131545 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: -8679921383154817045, guid: 7a14e8e09fcbc5543974eae6b52ca61d,
@@ -1584,17 +1587,17 @@ MonoBehaviour:
   initPos: {x: 0, y: 0, z: 0}
   initScale: {x: 0, y: 0, z: 0}
   initRot: {x: 0, y: 0, z: 0, w: 0}
-  FollowTerrainHeight: 1
+  FollowTerrainHeight: 0
   SeedRadius: 5
   TimeToReachTarget: 5
   GoToTarget: 0
   targetPos: {x: 0, y: 0, z: 0}
   targetRot: {x: 0, y: 0, z: 0, w: 0}
   targetScale: {x: 0, y: 0, z: 0}
-  parentPos: {x: 0, y: 0, z: 0}
   launchPos: {x: 0, y: 0, z: 0}
   launchRot: {x: 0, y: 0, z: 0, w: 0}
   launchScale: {x: 0, y: 0, z: 0}
+  debug: 0
 --- !u!1001 &2722158957429851397
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -1715,17 +1718,17 @@ MonoBehaviour:
   initPos: {x: 0, y: 0, z: 0}
   initScale: {x: 0, y: 0, z: 0}
   initRot: {x: 0, y: 0, z: 0, w: 0}
-  FollowTerrainHeight: 1
+  FollowTerrainHeight: 0
   SeedRadius: 5
   TimeToReachTarget: 5
   GoToTarget: 0
   targetPos: {x: 0, y: 0, z: 0}
   targetRot: {x: 0, y: 0, z: 0, w: 0}
   targetScale: {x: 0, y: 0, z: 0}
-  parentPos: {x: 0, y: 0, z: 0}
   launchPos: {x: 0, y: 0, z: 0}
   launchRot: {x: 0, y: 0, z: 0, w: 0}
   launchScale: {x: 0, y: 0, z: 0}
+  debug: 0
 --- !u!1001 &3603055158107157976
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -1853,10 +1856,10 @@ MonoBehaviour:
   targetPos: {x: 0, y: 0, z: 0}
   targetRot: {x: 0, y: 0, z: 0, w: 0}
   targetScale: {x: 0, y: 0, z: 0}
-  parentPos: {x: 0, y: 0, z: 0}
   launchPos: {x: 0, y: 0, z: 0}
   launchRot: {x: 0, y: 0, z: 0, w: 0}
   launchScale: {x: 0, y: 0, z: 0}
+  debug: 0
 --- !u!1001 &4086776035710999941
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -1976,17 +1979,17 @@ MonoBehaviour:
   initPos: {x: 0, y: 0, z: 0}
   initScale: {x: 0, y: 0, z: 0}
   initRot: {x: 0, y: 0, z: 0, w: 0}
-  FollowTerrainHeight: 1
+  FollowTerrainHeight: 0
   SeedRadius: 5
   TimeToReachTarget: 5
   GoToTarget: 0
   targetPos: {x: 0, y: 0, z: 0}
   targetRot: {x: 0, y: 0, z: 0, w: 0}
   targetScale: {x: 0, y: 0, z: 0}
-  parentPos: {x: 0, y: 0, z: 0}
   launchPos: {x: 0, y: 0, z: 0}
   launchRot: {x: 0, y: 0, z: 0, w: 0}
   launchScale: {x: 0, y: 0, z: 0}
+  debug: 0
 --- !u!4 &4556970315369904750 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: -8679921383154817045, guid: 125c5128a4438ff4c904c13eb21b52f2,
@@ -2114,10 +2117,10 @@ MonoBehaviour:
   targetPos: {x: 0, y: 0, z: 0}
   targetRot: {x: 0, y: 0, z: 0, w: 0}
   targetScale: {x: 0, y: 0, z: 0}
-  parentPos: {x: 0, y: 0, z: 0}
   launchPos: {x: 0, y: 0, z: 0}
   launchRot: {x: 0, y: 0, z: 0, w: 0}
   launchScale: {x: 0, y: 0, z: 0}
+  debug: 0
 --- !u!4 &4354763427308320004 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: -8679921383154817045, guid: 7a14e8e09fcbc5543974eae6b52ca61d,
@@ -2251,10 +2254,10 @@ MonoBehaviour:
   targetPos: {x: 0, y: 0, z: 0}
   targetRot: {x: 0, y: 0, z: 0, w: 0}
   targetScale: {x: 0, y: 0, z: 0}
-  parentPos: {x: 0, y: 0, z: 0}
   launchPos: {x: 0, y: 0, z: 0}
   launchRot: {x: 0, y: 0, z: 0, w: 0}
   launchScale: {x: 0, y: 0, z: 0}
+  debug: 0
 --- !u!1001 &4985869993334708333
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -2380,17 +2383,17 @@ MonoBehaviour:
   initPos: {x: 0, y: 0, z: 0}
   initScale: {x: 0, y: 0, z: 0}
   initRot: {x: 0, y: 0, z: 0, w: 0}
-  FollowTerrainHeight: 1
+  FollowTerrainHeight: 0
   SeedRadius: 5
   TimeToReachTarget: 5
   GoToTarget: 0
   targetPos: {x: 0, y: 0, z: 0}
   targetRot: {x: 0, y: 0, z: 0, w: 0}
   targetScale: {x: 0, y: 0, z: 0}
-  parentPos: {x: 0, y: 0, z: 0}
   launchPos: {x: 0, y: 0, z: 0}
   launchRot: {x: 0, y: 0, z: 0, w: 0}
   launchScale: {x: 0, y: 0, z: 0}
+  debug: 0
 --- !u!1001 &5663531642872299187
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -2417,37 +2420,37 @@ PrefabInstance:
     - target: {fileID: -8679921383154817045, guid: 7a14e8e09fcbc5543974eae6b52ca61d,
         type: 3}
       propertyPath: m_LocalPosition.x
-      value: 918.4
+      value: -5.5
       objectReference: {fileID: 0}
     - target: {fileID: -8679921383154817045, guid: 7a14e8e09fcbc5543974eae6b52ca61d,
         type: 3}
       propertyPath: m_LocalPosition.y
-      value: 15.37
+      value: 1.6
       objectReference: {fileID: 0}
     - target: {fileID: -8679921383154817045, guid: 7a14e8e09fcbc5543974eae6b52ca61d,
         type: 3}
       propertyPath: m_LocalPosition.z
-      value: -928.7
+      value: -25.4
       objectReference: {fileID: 0}
     - target: {fileID: -8679921383154817045, guid: 7a14e8e09fcbc5543974eae6b52ca61d,
         type: 3}
       propertyPath: m_LocalRotation.w
-      value: 0.4776298
+      value: 0.4778492
       objectReference: {fileID: 0}
     - target: {fileID: -8679921383154817045, guid: 7a14e8e09fcbc5543974eae6b52ca61d,
         type: 3}
       propertyPath: m_LocalRotation.x
-      value: -0.40838304
+      value: -0.40936327
       objectReference: {fileID: 0}
     - target: {fileID: -8679921383154817045, guid: 7a14e8e09fcbc5543974eae6b52ca61d,
         type: 3}
       propertyPath: m_LocalRotation.y
-      value: -0.17012864
+      value: -0.16951145
       objectReference: {fileID: 0}
     - target: {fileID: -8679921383154817045, guid: 7a14e8e09fcbc5543974eae6b52ca61d,
         type: 3}
       propertyPath: m_LocalRotation.z
-      value: -0.75904506
+      value: -0.7585168
       objectReference: {fileID: 0}
     - target: {fileID: -8679921383154817045, guid: 7a14e8e09fcbc5543974eae6b52ca61d,
         type: 3}
@@ -2457,7 +2460,7 @@ PrefabInstance:
     - target: {fileID: -8679921383154817045, guid: 7a14e8e09fcbc5543974eae6b52ca61d,
         type: 3}
       propertyPath: m_LocalEulerAnglesHint.y
-      value: 36.932
+      value: 37.08
       objectReference: {fileID: 0}
     - target: {fileID: -8679921383154817045, guid: 7a14e8e09fcbc5543974eae6b52ca61d,
         type: 3}
@@ -2512,10 +2515,10 @@ MonoBehaviour:
   targetPos: {x: 0, y: 0, z: 0}
   targetRot: {x: 0, y: 0, z: 0, w: 0}
   targetScale: {x: 0, y: 0, z: 0}
-  parentPos: {x: 0, y: 0, z: 0}
   launchPos: {x: 0, y: 0, z: 0}
   launchRot: {x: 0, y: 0, z: 0, w: 0}
   launchScale: {x: 0, y: 0, z: 0}
+  debug: 0
 --- !u!4 &5265360493361174872 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: -8679921383154817045, guid: 7a14e8e09fcbc5543974eae6b52ca61d,
@@ -2647,17 +2650,17 @@ MonoBehaviour:
   initPos: {x: 0, y: 0, z: 0}
   initScale: {x: 0, y: 0, z: 0}
   initRot: {x: 0, y: 0, z: 0, w: 0}
-  FollowTerrainHeight: 1
+  FollowTerrainHeight: 0
   SeedRadius: 5
   TimeToReachTarget: 5
   GoToTarget: 0
   targetPos: {x: 0, y: 0, z: 0}
   targetRot: {x: 0, y: 0, z: 0, w: 0}
   targetScale: {x: 0, y: 0, z: 0}
-  parentPos: {x: 0, y: 0, z: 0}
   launchPos: {x: 0, y: 0, z: 0}
   launchRot: {x: 0, y: 0, z: 0, w: 0}
   launchScale: {x: 0, y: 0, z: 0}
+  debug: 0
 --- !u!1001 &6410531002235212467
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -2784,10 +2787,10 @@ MonoBehaviour:
   targetPos: {x: 0, y: 0, z: 0}
   targetRot: {x: 0, y: 0, z: 0, w: 0}
   targetScale: {x: 0, y: 0, z: 0}
-  parentPos: {x: 0, y: 0, z: 0}
   launchPos: {x: 0, y: 0, z: 0}
   launchRot: {x: 0, y: 0, z: 0, w: 0}
   launchScale: {x: 0, y: 0, z: 0}
+  debug: 0
 --- !u!4 &6880513445098599768 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: -8679921383154817045, guid: 125c5128a4438ff4c904c13eb21b52f2,
@@ -2913,17 +2916,17 @@ MonoBehaviour:
   initPos: {x: 0, y: 0, z: 0}
   initScale: {x: 0, y: 0, z: 0}
   initRot: {x: 0, y: 0, z: 0, w: 0}
-  FollowTerrainHeight: 1
+  FollowTerrainHeight: 0
   SeedRadius: 5
   TimeToReachTarget: 5
   GoToTarget: 0
   targetPos: {x: 0, y: 0, z: 0}
   targetRot: {x: 0, y: 0, z: 0, w: 0}
   targetScale: {x: 0, y: 0, z: 0}
-  parentPos: {x: 0, y: 0, z: 0}
   launchPos: {x: 0, y: 0, z: 0}
   launchRot: {x: 0, y: 0, z: 0, w: 0}
   launchScale: {x: 0, y: 0, z: 0}
+  debug: 0
 --- !u!4 &6579994831656786380 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: -8679921383154817045, guid: 125c5128a4438ff4c904c13eb21b52f2,
@@ -2956,52 +2959,52 @@ PrefabInstance:
     - target: {fileID: -8679921383154817045, guid: 125c5128a4438ff4c904c13eb21b52f2,
         type: 3}
       propertyPath: m_LocalPosition.x
-      value: 906.6703
+      value: -34.9
       objectReference: {fileID: 0}
     - target: {fileID: -8679921383154817045, guid: 125c5128a4438ff4c904c13eb21b52f2,
         type: 3}
       propertyPath: m_LocalPosition.y
-      value: 8.18
+      value: -2.8
       objectReference: {fileID: 0}
     - target: {fileID: -8679921383154817045, guid: 125c5128a4438ff4c904c13eb21b52f2,
         type: 3}
       propertyPath: m_LocalPosition.z
-      value: -899.7583
+      value: 14.2
       objectReference: {fileID: 0}
     - target: {fileID: -8679921383154817045, guid: 125c5128a4438ff4c904c13eb21b52f2,
         type: 3}
       propertyPath: m_LocalRotation.w
-      value: 0.4336136
+      value: -0.6558264
       objectReference: {fileID: 0}
     - target: {fileID: -8679921383154817045, guid: 125c5128a4438ff4c904c13eb21b52f2,
         type: 3}
       propertyPath: m_LocalRotation.x
-      value: -0.5871369
+      value: 0.18234263
       objectReference: {fileID: 0}
     - target: {fileID: -8679921383154817045, guid: 125c5128a4438ff4c904c13eb21b52f2,
         type: 3}
       propertyPath: m_LocalRotation.y
-      value: -0.40608355
+      value: -0.45979384
       objectReference: {fileID: 0}
     - target: {fileID: -8679921383154817045, guid: 125c5128a4438ff4c904c13eb21b52f2,
         type: 3}
       propertyPath: m_LocalRotation.z
-      value: -0.54985964
+      value: 0.5702917
       objectReference: {fileID: 0}
     - target: {fileID: -8679921383154817045, guid: 125c5128a4438ff4c904c13eb21b52f2,
         type: 3}
       propertyPath: m_LocalEulerAnglesHint.x
-      value: -107.107
+      value: -196.575
       objectReference: {fileID: 0}
     - target: {fileID: -8679921383154817045, guid: 125c5128a4438ff4c904c13eb21b52f2,
         type: 3}
       propertyPath: m_LocalEulerAnglesHint.y
-      value: -86.24402
+      value: -122.196
       objectReference: {fileID: 0}
     - target: {fileID: -8679921383154817045, guid: 125c5128a4438ff4c904c13eb21b52f2,
         type: 3}
       propertyPath: m_LocalEulerAnglesHint.z
-      value: 0
+      value: -252.824
       objectReference: {fileID: 0}
     - target: {fileID: -8679921383154817045, guid: 125c5128a4438ff4c904c13eb21b52f2,
         type: 3}
@@ -3056,10 +3059,10 @@ MonoBehaviour:
   targetPos: {x: 0, y: 0, z: 0}
   targetRot: {x: 0, y: 0, z: 0, w: 0}
   targetScale: {x: 0, y: 0, z: 0}
-  parentPos: {x: 0, y: 0, z: 0}
   launchPos: {x: 0, y: 0, z: 0}
   launchRot: {x: 0, y: 0, z: 0, w: 0}
   launchScale: {x: 0, y: 0, z: 0}
+  debug: 0
 --- !u!4 &6473306498317529056 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: -8679921383154817045, guid: 125c5128a4438ff4c904c13eb21b52f2,
@@ -3180,17 +3183,17 @@ MonoBehaviour:
   initPos: {x: 0, y: 0, z: 0}
   initScale: {x: 0, y: 0, z: 0}
   initRot: {x: 0, y: 0, z: 0, w: 0}
-  FollowTerrainHeight: 1
+  FollowTerrainHeight: 0
   SeedRadius: 5
   TimeToReachTarget: 5
   GoToTarget: 0
   targetPos: {x: 0, y: 0, z: 0}
   targetRot: {x: 0, y: 0, z: 0, w: 0}
   targetScale: {x: 0, y: 0, z: 0}
-  parentPos: {x: 0, y: 0, z: 0}
   launchPos: {x: 0, y: 0, z: 0}
   launchRot: {x: 0, y: 0, z: 0, w: 0}
   launchScale: {x: 0, y: 0, z: 0}
+  debug: 0
 --- !u!4 &6362078544501456249 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: -8679921383154817045, guid: 7a14e8e09fcbc5543974eae6b52ca61d,
@@ -3329,10 +3332,10 @@ MonoBehaviour:
   targetPos: {x: 0, y: 0, z: 0}
   targetRot: {x: 0, y: 0, z: 0, w: 0}
   targetScale: {x: 0, y: 0, z: 0}
-  parentPos: {x: 0, y: 0, z: 0}
   launchPos: {x: 0, y: 0, z: 0}
   launchRot: {x: 0, y: 0, z: 0, w: 0}
   launchScale: {x: 0, y: 0, z: 0}
+  debug: 0
 --- !u!1001 &7185341553736318621
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -3465,10 +3468,10 @@ MonoBehaviour:
   targetPos: {x: 0, y: 0, z: 0}
   targetRot: {x: 0, y: 0, z: 0, w: 0}
   targetScale: {x: 0, y: 0, z: 0}
-  parentPos: {x: 0, y: 0, z: 0}
   launchPos: {x: 0, y: 0, z: 0}
   launchRot: {x: 0, y: 0, z: 0, w: 0}
   launchScale: {x: 0, y: 0, z: 0}
+  debug: 0
 --- !u!1001 &8120002359111910097
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -3589,17 +3592,17 @@ MonoBehaviour:
   initPos: {x: 0, y: 0, z: 0}
   initScale: {x: 0, y: 0, z: 0}
   initRot: {x: 0, y: 0, z: 0, w: 0}
-  FollowTerrainHeight: 1
+  FollowTerrainHeight: 0
   SeedRadius: 5
   TimeToReachTarget: 5
   GoToTarget: 0
   targetPos: {x: 0, y: 0, z: 0}
   targetRot: {x: 0, y: 0, z: 0, w: 0}
   targetScale: {x: 0, y: 0, z: 0}
-  parentPos: {x: 0, y: 0, z: 0}
   launchPos: {x: 0, y: 0, z: 0}
   launchRot: {x: 0, y: 0, z: 0, w: 0}
   launchScale: {x: 0, y: 0, z: 0}
+  debug: 0
 --- !u!1001 &8419019021987736816
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -3720,17 +3723,17 @@ MonoBehaviour:
   initPos: {x: 0, y: 0, z: 0}
   initScale: {x: 0, y: 0, z: 0}
   initRot: {x: 0, y: 0, z: 0, w: 0}
-  FollowTerrainHeight: 1
+  FollowTerrainHeight: 0
   SeedRadius: 5
   TimeToReachTarget: 5
   GoToTarget: 0
   targetPos: {x: 0, y: 0, z: 0}
   targetRot: {x: 0, y: 0, z: 0, w: 0}
   targetScale: {x: 0, y: 0, z: 0}
-  parentPos: {x: 0, y: 0, z: 0}
   launchPos: {x: 0, y: 0, z: 0}
   launchRot: {x: 0, y: 0, z: 0, w: 0}
   launchScale: {x: 0, y: 0, z: 0}
+  debug: 0
 --- !u!1001 &8485380109372007642
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -3851,17 +3854,17 @@ MonoBehaviour:
   initPos: {x: 0, y: 0, z: 0}
   initScale: {x: 0, y: 0, z: 0}
   initRot: {x: 0, y: 0, z: 0, w: 0}
-  FollowTerrainHeight: 1
+  FollowTerrainHeight: 0
   SeedRadius: 5
   TimeToReachTarget: 5
   GoToTarget: 0
   targetPos: {x: 0, y: 0, z: 0}
   targetRot: {x: 0, y: 0, z: 0, w: 0}
   targetScale: {x: 0, y: 0, z: 0}
-  parentPos: {x: 0, y: 0, z: 0}
   launchPos: {x: 0, y: 0, z: 0}
   launchRot: {x: 0, y: 0, z: 0, w: 0}
   launchScale: {x: 0, y: 0, z: 0}
+  debug: 0
 --- !u!1001 &9189853851400824663
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -3988,10 +3991,10 @@ MonoBehaviour:
   targetPos: {x: 0, y: 0, z: 0}
   targetRot: {x: 0, y: 0, z: 0, w: 0}
   targetScale: {x: 0, y: 0, z: 0}
-  parentPos: {x: 0, y: 0, z: 0}
   launchPos: {x: 0, y: 0, z: 0}
   launchRot: {x: 0, y: 0, z: 0, w: 0}
   launchScale: {x: 0, y: 0, z: 0}
+  debug: 0
 --- !u!4 &8647564524116574396 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: -8679921383154817045, guid: 125c5128a4438ff4c904c13eb21b52f2,
@@ -4124,10 +4127,10 @@ MonoBehaviour:
   targetPos: {x: 0, y: 0, z: 0}
   targetRot: {x: 0, y: 0, z: 0, w: 0}
   targetScale: {x: 0, y: 0, z: 0}
-  parentPos: {x: 0, y: 0, z: 0}
   launchPos: {x: 0, y: 0, z: 0}
   launchRot: {x: 0, y: 0, z: 0, w: 0}
   launchScale: {x: 0, y: 0, z: 0}
+  debug: 0
 --- !u!4 &8670437450892297919 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: -8679921383154817045, guid: 125c5128a4438ff4c904c13eb21b52f2,

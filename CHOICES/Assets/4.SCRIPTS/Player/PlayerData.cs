@@ -36,7 +36,7 @@ public class PlayerData : MonoBehaviour
         if (delta_Glow != 0)
         {
             PlayerFeedback.GTL = delta_Glow;
-            PlayerFeedback.try_use();
+            PlayerFeedback.use();
             delta_Glow = 0;
         }
 

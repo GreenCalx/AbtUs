@@ -93,31 +93,31 @@ public class OTCLookupTable : MonoBehaviour
             return;
         }
 
+        
         switch (iCluster.currSpreadShape)
         {
             case SPREAD_SHAPE.ALIGN_X:
-                Align(iCluster, orderFactorCurve.Evaluate(iOTC));
+                AlignOnX(iCluster, computeiOrderFactor(iCluster, iOTC));
                 break;
             case SPREAD_SHAPE.ALIGN_Z:
-                Align(iCluster, orderFactorCurve.Evaluate(iOTC));
+                AlignOnZ(iCluster, computeiOrderFactor(iCluster, iOTC));
                 break;
             case SPREAD_SHAPE.TRIANGLE:
-                Triangulate(iCluster, orderFactorCurve.Evaluate(iOTC));
+                Triangulate(iCluster, computeiOrderFactor(iCluster, iOTC));
                 break;
             case SPREAD_SHAPE.SQR:
-                Square(iCluster, orderFactorCurve.Evaluate(iOTC));
+                Square(iCluster, computeiOrderFactor(iCluster, iOTC));
                 break;
             case SPREAD_SHAPE.CIRCLE:
-                Circle(iCluster, orderFactorCurve.Evaluate(iOTC));
+                Circle(iCluster, computeiOrderFactor(iCluster, iOTC));
                 break;
             case SPREAD_SHAPE.GRID:
-                Grid(iCluster, orderFactorCurve.Evaluate(iOTC));
+                Grid(iCluster, computeiOrderFactor(iCluster, iOTC));
                 break;
             case SPREAD_SHAPE.HEX:
                 break;
             case SPREAD_SHAPE.ARCH:
-                Arch(iCluster, orderFactorCurve.Evaluate(iOTC));
-                Debug.Log("called arch");
+                Arch(iCluster, computeiOrderFactor(iCluster, iOTC));
                 break;
             case SPREAD_SHAPE.NOISE:
                 Noise(iCluster, chaosFactorCurve.Evaluate(iOTC));
@@ -127,7 +127,7 @@ public class OTCLookupTable : MonoBehaviour
         }
     }
 
-    public void RefreshTargetRotations(OTCCluster iCluster, float iOTC )
+    public void RefreshTargetRotations(OTCCluster iCluster, float iOTC)
     {
         if (iOTC==NeutralVal)
         {
@@ -138,28 +138,28 @@ public class OTCLookupTable : MonoBehaviour
         switch (iCluster.currSpreadShape)
         {
             case SPREAD_SHAPE.ALIGN_X:
-                AlignRotOnX(iCluster, orderFactorCurve.Evaluate(iOTC));
+                AlignRotOnX(iCluster, computeiOrderFactor(iCluster, iOTC));
                 break;
             case SPREAD_SHAPE.ALIGN_Z:
-                AlignRotOnZ(iCluster, orderFactorCurve.Evaluate(iOTC));
+                AlignRotOnZ(iCluster, computeiOrderFactor(iCluster, iOTC));
                 break;
             case SPREAD_SHAPE.TRIANGLE:
-                AlignRotWithCenter(iCluster, orderFactorCurve.Evaluate(iOTC));
+                AlignRotWithCenter(iCluster, computeiOrderFactor(iCluster, iOTC));
                 break;
             case SPREAD_SHAPE.SQR:
-                AlignRotWithCenter(iCluster, orderFactorCurve.Evaluate(iOTC));
+                AlignRotWithCenter(iCluster, computeiOrderFactor(iCluster, iOTC));
                 break;
             case SPREAD_SHAPE.CIRCLE:
-                AlignRotWithCenter(iCluster, orderFactorCurve.Evaluate(iOTC));
+                AlignRotWithCenter(iCluster, computeiOrderFactor(iCluster, iOTC));
                 break;
             case SPREAD_SHAPE.GRID:
-                AlignRotWithCenter(iCluster, orderFactorCurve.Evaluate(iOTC));
+                AlignRotWithCenter(iCluster, computeiOrderFactor(iCluster, iOTC));
                 break;
             case SPREAD_SHAPE.HEX:
-                AlignRotWithCenter(iCluster, orderFactorCurve.Evaluate(iOTC));
+                AlignRotWithCenter(iCluster, computeiOrderFactor(iCluster, iOTC));
                 break;
             case SPREAD_SHAPE.ARCH:
-                AlignRotOnZ(iCluster, orderFactorCurve.Evaluate(iOTC));
+                AlignRotOnZ(iCluster, computeiOrderFactor(iCluster, iOTC));
                 break;
             case SPREAD_SHAPE.NOISE:
                 
@@ -181,28 +181,28 @@ public class OTCLookupTable : MonoBehaviour
         switch (iCluster.currSpreadShape)
         {
             case SPREAD_SHAPE.ALIGN_X:
-                HarmonizeScales(iCluster, orderFactorCurve.Evaluate(iOTC));
+                HarmonizeScales(iCluster, computeiOrderFactor(iCluster, iOTC));
                 break;
             case SPREAD_SHAPE.ALIGN_Z:
-                HarmonizeScales(iCluster, orderFactorCurve.Evaluate(iOTC));
+                HarmonizeScales(iCluster, computeiOrderFactor(iCluster, iOTC));
                 break;
             case SPREAD_SHAPE.TRIANGLE:
-                HarmonizeScales(iCluster, orderFactorCurve.Evaluate(iOTC));
+                HarmonizeScales(iCluster, computeiOrderFactor(iCluster, iOTC));
                 break;
             case SPREAD_SHAPE.SQR:
-                HarmonizeScales(iCluster, orderFactorCurve.Evaluate(iOTC));
+                HarmonizeScales(iCluster, computeiOrderFactor(iCluster, iOTC));
                 break;
             case SPREAD_SHAPE.CIRCLE:
-                HarmonizeScales(iCluster, orderFactorCurve.Evaluate(iOTC));
+                HarmonizeScales(iCluster, computeiOrderFactor(iCluster, iOTC));
                 break;
             case SPREAD_SHAPE.GRID:
-                HarmonizeScales(iCluster, orderFactorCurve.Evaluate(iOTC));
+                HarmonizeScales(iCluster, computeiOrderFactor(iCluster, iOTC));
                 break;
             case SPREAD_SHAPE.HEX:
-                HarmonizeScales(iCluster, orderFactorCurve.Evaluate(iOTC));            
+                HarmonizeScales(iCluster, computeiOrderFactor(iCluster, iOTC));            
                 break;
             case SPREAD_SHAPE.ARCH:
-                RandomizeScales(iCluster, orderFactorCurve.Evaluate(iOTC));
+                HarmonizeScales(iCluster, computeiOrderFactor(iCluster, iOTC));
                 break;
             case SPREAD_SHAPE.NOISE:
                 RandomizeScales(iCluster, orderFactorCurve.Evaluate(iOTC));    
@@ -214,18 +214,31 @@ public class OTCLookupTable : MonoBehaviour
     }
 
     #region POS_SPREADS
-    public void Align(OTCCluster iCluster, float iOrderFactor)
+    public void AlignOnX(OTCCluster iCluster, float iOrderFactor)
     {
         // Vector2 P0 = new Vector2(clusterPlan.minXZ.x, clusterPlan.center.y);
         // Vector2 P1 = new Vector2(clusterPlan.maxXZ.x, clusterPlan.center.y);
-        foreach(OTCModifier m in iCluster.mods)
+        Vector3 relative_center = iCluster.clusterBounds.center - iCluster.transform.position;
+        foreach (OTCModifier m in iCluster.mods)
         {
-            Vector3 idealPos = new Vector3(m.transform.localPosition.x, m.transform.localPosition.y, iCluster.clusterBounds.center.z );
-            Debug.Log(idealPos);
+            Vector3 idealPos = new Vector3(relative_center.x, relative_center.y + m.transform.localPosition.y, relative_center.z);
             m.targetPos = Vector3.Lerp( m.initPos, idealPos, iOrderFactor);
+            //m.targetPos.x = Mathf.Clamp(m.targetPos.x, - iCluster.clusterBounds.extents.x, iCluster.clusterBounds.extents.x);
+            //m.targetPos.z = Mathf.Clamp(m.targetPos.z, -iCluster.clusterBounds.extents.z, iCluster.clusterBounds.extents.z);
+        }
+    }
 
-            m.targetPos.x = Mathf.Clamp(m.targetPos.x, - iCluster.clusterBounds.size.x, iCluster.clusterBounds.size.x);
-            m.targetPos.z = Mathf.Clamp(m.targetPos.z, -iCluster.clusterBounds.size.z, iCluster.clusterBounds.max.z);
+    public void AlignOnZ(OTCCluster iCluster, float iOrderFactor)
+    {
+        // Vector2 P0 = new Vector2(clusterPlan.minXZ.x, clusterPlan.center.y);
+        // Vector2 P1 = new Vector2(clusterPlan.maxXZ.x, clusterPlan.center.y);
+        Vector3 relative_center = iCluster.clusterBounds.center - iCluster.transform.position;
+        foreach (OTCModifier m in iCluster.mods)
+        {
+            Vector3 idealPos = new Vector3(relative_center.x + m.transform.localPosition.x, relative_center.y + m.transform.localPosition.y, relative_center.z);
+            m.targetPos = Vector3.Lerp(m.initPos, idealPos, iOrderFactor);
+            //m.targetPos.x = Mathf.Clamp(m.targetPos.x, -iCluster.clusterBounds.extents.x, iCluster.clusterBounds.extents.x);
+            //m.targetPos.z = Mathf.Clamp(m.targetPos.z, -iCluster.clusterBounds.extents.z, iCluster.clusterBounds.extents.z);
         }
     }
 
@@ -239,10 +252,9 @@ public class OTCLookupTable : MonoBehaviour
         int sideCount= Mathf.CeilToInt(count / 3f);
         float step = sideLength / sideCount;
         Vector3 TargetPosition = (2 / 3f) * sideLength * new Vector3(0,1,0);
-
         foreach (OTCModifier m in iCluster.mods)
         {
-            m.targetPos = TargetPosition;
+            m.targetPos = m.targetPos = Vector3.Lerp(m.initPos, TargetPosition, iOrderFactor); 
             if(order < sideCount)
             {
                 TargetPosition.x += step * Mathf.Cos(5.23599f);
@@ -259,6 +271,7 @@ public class OTCLookupTable : MonoBehaviour
                 TargetPosition.y -= step * Mathf.Sin(angle);
             }
             order++;
+
         }
     }
 
@@ -267,21 +280,20 @@ public class OTCLookupTable : MonoBehaviour
         int count = iCluster.mods.Count;
         int innerSquareSize =Mathf.CeilToInt((count - 4) / 4);
         int gridSize = innerSquareSize + 2;
-        Debug.Log(gridSize);
         float minDim = Mathf.Min(iCluster.clusterBounds.extents.x, iCluster.clusterBounds.extents.y, iCluster.clusterBounds.extents.z);
         float spacing = minDim / (gridSize - 1);
         Vector3 relative_center = iCluster.clusterBounds.center - iCluster.transform.position;
         int row = 0, col = 0;
-
+        Vector3 idealTargetPos;
         foreach (OTCModifier m in iCluster.mods)
         {
-            m.targetPos = new Vector3(
+            idealTargetPos = new Vector3(
                 relative_center.x - minDim + col * spacing,
                 relative_center.y,
                 relative_center.z - minDim + row * spacing
             );
-
-            if(row != 0 && row != gridSize -1 && col != gridSize - 1)
+            m.targetPos = Vector3.Lerp(m.initPos, idealTargetPos, iOrderFactor);
+            if (row != 0 && row != gridSize -1 && col != gridSize - 1)
             {
                 col = gridSize - 1;
             }
@@ -294,6 +306,7 @@ public class OTCLookupTable : MonoBehaviour
                 col = 0;
                 row++;
             }
+
         }
     }
 
@@ -307,21 +320,26 @@ public class OTCLookupTable : MonoBehaviour
         float pillarSize = Mathf.Min(iCluster.clusterBounds.extents.x, iCluster.clusterBounds.extents.y, iCluster.clusterBounds.extents.z);
         float pillarStep = pillarSize / pillarCount;
         Vector3 relative_center = iCluster.clusterBounds.center - iCluster.transform.position;
+        Vector3 idealTargetPos;
+        Debug.Log(iOrderFactor);
         foreach (OTCModifier m in iCluster.mods)
         {
             if(order < pillarCount)
             {
-                m.targetPos = new Vector3(pillarSize / 2, -pillarSize / 2 + order * pillarStep, 0);// + relative_center;
+                idealTargetPos = new Vector3(pillarSize / 2, -pillarSize / 2 + order * pillarStep, 0);// + relative_center;
             }
             else if(order >= pillarCount && order < count - pillarCount)
             {
-                m.targetPos = new Vector3(Mathf.Cos(step * (1 + order - pillarCount)) * pillarSize / 2, pillarSize / 2 - pillarStep + Mathf.Sin(step * (1 + order - pillarCount)) * pillarSize / 3, 0);// + relative_center;
+                idealTargetPos = new Vector3(Mathf.Cos(step * (1 + order - pillarCount)) * pillarSize / 2, pillarSize / 2 - pillarStep + Mathf.Sin(step * (1 + order - pillarCount)) * pillarSize / 3, 0);// + relative_center;
             }
             else
             {
-                m.targetPos = new Vector3(-pillarSize / 2, -(pillarSize / 2) + (order - count + pillarCount) * pillarStep, 0);// + relative_center;
+                idealTargetPos = new Vector3(-pillarSize / 2, -(pillarSize / 2) + (order - count + pillarCount) * pillarStep, 0);// + relative_center;
             }
+
+            m.targetPos = Vector3.Lerp(m.initPos, idealTargetPos, iOrderFactor);
             order += 1;
+
         }
     }
     public void Circle(OTCCluster iCluster, float iOrderFactor)
@@ -330,9 +348,11 @@ public class OTCLookupTable : MonoBehaviour
         float order = 0;
         float radius = Mathf.Min(iCluster.clusterBounds.extents.x, iCluster.clusterBounds.extents.y, iCluster.clusterBounds.extents.z);
         Vector3 relative_center = iCluster.clusterBounds.center - iCluster.transform.position;
+        Vector3 idealTargetPos;
         foreach (OTCModifier m in iCluster.mods)
         {
-            m.targetPos = new Vector3(relative_center.x  + Mathf.Cos(step * order) * radius, relative_center.y, relative_center.z + + Mathf.Sin(step * order) * radius);
+            idealTargetPos = new Vector3(relative_center.x  + Mathf.Cos(step * order) * radius, relative_center.y, relative_center.z + + Mathf.Sin(step * order) * radius);
+            m.targetPos = Vector3.Lerp(m.initPos, idealTargetPos, iOrderFactor);
             order += 1;
         }
     }
@@ -345,15 +365,15 @@ public class OTCLookupTable : MonoBehaviour
         float spacing = minDim / (gridSize - 1);
         Vector3 relative_center = iCluster.clusterBounds.center - iCluster.transform.position;
         int row = 0, col = 0;
-
+        Vector3 idealTargetPos;
         foreach (OTCModifier m in iCluster.mods)
         {
-            m.targetPos = new Vector3(
+            idealTargetPos = new Vector3(
                 relative_center.x - minDim + col * spacing,
                 relative_center.y,
                 relative_center.z - minDim + row * spacing
             );
-
+            m.targetPos = Vector3.Lerp(m.initPos, idealTargetPos, iOrderFactor);
             col++;
             if (col >= gridSize)  // Passer à la ligne suivante
             {
@@ -361,6 +381,7 @@ public class OTCLookupTable : MonoBehaviour
                 row++;
             }
         }
+
     }
 
     public void Noise(OTCCluster iCluster, float iChaosFactor)
@@ -371,8 +392,21 @@ public class OTCLookupTable : MonoBehaviour
                 m.initPos.x + UnityEngine.Random.Range(-iChaosFactor*iCluster.noiseShapeMultiplier, iChaosFactor*iCluster.noiseShapeMultiplier)*m.initScale.x, 
                 m.initPos.y + UnityEngine.Random.Range(-iChaosFactor*iCluster.noiseShapeMultiplier, iChaosFactor*iCluster.noiseShapeMultiplier)*m.initScale.y, 
                 m.initPos.z + UnityEngine.Random.Range(-iChaosFactor*iCluster.noiseShapeMultiplier, iChaosFactor*iCluster.noiseShapeMultiplier)*m.initScale.z );
+            m.targetPos.x = Mathf.Clamp(m.targetPos.x, -iCluster.clusterBounds.extents.x, iCluster.clusterBounds.extents.x);
+            m.targetPos.z = Mathf.Clamp(m.targetPos.z, -iCluster.clusterBounds.extents.z, iCluster.clusterBounds.extents.z);
+            m.targetPos.y = Mathf.Clamp(m.targetPos.y, -iCluster.clusterBounds.extents.y, iCluster.clusterBounds.extents.y);
+
         }
     }
+
+    public float computeiOrderFactor(OTCCluster iCluster, float iOTC)
+    {
+        if(iCluster.completeShapeThreshold == 0.5f) { return orderFactorCurve.Evaluate(iOTC); }
+        if(iCluster.completeShapeThreshold >= iOTC) { return 1; }
+        return orderFactorCurve.Evaluate((iOTC - iCluster.completeShapeThreshold)/ (0.5f - iCluster.completeShapeThreshold));
+
+    }
+        
     #endregion
     
     #region ROT_SPREADS

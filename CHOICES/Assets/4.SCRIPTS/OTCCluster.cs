@@ -23,6 +23,10 @@ public class OTCCluster : MonoBehaviour
     public Bounds clusterBounds;
     public ObjectPool clusterPool;
 
+    [Range(0,0.5f)]
+    public float completeShapeThreshold = 0.5f;
+
+
     public bool CanBeAddedToCluster(OTCModifier iMod)
     {
         return Vector3.Distance(iMod.transform.position, clusterBounds.center) < clusterizationRange;
@@ -46,7 +50,7 @@ public class OTCCluster : MonoBehaviour
 
     void Start()
     {
-        foreach(OTCModifier m in mods) { m.cluster = this; }
+        foreach(OTCModifier m in mods) { m.Init_OTC(this); }
         OverWorldControl.Instance.SubscribeOTCCluster(this);
 
         Vector3 center = Vector3.zero;
