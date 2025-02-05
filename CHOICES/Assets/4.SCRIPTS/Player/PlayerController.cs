@@ -169,6 +169,9 @@ public class PlayerController : MonoBehaviour
 
     private void CheckInteractibleObjects()
     {
+        if (playerInAction) // already in action with its current object
+            return;
+
         RaycastHit objectRayHit;
         if (FPSCamera.TryRCFromScreenCenter(out objectRayHit, actionDistance))
         {
@@ -180,12 +183,18 @@ public class PlayerController : MonoBehaviour
                     return;
 
                 targetedInteractibleObject = iobj;
-                UIGame.Instance.TryChangeCrosshairColor(Color.green);
+                //UIGame.Instance.TryChangeCrosshairColor(Color.green);
+                UIGame.Instance.UpdateCursorFromPlayerAction(targetedInteractibleObject.GetSelectedAction());
                 return;
             }
         }
         
-        UIGame.Instance.TryChangeCrosshairColor(Color.white);
-        targetedInteractibleObject = null;
+        if (targetedInteractibleObject!=null)
+        {
+            //UIGame.Instance.TryChangeCrosshairColor(Color.white);
+            targetedInteractibleObject = null;
+            UIGame.Instance.UpdateCursorFromPlayerAction(PLAYER_ACTIONS.NONE);
+        }
+
     }
 }

@@ -6,8 +6,13 @@ public class UIGame : MonoBehaviour
     [Header("Crosshair")]
     public Image crosshairImg;
     public Color crossshairColor;
-    public Vector2 crosshairSize;
+    public Color cursorColor = Color.white;
+    public Vector2 crosshairSizeForDefault;
+    public Vector2 crosshairSizeForActionCursors;
 
+    public Sprite cursorDefault;
+    public Sprite cursorOpenHand;
+    public Sprite cursorCloseHand;
 
     private static UIGame instance = null;
     public static UIGame Instance => instance;
@@ -24,31 +29,42 @@ public class UIGame : MonoBehaviour
             instance = this;
         }
     }
+    public void ForceCursorToDefault() { crosshairImg.sprite = cursorDefault; crosshairImg.color = crossshairColor; }
+    public void ForceCursorToCloseHand() { crosshairImg.sprite = cursorCloseHand; crosshairImg.color = cursorColor; }
+    public void ForceCursorToOpenHand() { crosshairImg.sprite = cursorOpenHand; crosshairImg.color = cursorColor; }
+
+    public void UpdateCursorFromPlayerAction(PLAYER_ACTIONS iAct)
+    {
+        switch (iAct)
+        {
+            case PLAYER_ACTIONS.MOVE:
+                ForceCursorToOpenHand();
+                ChangeCrosshairSize(crosshairSizeForActionCursors);
+                break;
+            default:
+                ForceCursorToDefault();
+                ChangeCrosshairSize(crosshairSizeForDefault);
+                break;
+        }
+    }
 
     public bool TryChangeCrosshairColor(Color iColor)
     {
         if (crossshairColor!=iColor)
         {
             crossshairColor = iColor;
-            RefreshCrosshair();
+            crosshairImg.color                      = crossshairColor;
             return true;
         }
         return false;
     }
     public bool ChangeCrosshairSize(Vector2 iSize)
     {
-        if (crosshairSize!=iSize)
+        if (crosshairImg.rectTransform.sizeDelta!=iSize)
         {
-            crosshairSize = iSize;
-            RefreshCrosshair();
+            crosshairImg.rectTransform.sizeDelta    = iSize;
             return true;
         }
         return false;
-    }
-
-    public void RefreshCrosshair()
-    {
-        crosshairImg.color                      = crossshairColor;
-        crosshairImg.rectTransform.sizeDelta    = crosshairSize; 
     }
 }

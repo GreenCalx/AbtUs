@@ -30,6 +30,8 @@ public class InteractibleObject : MonoBehaviour
             ChangeSelectedAction(availableActions[0]);
         }
     }
+    
+    public PLAYER_ACTIONS GetSelectedAction() { return selectedAction; }
 
     public void ChangeSelectedAction(PLAYER_ACTIONS iAction)
     {
@@ -44,6 +46,7 @@ public class InteractibleObject : MonoBehaviour
 
                 stopAction = new UnityEvent();
                 stopAction.AddListener(StopMove);
+
                 break;
             default:
                 break;
@@ -83,6 +86,7 @@ public class InteractibleObject : MonoBehaviour
             StopCoroutine(ActionCo);
             ActionCo = null;
         }
+        UIGame.Instance.ForceCursorToCloseHand();
         ActionCo = StartCoroutine(MoveCo());
     }
 
@@ -99,6 +103,7 @@ public class InteractibleObject : MonoBehaviour
             StopCoroutine(ActionCo);
             ActionCo = null;
         }
+        UIGame.Instance.ForceCursorToOpenHand();
     }
 
     public IEnumerator MoveCo()
