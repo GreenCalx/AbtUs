@@ -117,7 +117,9 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   crosshairImg: {fileID: 8805790116535614691}
   crossshairColor: {r: 1, g: 1, b: 1, a: 0.5019608}
-  crosshairSize: {x: 10, y: 10}
+  cursorColor: {r: 1, g: 1, b: 1, a: 1}
+  crosshairSizeForDefault: {x: 10, y: 10}
+  crosshairSizeForActionCursors: {x: 25, y: 25}
   cursorDefault: {fileID: 10913, guid: 0000000000000000f000000000000000, type: 0}
   cursorOpenHand: {fileID: 21300000, guid: 8e6a9d34e99499346a88ea9b83a6df97, type: 3}
   cursorCloseHand: {fileID: 21300000, guid: bc636fceb5ede0846814444c58d9e613, type: 3}
