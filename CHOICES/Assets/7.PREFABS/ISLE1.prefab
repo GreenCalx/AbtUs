@@ -2841,7 +2841,7 @@ GameObject:
   - component: {fileID: 2800722616739139838}
   - component: {fileID: 5546876477575978157}
   - component: {fileID: 6717227362142764427}
-  m_Layer: 0
+  m_Layer: 7
   m_Name: Isle1_terrain
   m_TagString: Untagged
   m_Icon: {fileID: 0}

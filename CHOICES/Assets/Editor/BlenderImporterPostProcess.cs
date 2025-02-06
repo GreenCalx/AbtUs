@@ -3,29 +3,50 @@ using UnityEngine.UI;
 using UnityEditor;
 using UnityEditor.AssetImporters;
 using System.IO;
+using System.Collections.Generic;
 
 public class BlenderImporterPostProcess : AssetPostprocessor
 {
+
     void OnPostprocessModel(GameObject importedGameObject)
     {
-        // Vérifie si c'est un fichier FBX importé
+
         if (assetPath.EndsWith(".fbx", System.StringComparison.OrdinalIgnoreCase))
         {
             Debug.Log("FBX Detected");
 
-            foreach(Transform child in importedGameObject.transform)
-            {
-                Debug.Log(child.name);
-            }
-            importedGameObject.AddComponent<Selectable>(); 
             importedGameObject.AddComponent<ModelTools>();
 
-            GameObject prefab = PrefabUtility.SaveAsPrefabAsset(importedGameObject, "Assets/7.PREFABS/" + Path.GetFileNameWithoutExtension(assetPath) + ".prefab");
-            if (prefab == null)
+            foreach(Transform child in importedGameObject.GetComponentsInChildren<Transform>())
             {
-                Debug.Log("Prefab not created");
-                return;
+                child.gameObject.AddComponent<Selectable>();
             }
+            string prefabPath = "Assets/7.PREFABS/" + Path.GetFileNameWithoutExtension(assetPath) + ".prefab";
+
+            return;
+            GameObject prefab = PrefabUtility.SaveAsPrefabAsset(importedGameObject, prefabPath);
+            GameObject loadedPrefab = AssetDatabase.LoadAssetAtPath<GameObject>(prefabPath);
+
+            Dictionary<string, MeshFilter> meshFiltersDict = new Dictionary<string, MeshFilter>();
+
+            foreach (MeshFilter meshFilter in importedGameObject.GetComponentsInChildren<MeshFilter>())
+            {
+                meshFiltersDict[meshFilter.gameObject.name] = meshFilter;
+            }
+            Debug.Log(meshFiltersDict);
+            foreach (MeshFilter meshFilter in loadedPrefab.GetComponentsInChildren<MeshFilter>())
+            {
+                if (meshFiltersDict.TryGetValue(meshFilter.gameObject.name, out MeshFilter sourceMeshFilter) &&
+                    sourceMeshFilter.sharedMesh != null)
+                {
+                    meshFilter.sharedMesh = sourceMeshFilter.sharedMesh;
+                }
+                else
+                {
+                    Debug.LogWarning("Shared mesh not found" + meshFilter.gameObject.name);
+                }
+            }
+            PrefabUtility.SavePrefabAsset(loadedPrefab);
             Debug.Log("Prefab created and components added in :" + importedGameObject.name);
         }
     }
