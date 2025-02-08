@@ -14,6 +14,7 @@ GameObject:
   - component: {fileID: 7043105332583448079}
   - component: {fileID: 7126851730947042765}
   - component: {fileID: 7112243853823298528}
+  - component: {fileID: 6963799584973242688}
   m_Layer: 0
   m_Name: GlowSpot
   m_TagString: Untagged
@@ -48,12 +49,12 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 7d07c5b68c1cfe64ca63f5d2bb80d2c5, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  m_Distance: 3.55
+  m_Distance: 3.21
   m_FrameSpace: 0
   m_AnchorPositionOverride: {fileID: 0}
   m_AnchorPositionOffset: {x: 0, y: 0, z: 0}
-  m_Yaw: 0
-  m_Pitch: 82.63205
+  m_Yaw: -179.53395
+  m_Pitch: 5.8698883
   m_Roll: 0
 --- !u!108 &5864075208016676106
 Light:
@@ -66,10 +67,10 @@ Light:
   serializedVersion: 11
   m_Type: 0
   m_Color: {r: 1, g: 0.6273585, b: 0.9357012, a: 1}
-  m_Intensity: 131281680
+  m_Intensity: 194412000
   m_Range: 14.2
-  m_SpotAngle: 30.999977
-  m_InnerSpotAngle: 21.80208
+  m_SpotAngle: 25.44894
+  m_InnerSpotAngle: 1
   m_CookieSize: 10
   m_Shadows:
     m_Type: 0
@@ -139,7 +140,7 @@ MonoBehaviour:
   m_LightUnit: 0
   m_LuxAtDistance: 1
   m_Intensity: 0
-  m_InnerSpotPercent: 3.2258089
+  m_InnerSpotPercent: 3.9294376
   m_SpotIESCutoffPercent: 100
   m_LightDimmer: 1
   m_VolumetricDimmer: 1
@@ -282,9 +283,9 @@ CapsuleCollider:
   m_Enabled: 1
   serializedVersion: 2
   m_Radius: 3
-  m_Height: 10
+  m_Height: 14.5166445
   m_Direction: 2
-  m_Center: {x: -0.51259184, y: 0.0000020274892, z: 9}
+  m_Center: {x: 0, y: 0, z: 6.811847}
 --- !u!114 &7112243853823298528
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -298,3 +299,19 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   glow_strength: 3
+  glowDelay: 0
+--- !u!114 &6963799584973242688
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7526866286767200560}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 88f00807c9a4af844864efc0707a9761, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  value: 0
+  max_influence: 0.6
+  min_influence: 0

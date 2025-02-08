@@ -21,9 +21,10 @@ public class BlenderImporterPostProcess : AssetPostprocessor
             {
                 child.gameObject.AddComponent<Selectable>();
             }
+            /*
             string prefabPath = "Assets/7.PREFABS/" + Path.GetFileNameWithoutExtension(assetPath) + ".prefab";
 
-            return;
+
             GameObject prefab = PrefabUtility.SaveAsPrefabAsset(importedGameObject, prefabPath);
             GameObject loadedPrefab = AssetDatabase.LoadAssetAtPath<GameObject>(prefabPath);
 
@@ -48,6 +49,7 @@ public class BlenderImporterPostProcess : AssetPostprocessor
             }
             PrefabUtility.SavePrefabAsset(loadedPrefab);
             Debug.Log("Prefab created and components added in :" + importedGameObject.name);
+            */
         }
     }
 }

@@ -24,12 +24,18 @@ public class OTCModifier : MonoBehaviour
     public Vector3 launchScale;
     private float elapsedTime = 0f;
 
+    private float y_offset = 0f;
     public bool debug = false;
     public void Init_OTC(OTCCluster iCluster)
     {
         OverWorldControl.Instance.SubscribeOTC(this);
         cluster = iCluster;
-        if (FollowTerrainHeight)
+        ModelTools mt = GetComponent<ModelTools>();
+        if(mt != null && mt.clipToTerrain && FollowTerrainHeight)
+        {
+            y_offset = mt.terrainOffset;
+        }
+        else if (FollowTerrainHeight && mt == null)
         {
             Vector3 pos = transform.position;
             pos.y = cluster.relatedTerrain.SampleHeight(transform.position);
@@ -79,7 +85,7 @@ public class OTCModifier : MonoBehaviour
             if (FollowTerrainHeight)
             {
                 Vector3 lastStep = transform.parent.transform.TransformPoint(targetPos);
-                lastStep.y = cluster.relatedTerrain.SampleHeight(lastStep);
+                lastStep.y = cluster.relatedTerrain.SampleHeight(lastStep) + y_offset;
                 transform.localPosition = transform.parent.transform.InverseTransformPoint(lastStep);
             }
             else
@@ -93,7 +99,7 @@ public class OTCModifier : MonoBehaviour
         if (FollowTerrainHeight)
         {
             Vector3 globalNextStep = transform.parent.transform.TransformPoint(nextStep);
-            globalNextStep.y = cluster.relatedTerrain.SampleHeight(globalNextStep); 
+            globalNextStep.y = cluster.relatedTerrain.SampleHeight(globalNextStep) + y_offset; 
             nextStep = transform.parent.transform.InverseTransformPoint(globalNextStep);
             if (debug)
                 { Debug.DrawRay(globalNextStep, Vector3.up * 50, Color.red); }

@@ -3,13 +3,13 @@ using UnityEngine;
 public class Feedback : MonoBehaviour
 {
     [SerializeField]
-    public float OTC = 0f;
+    public float value = 0f;
 
-    [SerializeField]
-    public float MTO = 0f;
+    public float max_influence = 1f;
+    public float min_influence = 0f;
 
-    [SerializeField]
-    public float GTL = 0f;
+    public Type feedback_type { get; private set; }
+    public enum Type { GTL, OTC, MTO};
 
     private FeedbackManager fbm;
 
@@ -17,13 +17,15 @@ public class Feedback : MonoBehaviour
     {
         fbm = FeedbackManager.Instance;
     }
-    
+
     //override for different feedbacks, default is add
-    public void applyFeedback(ref float p_otc, ref float p_mto, ref float p_gtl)
+    public void applyFeedback(ref float OWC_value)
     {
-        p_otc += OTC;
-        p_mto += MTO;
-        p_gtl += GTL;
+        var new_value = OWC_value + value;
+        
+        new_value = Mathf.Clamp(new_value, min_influence, max_influence);
+
+        OWC_value = new_value;
     }
 
     public void use()

@@ -32,12 +32,18 @@ public class FeedbackManager : MonoBehaviour
         float otc = OWC.OrderToChaos;
         float mto = OWC.MineralToOrganic;
         float gtl = OWC.GloomyToLush;
+        
+        if(feedback.feedback_type == Feedback.Type.GTL)
+            feedback.applyFeedback(ref gtl);
+            OWC.GloomyToLush = gtl;
 
-        feedback.applyFeedback(ref otc , ref mto, ref gtl);
+        if (feedback.feedback_type == Feedback.Type.MTO)
+             feedback.applyFeedback(ref mto);
+            OWC.MineralToOrganic = mto;
 
-        OWC.GloomyToLush = gtl;
-        OWC.MineralToOrganic = mto;
-        OWC.GloomyToLush = gtl;
+        if (feedback.feedback_type == Feedback.Type.OTC)
+            feedback.applyFeedback(ref otc);
+            OWC.GloomyToLush = otc;
 
         Debug.Log(gtl);
     }

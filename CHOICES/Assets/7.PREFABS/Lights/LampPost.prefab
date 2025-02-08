@@ -41,21 +41,6 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 3919645750189900148}
     m_Modifications:
-    - target: {fileID: 5864075208016676106, guid: 318c55b006b89ba44b28591de9c261fd,
-        type: 3}
-      propertyPath: m_Intensity
-      value: 194412000
-      objectReference: {fileID: 0}
-    - target: {fileID: 5864075208016676106, guid: 318c55b006b89ba44b28591de9c261fd,
-        type: 3}
-      propertyPath: m_SpotAngle
-      value: 25.44894
-      objectReference: {fileID: 0}
-    - target: {fileID: 5864075208016676106, guid: 318c55b006b89ba44b28591de9c261fd,
-        type: 3}
-      propertyPath: m_InnerSpotAngle
-      value: 1
-      objectReference: {fileID: 0}
     - target: {fileID: 7030751223170852190, guid: 318c55b006b89ba44b28591de9c261fd,
         type: 3}
       propertyPath: m_LocalPosition.x
@@ -106,55 +91,10 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
-    - target: {fileID: 7043105332583448079, guid: 318c55b006b89ba44b28591de9c261fd,
-        type: 3}
-      propertyPath: m_InnerSpotPercent
-      value: 3.9294376
-      objectReference: {fileID: 0}
-    - target: {fileID: 7112243853823298528, guid: 318c55b006b89ba44b28591de9c261fd,
-        type: 3}
-      propertyPath: glow_strength
-      value: 3
-      objectReference: {fileID: 0}
-    - target: {fileID: 7126851730947042765, guid: 318c55b006b89ba44b28591de9c261fd,
-        type: 3}
-      propertyPath: m_Height
-      value: 14.5166445
-      objectReference: {fileID: 0}
-    - target: {fileID: 7126851730947042765, guid: 318c55b006b89ba44b28591de9c261fd,
-        type: 3}
-      propertyPath: m_Center.x
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 7126851730947042765, guid: 318c55b006b89ba44b28591de9c261fd,
-        type: 3}
-      propertyPath: m_Center.y
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 7126851730947042765, guid: 318c55b006b89ba44b28591de9c261fd,
-        type: 3}
-      propertyPath: m_Center.z
-      value: 6.811847
-      objectReference: {fileID: 0}
     - target: {fileID: 7526866286767200560, guid: 318c55b006b89ba44b28591de9c261fd,
         type: 3}
       propertyPath: m_Name
       value: GlowSpot
-      objectReference: {fileID: 0}
-    - target: {fileID: 7845955488812798946, guid: 318c55b006b89ba44b28591de9c261fd,
-        type: 3}
-      propertyPath: m_Yaw
-      value: -179.53395
-      objectReference: {fileID: 0}
-    - target: {fileID: 7845955488812798946, guid: 318c55b006b89ba44b28591de9c261fd,
-        type: 3}
-      propertyPath: m_Pitch
-      value: 5.8698883
-      objectReference: {fileID: 0}
-    - target: {fileID: 7845955488812798946, guid: 318c55b006b89ba44b28591de9c261fd,
-        type: 3}
-      propertyPath: m_Distance
-      value: 3.21
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
