@@ -414,7 +414,7 @@ GameObject:
   m_Component:
   - component: {fileID: 8454179593980109526}
   - component: {fileID: 6450017364205070357}
-  - component: {fileID: 6202455608817561496}
+  - component: {fileID: 5294292413807916535}
   m_Layer: 0
   m_Name: SmallRocks
   m_TagString: Untagged
@@ -469,7 +469,7 @@ MonoBehaviour:
     m_Extent: {x: 0, y: 0, z: 0}
   clusterPool: {fileID: 0}
   completeShapeThreshold: 0.5
---- !u!114 &6202455608817561496
+--- !u!114 &5294292413807916535
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -660,7 +660,6 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   availableActions: 01000000
-  puzzle: {fileID: 0}
   RB: {fileID: 1145542164653849787}
 --- !u!1 &2462777195020587318
 GameObject:
@@ -963,7 +962,7 @@ Transform:
   m_GameObject: {fileID: 4763374151276740042}
   serializedVersion: 2
   m_LocalRotation: {x: -0, y: 0.1381195, z: -0, w: 0.99041563}
-  m_LocalPosition: {x: -0.72, y: 7.18, z: 2.4000015}
+  m_LocalPosition: {x: -0.72, y: -3.0934062, z: 2.4000015}
   m_LocalScale: {x: 1.4596, y: 1.4596, z: 1.4596}
   m_ConstrainProportionsScale: 0
   m_Children: []
@@ -3512,7 +3511,6 @@ MonoBehaviour:
   value: 0
   max_influence: 0.6
   min_influence: 0
-  feedback_type: 0
 --- !u!1001 &4755487525027366139
 PrefabInstance:
   m_ObjectHideFlags: 0
