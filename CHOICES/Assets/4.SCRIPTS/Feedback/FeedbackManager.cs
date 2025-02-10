@@ -45,7 +45,7 @@ public class FeedbackManager : MonoBehaviour
             feedback.applyFeedback(ref otc);
             OWC.GloomyToLush = otc;
 
-        Debug.Log(gtl);
+        Debug.Log("gtl = " + gtl + "mto = " + mto + "otc = " + otc);
     }
 
 }
