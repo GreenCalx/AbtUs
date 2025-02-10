@@ -2,12 +2,22 @@ using UnityEngine;
 
 public class GameCamera : MonoBehaviour
 {
+    public bool isPlayerCam = false;
     public Camera cam;
     // Start is called once before the first execution of Update after the MonoBehaviour is created
     void Start()
     {
         if (cam==null)
             cam = GetComponent<Camera>();
+
+        if (isPlayerCam)
+        {
+            CameraManager.Instance.initPlayerCamLocalPos = transform.localPosition;
+            CameraManager.Instance.initPlayerCamLocalRot = transform.localRotation;
+            CameraManager.Instance.initPlayerFOV = cam.fieldOfView;
+            CameraManager.Instance.initPlayerCamParent = transform.parent;
+        }
+        
     }
 
     // Update is called once per frame

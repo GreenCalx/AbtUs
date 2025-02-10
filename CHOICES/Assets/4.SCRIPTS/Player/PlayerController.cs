@@ -15,11 +15,14 @@ public class PlayerController : MonoBehaviour
     public float actionTimeLatch = 0.2f;
     [Header("Internals")]
     public bool freeze_inputs = false;
+    public bool freeze_WASD = false;
+    public bool freeze_CAM = false;
     public float hMove, vMove;
     public float hCam, vCam;
     public bool playerDoAction;
     public bool playerInAction = false;
     public bool playerDoRun;
+    public bool playerDoCancel = false;
     public bool freezeToggle;
     private bool isMoving = false;
     private bool isRunning = false;
@@ -71,7 +74,7 @@ public class PlayerController : MonoBehaviour
 
         playerDoRun = Input.GetButton("Run");
         playerDoAction = Input.GetButton("DoAction");
-
+        playerDoCancel = Input.GetButton("Cancel");
         freezeToggle  = Input.GetButton("Freeze");
 
         isMoving = (hMove!=0f)||(vMove!=0f);
@@ -103,41 +106,47 @@ public class PlayerController : MonoBehaviour
         }
 
         // side step
-        if (hMove < 0f)
+        if (!freeze_WASD)
         {
-            self_rb.AddForce( -1 *  transform.right * speed, ForceMode.VelocityChange);
-            isMoving = true;
-        }
-        else if (hMove > 0f)
-        {
-            self_rb.AddForce(transform.right * speed, ForceMode.VelocityChange);
-            isMoving = true;
-        }
-        
-        // forward/backward
-        if (vMove > 0f)
-        {
-            // move forward
-            // Vector3 translation = new Vector3(0f, 0f, speed * Time.fixedDeltaTime);
-            // transform.Translate(translation);
-            self_rb.AddForce( transform.forward * speed, ForceMode.VelocityChange);
-            isMoving = true;
-        } else if ( vMove < 0f )
-        {
-            // move backward
-            // Vector3 translation = new Vector3(0f, 0f, (speed/2f) * Time.fixedDeltaTime * -1);
-            // transform.Translate(translation);
-            self_rb.AddForce( transform.forward * (speed/2f) * -1, ForceMode.VelocityChange);
-            isMoving = true;
+            if (hMove < 0f)
+            {
+                self_rb.AddForce( -1 *  transform.right * speed, ForceMode.VelocityChange);
+                isMoving = true;
+            }
+            else if (hMove > 0f)
+            {
+                self_rb.AddForce(transform.right * speed, ForceMode.VelocityChange);
+                isMoving = true;
+            }
+            
+            // forward/backward
+            if (vMove > 0f)
+            {
+                // move forward
+                // Vector3 translation = new Vector3(0f, 0f, speed * Time.fixedDeltaTime);
+                // transform.Translate(translation);
+                self_rb.AddForce( transform.forward * speed, ForceMode.VelocityChange);
+                isMoving = true;
+            } else if ( vMove < 0f )
+            {
+                // move backward
+                // Vector3 translation = new Vector3(0f, 0f, (speed/2f) * Time.fixedDeltaTime * -1);
+                // transform.Translate(translation);
+                self_rb.AddForce( transform.forward * (speed/2f) * -1, ForceMode.VelocityChange);
+                isMoving = true;
+            }
         }
 
-        // cam horizontal
-        transform.Rotate(Vector3.up * hCam);
+        if (!freeze_CAM)
+        {
+            // cam horizontal
+            transform.Rotate(Vector3.up * hCam);
 
-        // cam vertical
-        cameraVRot -= vCam;
-        cameraVRot = Mathf.Clamp(cameraVRot, -90f, 90f);
-        FPSCamera.transform.localEulerAngles = Vector3.right * cameraVRot;
+            // cam vertical
+            cameraVRot -= vCam;
+            cameraVRot = Mathf.Clamp(cameraVRot, -90f, 90f);
+            FPSCamera.transform.localEulerAngles = Vector3.right * cameraVRot;
+        }
 
         // player action
         if (elapsedActionTimeLatch < actionTimeLatch)
@@ -154,10 +163,17 @@ public class PlayerController : MonoBehaviour
                     
                 } else {
                     playerInAction = false;
-                    targetedInteractibleObject.OnStopInteract(this);
+                    targetedInteractibleObject.OnContinueInteract(this);
                 }
                 elapsedActionTimeLatch = 0f;
             }
+        }
+
+        if (playerDoCancel && playerInAction)
+        {
+            playerInAction = false;
+            targetedInteractibleObject.OnCancelInteract(this);
+            elapsedActionTimeLatch = 0f;
         }
 
     }

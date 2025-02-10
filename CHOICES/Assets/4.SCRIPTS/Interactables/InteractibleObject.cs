@@ -3,18 +3,21 @@ using System.Collections;
 using UnityEngine;
 using UnityEngine.Events;
 
-public enum PLAYER_ACTIONS { NONE =0, MOVE =1, INFO =2, TALK =3}
+public enum PLAYER_ACTIONS { NONE =0, MOVE =1, INFO =2, TALK =3, PUZZLE=4}
 
 [Serializable]
 public class InteractibleObject : MonoBehaviour
 {
     [Header("Tweaks")]
     public PLAYER_ACTIONS[] availableActions;
+    [Header("Optional References")]
+    public Puzzle puzzle;
 
     [Header("Internals")]
     private PLAYER_ACTIONS selectedAction;
     private UnityEvent startAction;
-    private UnityEvent stopAction;
+    private UnityEvent continueAction;
+    private UnityEvent cancelAction;
     private PlayerController player;
     private float distFromPlayer = 0f;
     public Rigidbody RB;
@@ -44,9 +47,21 @@ public class InteractibleObject : MonoBehaviour
                 startAction = new UnityEvent();
                 startAction.AddListener(Move);
 
-                stopAction = new UnityEvent();
-                stopAction.AddListener(StopMove);
+                continueAction = new UnityEvent();
+                continueAction.AddListener(StopMove);
 
+                cancelAction = new UnityEvent();
+                cancelAction.AddListener(StopMove);
+                break;
+            case PLAYER_ACTIONS.PUZZLE:
+                startAction = new UnityEvent();
+                startAction.AddListener(SolvePuzzle);
+
+                continueAction = new UnityEvent();
+                //stopAction.AddListener(TryValidatePuzzle);
+
+                cancelAction = new UnityEvent();
+                cancelAction.AddListener(StopPuzzle);
                 break;
             default:
                 break;
@@ -65,14 +80,22 @@ public class InteractibleObject : MonoBehaviour
         }
     }
 
-    public void OnStopInteract(PlayerController iPlayer)
+    public void OnContinueInteract(PlayerController iPlayer)
     {
         if (iPlayer!=player)
             return;
         
-        stopAction.Invoke();
+        continueAction.Invoke();
     }
 
+    public void OnCancelInteract(PlayerController iPlayer)
+    {
+        if (iPlayer!=player)
+            return;
+        cancelAction.Invoke();
+    }
+
+    #region MOVE
     public void Move()
     {
         if (RB!=null)
@@ -115,4 +138,40 @@ public class InteractibleObject : MonoBehaviour
             yield return null;
         }
     }
+    #endregion
+
+    #region PUZZLE
+    public void SolvePuzzle()
+    {
+
+        if (ActionCo!=null)
+        {
+            StopCoroutine(ActionCo);
+            ActionCo = null;
+        }
+        puzzle.StartPuzzle(player);
+        ActionCo = StartCoroutine(SolvePuzzleCo());
+    }
+
+    public void StopPuzzle()
+    {
+        if (ActionCo!=null)
+        {
+            StopCoroutine(ActionCo);
+            ActionCo = null;
+        }
+        puzzle.StopPuzzle();
+    }
+
+    public IEnumerator SolvePuzzleCo()
+    {
+        while (player.playerInAction)
+        {
+            // 
+            yield return null;
+        }
+    }
+
+    #endregion
+
 }
