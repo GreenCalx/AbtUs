@@ -1215,17 +1215,11 @@ PrefabInstance:
       propertyPath: m_Name
       value: OverWorldControl
       objectReference: {fileID: 0}
-    - target: {fileID: 1511744071200572054, guid: 7fca752e9fdc00344ad121eb2a363266,
+    - target: {fileID: 2851077659445229838, guid: 7fca752e9fdc00344ad121eb2a363266,
         type: 3}
-      propertyPath: m_IsActive
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 2102458150986435171, guid: 7fca752e9fdc00344ad121eb2a363266,
-        type: 3}
-      propertyPath: sharedProfile
+      propertyPath: player
       value: 
-      objectReference: {fileID: 11400000, guid: 8ba92e2dd7f884a0f88b98fa2d235fe7,
-        type: 2}
+      objectReference: {fileID: 110237546}
     - target: {fileID: 3878410987499178648, guid: 7fca752e9fdc00344ad121eb2a363266,
         type: 3}
       propertyPath: m_LocalPosition.x
