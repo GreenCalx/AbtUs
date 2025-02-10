@@ -3,6 +3,20 @@ using UnityEngine.UI;
 
 public class UIGame : MonoBehaviour
 {
+    [Header("Behaviour")]
+    private bool m_cursorMode = false;
+    public bool cursorMode {
+        get { return m_cursorMode;}
+        set { 
+            if (!value && m_cursorMode)  
+                ResetCursorToCenter();
+            m_cursorMode = value;
+            }
+    }
+
+    [Header("Cursor")]
+    public float cursorSpeed = 0.1f;
+
     [Header("Crosshair")]
     public Image crosshairImg;
     public Color crossshairColor;
@@ -29,6 +43,19 @@ public class UIGame : MonoBehaviour
             instance = this;
         }
     }
+    
+    void Update()
+    {
+        if (cursorMode)
+        {
+			crosshairImg.transform.position = Input.mousePosition;
+        }
+    }
+    public void ResetCursorToCenter()
+    {
+        crosshairImg.GetComponent<RectTransform>().anchoredPosition  = Vector3.zero;
+    }
+
     public void ForceCursorToDefault() { crosshairImg.sprite = cursorDefault; crosshairImg.color = crossshairColor; }
     public void ForceCursorToCloseHand() { crosshairImg.sprite = cursorCloseHand; crosshairImg.color = cursorColor; }
     public void ForceCursorToOpenHand() { crosshairImg.sprite = cursorOpenHand; crosshairImg.color = cursorColor; }
