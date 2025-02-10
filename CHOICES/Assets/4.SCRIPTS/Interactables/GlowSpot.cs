@@ -1,6 +1,6 @@
 using UnityEngine;
 
-public class GlowSpot : MonoBehaviour
+public class GlowSpot : OWCListener
 {
     [SerializeField]
     private float glow_strength; // + 0.01 GTL.s
@@ -12,10 +12,16 @@ public class GlowSpot : MonoBehaviour
 
     private Feedback glowFeedback;
 
-    private void Start()
+    override protected void Init()
     {
         glowFeedback = GetComponent<Feedback>();
     }
+
+    public override void Call(float gtl)
+    {
+        //Eteindre le spot a partir d'une valeur ?
+    }
+
     private void OnTriggerEnter(Collider other)
     {
         if (other.CompareTag("Player"))
@@ -43,7 +49,5 @@ public class GlowSpot : MonoBehaviour
             glowFeedback.value += glow_strength * 0.01f * Time.fixedDeltaTime;
             glowFeedback.use();
         }
-
-
     }
 }

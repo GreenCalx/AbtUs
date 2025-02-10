@@ -12,6 +12,7 @@ public class PlayerController : MonoBehaviour
     public float runningMaxSpeed = 4f;
     public float turnSpeed = 5f;
     public float actionDistance = 5f;
+    public float lookingDistance = 100f;
     public float actionTimeLatch = 0.2f;
     [Header("Internals")]
     public bool freeze_inputs = false;
@@ -28,6 +29,9 @@ public class PlayerController : MonoBehaviour
 
     [Header("Internals")]
     public InteractibleObject targetedInteractibleObject;
+
+    private TargetFeedback targetedFeedbackObject;
+
     private float elapsedActionTimeLatch;
 
     // Start is called once before the first execution of Update after the MonoBehaviour is created
@@ -59,6 +63,7 @@ public class PlayerController : MonoBehaviour
     {
         CheckInteractibleObjects();
         ProcessInputs();
+        CheckTargetObjects();
     }
 
     private void FetchInputs()
@@ -194,6 +199,34 @@ public class PlayerController : MonoBehaviour
             //UIGame.Instance.TryChangeCrosshairColor(Color.white);
             targetedInteractibleObject = null;
             UIGame.Instance.UpdateCursorFromPlayerAction(PLAYER_ACTIONS.NONE);
+        }
+
+    }
+
+    private void CheckTargetObjects()
+    {
+        RaycastHit objectRayHit;
+        if (FPSCamera.TryRCFromScreenCenter(out objectRayHit, lookingDistance))
+        {
+            // did hit
+            TargetFeedback iobj = objectRayHit.collider.gameObject.GetComponent<TargetFeedback>();
+            if (iobj != null)
+            {
+
+                if (iobj == targetedFeedbackObject)
+                    return;
+
+                targetedFeedbackObject = iobj;
+                targetedFeedbackObject.player_looking(true);
+                return;
+            }
+
+        }
+
+        if (targetedFeedbackObject != null)
+        {
+            targetedFeedbackObject.player_looking(false);
+            targetedFeedbackObject = null;
         }
 
     }

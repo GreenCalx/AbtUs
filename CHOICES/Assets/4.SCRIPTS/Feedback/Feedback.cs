@@ -8,7 +8,7 @@ public class Feedback : MonoBehaviour
     public float max_influence = 1f;
     public float min_influence = 0f;
 
-    public Type feedback_type { get; private set; }
+    public Type feedback_type;
     public enum Type { GTL, OTC, MTO};
 
     private FeedbackManager fbm;
@@ -21,6 +21,8 @@ public class Feedback : MonoBehaviour
     //override for different feedbacks, default is add
     public void applyFeedback(ref float OWC_value)
     {
+        if(OWC_value < min_influence || OWC_value > max_influence) { return; }
+
         var new_value = OWC_value + value;
         
         new_value = Mathf.Clamp(new_value, min_influence, max_influence);

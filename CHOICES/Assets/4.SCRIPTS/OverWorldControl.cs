@@ -75,6 +75,11 @@ public class OverWorldControl : MonoBehaviour
     public List<MTOModifier> mtoModifiers;
     public List<OTCModifier> otcModifiers;
     public List<OTCCluster> otcClusters;
+
+    public List<OWCListener> OTCListeners;
+    public List<OWCListener> MTOListeners;
+    public List<OWCListener> GTLListeners;
+
     [Header("Modifier tweaks")]
     public float gtlCrossfadeTime = 10f;
 
@@ -151,6 +156,16 @@ public class OverWorldControl : MonoBehaviour
 
     #endregion
 
+    #region LISTENER
+
+    public void SubscribeListener(OWCListener listener, OWCListener.AXIS axis)
+    {
+        if (axis == OWCListener.AXIS.gtl) { GTLListeners.Add(listener); }
+        if (axis == OWCListener.AXIS.otc) { OTCListeners.Add(listener); }
+        if (axis == OWCListener.AXIS.mto) { MTOListeners.Add(listener); }
+    }
+
+    #endregion LISTENER
     #region GTL
     public void SetGloomyToLush(float iVal)
     {
@@ -246,6 +261,11 @@ public class OverWorldControl : MonoBehaviour
                  continue;
             // Update extra volumes
         }
+
+        foreach( OWCListener listener in GTLListeners)
+        {
+            listener.Call(GloomyToLush);
+        }
     }
 
     public IEnumerator CrossfadeSunsCo(float iCrossfadeTime)
@@ -317,6 +337,11 @@ public class OverWorldControl : MonoBehaviour
 
             mod.RefreshMaterials();
         }
+
+        foreach (OWCListener listener in MTOListeners)
+        {
+            listener.Call(MineralToOrganic);
+        }
     }
     private void ChangeModMaterial(MTOModifier iMod, Material iOldMat, Material iNewMat)
     {
@@ -375,6 +400,11 @@ public class OverWorldControl : MonoBehaviour
         // Activate clusters
         otcClusters.ForEach( c => c.spread(otcLookupTable, m_OrderToChaos));
 
+
+        foreach (OWCListener listener in OTCListeners)
+        {
+            listener.Call(OrderToChaos);
+        }
     }
     #endregion
 }
