@@ -1,67 +1,82 @@
 using UnityEngine;
+using UnityEngine.AI;
 using System.Collections;
 
-public class InsectBehaviour : MonoBehaviour
+public class InsectBehaviour : Creature
 {
-    public float minSpeed = 1f;
-    public float maxSpeed = 3f;
-    public float rotationSpeed = 120f;
-    public float minBreakTime = 1f;
-    public float maxBreakTime = 3f;
-    public float minRuningTime = 2f;
-    public float maxRuningTime = 2f;
+    public float moveDistance = 5f; 
+    public float waitTime = 2f; 
+    private bool waiting = false;
 
+    public float killWalkingSpeed = 2f;
 
-    private float speed;
-    private Vector3 direction;
-    private bool moving = true;
-
-    private ModelTools mt;
-    void Start()
+    private Vector3 terrainSize;
+    private Vector3 terrainPos;
+    private Transform childTransform;
+    void OnDrawGizmosSelected()
     {
-        mt = GetComponent<ModelTools>();
-        StartCoroutine(DeplacementRoutine());
+        Gizmos.color = Color.red;
+        Gizmos.DrawWireSphere(transform.position, moveDistance);
     }
 
-    IEnumerator DeplacementRoutine()
+    private void Start()
     {
-        while (true)
-        {
-            if (moving)
-            {
-                ChangerDirection();
-                speed = Random.Range(minSpeed, maxSpeed);
-
-                yield return new WaitForSeconds(Random.Range(minRuningTime,maxRuningTime));
-            }
-            else
-            {
-                yield return new WaitForSeconds(Random.Range(minBreakTime, maxBreakTime));
-                moving = true;
-            }
-        }
-    }
-
-    void ChangerDirection()
-    {
-        float angle = Random.Range(-90f, 90f);
-        transform.Rotate(Vector3.right * angle);
-        direction = transform.up;
+        agent.updateUpAxis = false; 
+        childTransform = transform.GetChild(0);
+        terrainSize = terrain.terrainData.size;
+        terrainPos = terrain.transform.position;
     }
 
     void Update()
     {
-        if (moving)
-        {
-            Vector3 newPos = transform.position + direction * speed * Time.deltaTime;
-            newPos.y = mt.getTerrainY();
-            transform.position = newPos;
-        }
+        if (!agent.enabled) { return;}
 
-        // Arrêt aléatoire
-        if (Random.Range(0f, 1f) < 0.01f)
+        Vector2 terrainRelativePos = new Vector2((childTransform.position.x - terrainPos.x) / terrainSize.x, (childTransform.position.z - terrainPos.z) / terrainSize.z);
+        transform.up = terrain.terrainData.GetInterpolatedNormal(terrainRelativePos.x, terrainRelativePos.y);
+
+        Debug.DrawLine(childTransform.position, childTransform.position + 10 * terrain.terrainData.GetInterpolatedNormal(terrainRelativePos.x, terrainRelativePos.y));
+        if (!waiting && agent.remainingDistance <= agent.stoppingDistance)
         {
-            moving = false;
+            StartCoroutine(WaitAndTurn());
+        }
+    }
+
+    IEnumerator WaitAndTurn()
+    {
+        waiting = true;
+        yield return new WaitForSeconds(waitTime);
+        if (agent.enabled)
+        {
+            MoveToRandomPosition();
+        }
+        waiting = false;
+    }
+
+    void MoveToRandomPosition()
+    {
+        Vector3 randomDirection = Random.insideUnitSphere * moveDistance; 
+        randomDirection += transform.position;
+        randomDirection.y = terrain.SampleHeight(transform.position);
+
+        NavMeshHit hit;
+        if (NavMesh.SamplePosition(randomDirection, out hit, moveDistance, NavMesh.AllAreas))
+        {
+            agent.SetDestination(hit.position);
+        }
+        else
+        {
+            MoveToRandomPosition();
+        }
+    }
+
+    private void OnCollisionEnter(Collision other)
+    {
+        if (other.gameObject.CompareTag("Player"))
+        {
+            if(other.gameObject.GetComponent<Rigidbody>().linearVelocity.magnitude > killWalkingSpeed)
+            {
+                Kill();
+            }
         }
     }
 }

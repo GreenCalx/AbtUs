@@ -740,6 +740,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 2719779435612444732}
+  - component: {fileID: 7002877516035757285}
   m_Layer: 0
   m_Name: ISLE1
   m_TagString: Untagged
@@ -766,6 +767,19 @@ Transform:
   - {fileID: 3862081804574749627}
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &7002877516035757285
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2754492247942749499}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: c0acd65c6c3da3541a7c5a10cd6b8a99, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  pool: []
 --- !u!1 &3387187127348944940
 GameObject:
   m_ObjectHideFlags: 0

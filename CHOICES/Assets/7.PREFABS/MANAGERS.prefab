@@ -10,6 +10,7 @@ GameObject:
   m_Component:
   - component: {fileID: 5234164145809327239}
   - component: {fileID: 1351181775370747892}
+  - component: {fileID: 5141452711767027010}
   m_Layer: 0
   m_Name: MANAGERS
   m_TagString: Untagged
@@ -49,3 +50,20 @@ MonoBehaviour:
   initPlayerCamLocalRot: {x: 0, y: 0, z: 0, w: 0}
   initPlayerCamParent: {fileID: 0}
   initPlayerFOV: 0
+--- !u!114 &5141452711767027010
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7808715935886537954}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: fb8c5ae9e2e122746807033e2db53142, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  pools:
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  activeIsland: ISLE0

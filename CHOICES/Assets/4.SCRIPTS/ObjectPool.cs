@@ -5,50 +5,40 @@ using UnityEngine;
 
 public class ObjectPool : MonoBehaviour
 {
-    private List<GameObject> pool = new List<GameObject>();
-    public Bounds bounds;
+    public List<GameObject> pool = new List<GameObject>();
 
-    public void Encapsulate(GameObject iGO)
+    public void Start()
     {
-        // update pool
-        if (pool.Contains(iGO))
-            return;
-
-        // update bounds
-        MeshRenderer MR = iGO.GetComponent<MeshRenderer>();
-        if (!!MR)
+        foreach(GameObject obj in pool)
         {
-            if (pool.Count==0)
-            { bounds = MR.bounds; }
-            else
-            { bounds.Encapsulate(MR.bounds); }
+            if(obj == null) { pool.Remove(obj); }
         }
-        
-        pool.Add(iGO);
     }
 
-    public void ApplyMargin(float iMargin) { bounds.Expand(iMargin); }
+    public void Enable(bool bol)
+    {
+        foreach(GameObject obj in pool)
+        {
+            obj.SetActive(bol);
+        }
+    }
 
-    public void Remove(GameObject iObject)
+
+    public void Add(GameObject iObject)
+    {
+        if (pool.Contains(iObject))
+            return;
+        pool.Add(iObject);
+        Debug.Log(iObject.name + " has been added to pool " + name);
+    }
+
+    public virtual void Remove(GameObject iObject)
     {
         if (!pool.Contains(iObject))
             return;
-        pool.Remove(iObject);
-        RefreshBounds();
+        pool.Remove(iObject);   
+        Debug.Log(iObject.name + " has been removed from pool " + name);
     }
 
-    public void RefreshBounds()
-    {
-        bounds = new Bounds();
-        foreach(GameObject go in pool) { bounds.Encapsulate(go.transform.localPosition); }
-    }
 
-    void OnDrawGizmosSelected()
-    {
-        // Draw a semitransparent red cube at the transforms position
-        Gizmos.color = new Color(1, 0, 0, 0.5f);
-        Gizmos.DrawCube(
-                bounds.center, bounds.size
-             );
-    }
 }

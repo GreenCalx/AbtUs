@@ -21,7 +21,7 @@ public class InteractibleObject : MonoBehaviour
     private PlayerController player;
     private float distFromPlayer = 0f;
     public Rigidbody RB;
-    private Coroutine ActionCo;
+    protected Coroutine ActionCo;
 
     void Start()
     {
@@ -96,13 +96,15 @@ public class InteractibleObject : MonoBehaviour
     }
 
     #region MOVE
-    public void Move()
+    public virtual void Move()
     {
         if (RB!=null)
         {
             RB.isKinematic = true;
             RB.useGravity = false;
         }
+        
+
         // Clamp pos to center of screen
         if (ActionCo!=null)
         {
@@ -113,7 +115,7 @@ public class InteractibleObject : MonoBehaviour
         ActionCo = StartCoroutine(MoveCo());
     }
 
-    public void StopMove()
+    public virtual void StopMove()
     {
         if (RB!=null)
         {

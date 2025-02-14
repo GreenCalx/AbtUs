@@ -99,14 +99,6 @@ PrefabInstance:
         type: 3}
       insertIndex: -1
       addedObject: {fileID: 2081639140223426285}
-    - targetCorrespondingSourceObject: {fileID: 919132149155446097, guid: 7a14e8e09fcbc5543974eae6b52ca61d,
-        type: 3}
-      insertIndex: -1
-      addedObject: {fileID: 8894981189564430496}
-    - targetCorrespondingSourceObject: {fileID: 919132149155446097, guid: 7a14e8e09fcbc5543974eae6b52ca61d,
-        type: 3}
-      insertIndex: -1
-      addedObject: {fileID: 2350569819242226243}
   m_SourcePrefab: {fileID: 100100000, guid: 7a14e8e09fcbc5543974eae6b52ca61d, type: 3}
 --- !u!1 &2003089151383586577 stripped
 GameObject:
@@ -222,34 +214,3 @@ VFXRenderer:
   m_SortingLayerID: 0
   m_SortingLayer: 0
   m_SortingOrder: 0
---- !u!114 &8894981189564430496
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 2003089151383586577}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: cdafc37f32b176349b1684c4455b98e9, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  m_ExecuteInEditor: 1
-  m_Bindings:
-  - {fileID: 2350569819242226243}
-  m_VisualEffect: {fileID: 8330229735641568465}
---- !u!114 &2350569819242226243
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 2003089151383586577}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 305382d41a2824c449ede79a89a95c52, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  m_Property:
-    m_Name: Terrain
-  Terrain: {fileID: 0}

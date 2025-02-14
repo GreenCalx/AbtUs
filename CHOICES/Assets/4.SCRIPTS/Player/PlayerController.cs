@@ -197,13 +197,13 @@ public class PlayerController : MonoBehaviour
         if (FPSCamera.TryRCFromScreenCenter(out objectRayHit, actionDistance))
         {
             // did hit
-            InteractibleObject iobj = objectRayHit.collider.gameObject.GetComponent<InteractibleObject>();
+            InteractibleObject iobj = objectRayHit.collider.gameObject.GetComponentInParent<InteractibleObject>();
             if (iobj!=null)
             {
                 if (iobj==targetedInteractibleObject)
                     return;
-
                 targetedInteractibleObject = iobj;
+                Debug.Log("gay" + (targetedInteractibleObject.GetSelectedAction().ToString()));
                 //UIGame.Instance.TryChangeCrosshairColor(Color.green);
                 UIGame.Instance.UpdateCursorFromPlayerAction(targetedInteractibleObject.GetSelectedAction());
                 return;
