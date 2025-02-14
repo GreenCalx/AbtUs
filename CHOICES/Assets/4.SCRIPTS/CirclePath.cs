@@ -24,9 +24,19 @@ public class CirclePath : MonoBehaviour
 
     public Vector3 GetCoord(float iAngleInDegree)
     {
-        return new Vector3( circleCenter.x + radius * Mathf.Cos( (iAngleInDegree + circleRotationOffset)  * Mathf.PI/180f), 
-                            circleCenter.y + radius * Mathf.Sin( (iAngleInDegree+ circleRotationOffset) * Mathf.PI/180f ), 
+        return new Vector3( circleCenter.x + radius * Mathf.Cos( (iAngleInDegree /*+ circleRotationOffset*/)  * Mathf.PI/180f), 
+                            circleCenter.y + radius * Mathf.Sin( (iAngleInDegree /*+ circleRotationOffset*/) * Mathf.PI/180f ), 
                             circleCenter.z);
+    }
+
+    public float GetAngle(Vector3 iCoord)
+    {
+        //float angle =   Mathf.Atan2(iCoord.x - circleCenter.x, iCoord.y-circleCenter.y) * Mathf.Rad2Deg;
+        //return angle <= 180? angle: angle - 360;
+        float angle = Mathf.Atan2(iCoord.y-circleCenter.y, iCoord.x - circleCenter.x) * Mathf.Rad2Deg;
+        angle = angle < 0 ? 360f+angle : angle;
+        Debug.Log("Angle " + angle);
+        return angle;
     }
 
     public void DrawPath()

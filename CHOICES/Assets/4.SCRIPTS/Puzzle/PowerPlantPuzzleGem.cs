@@ -14,7 +14,9 @@ public class PowerPlantPuzzleGem : MonoBehaviour
     public GEM_SHAPE gemShape;   
     public bool GemIsActive = false;
     public bool GemIsAligned = false;
-
+    [Header("Internals")]
+    [Range(-1,1)]
+    private short slideDir = 0;
     private AudioSource audioSource;
     private MeshRenderer meshRenderer;
 
@@ -65,4 +67,11 @@ public class PowerPlantPuzzleGem : MonoBehaviour
             }
         }
     }
+
+    public bool IsSlidingCW() { return slideDir > 0; }
+    public bool IsSlidingCCW() { return slideDir < 0; }
+    public void SetAsSlidingCW() { slideDir = 1; pathWalker.NotifyCWMotion(); }
+    public void SetAsSlidingCCW() { slideDir = -1; pathWalker.NotifyCCWMotion(); }
+    public void SetAsNotSliding() { slideDir = 0; }
+
 }

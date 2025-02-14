@@ -23,7 +23,7 @@ TagManager:
   - CHOICEB_EXIT
   - Terrain
   - PuzzleItem
-  - 
+  - PuzzleCollider
   - 
   - 
   - 
