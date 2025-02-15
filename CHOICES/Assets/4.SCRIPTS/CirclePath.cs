@@ -35,7 +35,6 @@ public class CirclePath : MonoBehaviour
         //return angle <= 180? angle: angle - 360;
         float angle = Mathf.Atan2(iCoord.y-circleCenter.y, iCoord.x - circleCenter.x) * Mathf.Rad2Deg;
         angle = angle < 0 ? 360f+angle : angle;
-        Debug.Log("Angle " + angle);
         return angle;
     }
 

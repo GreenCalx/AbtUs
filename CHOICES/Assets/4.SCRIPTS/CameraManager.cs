@@ -65,7 +65,7 @@ public class CameraManager : MonoBehaviour
         playerCam.transform.parent = iRefCam.transform.parent;
 
         //Vector3 cameraRelativePos = playerCam.transform.InverseTransformPoint(iRefCam.transform.position);
-        StartCoroutine(LerpCamToCo(iRefCam.transform.localPosition, iRefCam.transform.rotation,iRefCam.cam.fieldOfView, iTime));
+        StartCoroutine(LerpCamToCo(iRefCam.transform.localPosition, iRefCam.transform.localRotation,iRefCam.cam.fieldOfView, iTime));
     }
 
     IEnumerator LerpCamToCo(Vector3 iRefCamPos, Quaternion iRefCamRot, float iRefCamFOV, float iTime)
@@ -73,7 +73,7 @@ public class CameraManager : MonoBehaviour
         float elapsedTime = 0f;
 
         Vector3 startPos = playerCam.transform.localPosition;
-        Quaternion startRot = playerCam.transform.rotation;
+        Quaternion startRot = playerCam.transform.localRotation;
         float startFOV = playerCam.cam.fieldOfView;
         while (elapsedTime <= iTime)    
         {

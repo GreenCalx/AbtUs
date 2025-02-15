@@ -109,7 +109,6 @@ public class PowerPlantPuzzle : Puzzle
                     if (!gem.pathWalker.IsBlockedCW)
                     {
                         gem.pathWalker.angle -= slideSpeed;
-                        //gem.SetAsSlidingCW();
                         gem.pathWalker.isManualSlidingCW = true;
                     }
                     
@@ -118,7 +117,6 @@ public class PowerPlantPuzzle : Puzzle
                     if (!gem.pathWalker.IsBlockedCCW)
                     {
                         gem.pathWalker.angle += slideSpeed;
-                        //gem.SetAsSlidingCCW();
                         gem.pathWalker.isManualSlidingCCW = true;
                     }
                 }
@@ -172,7 +170,7 @@ public class PowerPlantPuzzle : Puzzle
     IEnumerator BlockLerpCo()
     {
         Vector3 init = self_puzzleBlock.transform.localPosition;
-        Vector3 target = new Vector3( init.x, init.y, -init.z);
+        Vector3 target = new Vector3( init.x, init.y, -(init.z/2f));
         float startTime = Time.time;
         while ( (Time.time - startTime) < pushLerpTime)
         {

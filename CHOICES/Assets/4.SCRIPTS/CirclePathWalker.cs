@@ -29,6 +29,7 @@ public class CirclePathWalker : MonoBehaviour
     void Start()
     {
         angle = initAngle;
+        transform.localPosition = path.GetCoord(angle);
     }
 
     void Update()

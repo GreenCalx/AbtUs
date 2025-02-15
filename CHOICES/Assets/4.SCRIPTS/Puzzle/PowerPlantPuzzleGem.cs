@@ -1,4 +1,7 @@
+using System;
+using System.Collections;
 using UnityEngine;
+using UnityEngine.Events;
 
 [RequireComponent(typeof(AudioSource))]
 [RequireComponent(typeof(MeshRenderer))]
@@ -8,6 +11,7 @@ public class PowerPlantPuzzleGem : MonoBehaviour
     public CirclePathWalker pathWalker;
     public AudioClip audioClipAligned;
     public AudioClip audioClipMismatch;
+    public float audioAlignementTransmissionLatency = 0.2f;
     public Material NotAlignedMat;
     public Material AlignedMat;
     
@@ -19,6 +23,7 @@ public class PowerPlantPuzzleGem : MonoBehaviour
     private short slideDir = 0;
     private AudioSource audioSource;
     private MeshRenderer meshRenderer;
+    private Coroutine audioTransmissionCo;
 
     // Start is called once before the first execution of Update after the MonoBehaviour is created
     void Start()
@@ -45,7 +50,10 @@ public class PowerPlantPuzzleGem : MonoBehaviour
                     if (!GemIsAligned)
                     {
                         audioSource.clip = audioClipAligned;
-                        audioSource.Play();
+                        othergem.audioSource.clip = othergem.audioClipAligned;
+                        //audioSource.Play();
+                        if (!audioSource.isPlaying)
+                        { audioTransmissionCo = StartCoroutine(PlayGemsAudioCo(audioSource, othergem.audioSource)); }
                         meshRenderer.material = AlignedMat;
                     }
                     GemIsAligned = true;
@@ -53,8 +61,12 @@ public class PowerPlantPuzzleGem : MonoBehaviour
                     
                 } else 
                 {
-                    audioSource.clip = audioClipMismatch;
-                    audioSource.Play();
+                    
+                    audioSource.clip = audioClipAligned;
+                    othergem.audioSource.clip = othergem.audioClipAligned;
+
+                    if (!audioSource.isPlaying)
+                    { audioTransmissionCo = StartCoroutine(PlayGemsAudioCo(audioSource, othergem.audioSource)); }
                 }
             } else {
                 Debug.DrawRay(transform.position, -transform.up * 50f, Color.red);
@@ -67,6 +79,14 @@ public class PowerPlantPuzzleGem : MonoBehaviour
             }
         }
     }
+
+    IEnumerator PlayGemsAudioCo(AudioSource iFirstGemAS, AudioSource iSecondGemAS)
+    {
+        iFirstGemAS.Play();
+        yield return new WaitForSeconds(audioAlignementTransmissionLatency);
+        iSecondGemAS.Play();
+    }
+
 
     public bool IsSlidingCW() { return slideDir > 0; }
     public bool IsSlidingCCW() { return slideDir < 0; }
