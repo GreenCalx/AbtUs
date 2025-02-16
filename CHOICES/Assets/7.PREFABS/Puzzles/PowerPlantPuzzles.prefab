@@ -373,6 +373,7 @@ MonoBehaviour:
   audioAlignementTransmissionLatency: 0.2
   NotAlignedMat: {fileID: 2100000, guid: 43c440370335b2448bf3585df98d55fe, type: 2}
   AlignedMat: {fileID: 2100000, guid: 2309f7988d683ba4c96ea90b1c8c6f99, type: 2}
+  WrongAlignedMat: {fileID: 2100000, guid: d6eddd6016394a14993cf317254663ed, type: 2}
   gemShape: 1
   GemIsActive: 0
   GemIsAligned: 0
@@ -685,6 +686,7 @@ MonoBehaviour:
   audioAlignementTransmissionLatency: 0.5
   NotAlignedMat: {fileID: 2100000, guid: 43c440370335b2448bf3585df98d55fe, type: 2}
   AlignedMat: {fileID: 2100000, guid: 2309f7988d683ba4c96ea90b1c8c6f99, type: 2}
+  WrongAlignedMat: {fileID: 2100000, guid: d6eddd6016394a14993cf317254663ed, type: 2}
   gemShape: 1
   GemIsActive: 0
   GemIsAligned: 0
@@ -1290,6 +1292,7 @@ MonoBehaviour:
   audioAlignementTransmissionLatency: 0.5
   NotAlignedMat: {fileID: 2100000, guid: 43c440370335b2448bf3585df98d55fe, type: 2}
   AlignedMat: {fileID: 2100000, guid: 2309f7988d683ba4c96ea90b1c8c6f99, type: 2}
+  WrongAlignedMat: {fileID: 2100000, guid: d6eddd6016394a14993cf317254663ed, type: 2}
   gemShape: 1
   GemIsActive: 0
   GemIsAligned: 0
@@ -1602,6 +1605,7 @@ MonoBehaviour:
   audioAlignementTransmissionLatency: 0.5
   NotAlignedMat: {fileID: 2100000, guid: 43c440370335b2448bf3585df98d55fe, type: 2}
   AlignedMat: {fileID: 2100000, guid: 2309f7988d683ba4c96ea90b1c8c6f99, type: 2}
+  WrongAlignedMat: {fileID: 2100000, guid: d6eddd6016394a14993cf317254663ed, type: 2}
   gemShape: 1
   GemIsActive: 0
   GemIsAligned: 0
@@ -1920,6 +1924,7 @@ MonoBehaviour:
   audioAlignementTransmissionLatency: 0.5
   NotAlignedMat: {fileID: 2100000, guid: 43c440370335b2448bf3585df98d55fe, type: 2}
   AlignedMat: {fileID: 2100000, guid: 2309f7988d683ba4c96ea90b1c8c6f99, type: 2}
+  WrongAlignedMat: {fileID: 2100000, guid: d6eddd6016394a14993cf317254663ed, type: 2}
   gemShape: 1
   GemIsActive: 0
   GemIsAligned: 0
@@ -2226,6 +2231,7 @@ MonoBehaviour:
   audioAlignementTransmissionLatency: 0.5
   NotAlignedMat: {fileID: 2100000, guid: 43c440370335b2448bf3585df98d55fe, type: 2}
   AlignedMat: {fileID: 2100000, guid: 2309f7988d683ba4c96ea90b1c8c6f99, type: 2}
+  WrongAlignedMat: {fileID: 2100000, guid: d6eddd6016394a14993cf317254663ed, type: 2}
   gemShape: 1
   GemIsActive: 0
   GemIsAligned: 0

@@ -14,17 +14,19 @@ public class PowerPlantPuzzleGem : MonoBehaviour
     public float audioAlignementTransmissionLatency = 0.2f;
     public Material NotAlignedMat;
     public Material AlignedMat;
+    public Material WrongAlignedMat;
     
     public GEM_SHAPE gemShape;   
     public bool GemIsActive = false;
     public bool GemIsAligned = false;
+    public bool GemIsMisalgined = false;
     [Header("Internals")]
     [Range(-1,1)]
     private short slideDir = 0;
     private AudioSource audioSource;
     private MeshRenderer meshRenderer;
     private Coroutine audioTransmissionCo;
-
+    private bool requireMatReset = false;
     // Start is called once before the first execution of Update after the MonoBehaviour is created
     void Start()
     {
@@ -58,24 +60,41 @@ public class PowerPlantPuzzleGem : MonoBehaviour
                     }
                     GemIsAligned = true;
                     othergem.GemIsAligned = true;
-                    
-                } else 
-                {
-                    
-                    audioSource.clip = audioClipAligned;
-                    othergem.audioSource.clip = othergem.audioClipAligned;
 
-                    if (!audioSource.isPlaying)
-                    { audioTransmissionCo = StartCoroutine(PlayGemsAudioCo(audioSource, othergem.audioSource)); }
+                    GemIsMisalgined = false;
+                    othergem.GemIsMisalgined = false;
+                    
+                } else if (othergem.gemShape != gemShape)
+                {
+                    if (!GemIsMisalgined)
+                    {
+                        audioSource.clip = audioClipAligned;
+                        othergem.audioSource.clip = othergem.audioClipAligned;
+
+                        if (!audioSource.isPlaying)
+                        { audioTransmissionCo = StartCoroutine(PlayGemsAudioCo(audioSource, othergem.audioSource)); }
+
+                        meshRenderer.material = WrongAlignedMat;
+                    }
+
+                    GemIsAligned = true;
+                    othergem.GemIsAligned = true;
+
+                    GemIsMisalgined = true;
+                    othergem.GemIsMisalgined = true;
                 }
+                requireMatReset = true;
+
             } else {
                 Debug.DrawRay(transform.position, -transform.up * 50f, Color.red);
-                if (GemIsAligned)
+                if (requireMatReset)
                 {
                     meshRenderer.material = NotAlignedMat;
+                    requireMatReset = false;
                 }
-
+                
                 GemIsAligned = false;
+                GemIsMisalgined = false;
             }
         }
     }

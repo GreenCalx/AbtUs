@@ -43,6 +43,8 @@ public class PowerPlantPuzzle : Puzzle
         {
             if (!gem.GemIsAligned)
                 return false;
+            if (gem.GemIsMisalgined)
+                return false;
         }
         return true;
     }
