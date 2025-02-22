@@ -12,7 +12,7 @@ public class OWCEnabler : OWCListener
     protected override void Init(float axis_value)
     {
         enablerChildren = new List<GameObject>();
-        foreach(Transform child in GetComponentInChildren<Transform>()) // Todo on editor 
+        foreach(Transform child in transform) // Todo on editor 
         {
             GameObject childObj = child.gameObject;
             if (childObj != this.gameObject)
@@ -29,11 +29,11 @@ public class OWCEnabler : OWCListener
         if(isOWCInRange == (axis_value > minOWCSpawnRange && axis_value < maxOWCSpawnRange)) { return; }
         isOWCInRange = !isOWCInRange;
 
-        foreach (GameObject child in GetComponentInChildren<Transform>()) // Todo on editor 
+        foreach (Transform child in transform) // Todo on editor 
         {
-            if (child != this.gameObject)
+            if (child.gameObject != this.gameObject)
             {
-                child.SetActive(isOWCInRange);
+                child.gameObject.SetActive(isOWCInRange);
             }
         }
     }

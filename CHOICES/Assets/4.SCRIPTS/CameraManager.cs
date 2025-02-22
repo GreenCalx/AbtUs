@@ -12,22 +12,8 @@ public class CameraManager : MonoBehaviour
     public Quaternion initPlayerCamLocalRot;
     public Transform initPlayerCamParent;
     public float initPlayerFOV;
-    private static CameraManager instance = null;
-    public static CameraManager Instance => instance;
     public Coroutine camLerpCo;
 
-    void Awake()
-    {
-        if (instance != null && instance != this)
-        {
-            Destroy(this.gameObject);
-            return;
-        }
-        else
-        {
-            instance = this;
-        }
-    }
 
     void Start()
     {

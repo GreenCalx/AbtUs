@@ -377,6 +377,7 @@ MonoBehaviour:
   gemShape: 1
   GemIsActive: 0
   GemIsAligned: 0
+  GemIsMisalgined: 0
 --- !u!82 &6733525204047006458
 AudioSource:
   m_ObjectHideFlags: 0
@@ -690,6 +691,7 @@ MonoBehaviour:
   gemShape: 1
   GemIsActive: 0
   GemIsAligned: 0
+  GemIsMisalgined: 0
 --- !u!82 &4024429270284478204
 AudioSource:
   m_ObjectHideFlags: 0
@@ -1296,6 +1298,7 @@ MonoBehaviour:
   gemShape: 1
   GemIsActive: 0
   GemIsAligned: 0
+  GemIsMisalgined: 0
 --- !u!82 &138749753798903745
 AudioSource:
   m_ObjectHideFlags: 0
@@ -1609,6 +1612,7 @@ MonoBehaviour:
   gemShape: 1
   GemIsActive: 0
   GemIsAligned: 0
+  GemIsMisalgined: 0
 --- !u!82 &9171791607231187247
 AudioSource:
   m_ObjectHideFlags: 0
@@ -1928,6 +1932,7 @@ MonoBehaviour:
   gemShape: 1
   GemIsActive: 0
   GemIsAligned: 0
+  GemIsMisalgined: 0
 --- !u!82 &2326999352506276112
 AudioSource:
   m_ObjectHideFlags: 0
@@ -2235,6 +2240,7 @@ MonoBehaviour:
   gemShape: 1
   GemIsActive: 0
   GemIsAligned: 0
+  GemIsMisalgined: 0
 --- !u!82 &2363213728271744457
 AudioSource:
   m_ObjectHideFlags: 0

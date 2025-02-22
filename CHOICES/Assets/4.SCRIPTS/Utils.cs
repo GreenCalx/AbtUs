@@ -6,4 +6,10 @@ public static class Utils
     {
         return a * (1f - f) + (b * f);
     }
+
+    public static float Remap(float iVal, float iOldMin, float iOldMax, float iNewMin, float iNewMax)
+    {
+        return iNewMin + (iVal/(iOldMax - iOldMin))*(iNewMax-iNewMin);
+    }
+    
 }

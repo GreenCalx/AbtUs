@@ -12,10 +12,10 @@ public class GameCamera : MonoBehaviour
 
         if (isPlayerCam)
         {
-            CameraManager.Instance.initPlayerCamLocalPos = transform.localPosition;
-            CameraManager.Instance.initPlayerCamLocalRot = transform.localRotation;
-            CameraManager.Instance.initPlayerFOV = cam.fieldOfView;
-            CameraManager.Instance.initPlayerCamParent = transform.parent;
+            Managers.Instance.Camera.initPlayerCamLocalPos = transform.localPosition;
+            Managers.Instance.Camera.initPlayerCamLocalRot = transform.localRotation;
+            Managers.Instance.Camera.initPlayerFOV = cam.fieldOfView;
+            Managers.Instance.Camera.initPlayerCamParent = transform.parent;
         }
         
     }

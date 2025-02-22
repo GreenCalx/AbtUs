@@ -2,6 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.Events;
+using Unity.Mathematics;
 
 using System.Linq;
 
@@ -59,6 +60,30 @@ public class OverWorldControl : MonoBehaviour
                 return;
             SetOrderToChaos(value);
         }
+    }
+    public float OrderMagnitude
+    {   // clamp inner val to slide window min
+        get { return math.remap(0.5f,1f,0f,1f, Mathf.Clamp(m_OrderToChaos,0.5f,1f)); }
+    }
+    public float ChaosMagnitude
+    {   // just contain overflow with clamp for mins
+        get { return math.remap(0.5f,0f,0f,1f, Mathf.Clamp(m_OrderToChaos,0f,0.5f)); }
+    }
+    public float OrganicMagnitude
+    {   // clamp inner val to slide window min
+        get { return math.remap(0.5f,1f,0f,1f, Mathf.Clamp(m_MineralToOrganic,0.5f,1f)); }
+    }
+    public float MineralMagnitude
+    {   // just contain overflow with clamp for mins
+        get { return math.remap(0.5f,0f,0f,1f, Mathf.Clamp(m_MineralToOrganic,0f,0.5f)); }
+    }
+    public float LushMagnitude
+    {   // clamp inner val to slide window min
+        get { return math.remap(0.5f,1f,0f,1f, Mathf.Clamp(m_GloomyToLush,0.5f,1f)); }
+    }
+    public float GloomyMagnitude
+    {   // just contain overflow with clamp for mins
+        get { return math.remap(0.5f,0f,0f,1f, Mathf.Clamp(m_GloomyToLush,0f,0.5f)); }
     }
     [Header("LookUpTables")]
     public GTLLookupTable gtlLookupTable;
@@ -178,6 +203,7 @@ public class OverWorldControl : MonoBehaviour
     {
         m_GloomyToLush = Mathf.Clamp(iVal, 0f, 1f);
         RefreshGTLMods();
+        Managers.Instance.Sound?.UpdateBGM();
     }
     public void SubscribeGTL<T,K>(GTLModifier<T,K> iGTLMod)
     {
@@ -315,6 +341,7 @@ public class OverWorldControl : MonoBehaviour
         m_MineralToOrganic = Mathf.Clamp(iVal, 0f, 1f);
 
         RefreshMTOMods();
+        Managers.Instance.Sound?.UpdateBGM();
     }
     public void SubscribeMTO(MTOModifier iMTOMod)
     {
@@ -362,6 +389,7 @@ public class OverWorldControl : MonoBehaviour
         m_OrderToChaos = Mathf.Clamp(iVal, 0f, 1f);
 
         RefreshOTCMods();
+        Managers.Instance.Sound?.UpdateBGM();
     }
     public void SubscribeOTC(OTCModifier iOTCMod)
     {

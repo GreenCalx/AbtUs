@@ -11,6 +11,8 @@ GameObject:
   - component: {fileID: 5234164145809327239}
   - component: {fileID: 1351181775370747892}
   - component: {fileID: 5141452711767027010}
+  - component: {fileID: 4411285101250788071}
+  - component: {fileID: 3641437771648589987}
   m_Layer: 0
   m_Name: MANAGERS
   m_TagString: Untagged
@@ -57,7 +59,7 @@ MonoBehaviour:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 7808715935886537954}
-  m_Enabled: 1
+  m_Enabled: 0
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: fb8c5ae9e2e122746807033e2db53142, type: 3}
   m_Name: 
@@ -67,3 +69,69 @@ MonoBehaviour:
   - {fileID: 0}
   - {fileID: 0}
   activeIsland: ISLE0
+--- !u!114 &4411285101250788071
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7808715935886537954}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 97a5d13f6665a4e46b27cdf7cdd2b7aa, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  MasterMixer: {fileID: 24100000, guid: db75389766bf90040ade59d8f62c88b9, type: 2}
+  BGMMixerGroup: {fileID: -1379388474459623540, guid: db75389766bf90040ade59d8f62c88b9,
+    type: 2}
+  OrderMixerGroup: {fileID: -4205575427258319574, guid: db75389766bf90040ade59d8f62c88b9,
+    type: 2}
+  ChaosMixerGroup: {fileID: 1226697324501464250, guid: db75389766bf90040ade59d8f62c88b9,
+    type: 2}
+  MineralMixerGroup: {fileID: -848211990786435175, guid: db75389766bf90040ade59d8f62c88b9,
+    type: 2}
+  OrganicMixerGroup: {fileID: 7198650533113192115, guid: db75389766bf90040ade59d8f62c88b9,
+    type: 2}
+  GloomyMixerGroup: {fileID: -4438675699561091850, guid: db75389766bf90040ade59d8f62c88b9,
+    type: 2}
+  LushMixerGroup: {fileID: 6668011106794442984, guid: db75389766bf90040ade59d8f62c88b9,
+    type: 2}
+  FXMixerGroup: {fileID: -8989861668619051098, guid: db75389766bf90040ade59d8f62c88b9,
+    type: 2}
+  prefabFXAudioSource: {fileID: 4030520552950754712, guid: bfc15dd127072ed438bce3ff12fa7e30,
+    type: 3}
+  prefabBGMAudioSource: {fileID: 4030520552950754712, guid: e063bba8e001924429e18cbfacbfdfe3,
+    type: 3}
+  chaosBGM: {fileID: 8300000, guid: 15229d31d27a2e54a91ee3523f5e04ee, type: 3}
+  orderBGM: {fileID: 8300000, guid: 15229d31d27a2e54a91ee3523f5e04ee, type: 3}
+  organicBGM: {fileID: 8300000, guid: 15229d31d27a2e54a91ee3523f5e04ee, type: 3}
+  mineralBGM: {fileID: 8300000, guid: 15229d31d27a2e54a91ee3523f5e04ee, type: 3}
+  gloomyBGM: {fileID: 8300000, guid: 15229d31d27a2e54a91ee3523f5e04ee, type: 3}
+  lushBGM: {fileID: 8300000, guid: 15229d31d27a2e54a91ee3523f5e04ee, type: 3}
+  BgmMinVolume: -80
+  BgmMaxVolume: 0
+  BPM_SYNC: 90
+  fxChannels: 3
+  MaxTimeBeforeFXChannelClean: 10
+  fxAudioCanals: []
+  bgmOrderAudioCanal: {fileID: 0}
+  bgmChaosAudioCanal: {fileID: 0}
+  bgmMineralAudioCanal: {fileID: 0}
+  bgmOrganicAudioCanal: {fileID: 0}
+  bgmGloomyAudioCanal: {fileID: 0}
+  bgmLushAudioCanal: {fileID: 0}
+  playQueue: []
+--- !u!114 &3641437771648589987
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7808715935886537954}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 2d2c5b0e7d209a445a6492cf283f1bbf, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  Sound: {fileID: 0}
+  Camera: {fileID: 0}

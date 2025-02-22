@@ -26,7 +26,7 @@ public class PowerPlantPuzzle : Puzzle
 
         playerInPuzzle = iPC;
 
-        CameraManager.Instance.LerpCamToRef(puzzleCam, 1f);
+        Managers.Instance.Camera.LerpCamToRef(puzzleCam, 1f);
         playerInPuzzle.freeze_WASD = true;
         playerInPuzzle.freeze_CAM = true;
 
@@ -153,7 +153,7 @@ public class PowerPlantPuzzle : Puzzle
 
     public override void StopPuzzle()
     {
-        CameraManager.Instance.ResetPlayerCam( 1f);
+        Managers.Instance.Camera.ResetPlayerCam( 1f);
         playerInPuzzle.freeze_WASD = false;
         playerInPuzzle.freeze_CAM = false;
         foreach ( PowerPlantPuzzleGem gem in gemsToAlign ) { gem.GemIsActive = false; }
