@@ -61,11 +61,11 @@ public class OverWorldControl : MonoBehaviour
             SetOrderToChaos(value);
         }
     }
-    public float OrderMagnitude
+    public float ChaosMagnitude
     {   // clamp inner val to slide window min
         get { return math.remap(0.5f,1f,0f,1f, Mathf.Clamp(m_OrderToChaos,0.5f,1f)); }
     }
-    public float ChaosMagnitude
+    public float OrderMagnitude
     {   // just contain overflow with clamp for mins
         get { return math.remap(0.5f,0f,0f,1f, Mathf.Clamp(m_OrderToChaos,0f,0.5f)); }
     }

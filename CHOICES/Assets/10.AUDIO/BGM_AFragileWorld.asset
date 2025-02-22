@@ -1,0 +1,167 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 5bff5872837fef54e8b33432c9457de9, type: 3}
+  m_Name: BGM_AFragileWorld
+  m_EditorClassIdentifier: 
+  BgmTrackCutVolume: -30
+  BPM_SYNC: 90
+  TIME_SIG_MEASURE_SIZE: 4
+  orderBGM: {fileID: 8300000, guid: d389119fdde7bcd4887111ecebe36d16, type: 3}
+  bgmOrderedVolumeCurve:
+    serializedVersion: 2
+    m_Curve:
+    - serializedVersion: 3
+      time: 0
+      value: 0
+      inSlope: -30
+      outSlope: -30
+      tangentMode: 34
+      weightedMode: 0
+      inWeight: 0
+      outWeight: 0.33333334
+    - serializedVersion: 3
+      time: 1
+      value: -30
+      inSlope: -30
+      outSlope: -30
+      tangentMode: 34
+      weightedMode: 0
+      inWeight: 0.33333334
+      outWeight: 0
+    m_PreInfinity: 2
+    m_PostInfinity: 2
+    m_RotationOrder: 4
+  chaosBGM: {fileID: 8300000, guid: 264b7edbcfc5b69419b4c1488e3b4c65, type: 3}
+  bgmChaosVolumeCurve:
+    serializedVersion: 2
+    m_Curve:
+    - serializedVersion: 3
+      time: 0
+      value: -30
+      inSlope: 33.5499
+      outSlope: 33.5499
+      tangentMode: 0
+      weightedMode: 0
+      inWeight: 0
+      outWeight: 0.1813616
+    - serializedVersion: 3
+      time: 1
+      value: 0
+      inSlope: 30
+      outSlope: 30
+      tangentMode: 34
+      weightedMode: 0
+      inWeight: 0.33333334
+      outWeight: 0
+    m_PreInfinity: 2
+    m_PostInfinity: 2
+    m_RotationOrder: 4
+  mineralBGM: {fileID: 8300000, guid: a0f5e9d16bd154c43ad015dd161f87ae, type: 3}
+  bgmMineralVolumeCurve:
+    serializedVersion: 2
+    m_Curve:
+    - serializedVersion: 3
+      time: 0
+      value: 0
+      inSlope: -30
+      outSlope: -30
+      tangentMode: 34
+      weightedMode: 0
+      inWeight: 0
+      outWeight: 0.33333334
+    - serializedVersion: 3
+      time: 1
+      value: -30
+      inSlope: -30
+      outSlope: -30
+      tangentMode: 34
+      weightedMode: 0
+      inWeight: 0.33333334
+      outWeight: 0
+    m_PreInfinity: 2
+    m_PostInfinity: 2
+    m_RotationOrder: 4
+  organicBGM: {fileID: 8300000, guid: c44c07e53779640448a72ad33d92cea4, type: 3}
+  bgmOrganicVolumeCurve:
+    serializedVersion: 2
+    m_Curve:
+    - serializedVersion: 3
+      time: 0
+      value: -30
+      inSlope: 33.5499
+      outSlope: 33.5499
+      tangentMode: 0
+      weightedMode: 0
+      inWeight: 0
+      outWeight: 0.1813616
+    - serializedVersion: 3
+      time: 1
+      value: 0
+      inSlope: 30
+      outSlope: 30
+      tangentMode: 34
+      weightedMode: 0
+      inWeight: 0.33333334
+      outWeight: 0
+    m_PreInfinity: 2
+    m_PostInfinity: 2
+    m_RotationOrder: 4
+  gloomyBGM: {fileID: 8300000, guid: 482110e2bab318b40afcce17187bcd44, type: 3}
+  bgmGloomyVolumeCurve:
+    serializedVersion: 2
+    m_Curve:
+    - serializedVersion: 3
+      time: 0
+      value: 0
+      inSlope: -30
+      outSlope: -30
+      tangentMode: 34
+      weightedMode: 0
+      inWeight: 0
+      outWeight: 0.33333334
+    - serializedVersion: 3
+      time: 1
+      value: -30
+      inSlope: -30
+      outSlope: -30
+      tangentMode: 34
+      weightedMode: 0
+      inWeight: 0.33333334
+      outWeight: 0
+    m_PreInfinity: 2
+    m_PostInfinity: 2
+    m_RotationOrder: 4
+  lushBGM: {fileID: 8300000, guid: eeed80cf8f8011d469ea7f723452cc3e, type: 3}
+  bgmLushVolumeCurve:
+    serializedVersion: 2
+    m_Curve:
+    - serializedVersion: 3
+      time: 0
+      value: -30
+      inSlope: 33.5499
+      outSlope: 33.5499
+      tangentMode: 0
+      weightedMode: 0
+      inWeight: 0
+      outWeight: 0.1813616
+    - serializedVersion: 3
+      time: 1
+      value: 0
+      inSlope: 30
+      outSlope: 30
+      tangentMode: 34
+      weightedMode: 0
+      inWeight: 0.33333334
+      outWeight: 0
+    m_PreInfinity: 2
+    m_PostInfinity: 2
+    m_RotationOrder: 4

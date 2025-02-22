@@ -25,32 +25,10 @@ public class SoundManager : MonoBehaviour
     public GameObject prefabBGMAudioSource;
 
     [Header("BGM")]
-    public AudioClip chaosBGM;
-    public AudioClip orderBGM;
-    public AudioClip organicBGM;
-    public AudioClip mineralBGM;
-    public AudioClip gloomyBGM;
-    public AudioClip lushBGM;
-
+    public BGMData bgmData;
     [Header("Tweaks")]
-     public float BgmTrackCutVolume = -30f;
-    // public float BgmMaxVolume = 0f;
-    [Range(0,512)]
-    public uint BPM_SYNC = 90;
-    public uint TIME_SIG_MEASURE_SIZE = 4;
-    public AnimationCurve bgmOrderedVolumeCurve;
-    public AnimationCurve bgmChaosVolumeCurve;
-    public AnimationCurve bgmOrganicVolumeCurve;
-    public AnimationCurve bgmMineralVolumeCurve;
-    public AnimationCurve bgmLushVolumeCurve;
-    public AnimationCurve bgmGloomyVolumeCurve;
-
-    [Tooltip("NOT IMPL ATM")]
-    public uint TIME_SIG_NOTE_VAL = 4;
     public int fxChannels = 3;
     public float MaxTimeBeforeFXChannelClean = 10f;
-    private float beatstep = 0f;
-
     [Header("Internal View")]
     public List<AudioSource> fxAudioCanals;
     public AudioSource bgmOrderAudioCanal;
@@ -71,7 +49,7 @@ public class SoundManager : MonoBehaviour
     private const string mixParmBGMLushVolume       = "BGMLushVolume";
     private float elapsedBeatStep = 0f;
     private ushort elapsedStepInMeasure = 0;
-    
+    private float beatstep = 0f;
     
 
     #region UNITY
@@ -80,7 +58,7 @@ public class SoundManager : MonoBehaviour
         fxAudioCanals = new List<AudioSource>( new AudioSource[fxChannels]);
         playQueue = new List<AudioSource>(0);
 
-        beatstep = 60f/BPM_SYNC;
+        beatstep = 60f/bgmData.BPM_SYNC;
         elapsedBeatStep = 0f;
         elapsedStepInMeasure = 0;
     }
@@ -95,7 +73,7 @@ public class SoundManager : MonoBehaviour
         elapsedBeatStep += Time.deltaTime;
         if (elapsedBeatStep > beatstep)
         { OnBeatStep(); }
-        if (elapsedStepInMeasure >= TIME_SIG_MEASURE_SIZE)
+        if (elapsedStepInMeasure >= bgmData.TIME_SIG_MEASURE_SIZE)
         { OnMeasureStep(); }
     }
 
@@ -130,12 +108,12 @@ public class SoundManager : MonoBehaviour
     {
         Transform bgmHost = Managers.Instance.Camera.playerCam.transform;
         
-        bgmOrderAudioCanal =  SpawnBGMAudioSource(orderBGM,   bgmHost,    OrderMixerGroup);
-        bgmChaosAudioCanal = SpawnBGMAudioSource(chaosBGM,   bgmHost,    ChaosMixerGroup);
-        bgmMineralAudioCanal =  SpawnBGMAudioSource(mineralBGM, bgmHost,    MineralMixerGroup);
-        bgmOrganicAudioCanal = SpawnBGMAudioSource(organicBGM, bgmHost,    OrganicMixerGroup);
-        bgmGloomyAudioCanal = SpawnBGMAudioSource(gloomyBGM,  bgmHost,    GloomyMixerGroup);
-        bgmLushAudioCanal = SpawnBGMAudioSource(lushBGM,    bgmHost,    LushMixerGroup);   
+        bgmOrderAudioCanal =  SpawnBGMAudioSource(bgmData.orderBGM,   bgmHost,    OrderMixerGroup);
+        bgmChaosAudioCanal = SpawnBGMAudioSource(bgmData.chaosBGM,   bgmHost,    ChaosMixerGroup);
+        bgmMineralAudioCanal =  SpawnBGMAudioSource(bgmData.mineralBGM, bgmHost,    MineralMixerGroup);
+        bgmOrganicAudioCanal = SpawnBGMAudioSource(bgmData.organicBGM, bgmHost,    OrganicMixerGroup);
+        bgmGloomyAudioCanal = SpawnBGMAudioSource(bgmData.gloomyBGM,  bgmHost,    GloomyMixerGroup);
+        bgmLushAudioCanal = SpawnBGMAudioSource(bgmData.lushBGM,    bgmHost,    LushMixerGroup);   
 
         bgmAudioCanals = new List<AudioSource>();
         bgmAudioCanals.Add(bgmOrderAudioCanal);
@@ -144,6 +122,8 @@ public class SoundManager : MonoBehaviour
         bgmAudioCanals.Add(bgmOrganicAudioCanal);
         bgmAudioCanals.Add(bgmGloomyAudioCanal);
         bgmAudioCanals.Add(bgmLushAudioCanal);
+
+        UpdateBGM();
     }
 
     public void UpdateBGM()
@@ -151,48 +131,48 @@ public class SoundManager : MonoBehaviour
         OverWorldControl owc = OverWorldControl.Instance;
 
         // update volumes from OWC
-        // float orderVol =    math.remap(0f, 1f, BgmTrackCutVolume, BgmMaxVolume, owc.OrderMagnitude);
-        // float chaosVol =    math.remap(0f, 1f, BgmTrackCutVolume, BgmMaxVolume, owc.ChaosMagnitude);
-        // float mineralVol =  math.remap(0f, 1f, BgmTrackCutVolume, BgmMaxVolume, owc.MineralMagnitude);
-        // float organicVol =  math.remap(0f, 1f, BgmTrackCutVolume, BgmMaxVolume, owc.OrganicMagnitude);
-        // float lushVol =     math.remap(0f, 1f, BgmTrackCutVolume, BgmMaxVolume, owc.LushMagnitude);
-        // float gloomyVol =   math.remap(0f, 1f, BgmTrackCutVolume, BgmMaxVolume, owc.GloomyMagnitude);
+        // float orderVol =    math.remap(0f, 1f, bgmData.BgmTrackCutVolume, BgmMaxVolume, owc.OrderMagnitude);
+        // float chaosVol =    math.remap(0f, 1f, bgmData.BgmTrackCutVolume, BgmMaxVolume, owc.ChaosMagnitude);
+        // float mineralVol =  math.remap(0f, 1f, bgmData.BgmTrackCutVolume, BgmMaxVolume, owc.MineralMagnitude);
+        // float organicVol =  math.remap(0f, 1f, bgmData.BgmTrackCutVolume, BgmMaxVolume, owc.OrganicMagnitude);
+        // float lushVol =     math.remap(0f, 1f, bgmData.BgmTrackCutVolume, BgmMaxVolume, owc.LushMagnitude);
+        // float gloomyVol =   math.remap(0f, 1f, bgmData.BgmTrackCutVolume, BgmMaxVolume, owc.GloomyMagnitude);
 
-        float orderVol =    bgmOrderedVolumeCurve.Evaluate(owc.OrderToChaos);
-        float chaosVol =    bgmChaosVolumeCurve.Evaluate(owc.OrderToChaos);
-        float mineralVol =  bgmMineralVolumeCurve.Evaluate(owc.MineralToOrganic);
-        float organicVol =  bgmOrganicVolumeCurve.Evaluate(owc.MineralToOrganic);
-        float lushVol =     bgmLushVolumeCurve.Evaluate(owc.GloomyToLush);
-        float gloomyVol =   bgmGloomyVolumeCurve.Evaluate(owc.GloomyToLush);
+        float orderVol =    bgmData.bgmOrderedVolumeCurve.Evaluate(owc.OrderToChaos);
+        float chaosVol =    bgmData.bgmChaosVolumeCurve.Evaluate(owc.OrderToChaos);
+        float mineralVol =  bgmData.bgmMineralVolumeCurve.Evaluate(owc.MineralToOrganic);
+        float organicVol =  bgmData.bgmOrganicVolumeCurve.Evaluate(owc.MineralToOrganic);
+        float lushVol =     bgmData.bgmLushVolumeCurve.Evaluate(owc.GloomyToLush);
+        float gloomyVol =   bgmData.bgmGloomyVolumeCurve.Evaluate(owc.GloomyToLush);
 
         // Change volumes accordingly
         MasterMixer.SetFloat(mixParmBGMChaosVolume, chaosVol);
-        if (orderVol > BgmTrackCutVolume)
+        if (orderVol > bgmData.BgmTrackCutVolume)
         {SyncPlay(bgmOrderAudioCanal);}
         else if (bgmOrderAudioCanal.isPlaying) { bgmOrderAudioCanal.Stop(); }
 
         MasterMixer.SetFloat(mixParmBGMOrderVolume, orderVol);
-        if (chaosVol > BgmTrackCutVolume)
+        if (chaosVol > bgmData.BgmTrackCutVolume)
         {SyncPlay(bgmChaosAudioCanal);}
         else if (bgmChaosAudioCanal.isPlaying) { bgmChaosAudioCanal.Stop(); }
 
         MasterMixer.SetFloat(mixParmBGMMineralVolume, mineralVol);
-        if (mineralVol > BgmTrackCutVolume)
+        if (mineralVol > bgmData.BgmTrackCutVolume)
         {SyncPlay(bgmMineralAudioCanal);}
         else if (bgmMineralAudioCanal.isPlaying) { bgmMineralAudioCanal.Stop(); }
         
         MasterMixer.SetFloat(mixParmBGMOrganicVolume, organicVol);
-        if (organicVol > BgmTrackCutVolume)
+        if (organicVol > bgmData.BgmTrackCutVolume)
         {SyncPlay(bgmOrganicAudioCanal);}
         else if (bgmOrganicAudioCanal.isPlaying) { bgmOrganicAudioCanal.Stop(); }
 
         MasterMixer.SetFloat(mixParmBGMLushVolume, lushVol);
-        if (lushVol > BgmTrackCutVolume)
+        if (lushVol > bgmData.BgmTrackCutVolume)
         {SyncPlay(bgmLushAudioCanal);}
         else if (bgmLushAudioCanal.isPlaying) { bgmLushAudioCanal.Stop(); }
 
         MasterMixer.SetFloat(mixParmBGMGloomyVolume, gloomyVol);
-        if (gloomyVol > BgmTrackCutVolume)
+        if (gloomyVol > bgmData.BgmTrackCutVolume)
         {SyncPlay(bgmGloomyAudioCanal);}
         else if (bgmGloomyAudioCanal.isPlaying) { bgmGloomyAudioCanal.Stop(); }
     }
