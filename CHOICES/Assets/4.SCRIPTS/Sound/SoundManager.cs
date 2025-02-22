@@ -36,7 +36,10 @@ public class SoundManager : MonoBehaviour
     public float BgmMinVolume = -80f;
     public float BgmMaxVolume = 0f;
     [Range(0,512)]
-    public int BPM_SYNC = 90;
+    public uint BPM_SYNC = 90;
+    public uint TIME_SIG_MEASURE_SIZE = 4;
+    [Tooltip("NOT IMPL ATM")]
+    public uint TIME_SIG_NOTE_VAL = 4;
     public int fxChannels = 3;
     public float MaxTimeBeforeFXChannelClean = 10f;
     private float beatstep = 0f;
@@ -52,6 +55,7 @@ public class SoundManager : MonoBehaviour
     public List<AudioSource> playQueue;
 
     [Header("Internal")]
+    private List<AudioSource> bgmAudioCanals;
     private const string mixParmBGMOrderVolume      = "BGMOrderVolume";
     private const string mixParmBGMChaosVolume      = "BGMChaosVolume";
     private const string mixParmBGMMineralVolume    = "BGMMineralVolume";
@@ -59,6 +63,7 @@ public class SoundManager : MonoBehaviour
     private const string mixParmBGMGloomyVolume     = "BGMGloomyVolume";
     private const string mixParmBGMLushVolume       = "BGMLushVolume";
     private float elapsedBeatStep = 0f;
+    private ushort elapsedStepInMeasure = 0;
     
     
 
@@ -67,8 +72,10 @@ public class SoundManager : MonoBehaviour
     {
         fxAudioCanals = new List<AudioSource>(fxChannels);
         playQueue = new List<AudioSource>(0);
+
         beatstep = 60f/BPM_SYNC;
         elapsedBeatStep = 0f;
+        elapsedStepInMeasure = 0;
     }
 
     void Start()
@@ -80,20 +87,34 @@ public class SoundManager : MonoBehaviour
         //UpdateBGM();
         elapsedBeatStep += Time.deltaTime;
         if (elapsedBeatStep > beatstep)
-        { OnBeatStep(); elapsedBeatStep = 0f; }
+        { OnBeatStep(); }
+        if (elapsedStepInMeasure >= TIME_SIG_MEASURE_SIZE)
+        { OnMeasureStep(); }
     }
 
-    public void OnBeatStep()
+    public void OnMeasureStep()
     {
         if (playQueue.Count>0)
         {
+            float time = 0f;
             foreach(AudioSource source in playQueue)
             {
+                if (TryGetSampleTime(out time))
+                {
+                    source.time = time;
+                }
                 source.Play();
             }
             playQueue.Clear();
         }
-        
+        elapsedStepInMeasure = 0;
+    }
+
+    public void OnBeatStep()
+    {
+        Debug.Log(elapsedStepInMeasure);
+        elapsedBeatStep = 0f; 
+        elapsedStepInMeasure++; 
     }
     #endregion
 
@@ -101,12 +122,21 @@ public class SoundManager : MonoBehaviour
     private void InitBGMSources()
     {
         Transform bgmHost = Managers.Instance.Camera.playerCam.transform;
+        
         bgmOrderAudioCanal =  SpawnBGMAudioSource(orderBGM,   bgmHost,    OrderMixerGroup);
         bgmChaosAudioCanal = SpawnBGMAudioSource(chaosBGM,   bgmHost,    ChaosMixerGroup);
         bgmMineralAudioCanal =  SpawnBGMAudioSource(mineralBGM, bgmHost,    MineralMixerGroup);
         bgmOrganicAudioCanal = SpawnBGMAudioSource(organicBGM, bgmHost,    OrganicMixerGroup);
         bgmGloomyAudioCanal = SpawnBGMAudioSource(gloomyBGM,  bgmHost,    GloomyMixerGroup);
         bgmLushAudioCanal = SpawnBGMAudioSource(lushBGM,    bgmHost,    LushMixerGroup);   
+
+        bgmAudioCanals = new List<AudioSource>();
+        bgmAudioCanals.Add(bgmOrderAudioCanal);
+        bgmAudioCanals.Add(bgmChaosAudioCanal);
+        bgmAudioCanals.Add(bgmMineralAudioCanal);
+        bgmAudioCanals.Add(bgmOrganicAudioCanal);
+        bgmAudioCanals.Add(bgmGloomyAudioCanal);
+        bgmAudioCanals.Add(bgmLushAudioCanal);
     }
 
     public void UpdateBGM()
@@ -123,12 +153,12 @@ public class SoundManager : MonoBehaviour
 
         // Change volumes accordingly
         MasterMixer.SetFloat(mixParmBGMChaosVolume, chaosVol);
-        if (chaosVol > BgmMinVolume)
+        if (orderVol > BgmMinVolume)
         {SyncPlay(bgmOrderAudioCanal);}
         else if (bgmOrderAudioCanal.isPlaying) { bgmOrderAudioCanal.Stop(); }
 
         MasterMixer.SetFloat(mixParmBGMOrderVolume, orderVol);
-        if (orderVol > BgmMinVolume)
+        if (chaosVol > BgmMinVolume)
         {SyncPlay(bgmChaosAudioCanal);}
         else if (bgmChaosAudioCanal.isPlaying) { bgmChaosAudioCanal.Stop(); }
 
@@ -159,9 +189,8 @@ public class SoundManager : MonoBehaviour
        
         newAS.transform.parent = iFXSourceParent;
         newAS.transform.localPosition = Vector3.zero;
-        newAS.transform.name = "BGM " + iClip.name;
+        newAS.transform.name = "BGM " + iMixerGroup.ToString();
 
-        newAS.AddComponent<AudioSource>();
         AudioSource asSource = newAS.GetComponent<AudioSource>();
         asSource.clip = iClip;
         asSource.outputAudioMixerGroup = iMixerGroup;
@@ -175,6 +204,20 @@ public class SoundManager : MonoBehaviour
         if (playQueue.Contains(iSource))
             return;
         playQueue.Add(iSource);
+    }
+
+    private bool TryGetSampleTime(out float ioTime)
+    {
+        ioTime = 0f;
+        foreach (AudioSource source in bgmAudioCanals)
+        {
+            if (source.isPlaying)
+            {
+                ioTime = source.time;
+                return true;
+            }
+        }
+        return false;
     }
     #endregion
 

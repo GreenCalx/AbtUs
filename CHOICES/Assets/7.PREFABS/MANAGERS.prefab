@@ -108,7 +108,7 @@ MonoBehaviour:
   mineralBGM: {fileID: 8300000, guid: 15229d31d27a2e54a91ee3523f5e04ee, type: 3}
   gloomyBGM: {fileID: 8300000, guid: 15229d31d27a2e54a91ee3523f5e04ee, type: 3}
   lushBGM: {fileID: 8300000, guid: 15229d31d27a2e54a91ee3523f5e04ee, type: 3}
-  BgmMinVolume: -80
+  BgmMinVolume: -30
   BgmMaxVolume: 0
   BPM_SYNC: 90
   fxChannels: 3
