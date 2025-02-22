@@ -51,11 +51,7 @@ public class PowerPlantPuzzleGem : MonoBehaviour
                 {
                     if (!GemIsAligned)
                     {
-                        audioSource.clip = audioClipAligned;
-                        othergem.audioSource.clip = othergem.audioClipAligned;
-                        //audioSource.Play();
-                        if (!audioSource.isPlaying)
-                        { audioTransmissionCo = StartCoroutine(PlayGemsAudioCo(audioSource, othergem.audioSource)); }
+                        audioTransmissionCo = StartCoroutine(PlayGemsAudioCo(audioClipAligned, othergem.audioClipAligned, othergem.transform));
                         meshRenderer.material = AlignedMat;
                     }
                     GemIsAligned = true;
@@ -68,12 +64,7 @@ public class PowerPlantPuzzleGem : MonoBehaviour
                 {
                     if (!GemIsMisalgined)
                     {
-                        audioSource.clip = audioClipAligned;
-                        othergem.audioSource.clip = othergem.audioClipAligned;
-
-                        if (!audioSource.isPlaying)
-                        { audioTransmissionCo = StartCoroutine(PlayGemsAudioCo(audioSource, othergem.audioSource)); }
-
+                        audioTransmissionCo = StartCoroutine(PlayGemsAudioCo(audioClipAligned, othergem.audioClipAligned, othergem.transform));
                         meshRenderer.material = WrongAlignedMat;
                     }
 
@@ -99,11 +90,11 @@ public class PowerPlantPuzzleGem : MonoBehaviour
         }
     }
 
-    IEnumerator PlayGemsAudioCo(AudioSource iFirstGemAS, AudioSource iSecondGemAS)
+    IEnumerator PlayGemsAudioCo(AudioClip iFirstGemClip, AudioClip iSecondGemClip, Transform iOtherGem)
     {
-        iFirstGemAS.Play();
+        Managers.Instance.Sound.TryPlayFX(iFirstGemClip, transform);
         yield return new WaitForSeconds(audioAlignementTransmissionLatency);
-        iSecondGemAS.Play();
+        Managers.Instance.Sound.TryPlayFX(iSecondGemClip, iOtherGem);
     }
 
 
