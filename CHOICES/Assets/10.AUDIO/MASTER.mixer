@@ -187,6 +187,8 @@ AudioMixerController:
   m_EnableSuspend: 1
   m_UpdateMode: 0
   m_ExposedParameters:
+  - guid: 9a3a53f74f6f00048adf747497f950dd
+    name: BGMPitchShiftMul
   - guid: 54162dcc6c788ab41be0d50bbc97b37d
     name: BGMChaosVolume
   - guid: a0150321fc341e24db8fa1af71aeb457
@@ -257,7 +259,8 @@ AudioMixerSnapshotController:
   m_Name: Snapshot
   m_AudioMixer: {fileID: 24100000}
   m_SnapshotID: 1731ca9533d4df842b35499592ee11bb
-  m_FloatValues: {}
+  m_FloatValues:
+    9a3a53f74f6f00048adf747497f950dd: 1
   m_TransitionOverrides: {}
 --- !u!243 &1226697324501464250
 AudioMixerGroupController:

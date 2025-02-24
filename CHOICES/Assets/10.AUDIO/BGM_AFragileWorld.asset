@@ -13,8 +13,10 @@ MonoBehaviour:
   m_Name: BGM_AFragileWorld
   m_EditorClassIdentifier: 
   BgmTrackCutVolume: -30
-  BPM_SYNC: 90
+  BPM_SYNC: 80
   TIME_SIG_MEASURE_SIZE: 4
+  BPM_PITCH: 80
+  pitchShiftTime: 0.5
   orderBGM: {fileID: 8300000, guid: d389119fdde7bcd4887111ecebe36d16, type: 3}
   bgmOrderedVolumeCurve:
     serializedVersion: 2
@@ -22,17 +24,35 @@ MonoBehaviour:
     - serializedVersion: 3
       time: 0
       value: 0
-      inSlope: -30
-      outSlope: -30
+      inSlope: -38.286846
+      outSlope: -38.286846
       tangentMode: 34
       weightedMode: 0
       inWeight: 0
       outWeight: 0.33333334
     - serializedVersion: 3
+      time: 0.19419986
+      value: -7.4353
+      inSlope: -41.304714
+      outSlope: -24.731031
+      tangentMode: 65
+      weightedMode: 0
+      inWeight: 0.33333334
+      outWeight: 0.33333334
+    - serializedVersion: 3
+      time: 0.49963033
+      value: -14.988911
+      inSlope: -24.731031
+      outSlope: 4.875899
+      tangentMode: 5
+      weightedMode: 0
+      inWeight: 0.122393735
+      outWeight: 0.33333334
+    - serializedVersion: 3
       time: 1
       value: -30
-      inSlope: -30
-      outSlope: -30
+      inSlope: -29.999998
+      outSlope: -29.999998
       tangentMode: 34
       weightedMode: 0
       inWeight: 0.33333334

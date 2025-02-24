@@ -9,6 +9,9 @@ using Unity.Mathematics;
 
 public class SoundManager : MonoBehaviour
 {
+    [Header("Debug")]
+    public bool updatePitchShift = false;
+
     [Header("Audio mixers Refs")]
     public AudioMixer MasterMixer;
     public AudioMixerGroup BGMMixerGroup;
@@ -47,10 +50,12 @@ public class SoundManager : MonoBehaviour
     private const string mixParmBGMOrganicVolume    = "BGMOrganicVolume";
     private const string mixParmBGMGloomyVolume     = "BGMGloomyVolume";
     private const string mixParmBGMLushVolume       = "BGMLushVolume";
+    private const string mixParmBGMPitchShift       = "BGMPitchShiftMul";
     private float elapsedBeatStep = 0f;
     private ushort elapsedStepInMeasure = 0;
     private float beatstep = 0f;
-    
+    private float lastComputedPitch = 1f;
+    private Coroutine lerpPitchCoroutine;
 
     #region UNITY
     void Awake()
@@ -75,6 +80,12 @@ public class SoundManager : MonoBehaviour
         { OnBeatStep(); }
         if (elapsedStepInMeasure >= bgmData.TIME_SIG_MEASURE_SIZE)
         { OnMeasureStep(); }
+
+        if (updatePitchShift)
+        {
+            ComputePitchChange();
+            updatePitchShift = false;
+        }
     }
 
     public void OnMeasureStep()
@@ -97,7 +108,6 @@ public class SoundManager : MonoBehaviour
 
     public void OnBeatStep()
     {
-        Debug.Log(elapsedStepInMeasure);
         elapsedBeatStep = 0f; 
         elapsedStepInMeasure++; 
     }
@@ -122,6 +132,8 @@ public class SoundManager : MonoBehaviour
         bgmAudioCanals.Add(bgmOrganicAudioCanal);
         bgmAudioCanals.Add(bgmGloomyAudioCanal);
         bgmAudioCanals.Add(bgmLushAudioCanal);
+
+        MasterMixer.GetFloat(mixParmBGMPitchShift, out lastComputedPitch);
 
         UpdateBGM();
     }
@@ -212,6 +224,36 @@ public class SoundManager : MonoBehaviour
             }
         }
         return false;
+    }
+
+    private void ComputePitchChange()
+    {
+        if (bgmData.BPM_PITCH == bgmData.BPM_SYNC)
+            return;
+        
+        if (lerpPitchCoroutine!=null)
+        {
+            StopCoroutine(lerpPitchCoroutine);
+            lerpPitchCoroutine = null;
+        }
+        lerpPitchCoroutine = StartCoroutine(LerpPitchCo());
+    }
+
+    IEnumerator LerpPitchCo()
+    {
+        float target = (float)bgmData.BPM_PITCH / (float)bgmData.BPM_SYNC;
+        Debug.Log("Target : " + target);
+        float elapsedTime = 0f;
+        while ( elapsedTime < bgmData.pitchShiftTime )
+        {
+            elapsedTime += Time.deltaTime;
+            float frac = Mathf.Clamp01(elapsedTime / bgmData.pitchShiftTime);
+            float target_lerp = Utils.Lerp(lastComputedPitch, target, frac);
+            MasterMixer.SetFloat(mixParmBGMPitchShift, target_lerp);
+            yield return null;
+        }
+        MasterMixer.SetFloat(mixParmBGMPitchShift, target);
+        lastComputedPitch = target;
     }
     #endregion
 
