@@ -15,10 +15,26 @@ public class PowerPlantPuzzle : Puzzle
     public float slideSpeed = 1f;
     [Header("On solve tweaks")]
     public float pushLerpTime = 1f;
+    [Header("GFX")]
+    public Material defaultLightningMat;
+    public Material solvedLightningMat;
+    public List<MeshRenderer> renderersToUpdate;
     [Header("Internals")]
     private float rotateCW_startTime = 0f;
     private float rotateCCW_startTime = 0f;
     private short rotDir = 0;
+
+    void Start()
+    {
+        foreach(MeshRenderer mr in renderersToUpdate)
+        {
+            if (!puzzleSolved)
+                mr.material = defaultLightningMat;
+            else
+                mr.material = solvedLightningMat;
+        }
+    }
+
     public override void StartPuzzle(PlayerController iPC)
     {
         if (puzzleSolved)
@@ -149,6 +165,11 @@ public class PowerPlantPuzzle : Puzzle
         puzzleSolved = true;
         StopPuzzle();
         PushBlock();
+
+        foreach(MeshRenderer mr in renderersToUpdate)
+        {
+            mr.material = solvedLightningMat;
+        }
     }
 
     public override void StopPuzzle()

@@ -242,7 +242,6 @@ public class SoundManager : MonoBehaviour
     IEnumerator LerpPitchCo()
     {
         float target = (float)bgmData.BPM_PITCH / (float)bgmData.BPM_SYNC;
-        Debug.Log("Target : " + target);
         float elapsedTime = 0f;
         while ( elapsedTime < bgmData.pitchShiftTime )
         {

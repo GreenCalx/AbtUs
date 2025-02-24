@@ -2,15 +2,17 @@ using UnityEngine;
 
 public class ModelAutoRot : MonoBehaviour
 {
-    public bool RotAlongX = true;
-    public float rotSpeed = 10f;
+    public bool ActivateRot = true;
+    public float rotSpeedX = 1f;
+    public float rotSpeedY = 1f;
+    public float rotSpeedZ = 1f;
 
     // Update is called once per frame
     void Update()
     {
-        if (RotAlongX)
+        if (ActivateRot)
         {
-            transform.Rotate( new Vector3(0f,0f,rotSpeed * Time.deltaTime));
+            transform.Rotate( new Vector3(rotSpeedX* Time.deltaTime,rotSpeedY* Time.deltaTime,rotSpeedZ * Time.deltaTime));
         }
     }
 }
