@@ -148,7 +148,7 @@ public class PowerPlantPuzzle : Puzzle
             }
         }
         
-        // push
+        // Player actions
         if (playerInPuzzle.playerDoAction)
         {
             if (TryValidatePuzzle())
@@ -157,6 +157,9 @@ public class PowerPlantPuzzle : Puzzle
             } else {
                 // not solved
             }
+        } else if (playerInPuzzle.playerDoCancel)
+        {
+            StopPuzzle();
         }
     }
 
