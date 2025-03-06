@@ -198,12 +198,14 @@ public class PlayerController : MonoBehaviour
         {
             // did hit
             InteractibleObject iobj = objectRayHit.collider.gameObject.GetComponentInParent<InteractibleObject>();
+            if (iobj==null)
+                iobj = objectRayHit.collider.gameObject.GetComponent<InteractibleObject>();
+
             if (iobj!=null)
             {
                 if (iobj==targetedInteractibleObject)
                     return;
                 targetedInteractibleObject = iobj;
-                Debug.Log("gay" + (targetedInteractibleObject.GetSelectedAction().ToString()));
                 //UIGame.Instance.TryChangeCrosshairColor(Color.green);
                 UIGame.Instance.UpdateCursorFromPlayerAction(targetedInteractibleObject.GetSelectedAction());
                 return;

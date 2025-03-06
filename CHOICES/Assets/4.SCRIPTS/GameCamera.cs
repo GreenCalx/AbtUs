@@ -36,4 +36,10 @@ public class GameCamera : MonoBehaviour
     {
         return cam.ViewportPointToRay(new Vector3(0.5f,0.5f,0f));
     }
+
+    void OnDrawGizmosSelected()
+    {
+        Debug.DrawRay(transform.position, transform.forward * 5f, Color.blue);
+        Debug.DrawRay(transform.position, transform.up * 5f, Color.green);
+    }
 }

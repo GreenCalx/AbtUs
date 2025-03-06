@@ -42,7 +42,7 @@ public class PowerPlantPuzzle : Puzzle
 
         playerInPuzzle = iPC;
 
-        Managers.Instance.Camera.LerpCamToRef(puzzleCam, 1f);
+        Managers.Instance.Camera.LerpCamToRef(puzzleCam, puzzleEntryInputLatch);
         playerInPuzzle.freeze_WASD = true;
         playerInPuzzle.freeze_CAM = true;
 
@@ -67,6 +67,12 @@ public class PowerPlantPuzzle : Puzzle
 
     public override void PuzzleInputs() 
     {
+        if (elapsedPuzzleEntryTime < puzzleEntryInputLatch)
+        {
+            elapsedPuzzleEntryTime += Time.deltaTime;
+            return;
+        }
+
         // rotate
         if (playerInPuzzle.hMove < 0f) 
         {
@@ -185,6 +191,7 @@ public class PowerPlantPuzzle : Puzzle
         puzzleStarted = false;
         UIGame.Instance.cursorMode = false;
         playerInPuzzle = null;
+        elapsedPuzzleEntryTime = 0f;
     }
 
     #region LOCAL
