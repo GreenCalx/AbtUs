@@ -507,15 +507,25 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: e98125dc63de6474d9c8e64f4c4e685a, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  doorSlideYAmount: 2
+  doorSlideAmount: {x: 0, y: 2, z: 0}
   doorSlideTime: 1
   choiceBundles:
   - cam: {fileID: 8949388061410490095}
     mat: {fileID: 2100000, guid: e7c3ced8f1e66924eaf6016fc10bb988, type: 2}
     slidingDoor: {fileID: 7049121560629202324}
+    shouldOpen: 0
+    openedLocalPos: {x: 0, y: 0, z: 0}
+    closedLocalPos: {x: 0, y: 0, z: 0}
+    openeningFrac: 0
+    interrupt: 0
   - cam: {fileID: 111853286733474396}
     mat: {fileID: 2100000, guid: 17cafe591360f2a48b8fd882562115fd, type: 2}
     slidingDoor: {fileID: 1359948358693460245}
+    shouldOpen: 0
+    openedLocalPos: {x: 0, y: 0, z: 0}
+    closedLocalPos: {x: 0, y: 0, z: 0}
+    openeningFrac: 0
+    interrupt: 0
 --- !u!1 &1330954574422663231
 GameObject:
   m_ObjectHideFlags: 0
@@ -1508,6 +1518,9 @@ MonoBehaviour:
   beamLayerMaskHit:
     serializedVersion: 2
     m_Bits: 130291
+  beamReceiverMaskHit:
+    serializedVersion: 2
+    m_Bits: 32768
   defaultBeamLength: 10
 --- !u!120 &8434561619673549576
 LineRenderer:
@@ -2667,7 +2680,7 @@ MonoBehaviour:
   puzzleSolved: 0
   playerInPuzzle: {fileID: 0}
   puzzleCam: {fileID: 5380195089033472195}
-  gemsToAlign: []
+  choicePortals: {fileID: 8754392526421305760}
   beamCaster: {fileID: 7125007089085090487}
   rotatingPartTransform: {fileID: 4835447460935666328}
   rotSpeed: 0.5
@@ -2981,7 +2994,7 @@ MonoBehaviour:
       m_Calls:
       - m_Target: {fileID: 8754392526421305760}
         m_TargetAssemblyTypeName: ChoicePortals, Assembly-CSharp
-        m_MethodName: OpenRight
+        m_MethodName: TryOpenRight
         m_Mode: 1
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
@@ -2996,7 +3009,7 @@ MonoBehaviour:
       m_Calls:
       - m_Target: {fileID: 8754392526421305760}
         m_TargetAssemblyTypeName: ChoicePortals, Assembly-CSharp
-        m_MethodName: CloseRight
+        m_MethodName: TryCloseRight
         m_Mode: 1
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
@@ -3159,7 +3172,7 @@ MonoBehaviour:
       m_Calls:
       - m_Target: {fileID: 8754392526421305760}
         m_TargetAssemblyTypeName: ChoicePortals, Assembly-CSharp
-        m_MethodName: OpenLeft
+        m_MethodName: TryOpenLeft
         m_Mode: 1
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
@@ -3174,7 +3187,7 @@ MonoBehaviour:
       m_Calls:
       - m_Target: {fileID: 8754392526421305760}
         m_TargetAssemblyTypeName: ChoicePortals, Assembly-CSharp
-        m_MethodName: CloseLeft
+        m_MethodName: TryCloseLeft
         m_Mode: 1
         m_Arguments:
           m_ObjectArgument: {fileID: 0}

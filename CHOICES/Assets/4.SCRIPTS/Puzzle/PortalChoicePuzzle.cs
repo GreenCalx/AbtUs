@@ -5,7 +5,7 @@ using System.Collections.Generic;
 
 public class PortalChoicePuzzle : Puzzle
 {
-    public List<PowerPlantPuzzleGem> gemsToAlign;
+    public ChoicePortals choicePortals;
     public BeamCaster beamCaster;
     [Header("Module Rotation")]
     public Transform rotatingPartTransform;
@@ -26,8 +26,6 @@ public class PortalChoicePuzzle : Puzzle
         Managers.Instance.Camera.LerpCamToRef(puzzleCam, puzzleEntryInputLatch);
         playerInPuzzle.freeze_WASD = true;
         playerInPuzzle.freeze_CAM = true;
-
-        foreach ( PowerPlantPuzzleGem gem in gemsToAlign ) { gem.GemIsActive = true; }
         
         UIGame.Instance.cursorMode = true;
         puzzleStarted = true;
@@ -35,14 +33,7 @@ public class PortalChoicePuzzle : Puzzle
 
     public override bool TryValidatePuzzle()
     {
-        foreach(PowerPlantPuzzleGem gem in gemsToAlign)
-        {
-            if (!gem.GemIsAligned)
-                return false;
-            if (gem.GemIsMisalgined)
-                return false;
-        }
-        return true;
+        return choicePortals.OneDoorOpened();
     }
 
     public override void PuzzleInputs() 
@@ -101,7 +92,6 @@ public class PortalChoicePuzzle : Puzzle
         Managers.Instance.Camera.ResetPlayerCam(1f);
         playerInPuzzle.freeze_WASD = false;
         playerInPuzzle.freeze_CAM = false;
-        foreach ( PowerPlantPuzzleGem gem in gemsToAlign ) { gem.GemIsActive = false; }
 
         puzzleStarted = false;
         UIGame.Instance.cursorMode = false;

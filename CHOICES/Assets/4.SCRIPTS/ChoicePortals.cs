@@ -9,98 +9,130 @@ public class ChoicePortals : MonoBehaviour
     [Serializable]
     public class ChoicePortalBundle
     {
+        [Header("Mand refs")]
         public Camera cam;
         public Material mat;
         public Transform slidingDoor;
+        [Header("Internals")]
+        public bool shouldOpen = false;
+        public Vector3 openedLocalPos = Vector3.zero;
+        public Vector3 closedLocalPos = Vector3.zero;
+        public float openeningFrac = 0f;
+        public Coroutine doorSlideCo;
+
+        public bool IsOperating() { return ((openeningFrac >= 0.1f) && (openeningFrac <= 0.99f)); }
+
+        public void Show() 
+        {
+            cam.gameObject.SetActive(true);
+            if (cam.targetTexture != null)
+                cam.targetTexture.Release();
+            cam.targetTexture = new RenderTexture(Screen.width, Screen.height, 24);
+            mat.mainTexture = cam.targetTexture;
+        }
+
+        public void UnShow()
+        {
+            cam.targetTexture.Release();
+            cam.gameObject.SetActive(false);
+        }
+
+        public bool IsOpen() { return openeningFrac >= 1f; }
+        public bool IsClose() { return openeningFrac <= 0f; }
     }
 
-    public float doorSlideYAmount = 2f;
+    public Vector3 doorSlideAmount = new Vector3(0f,2f,0f);
     public float doorSlideTime = 1f;
     public List<ChoicePortalBundle> choiceBundles = new List<ChoicePortalBundle>();
 
-    private bool lockLeft = false;
-    private bool lockRight = false;
 
     void Start()
     {
-        choiceBundles[0].cam.gameObject.SetActive(false);
-        choiceBundles[1].cam.gameObject.SetActive(false);
+        foreach(ChoicePortalBundle b in choiceBundles)
+        {
+            b.cam.gameObject.SetActive(false);
+            b.closedLocalPos = b.slidingDoor.localPosition;
+            b.openedLocalPos = b.slidingDoor.localPosition + doorSlideAmount;
+            b.openeningFrac = 0f;
+        }
     }
 
-    public void OpenLeft()
+    public void TryOpenLeft()
     {
-        if (lockLeft)
-            return;
-        lockLeft = true;
+        if (choiceBundles[0].shouldOpen)
+            return ;
 
-        choiceBundles[0].cam.gameObject.SetActive(true);
+        if (choiceBundles[0].IsOperating())
+        { 
+            StopCoroutine(choiceBundles[0].doorSlideCo);
+        }
 
-        if (choiceBundles[0].cam.targetTexture != null)
-            choiceBundles[0].cam.targetTexture.Release();
+        choiceBundles[0].shouldOpen = true;
 
-        choiceBundles[0].cam.targetTexture = new RenderTexture(Screen.width, Screen.height, 24);
-        choiceBundles[0].mat.mainTexture = choiceBundles[0].cam.targetTexture;
+        choiceBundles[0].Show();
         
-        StartCoroutine(SlideDoor(choiceBundles[0].slidingDoor, doorSlideYAmount, (result) => lockLeft = result));
+        choiceBundles[0].doorSlideCo = StartCoroutine(SlideDoor(choiceBundles[0], () => {}));
     }
 
-    public void CloseLeft()
+    public void TryCloseLeft()
     {
-        if (lockLeft)
-            return;
-        lockLeft = true;
+        if (!choiceBundles[0].shouldOpen)
+            return ;
+        if (choiceBundles[0].IsOperating())
+        { StopCoroutine(choiceBundles[0].doorSlideCo); }
 
-        choiceBundles[0].cam.targetTexture.Release();
-        StartCoroutine(SlideDoor(choiceBundles[0].slidingDoor, -doorSlideYAmount, (result) => lockLeft = result));
-
-        choiceBundles[0].cam.gameObject.SetActive(false);
-    }
-
-    public void OpenRight()
-    {
-        if (lockRight)
-            return;
-        lockRight = true;
-
-        choiceBundles[1].cam.gameObject.SetActive(true);
-
-        if (choiceBundles[1].cam.targetTexture != null)
-            choiceBundles[1].cam.targetTexture.Release();
-
-        choiceBundles[1].cam.targetTexture = new RenderTexture(Screen.width, Screen.height, 24);
-        choiceBundles[1].mat.mainTexture = choiceBundles[1].cam.targetTexture;
-
-        StartCoroutine(SlideDoor(choiceBundles[1].slidingDoor,doorSlideYAmount, (result) => lockRight = result));
-    }
-
-    public void CloseRight()
-    {
-        if (lockRight)
-            return;
-        lockRight = true;
+        choiceBundles[0].shouldOpen = false;
+        choiceBundles[0].doorSlideCo = StartCoroutine(SlideDoor(choiceBundles[0], () => choiceBundles[0].UnShow()));
         
-        choiceBundles[1].cam.targetTexture.Release();
-        StartCoroutine(SlideDoor(choiceBundles[1].slidingDoor, -doorSlideYAmount, (result) => lockRight = result ));
-
-        choiceBundles[0].cam.gameObject.SetActive(false);
     }
 
-    IEnumerator SlideDoor(Transform iDoor, float iYOffset, System.Action<bool> mutexCallback)
+    public void TryOpenRight()
     {
-        float frac = 0f;
-        Vector3 startPos = iDoor.localPosition;
-        Vector3 targetPos = new Vector3(iDoor.localPosition.x, iDoor.localPosition.y + iYOffset, iDoor.localPosition.z );
+        if (choiceBundles[1].shouldOpen)
+            return ;
+        if (choiceBundles[1].IsOperating())
+        { StopCoroutine(choiceBundles[1].doorSlideCo); }
+
+        choiceBundles[1].shouldOpen = true;
+        choiceBundles[1].Show();
+        choiceBundles[1].doorSlideCo = StartCoroutine(SlideDoor(choiceBundles[1], () => {}));
+
+    }
+
+    public void TryCloseRight()
+    {
+        if (!choiceBundles[1].shouldOpen)
+            return ;
+        if (choiceBundles[1].IsOperating())
+        { StopCoroutine(choiceBundles[1].doorSlideCo); }
+
+        choiceBundles[1].shouldOpen = false;
+        choiceBundles[1].doorSlideCo = StartCoroutine(SlideDoor(choiceBundles[1], () => choiceBundles[1].UnShow() ));
+    }
+
+    IEnumerator SlideDoor(ChoicePortalBundle iBundle, System.Action mutexCallback)
+    {
+        float frac = iBundle.shouldOpen ? iBundle.openeningFrac : 1f - iBundle.openeningFrac;
+        Vector3 startPos    = iBundle.slidingDoor.localPosition;
+        Vector3 targetPos   = iBundle.shouldOpen ? iBundle.openedLocalPos : iBundle.closedLocalPos ;
 
         while (frac < 1)
         {
             frac += Time.deltaTime / doorSlideTime;
+            iBundle.openeningFrac = iBundle.shouldOpen ? frac : 1f - frac;
             if (frac>1) { frac = 1; }
-            iDoor.localPosition = Vector3.Lerp(startPos, targetPos, frac);
+            iBundle.slidingDoor.localPosition = Vector3.Lerp(startPos, targetPos, frac);
             yield return null;
         }
 
-        iDoor.localPosition = targetPos;
+        iBundle.slidingDoor.localPosition = targetPos;
+        iBundle.openeningFrac = iBundle.shouldOpen ? 1f : 0f;
         
-        mutexCallback(false);
+        mutexCallback();
+    }
+
+    public bool OneDoorOpened()
+    {
+        return choiceBundles[0].IsOpen() ^ choiceBundles[1].IsOpen();
     }
 }

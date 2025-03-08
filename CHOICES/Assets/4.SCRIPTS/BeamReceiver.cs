@@ -11,7 +11,6 @@ public class BeamReceiver : MonoBehaviour
     {
         if (isReceiving)
             return;
-        
         isReceiving = true;
         callbackOnReceive.Invoke();
     }
@@ -20,7 +19,6 @@ public class BeamReceiver : MonoBehaviour
     {
         if (!isReceiving)
             return;
-        
         isReceiving = false;
         callbackOnStopReceive.Invoke();
     }

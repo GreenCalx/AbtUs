@@ -6,6 +6,7 @@ public class BeamCaster : MonoBehaviour
 {
     private LineRenderer lineRenderer;
     public LayerMask beamLayerMaskHit;
+    public LayerMask beamReceiverMaskHit;
     public float defaultBeamLength = 10f;
 
     private BeamReceiver currentReceiver;
@@ -33,19 +34,26 @@ public class BeamCaster : MonoBehaviour
         
         
         RaycastHit hit;
-        if (Physics.Raycast(transform.position, transform.up, out hit, beamLayerMaskHit ))
+        if (Physics.Raycast(transform.position, transform.up, out hit, Mathf.Infinity, beamLayerMaskHit ))
         {
             points[1] = hit.point;
 
-            BeamReceiver br = hit.collider.gameObject.GetComponent<BeamReceiver>();
-            if (!!br && (currentReceiver==null))
-            { 
-                br.Receive(); 
-                currentReceiver = br; 
-            } else if (!!currentReceiver)
+            // Do a layer specific raycast to check if beamreceiver
+            RaycastHit hitReceiver;
+            if (Physics.Raycast(transform.position, transform.up, out hitReceiver, Mathf.Infinity, beamReceiverMaskHit))
             {
-                currentReceiver.StopReceive();
-                currentReceiver = null;
+                BeamReceiver br = hitReceiver.collider.gameObject.GetComponent<BeamReceiver>();
+                if (!!br && (currentReceiver==null))
+                {
+                    br.Receive(); 
+                    currentReceiver = br; 
+                } 
+            } else {
+                if ((currentReceiver!=null)&&(currentReceiver.isReceiving))
+                {
+                    currentReceiver.StopReceive();
+                    currentReceiver = null;
+                }
             }
 
         } else {
