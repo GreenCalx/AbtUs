@@ -328,7 +328,7 @@ MonoBehaviour:
     m_Value: 2
   limitMax:
     m_OverrideState: 1
-    m_Value: 14.8
+    m_Value: 14
   curveMap:
     m_OverrideState: 0
     m_Value:
@@ -420,7 +420,7 @@ MonoBehaviour:
     m_OverrideState: 0
     m_Value: {fileID: 0}
   histogramPercentages:
-    m_OverrideState: 1
+    m_OverrideState: 0
     m_Value: {x: 0, y: 49.999954}
   histogramUseCurveRemapping:
     m_OverrideState: 0

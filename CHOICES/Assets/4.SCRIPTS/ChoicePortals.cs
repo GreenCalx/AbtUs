@@ -119,8 +119,9 @@ public class ChoicePortals : MonoBehaviour
         while (frac < 1)
         {
             frac += Time.deltaTime / doorSlideTime;
-            iBundle.openeningFrac = iBundle.shouldOpen ? frac : 1f - frac;
             if (frac>1) { frac = 1; }
+            iBundle.openeningFrac = iBundle.shouldOpen ? frac : 1f - frac;
+
             iBundle.slidingDoor.localPosition = Vector3.Lerp(startPos, targetPos, frac);
             yield return null;
         }
