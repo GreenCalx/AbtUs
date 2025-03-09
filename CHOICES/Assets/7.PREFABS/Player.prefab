@@ -11,7 +11,7 @@ GameObject:
   - component: {fileID: 6713510498469400784}
   - component: {fileID: 2347003353081361280}
   - component: {fileID: 6867457432002551375}
-  m_Layer: 0
+  m_Layer: 6
   m_Name: Player
   m_TagString: Player
   m_Icon: {fileID: 0}
@@ -54,8 +54,11 @@ MonoBehaviour:
   runningMaxSpeed: 50
   turnSpeed: 50
   actionDistance: 5
+  lookingDistance: 100
   actionTimeLatch: 0.2
   freeze_inputs: 0
+  freeze_WASD: 0
+  freeze_CAM: 0
   hMove: 0
   vMove: 0
   hCam: 0
@@ -63,6 +66,7 @@ MonoBehaviour:
   playerDoAction: 0
   playerInAction: 0
   playerDoRun: 0
+  playerDoCancel: 0
   freezeToggle: 0
   targetedInteractibleObject: {fileID: 0}
 --- !u!54 &6867457432002551375
@@ -102,7 +106,7 @@ GameObject:
   m_Component:
   - component: {fileID: 7532804079193758878}
   - component: {fileID: 430570123691608587}
-  m_Layer: 0
+  m_Layer: 6
   m_Name: Body
   m_TagString: Player
   m_Icon: {fileID: 0}
@@ -160,7 +164,7 @@ GameObject:
   - component: {fileID: 994700809160128344}
   - component: {fileID: 2222761157463678877}
   - component: {fileID: 1846298750571350066}
-  m_Layer: 0
+  m_Layer: 6
   m_Name: Main Camera
   m_TagString: MainCamera
   m_Icon: {fileID: 0}

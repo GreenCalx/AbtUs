@@ -30,17 +30,16 @@ public class GlowSpot : OWCListener
 
     private void OnTriggerEnter(Collider other)
     {
-        if (other.CompareTag("Player"))
+        if (other.gameObject.GetComponent<PlayerController>())
         {
             player_in_spotlight = true;
             glowTimer = glowDelay;
         }
-
     }
 
     private void OnTriggerExit(Collider other)
     {
-        if (other.CompareTag("Player"))
+        if (other.gameObject.GetComponent<PlayerController>())
             player_in_spotlight = false;
         glowTimer = glowDelay;
     }

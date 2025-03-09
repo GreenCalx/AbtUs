@@ -144,6 +144,87 @@ Transform:
     type: 3}
   m_PrefabInstance: {fileID: 5326755419388009317}
   m_PrefabAsset: {fileID: 0}
+--- !u!1 &353948679 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 5966335146592092505, guid: 0972032455ed03643a9d57313549caea,
+    type: 3}
+  m_PrefabInstance: {fileID: 5326755419388009317}
+  m_PrefabAsset: {fileID: 0}
+--- !u!114 &353948680
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 353948679}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 0d96b96bc48808a44953c9367cadb148, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  OnAllSolved:
+    m_PersistentCalls:
+      m_Calls:
+      - m_Target: {fileID: 725612362}
+        m_TargetAssemblyTypeName: PuzzleRewards, Assembly-CSharp
+        m_MethodName: TurnOnGlowSpots
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
+  PuzzlesToSolve: []
+  OnAllSolvedTriggered: 0
+--- !u!1 &725612360
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 725612361}
+  - component: {fileID: 725612362}
+  m_Layer: 0
+  m_Name: PuzzleRewards
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &725612361
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 725612360}
+  serializedVersion: 2
+  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
+  m_LocalPosition: {x: -261.57874, y: -25.788155, z: 617.26166}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 849540918}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &725612362
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 725612360}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 8927aca799f4daa44804aaead90cfc03, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  LightsToActivate:
+  - {fileID: 0}
 --- !u!1 &849540917
 GameObject:
   m_ObjectHideFlags: 0
@@ -174,6 +255,7 @@ Transform:
   m_ConstrainProportionsScale: 0
   m_Children:
   - {fileID: 347804154}
+  - {fileID: 725612361}
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!4 &881557886 stripped
@@ -834,7 +916,11 @@ PrefabInstance:
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
-    m_AddedComponents: []
+    m_AddedComponents:
+    - targetCorrespondingSourceObject: {fileID: 5966335146592092505, guid: 0972032455ed03643a9d57313549caea,
+        type: 3}
+      insertIndex: -1
+      addedObject: {fileID: 353948680}
   m_SourcePrefab: {fileID: 100100000, guid: 0972032455ed03643a9d57313549caea, type: 3}
 --- !u!1001 &5655273009661978317
 PrefabInstance:

@@ -5,6 +5,7 @@ using System.Collections.Generic;
 
 public class PortalChoicePuzzle : Puzzle
 {
+    [Header("Portal Choice Puzzle")]
     public ChoicePortals choicePortals;
     public BeamCaster beamCaster;
     [Header("Module Rotation")]
@@ -14,7 +15,6 @@ public class PortalChoicePuzzle : Puzzle
     [Header("Internals")]
     private float rotateCW_startTime = 0f;
     private float rotateCCW_startTime = 0f;
-    private short rotDir = 0;
 
     public override void StartPuzzle(PlayerController iPC)
     {

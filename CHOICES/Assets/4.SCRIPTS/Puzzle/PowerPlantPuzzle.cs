@@ -5,6 +5,7 @@ using System.Collections.Generic;
 
 public class PowerPlantPuzzle : Puzzle
 {
+    [Header("Power Plant Puzzle")]
     public Transform self_puzzleBlock;
     public List<PowerPlantPuzzleGem> gemsToAlign;
     [Header("Module Rotation")]
@@ -179,6 +180,8 @@ public class PowerPlantPuzzle : Puzzle
         {
             mr.material = solvedLightningMat;
         }
+
+        parentPuzzleBundle.NotifySolved(this);
     }
 
     public override void StopPuzzle()

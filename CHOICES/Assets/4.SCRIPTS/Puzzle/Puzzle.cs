@@ -2,7 +2,11 @@ using UnityEngine;
 
 public class Puzzle : MonoBehaviour
 {
+    [Header("Puzzle Generics")]
     public float puzzleEntryInputLatch = 1f;
+    [Header("Puzzle Optionals")]
+    public PuzzleBundle parentPuzzleBundle;
+    [Header("Puzzle Internal View")]
     public bool puzzleStarted = false;
     public bool puzzleSolved = false;
     public PlayerController playerInPuzzle;

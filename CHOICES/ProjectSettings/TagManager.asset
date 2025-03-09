@@ -6,6 +6,7 @@ TagManager:
   tags:
   - LEVEL0
   - LEVEL1
+  - GlowSpotHolder
   layers:
   - Default
   - TransparentFX
@@ -24,7 +25,7 @@ TagManager:
   - Terrain
   - PuzzleItem
   - PuzzleCollider
-  - 
+  - HitPlayerOnly
   - 
   - 
   - 

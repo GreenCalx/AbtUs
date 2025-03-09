@@ -11,7 +11,7 @@ GameObject:
   - component: {fileID: 3919645750189900148}
   m_Layer: 0
   m_Name: LampPost
-  m_TagString: Untagged
+  m_TagString: GlowSpotHolder
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -95,6 +95,21 @@ PrefabInstance:
         type: 3}
       propertyPath: m_Name
       value: GlowSpot
+      objectReference: {fileID: 0}
+    - target: {fileID: 7526866286767200560, guid: 318c55b006b89ba44b28591de9c261fd,
+        type: 3}
+      propertyPath: m_Layer
+      value: 17
+      objectReference: {fileID: 0}
+    - target: {fileID: 7526866286767200560, guid: 318c55b006b89ba44b28591de9c261fd,
+        type: 3}
+      propertyPath: m_IsActive
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 7526866286767200560, guid: 318c55b006b89ba44b28591de9c261fd,
+        type: 3}
+      propertyPath: m_TagString
+      value: Untagged
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
