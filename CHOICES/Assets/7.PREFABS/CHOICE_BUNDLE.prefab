@@ -517,7 +517,6 @@ MonoBehaviour:
     openedLocalPos: {x: 0, y: 0, z: 0}
     closedLocalPos: {x: 0, y: 0, z: 0}
     openeningFrac: 0
-    interrupt: 0
   - cam: {fileID: 111853286733474396}
     mat: {fileID: 2100000, guid: 17cafe591360f2a48b8fd882562115fd, type: 2}
     slidingDoor: {fileID: 1359948358693460245}
@@ -525,7 +524,6 @@ MonoBehaviour:
     openedLocalPos: {x: 0, y: 0, z: 0}
     closedLocalPos: {x: 0, y: 0, z: 0}
     openeningFrac: 0
-    interrupt: 0
 --- !u!1 &1330954574422663231
 GameObject:
   m_ObjectHideFlags: 0
@@ -2676,6 +2674,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   puzzleEntryInputLatch: 1
+  parentPuzzleBundle: {fileID: 0}
   puzzleStarted: 0
   puzzleSolved: 0
   playerInPuzzle: {fileID: 0}
@@ -3019,6 +3018,15 @@ MonoBehaviour:
           m_StringArgument: 
           m_BoolArgument: 0
         m_CallState: 2
+  RendererToUpdate: {fileID: 3721384313084276483}
+  OnReceiveMat: {fileID: 2100000, guid: 2309f7988d683ba4c96ea90b1c8c6f99, type: 2}
+  OnStopReceiveMat: {fileID: 2100000, guid: 43c440370335b2448bf3585df98d55fe, type: 2}
+--- !u!23 &3721384313084276483 stripped
+MeshRenderer:
+  m_CorrespondingSourceObject: {fileID: -7511558181221131132, guid: 7ff71f3bbffce904484328be9d2d4de7,
+    type: 3}
+  m_PrefabInstance: {fileID: 2622386845752488839}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1001 &4242410114390802430
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -3126,6 +3134,12 @@ PrefabInstance:
       insertIndex: -1
       addedObject: {fileID: 267942131135022707}
   m_SourcePrefab: {fileID: 100100000, guid: 7ff71f3bbffce904484328be9d2d4de7, type: 3}
+--- !u!23 &3252025697189438330 stripped
+MeshRenderer:
+  m_CorrespondingSourceObject: {fileID: -7511558181221131132, guid: 7ff71f3bbffce904484328be9d2d4de7,
+    type: 3}
+  m_PrefabInstance: {fileID: 4242410114390802430}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1 &3900531056461513391 stripped
 GameObject:
   m_CorrespondingSourceObject: {fileID: 919132149155446097, guid: 7ff71f3bbffce904484328be9d2d4de7,
@@ -3197,6 +3211,9 @@ MonoBehaviour:
           m_StringArgument: 
           m_BoolArgument: 0
         m_CallState: 2
+  RendererToUpdate: {fileID: 3252025697189438330}
+  OnReceiveMat: {fileID: 2100000, guid: 2309f7988d683ba4c96ea90b1c8c6f99, type: 2}
+  OnStopReceiveMat: {fileID: 2100000, guid: 43c440370335b2448bf3585df98d55fe, type: 2}
 --- !u!4 &4425535370934147093 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: -8679921383154817045, guid: 7ff71f3bbffce904484328be9d2d4de7,

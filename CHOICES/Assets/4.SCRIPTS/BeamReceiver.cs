@@ -7,12 +7,22 @@ public class BeamReceiver : MonoBehaviour
     public UnityEvent callbackOnReceive;
     public UnityEvent callbackOnStopReceive;
 
+    [Header("GFX Feedback")]
+    public MeshRenderer RendererToUpdate;
+    public Material OnReceiveMat;
+    public Material OnStopReceiveMat;
+
+    void Start()
+    {
+        RefreshMaterial();
+    }
     public void Receive()
     {
         if (isReceiving)
             return;
         isReceiving = true;
         callbackOnReceive.Invoke();
+        RefreshMaterial();
     }
 
     public void StopReceive()
@@ -21,5 +31,14 @@ public class BeamReceiver : MonoBehaviour
             return;
         isReceiving = false;
         callbackOnStopReceive.Invoke();
+        RefreshMaterial();
+    }
+
+    private void RefreshMaterial()
+    {
+        if (RendererToUpdate==null)
+            return;
+            
+        RendererToUpdate.material = isReceiving ? OnReceiveMat : OnStopReceiveMat;
     }
 }

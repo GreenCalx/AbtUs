@@ -8,7 +8,7 @@ using UnityEngine.Events;
 
 public class PuzzleRewards : MonoBehaviour
 {
-    public const string GlowSpotTag = "GlowSpotHolder";
+
     [Header("Power Plant Reward Refs ( use helper to fill )")]
     public List<GlowSpot> LightsToActivate;
 
