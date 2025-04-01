@@ -22,6 +22,7 @@ public class Portal : MonoBehaviour
                 player.position = reciever.position + portalToPlayer;
             else if(dotProduct > 0 && !negative)
                 player.position = reciever.position + portalToPlayer;
+
         }
     }
 

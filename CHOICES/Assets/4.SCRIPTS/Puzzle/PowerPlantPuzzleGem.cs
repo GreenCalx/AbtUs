@@ -46,7 +46,7 @@ public class PowerPlantPuzzleGem : MonoBehaviour
             {
                 Debug.DrawRay(transform.position, -transform.up * 50f, Color.green);
                 
-                PowerPlantPuzzleGem othergem = hit.collider.gameObject.GetComponent<PowerPlantPuzzleGem>();
+                PowerPlantPuzzleGem othergem = hit.collider.gameObject.GetComponentInParent<PowerPlantPuzzleGem>();
                 if (othergem.gemShape == gemShape)
                 {
                     if (!GemIsAligned)

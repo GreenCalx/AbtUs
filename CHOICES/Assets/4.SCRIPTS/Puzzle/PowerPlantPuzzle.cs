@@ -25,6 +25,9 @@ public class PowerPlantPuzzle : Puzzle
     private float rotateCCW_startTime = 0f;
     private short rotDir = 0;
 
+    private Quaternion initRot = Quaternion.identity;
+
+
     void Start()
     {
         foreach(MeshRenderer mr in renderersToUpdate)
@@ -34,6 +37,7 @@ public class PowerPlantPuzzle : Puzzle
             else
                 mr.material = solvedLightningMat;
         }
+        initRot = rotatingPartTransform.rotation;
     }
 
     public override void StartPuzzle(PlayerController iPC)
@@ -186,6 +190,9 @@ public class PowerPlantPuzzle : Puzzle
 
     public override void StopPuzzle()
     {
+        if (!puzzleStarted)
+            return;
+            
         Managers.Instance.Camera.ResetPlayerCam( 1f);
         playerInPuzzle.freeze_WASD = false;
         playerInPuzzle.freeze_CAM = false;
@@ -195,6 +202,18 @@ public class PowerPlantPuzzle : Puzzle
         UIGame.Instance.cursorMode = false;
         playerInPuzzle = null;
         elapsedPuzzleEntryTime = 0f;
+
+        if (!puzzleSolved)
+            ResetPuzzle();
+    }
+
+    public override void ResetPuzzle()
+    {
+        rotatingPartTransform.rotation = initRot;
+        foreach ( PowerPlantPuzzleGem gem in gemsToAlign )
+        {
+            gem.pathWalker.angle = gem.pathWalker.initAngle;
+        }
     }
 
     #region LOCAL

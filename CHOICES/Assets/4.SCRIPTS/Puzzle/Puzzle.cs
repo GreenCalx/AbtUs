@@ -18,4 +18,5 @@ public class Puzzle : MonoBehaviour
     public virtual void PuzzleInputs() {}
     public virtual bool TryValidatePuzzle() { return true; }
     public virtual void OnPuzzleSolved() {}
+    public virtual void ResetPuzzle() {}
 }
