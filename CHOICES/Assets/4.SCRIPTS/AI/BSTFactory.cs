@@ -39,4 +39,37 @@ public static class BSTFactory
 
         return bst;
     }
+
+    public static BST<DreamCatcherToken, DreamCatcherChecks, DreamCatcherActionPool> MakeDreamCatcherGraph()
+    {
+        BST<DreamCatcherToken, DreamCatcherChecks, DreamCatcherActionPool> bst = new BST<DreamCatcherToken, DreamCatcherChecks, DreamCatcherActionPool>();
+
+        // Nodes
+        bst.Build(BSTState.IDLE, Enum.GetValues(typeof(DreamCatcherState)).Cast<BSTState>().ToList());
+
+
+        // connections
+        bst.AddConnection(BSTState.IDLE, BSTState.DEAD, bst.checks.DeathCond);
+        bst.AddConnection(BSTState.SEEK, BSTState.DEAD, bst.checks.DeathCond);
+        bst.AddConnection(BSTState.FROZEN, BSTState.DEAD, bst.checks.DeathCond);
+
+        bst.AddConnection(BSTState.IDLE, BSTState.FROZEN, bst.checks.FrozenCond);
+        bst.AddConnection(BSTState.SEEK, BSTState.FROZEN, bst.checks.FrozenCond);
+
+        bst.AddConnection(BSTState.IDLE, BSTState.SEEK, bst.checks.GoSeekCond);
+
+        bst.AddConnection(BSTState.SEEK, BSTState.IDLE, bst.checks.FrozenCond);
+        bst.AddConnection(BSTState.FROZEN, BSTState.IDLE, bst.checks.UnFrozenCond);
+
+        // Node properties callbacks
+        bst.EditNodeStayCB(BSTState.IDLE,       bst.nodeActionPool.OnIdle);
+
+        bst.EditNodeEnterCB(BSTState.DEAD,      bst.nodeActionPool.Freeze);
+        bst.EditNodeEnterCB(BSTState.DEAD,      bst.nodeActionPool.OnDeath);
+
+        bst.EditNodeEnterCB(BSTState.FROZEN,     bst.nodeActionPool.Freeze);
+        bst.EditNodeExitCB(BSTState.FROZEN,      bst.nodeActionPool.UnFreeze);
+
+        return bst;
+    }
 }

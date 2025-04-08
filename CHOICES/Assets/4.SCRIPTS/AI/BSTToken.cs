@@ -31,3 +31,13 @@ public class InsectToken : BSTToken
         behaviour = iBehaviour;
     }
 }
+
+public class DreamCatcherToken : BSTToken
+{
+    public DreamCatcherBehaviour behaviour;
+
+    public DreamCatcherToken(BSTNode iStartNode, BSTAgent iAgent, DreamCatcherBehaviour iBehaviour) : base (iStartNode, iAgent)
+    {
+        behaviour = iBehaviour;
+    }
+}

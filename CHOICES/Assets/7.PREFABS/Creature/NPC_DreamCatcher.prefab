@@ -10,6 +10,10 @@ GameObject:
   m_Component:
   - component: {fileID: 1325137163057475855}
   - component: {fileID: 1368820352250839263}
+  - component: {fileID: 313629643231107247}
+  - component: {fileID: 3654180091832402963}
+  - component: {fileID: 6979660446201832838}
+  - component: {fileID: 8462145392766806976}
   m_Layer: 0
   m_Name: NPC_DreamCatcher
   m_TagString: Untagged
@@ -76,6 +80,97 @@ MonoBehaviour:
     m_DisabledTrigger: Disabled
   m_Interactable: 1
   m_TargetGraphic: {fileID: 0}
+--- !u!195 &313629643231107247
+NavMeshAgent:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2518997513082356903}
+  m_Enabled: 1
+  m_AgentTypeID: 0
+  m_Radius: 0.5
+  m_Speed: 3.5
+  m_Acceleration: 8
+  avoidancePriority: 50
+  m_AngularSpeed: 120
+  m_StoppingDistance: 0
+  m_AutoTraverseOffMeshLink: 1
+  m_AutoBraking: 1
+  m_AutoRepath: 1
+  m_Height: 2
+  m_BaseOffset: 0
+  m_WalkableMask: 4294967295
+  m_ObstacleAvoidanceType: 4
+--- !u!114 &3654180091832402963
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2518997513082356903}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 84a213ff6ed998a4a965840cf02dde43, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  currState: 0
+  navAgent: {fileID: 313629643231107247}
+  modelTransform: {fileID: 1325137163057475855}
+  enabler: {fileID: 0}
+  killFeedback: {fileID: 0}
+  self_RB: {fileID: 6979660446201832838}
+  isDead: 0
+  isFrozen: 0
+  moveDistance: 5
+  waitTime: 2
+  killWalkingSpeed: 2
+--- !u!54 &6979660446201832838
+Rigidbody:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2518997513082356903}
+  serializedVersion: 4
+  m_Mass: 1
+  m_Drag: 0
+  m_AngularDrag: 0.05
+  m_CenterOfMass: {x: 0, y: 0, z: 0}
+  m_InertiaTensor: {x: 1, y: 1, z: 1}
+  m_InertiaRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_IncludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_ExcludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_ImplicitCom: 1
+  m_ImplicitTensor: 1
+  m_UseGravity: 1
+  m_IsKinematic: 0
+  m_Interpolate: 0
+  m_Constraints: 0
+  m_CollisionDetection: 0
+--- !u!114 &8462145392766806976
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2518997513082356903}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: ff18615684883bf458a64fe18db72095, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  clipToTerrain: 0
+  useModelForOffset: 0
+  alignModelToTerrain: 0
+  terrainSize: {x: 0, y: 0}
+  terrainOffset: 0
+  terrain: {fileID: 0}
+  addToIslandPool: 0
 --- !u!1 &6399357715937292812
 GameObject:
   m_ObjectHideFlags: 0
@@ -329,6 +424,11 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: -5735009088469579819, guid: eb4ef98b28a65db4e9cc52682ed0df88,
+        type: 3}
+      propertyPath: m_Convex
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: -5405277921600007597, guid: eb4ef98b28a65db4e9cc52682ed0df88,
         type: 3}
       propertyPath: 'm_Materials.Array.data[0]'
@@ -339,9 +439,16 @@ PrefabInstance:
       propertyPath: m_Name
       value: DreamCatcher
       objectReference: {fileID: 0}
+    - target: {fileID: 3657164066054417299, guid: eb4ef98b28a65db4e9cc52682ed0df88,
+        type: 3}
+      propertyPath: m_Convex
+      value: 0
+      objectReference: {fileID: 0}
     m_RemovedComponents:
     - {fileID: -3281555357913362185, guid: eb4ef98b28a65db4e9cc52682ed0df88, type: 3}
     - {fileID: -1926923723252915785, guid: eb4ef98b28a65db4e9cc52682ed0df88, type: 3}
+    - {fileID: 8185978609995362810, guid: eb4ef98b28a65db4e9cc52682ed0df88, type: 3}
+    - {fileID: 3657164066054417299, guid: eb4ef98b28a65db4e9cc52682ed0df88, type: 3}
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
     m_AddedComponents:
@@ -428,7 +535,7 @@ Cloth:
   m_BendingStiffness: 0
   m_UseTethers: 1
   m_UseGravity: 1
-  m_Damping: 0
+  m_Damping: 0.4
   m_ExternalAcceleration: {x: 0, y: 0, z: 0}
   m_RandomAcceleration: {x: 0, y: 0, z: 0}
   m_WorldVelocityScale: 0.5

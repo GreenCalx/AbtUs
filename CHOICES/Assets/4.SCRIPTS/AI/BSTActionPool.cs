@@ -40,3 +40,31 @@ public class InsectActionPool : BSTActionPool<InsectToken>
 
     }
 }
+
+public class DreamCatcherActionPool : BSTActionPool<DreamCatcherToken>
+{
+    public override void OnIdle()
+    {
+        target.behaviour.navAgent.enabled = true;
+        target.behaviour.Idle();
+    }
+
+    public override void OnDeath()
+    {
+        target.behaviour.Kill();
+    }
+
+    public override void Freeze()
+    {
+        target.behaviour.navAgent.enabled = false;
+    }
+    public override void UnFreeze()
+    {
+        target.behaviour.navAgent.enabled = true;
+        target.behaviour.ResetDestination();
+    }
+    public override void OnSeek()
+    {
+
+    }
+}

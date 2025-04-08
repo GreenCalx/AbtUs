@@ -4,6 +4,18 @@ using System.Collections.Generic;
 
 public class BSTAgentPool : MonoBehaviour
 {
+    public bool autoPlayAll = true;
+    
+    [Header("Insects")]
+    public bool playInsects = false;
+    public List<InsectBehaviour> insects;
+    public BST<InsectToken, InsectChecks, InsectActionPool> insectBST;
+
+    [Header("DreamCatchers")]
+    public bool playDreamCatchers = false;
+    public List<DreamCatcherBehaviour> dreamcatchers;
+    public BST<DreamCatcherToken, DreamCatcherChecks, DreamCatcherActionPool> dreamcatcherBST;
+
     void Start()
     {
         if (insects.Count > 0)
@@ -15,7 +27,19 @@ public class BSTAgentPool : MonoBehaviour
                 insectBST.AddToken( tok );
             }
 
-            insectBST.playMode = true;
+            playInsects = autoPlayAll;
+        }
+
+        if (dreamcatchers.Count > 0)
+        {
+            dreamcatcherBST = BSTFactory.MakeDreamCatcherGraph();
+            foreach(DreamCatcherBehaviour dc in dreamcatchers)
+            {
+                DreamCatcherToken tok = new DreamCatcherToken( dreamcatcherBST.GetNodeFromState(BSTState.IDLE), dc, dc);
+                dreamcatcherBST.AddToken( tok );
+            }
+
+            playDreamCatchers = autoPlayAll;
         }
     }
 
@@ -26,15 +50,11 @@ public class BSTAgentPool : MonoBehaviour
             insectBST.playMode = playInsects;
             insectBST.Update();
         }
+
+        if (dreamcatcherBST!=null)
+        {
+            dreamcatcherBST.playMode = playDreamCatchers;
+            dreamcatcherBST.Update();
+        }
     }
-
-
-    #region INSECTS
-    public bool playInsects = false;
-    public List<InsectBehaviour> insects;
-    public BST<InsectToken, InsectChecks, InsectActionPool> insectBST;
-
-
-    #endregion
-
 }

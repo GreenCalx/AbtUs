@@ -19,3 +19,13 @@ public enum InsectState
     SEEK = BSTState.SEEK
 
 }
+
+public enum DreamCatcherState
+{
+    DEAD = BSTState.DEAD,
+    IDLE = BSTState.IDLE,
+    FROZEN = BSTState.FROZEN,
+    PATROL = BSTState.PATROL,
+    SEEK = BSTState.SEEK
+
+}
