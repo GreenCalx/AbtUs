@@ -65,7 +65,6 @@ public class UIGame : MonoBehaviour
         switch (iAct)
         {
             case PLAYER_ACTIONS.MOVE:
-                Debug.Log("so gay");
                 ForceCursorToOpenHand();
                 ChangeCrosshairSize(crosshairSizeForActionCursors);
                 break;

@@ -28,7 +28,7 @@ TagManager:
   - HitPlayerOnly
   - FXVolume
   - Camera
-  - 
+  - NoGameCollision
   - 
   - 
   - 

@@ -2,37 +2,29 @@ using UnityEngine;
 using UnityEngine.AI;
 using System.Collections;
 
-public class Creature : InteractibleObject
+public class Creature : BSTAgent
 {
     [Header("Creature")]
-    protected Transform modelTransform;
-
-    protected NavMeshAgent agent;
+    public Transform modelTransform;
     public OWCEnabler enabler;
 
     protected Terrain terrain;
 
-    public bool respawn = false;
-    public float timeRespawn = 60;
-
-    public bool invincible = false;
     public Feedback killFeedback;
 
-    protected Vector3 firstPos;
+    public Rigidbody self_RB;
+
+    [Header("Flags")]
+    public bool isDead = false;
+    public bool isFrozen = false;
 
     private void Awake()
     {
         modelTransform = GetComponentInChildren<MeshRenderer>().transform;
-        RB = transform.GetComponentInChildren<Rigidbody>();
-        agent = transform.GetComponentInChildren<NavMeshAgent>();
+        self_RB = transform.GetComponentInChildren<Rigidbody>();
+        navAgent = transform.GetComponentInChildren<NavMeshAgent>();
         enabler = transform.parent.GetComponent<OWCEnabler>();
         terrain = transform.GetComponent<ModelTools>()?.GetTerrain();
-        firstPos = transform.position;
-
-        if (availableActions.Length >= 1)
-        {
-            ChangeSelectedAction(availableActions[0]);
-        }
     }
     /*
     static private void Spawn(Vector3 pos, Transform parent)
@@ -47,53 +39,16 @@ public class Creature : InteractibleObject
     */
     public void Kill()
     {
-        if (invincible) { return; }
-        if( killFeedback != null) { killFeedback.use(); }
-        if (respawn)
-        {
-            this.gameObject.SetActive(false);
-            Invoke("Respawn", timeRespawn);
+        if (isFrozen) 
             return;
-        }
+
+        if( killFeedback != null) { killFeedback.use(); }
+
         if(enabler != null)
         {
             enabler.Remove(this.gameObject);
         }
 
         Destroy(this.gameObject);
-         
-    }
-
-    public void Respawn()
-    {
-        gameObject.SetActive(true);
-    }
-
-    public override void Move()
-    {
-        invincible = true;
-        agent.enabled = false;
-        modelTransform.position = transform.position;
-        transform.up = Vector3.up;
-        if (ActionCo != null)
-        {
-            StopCoroutine(ActionCo);
-            ActionCo = null;
-        }
-
-        UIGame.Instance.ForceCursorToCloseHand();
-        ActionCo = StartCoroutine(MoveCo());
-    }
-
-    public override void StopMove()
-    {
-        agent.enabled = true;
-        invincible = false;
-        if (ActionCo != null)
-        {
-            StopCoroutine(ActionCo);
-            ActionCo = null;
-        }
-        UIGame.Instance.ForceCursorToOpenHand();
     }
 }

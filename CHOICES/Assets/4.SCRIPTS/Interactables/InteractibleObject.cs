@@ -10,6 +10,7 @@ public class InteractibleObject : MonoBehaviour
 {
     [Header("Tweaks")]
     public PLAYER_ACTIONS[] availableActions;
+    public Transform targetedTransfrom;
     [Header("Optional References")]
     public Puzzle puzzle;
 
@@ -32,6 +33,9 @@ public class InteractibleObject : MonoBehaviour
         {
             ChangeSelectedAction(availableActions[0]);
         }
+
+        if (targetedTransfrom==null)
+        { targetedTransfrom = transform; }
     }
     
     public PLAYER_ACTIONS GetSelectedAction() { return selectedAction; }
@@ -136,7 +140,7 @@ public class InteractibleObject : MonoBehaviour
         while (player.playerInAction)
         {
             Vector3 worldPos = player.FPSCamera.GetRayFromScreenCenter().GetPoint(distFromPlayer);
-            transform.position = worldPos;
+            targetedTransfrom.position = worldPos;
             yield return null;
         }
     }

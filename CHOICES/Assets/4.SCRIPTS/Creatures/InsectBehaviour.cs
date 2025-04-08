@@ -21,31 +21,38 @@ public class InsectBehaviour : Creature
 
     private void Start()
     {
-        agent.updateUpAxis = false; 
+        navAgent.updateUpAxis = false; 
         childTransform = transform.GetChild(0);
         terrainSize = terrain.terrainData.size;
         terrainPos = terrain.transform.position;
     }
 
-    void Update()
+    public void Idle()
     {
-        if (!agent.enabled) { return;}
+        if (!navAgent.enabled) { return;}
 
         Vector2 terrainRelativePos = new Vector2((childTransform.position.x - terrainPos.x) / terrainSize.x, (childTransform.position.z - terrainPos.z) / terrainSize.z);
         transform.up = terrain.terrainData.GetInterpolatedNormal(terrainRelativePos.x, terrainRelativePos.y);
 
         Debug.DrawLine(childTransform.position, childTransform.position + 10 * terrain.terrainData.GetInterpolatedNormal(terrainRelativePos.x, terrainRelativePos.y));
-        if (!waiting && agent.remainingDistance <= agent.stoppingDistance)
+        if (!waiting && navAgent.remainingDistance <= navAgent.stoppingDistance)
         {
             StartCoroutine(WaitAndTurn());
         }
+    }
+
+    public void ResetDestination()
+    {
+        if (navAgent.hasPath)
+            navAgent.ResetPath();
+        
     }
 
     IEnumerator WaitAndTurn()
     {
         waiting = true;
         yield return new WaitForSeconds(waitTime);
-        if (agent.enabled)
+        if (navAgent.enabled)
         {
             MoveToRandomPosition();
         }
@@ -61,7 +68,7 @@ public class InsectBehaviour : Creature
         NavMeshHit hit;
         if (NavMesh.SamplePosition(randomDirection, out hit, moveDistance, NavMesh.AllAreas))
         {
-            agent.SetDestination(hit.position);
+            navAgent.SetDestination(hit.position);
         }
         else
         {
@@ -75,7 +82,7 @@ public class InsectBehaviour : Creature
         {
             if(other.gameObject.GetComponent<Rigidbody>().linearVelocity.magnitude > killWalkingSpeed)
             {
-                Kill();
+                isDead = true;
             }
         }
     }

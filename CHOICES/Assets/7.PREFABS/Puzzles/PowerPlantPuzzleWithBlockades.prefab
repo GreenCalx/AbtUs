@@ -297,6 +297,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 39222400603917549ba208b6cc4d1229, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  puzzleEntryInputLatch: 1
+  parentPuzzleBundle: {fileID: 0}
   puzzleStarted: 0
   puzzleSolved: 0
   playerInPuzzle: {fileID: 0}
