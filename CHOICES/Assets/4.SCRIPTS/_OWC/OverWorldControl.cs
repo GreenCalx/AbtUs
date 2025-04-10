@@ -8,6 +8,7 @@ using System.Linq;
 
 public enum OWCAxis {GTL, OTC, MTO};
 
+public enum WORLD_AXIS { ZERO=0, CHAOS=1, ORDER=2, MINERAL=3, ORGANIC=4, GLOOMY=5, LUSH=6}
 public class OverWorldControl : MonoBehaviour
 {
     [Header("Debug")]
@@ -340,6 +341,8 @@ public class OverWorldControl : MonoBehaviour
     public IEnumerator CrossfadeVolCo(float iCrossfadeTime, GTLVolumeMod iFrom, GTLVolumeMod iTo)
     {
         crossfadingVolDone = false;
+        iTo.Activate();
+
         float elapsedTime = 0f;
         while ( elapsedTime < iCrossfadeTime )
         {
@@ -350,7 +353,9 @@ public class OverWorldControl : MonoBehaviour
             yield return null;
         }
         iFrom.Deactivate();
-        iTo.Activate();
+
+        iFrom.isActive = false;
+        iTo.isActive = true;
         crossfadingVolDone = true;
     }
     #endregion

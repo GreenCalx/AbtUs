@@ -27,6 +27,7 @@ public class OTCLookupTable : MonoBehaviour
     {
         public SPREAD_SHAPE spreadShape;
         public float OtC_Factor;
+        public WORLD_AXIS axisConstraint;
     }
 
     public List<OTCLookupUnit> units;
@@ -42,8 +43,8 @@ public class OTCLookupTable : MonoBehaviour
 
     public void ComputeSpreadShape(OTCCluster iCluster, float iOTC, SPREAD_SHAPE iForceShapeOrder = SPREAD_SHAPE.NONE, SPREAD_SHAPE iForceShapeChaos = SPREAD_SHAPE.NONE)
     {
-        bool askForChaos = (iOTC > NeutralVal);
-        bool askForOrder = (iOTC < NeutralVal);
+        bool askForChaos = OverWorldControl.Instance.ChaosMagnitude > 0f;
+        bool askForOrder = OverWorldControl.Instance.OrderMagnitude > 0f;
 
         // Don't recompute shape if the computed one already fits
         if (askForOrder && ShapeIsOrder(iCluster.currSpreadShape))
@@ -52,10 +53,10 @@ public class OTCLookupTable : MonoBehaviour
         { return; }
 
         List<SPREAD_SHAPE> eligibleShapes = new List<SPREAD_SHAPE>();
-        if ((iForceShapeOrder!=SPREAD_SHAPE.NONE)&&(iOTC < NeutralVal))
+        if ((iForceShapeOrder!=SPREAD_SHAPE.NONE)&&askForOrder)
         {
-                eligibleShapes.Add(iForceShapeOrder);
-        } else if((iForceShapeChaos!=SPREAD_SHAPE.NONE)&&(iOTC > NeutralVal))
+            eligibleShapes.Add(iForceShapeOrder);
+        } else if((iForceShapeChaos!=SPREAD_SHAPE.NONE)&&askForChaos)
         {
             eligibleShapes.Add(iForceShapeChaos);
         }
@@ -63,11 +64,11 @@ public class OTCLookupTable : MonoBehaviour
         {
             foreach(OTCLookupUnit u in units)
             {
-                if (askForChaos)
+                if (askForChaos && (u.axisConstraint == WORLD_AXIS.CHAOS))
                 { // CHAOS
                     if (iOTC > u.OtC_Factor)
                         eligibleShapes.Add(u.spreadShape);
-                } else if (askForOrder) 
+                } else if (askForOrder && (u.axisConstraint == WORLD_AXIS.ORDER)) 
                 {
                     // ORDER
                     if (iOTC < u.OtC_Factor)
@@ -78,8 +79,6 @@ public class OTCLookupTable : MonoBehaviour
 
         if (eligibleShapes.Count==0)
             eligibleShapes.Add(SPREAD_SHAPE.NONE);
-
-
 
         SPREAD_SHAPE selectedShape = eligibleShapes[UnityEngine.Random.Range(0,eligibleShapes.Count)];
         iCluster.currSpreadShape = selectedShape;
@@ -93,34 +92,33 @@ public class OTCLookupTable : MonoBehaviour
             return;
         }
 
-        
         switch (iCluster.currSpreadShape)
         {
             case SPREAD_SHAPE.ALIGN_X:
-                AlignOnX(iCluster, computeiOrderFactor(iCluster, iOTC));
+                AlignOnX(iCluster, orderFactorCurve.Evaluate(OverWorldControl.Instance.OrderMagnitude));
                 break;
             case SPREAD_SHAPE.ALIGN_Z:
-                AlignOnZ(iCluster, computeiOrderFactor(iCluster, iOTC));
+                AlignOnZ(iCluster, orderFactorCurve.Evaluate(OverWorldControl.Instance.OrderMagnitude));
                 break;
             case SPREAD_SHAPE.TRIANGLE:
-                Triangulate(iCluster, computeiOrderFactor(iCluster, iOTC));
+                Triangulate(iCluster, orderFactorCurve.Evaluate(OverWorldControl.Instance.OrderMagnitude));
                 break;
             case SPREAD_SHAPE.SQR:
-                Square(iCluster, computeiOrderFactor(iCluster, iOTC));
+                Square(iCluster, orderFactorCurve.Evaluate(OverWorldControl.Instance.OrderMagnitude));
                 break;
             case SPREAD_SHAPE.CIRCLE:
-                Circle(iCluster, computeiOrderFactor(iCluster, iOTC));
+                Circle(iCluster, orderFactorCurve.Evaluate(OverWorldControl.Instance.OrderMagnitude));
                 break;
             case SPREAD_SHAPE.GRID:
-                Grid(iCluster, computeiOrderFactor(iCluster, iOTC));
+                Grid(iCluster, orderFactorCurve.Evaluate(OverWorldControl.Instance.OrderMagnitude));
                 break;
             case SPREAD_SHAPE.HEX:
                 break;
             case SPREAD_SHAPE.ARCH:
-                Arch(iCluster, computeiOrderFactor(iCluster, iOTC));
+                Arch(iCluster, orderFactorCurve.Evaluate(OverWorldControl.Instance.OrderMagnitude));
                 break;
             case SPREAD_SHAPE.NOISE:
-                Noise(iCluster, chaosFactorCurve.Evaluate(iOTC));
+                Noise(iCluster, chaosFactorCurve.Evaluate(OverWorldControl.Instance.ChaosMagnitude));
                 break;
             default:
                 break;
@@ -138,28 +136,28 @@ public class OTCLookupTable : MonoBehaviour
         switch (iCluster.currSpreadShape)
         {
             case SPREAD_SHAPE.ALIGN_X:
-                AlignRotOnX(iCluster, computeiOrderFactor(iCluster, iOTC));
+                AlignRotOnX(iCluster, orderFactorCurve.Evaluate(OverWorldControl.Instance.OrderMagnitude));
                 break;
             case SPREAD_SHAPE.ALIGN_Z:
-                AlignRotOnZ(iCluster, computeiOrderFactor(iCluster, iOTC));
+                AlignRotOnZ(iCluster, orderFactorCurve.Evaluate(OverWorldControl.Instance.OrderMagnitude));
                 break;
             case SPREAD_SHAPE.TRIANGLE:
-                AlignRotWithCenter(iCluster, computeiOrderFactor(iCluster, iOTC));
+                AlignRotWithCenter(iCluster, orderFactorCurve.Evaluate(OverWorldControl.Instance.OrderMagnitude));
                 break;
             case SPREAD_SHAPE.SQR:
-                AlignRotWithCenter(iCluster, computeiOrderFactor(iCluster, iOTC));
+                AlignRotWithCenter(iCluster, orderFactorCurve.Evaluate(OverWorldControl.Instance.OrderMagnitude));
                 break;
             case SPREAD_SHAPE.CIRCLE:
-                AlignRotWithCenter(iCluster, computeiOrderFactor(iCluster, iOTC));
+                AlignRotWithCenter(iCluster, orderFactorCurve.Evaluate(OverWorldControl.Instance.OrderMagnitude));
                 break;
             case SPREAD_SHAPE.GRID:
-                AlignRotWithCenter(iCluster, computeiOrderFactor(iCluster, iOTC));
+                AlignRotWithCenter(iCluster, orderFactorCurve.Evaluate(OverWorldControl.Instance.OrderMagnitude));
                 break;
             case SPREAD_SHAPE.HEX:
-                AlignRotWithCenter(iCluster, computeiOrderFactor(iCluster, iOTC));
+                AlignRotWithCenter(iCluster, orderFactorCurve.Evaluate(OverWorldControl.Instance.OrderMagnitude));
                 break;
             case SPREAD_SHAPE.ARCH:
-                AlignRotOnZ(iCluster, computeiOrderFactor(iCluster, iOTC));
+                AlignRotOnZ(iCluster, orderFactorCurve.Evaluate(OverWorldControl.Instance.OrderMagnitude));
                 break;
             case SPREAD_SHAPE.NOISE:
                 
@@ -181,31 +179,31 @@ public class OTCLookupTable : MonoBehaviour
         switch (iCluster.currSpreadShape)
         {
             case SPREAD_SHAPE.ALIGN_X:
-                HarmonizeScales(iCluster, computeiOrderFactor(iCluster, iOTC));
+                HarmonizeScales(iCluster, orderFactorCurve.Evaluate(OverWorldControl.Instance.OrderMagnitude));
                 break;
             case SPREAD_SHAPE.ALIGN_Z:
-                HarmonizeScales(iCluster, computeiOrderFactor(iCluster, iOTC));
+                HarmonizeScales(iCluster, orderFactorCurve.Evaluate(OverWorldControl.Instance.OrderMagnitude));
                 break;
             case SPREAD_SHAPE.TRIANGLE:
-                HarmonizeScales(iCluster, computeiOrderFactor(iCluster, iOTC));
+                HarmonizeScales(iCluster, orderFactorCurve.Evaluate(OverWorldControl.Instance.OrderMagnitude));
                 break;
             case SPREAD_SHAPE.SQR:
-                HarmonizeScales(iCluster, computeiOrderFactor(iCluster, iOTC));
+                HarmonizeScales(iCluster, orderFactorCurve.Evaluate(OverWorldControl.Instance.OrderMagnitude));
                 break;
             case SPREAD_SHAPE.CIRCLE:
-                HarmonizeScales(iCluster, computeiOrderFactor(iCluster, iOTC));
+                HarmonizeScales(iCluster, orderFactorCurve.Evaluate(OverWorldControl.Instance.OrderMagnitude));
                 break;
             case SPREAD_SHAPE.GRID:
-                HarmonizeScales(iCluster, computeiOrderFactor(iCluster, iOTC));
+                HarmonizeScales(iCluster, orderFactorCurve.Evaluate(OverWorldControl.Instance.OrderMagnitude));
                 break;
             case SPREAD_SHAPE.HEX:
-                HarmonizeScales(iCluster, computeiOrderFactor(iCluster, iOTC));            
+                HarmonizeScales(iCluster, orderFactorCurve.Evaluate(OverWorldControl.Instance.OrderMagnitude));            
                 break;
             case SPREAD_SHAPE.ARCH:
-                HarmonizeScales(iCluster, computeiOrderFactor(iCluster, iOTC));
+                HarmonizeScales(iCluster, orderFactorCurve.Evaluate(OverWorldControl.Instance.OrderMagnitude));
                 break;
             case SPREAD_SHAPE.NOISE:
-                RandomizeScales(iCluster, orderFactorCurve.Evaluate(iOTC));    
+                RandomizeScales(iCluster, chaosFactorCurve.Evaluate(OverWorldControl.Instance.ChaosMagnitude));    
                 break;
 
             default:
@@ -360,7 +358,7 @@ public class OTCLookupTable : MonoBehaviour
     public void Grid(OTCCluster iCluster, float iOrderFactor)
     {
         int count = iCluster.mods.Count;
-        int gridSize = Mathf.CeilToInt(Mathf.Sqrt(count)); // Déterminer la taille de la grille (carré)
+        int gridSize = Mathf.CeilToInt(Mathf.Sqrt(count)); // Dï¿½terminer la taille de la grille (carrï¿½)
         float minDim = Mathf.Min(iCluster.clusterBounds.extents.x, iCluster.clusterBounds.extents.y, iCluster.clusterBounds.extents.z);
         float spacing = minDim / (gridSize - 1);
         Vector3 relative_center = iCluster.clusterBounds.center - iCluster.transform.position;
@@ -375,7 +373,7 @@ public class OTCLookupTable : MonoBehaviour
             );
             m.targetPos = Vector3.Lerp(m.initPos, idealTargetPos, iOrderFactor);
             col++;
-            if (col >= gridSize)  // Passer à la ligne suivante
+            if (col >= gridSize)  // Passer ï¿½ la ligne suivante
             {
                 col = 0;
                 row++;
@@ -399,13 +397,6 @@ public class OTCLookupTable : MonoBehaviour
         }
     }
 
-    public float computeiOrderFactor(OTCCluster iCluster, float iOTC)
-    {
-        if(iCluster.completeShapeThreshold == 0.5f) { return orderFactorCurve.Evaluate(iOTC); }
-        if(iCluster.completeShapeThreshold >= iOTC) { return 1; }
-        return orderFactorCurve.Evaluate((iOTC - iCluster.completeShapeThreshold)/ (0.5f - iCluster.completeShapeThreshold));
-
-    }
         
     #endregion
     

@@ -285,14 +285,22 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   units:
-  - mat: {fileID: 2100000, guid: 0b92825f5b293aa4a89a5fa1486c1912, type: 2}
-    MtO_Factor: 0.2
+  - axisConstraint: 4
+    mat: {fileID: 2100000, guid: 0b92825f5b293aa4a89a5fa1486c1912, type: 2}
+    MtO_Factor: 0.6
     replacingThose:
     - {fileID: 2100000, guid: f3952eae22c247c4e908882797fc9b1c, type: 2}
-  - mat: {fileID: 2100000, guid: 16b0156a7a3bac241b9925eaab50eb3e, type: 2}
-    MtO_Factor: 0.2
+  - axisConstraint: 4
+    mat: {fileID: 2100000, guid: 16b0156a7a3bac241b9925eaab50eb3e, type: 2}
+    MtO_Factor: 0.6
     replacingThose:
     - {fileID: 2100000, guid: f3952eae22c247c4e908882797fc9b1c, type: 2}
+  - axisConstraint: 3
+    mat: {fileID: 2100000, guid: f3952eae22c247c4e908882797fc9b1c, type: 2}
+    MtO_Factor: 0.491
+    replacingThose:
+    - {fileID: 2100000, guid: 0b92825f5b293aa4a89a5fa1486c1912, type: 2}
+    - {fileID: 2100000, guid: 16b0156a7a3bac241b9925eaab50eb3e, type: 2}
 --- !u!1 &1352790782487124492
 GameObject:
   m_ObjectHideFlags: 0
@@ -524,31 +532,37 @@ MonoBehaviour:
   units:
   - spreadShape: 1
     OtC_Factor: 0.49
+    axisConstraint: 2
   - spreadShape: 2
     OtC_Factor: 0.49
+    axisConstraint: 2
   - spreadShape: 8
-    OtC_Factor: 0.51
+    OtC_Factor: 0.49
+    axisConstraint: 2
+  - spreadShape: 9
+    OtC_Factor: 0.501
+    axisConstraint: 1
   chaosFactorCurve:
     serializedVersion: 2
     m_Curve:
     - serializedVersion: 3
-      time: 0.5
+      time: 0
       value: 0
-      inSlope: 0
-      outSlope: 0
-      tangentMode: 136
+      inSlope: 2
+      outSlope: 2
+      tangentMode: 0
       weightedMode: 0
-      inWeight: 0.33333334
-      outWeight: 0.33333334
+      inWeight: 0
+      outWeight: 0
     - serializedVersion: 3
       time: 1
       value: 1
       inSlope: 0
       outSlope: 0
-      tangentMode: 136
+      tangentMode: 0
       weightedMode: 0
-      inWeight: 0.33333334
-      outWeight: 0.33333334
+      inWeight: 0
+      outWeight: 0
     m_PreInfinity: 2
     m_PostInfinity: 2
     m_RotationOrder: 4
@@ -557,22 +571,22 @@ MonoBehaviour:
     m_Curve:
     - serializedVersion: 3
       time: 0
+      value: 0
+      inSlope: 2
+      outSlope: 2
+      tangentMode: 0
+      weightedMode: 0
+      inWeight: 0
+      outWeight: 0
+    - serializedVersion: 3
+      time: 1
       value: 1
       inSlope: 0
       outSlope: 0
-      tangentMode: 136
+      tangentMode: 0
       weightedMode: 0
-      inWeight: 0.33333334
-      outWeight: 0.33333334
-    - serializedVersion: 3
-      time: 0.5
-      value: 0.2
-      inSlope: 0
-      outSlope: 0
-      tangentMode: 136
-      weightedMode: 0
-      inWeight: 0.33333334
-      outWeight: 0.33333334
+      inWeight: 0
+      outWeight: 0
     m_PreInfinity: 2
     m_PostInfinity: 2
     m_RotationOrder: 4
@@ -1333,17 +1347,23 @@ MonoBehaviour:
   NeutralVal: 0.5
   volumeUnits:
   - GtL_Factor: 0.5
+    axisConstraint: 0
     volumeProfile: {fileID: 11400000, guid: 8ba92e2dd7f884a0f88b98fa2d235fe7, type: 2}
   - GtL_Factor: 0.52
+    axisConstraint: 6
     volumeProfile: {fileID: 11400000, guid: c164136aeff639a4b996d90c828bb719, type: 2}
   - GtL_Factor: 0.48
+    axisConstraint: 5
     volumeProfile: {fileID: 11400000, guid: 06f382a5b9606164d9ac0248b1ea2737, type: 2}
   - GtL_Factor: 0.1
+    axisConstraint: 5
     volumeProfile: {fileID: 11400000, guid: 0ddb992ad1a95e349b445063fb617288, type: 2}
   lightUnits:
   - GtL_Factor: 0.5
+    axisConstraint: 0
     light: {fileID: 1539959427416011575}
   - GtL_Factor: 0.52
+    axisConstraint: 6
     light: {fileID: 4567291200223396473}
   waterUnits: []
 --- !u!1 &7969623240217540831
