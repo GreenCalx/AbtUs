@@ -13,7 +13,7 @@ public class GTLLookupTable : MonoBehaviour
     public class GTLLookupUnit
     {
         public float GtL_Factor;
-        
+        public WORLD_AXIS axisConstraint;
     }
     [Serializable]
     public class GTLLookupVolumeUnit : GTLLookupUnit
@@ -38,25 +38,24 @@ public class GTLLookupTable : MonoBehaviour
     public bool TryUpdateProfile(GTLVolumeMod iMod, VolumeProfile iActiveProfile, float iGTLFactor)
     {
         List<VolumeProfile> eligibleProfiles = new List<VolumeProfile>();
+        bool isLush = OverWorldControl.Instance.LushMagnitude > 0f;
+        bool isGloom = OverWorldControl.Instance.GloomyMagnitude > 0f;
         foreach(GTLLookupVolumeUnit u in volumeUnits)
         {
             if (u.volumeProfile == iActiveProfile)
                 continue;
-
-            else if (iGTLFactor == NeutralVal)
+            else if (!isLush && !isGloom)
             {
-                if (NeutralVal==u.GtL_Factor)
+                if (u.axisConstraint == WORLD_AXIS.ZERO)
                     eligibleProfiles.Add(u.volumeProfile);
             }
-            else if (iGTLFactor > NeutralVal)
+            else if (isLush && (u.axisConstraint == WORLD_AXIS.LUSH))
             {
-                // LUSH
-                if (iGTLFactor > u.GtL_Factor)
+                if (iGTLFactor >= u.GtL_Factor)
                     eligibleProfiles.Add(u.volumeProfile);
-            } else if (iGTLFactor < NeutralVal) 
+            } else if (isGloom && (u.axisConstraint == WORLD_AXIS.GLOOMY)) 
             {
-                //GLOOMY
-                if (iGTLFactor < u.GtL_Factor)
+                if (iGTLFactor <= u.GtL_Factor)
                     eligibleProfiles.Add(u.volumeProfile);
             }
         }
@@ -71,22 +70,25 @@ public class GTLLookupTable : MonoBehaviour
     public bool TryUpdateSun(GTLLightMod iSunMod, Light iActiveSunLight, float iGTLFactor)
     {
         List<Light> eligibleSuns = new List<Light>();
+        bool isLush = OverWorldControl.Instance.LushMagnitude > 0f;
+        bool isGloom = OverWorldControl.Instance.GloomyMagnitude > 0f;
+
         foreach(GTLLookupLightUnit u in lightUnits)
         {
             if (u.light == iActiveSunLight)
                 continue;
             
-            if (iGTLFactor == NeutralVal)
+            if (!isLush && !isGloom)
             {
-                if (u.GtL_Factor == NeutralVal)
+                if (u.axisConstraint == WORLD_AXIS.ZERO)
                     eligibleSuns.Add(u.light);
             }
-            else if (iGTLFactor > NeutralVal)
+            else if (isLush && (u.axisConstraint == WORLD_AXIS.LUSH))
             {
                 if (iGTLFactor > u.GtL_Factor)
                     eligibleSuns.Add(u.light);
             } 
-            else if (iGTLFactor < NeutralVal)
+            else if (isGloom && (u.axisConstraint == WORLD_AXIS.GLOOMY))
             {
                 if (iGTLFactor < u.GtL_Factor)
                     eligibleSuns.Add(u.light);

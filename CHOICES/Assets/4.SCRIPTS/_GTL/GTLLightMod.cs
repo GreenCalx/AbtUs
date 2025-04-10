@@ -25,4 +25,17 @@ public class GTLLightMod : GTLModifier<Light, Light>
         // TODO : intensity lerp from init value to 0 & vice versa ?
         transform.rotation = Quaternion.Lerp(initRot, modifierTarget.transform.rotation, iValue);
     }
+
+    public override void Deactivate() 
+    {
+        weight = 0f;
+        isActive = false;
+        modifierTarget.enabled = false;
+    }
+    public override void Activate() 
+    {
+        weight = 1f;
+        isActive = true;
+        modifierTarget.enabled = true;
+    }
 }

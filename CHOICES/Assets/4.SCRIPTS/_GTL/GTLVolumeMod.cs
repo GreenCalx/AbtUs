@@ -19,6 +19,18 @@ public class GTLVolumeMod : GTLModifier<Volume, VolumeProfile>
 
     public override void ChangeTargetWeight(float iValue)
     {
-        modifierTarget.weight = m_weight;
+        modifierTarget.weight = iValue;
     }
+
+    public override void Deactivate() 
+    {
+        //isActive = false;
+        modifierTarget.enabled = false;
+    }
+    public override void Activate() 
+    {
+        //isActive = true;
+        modifierTarget.enabled = true;
+    }
+
 }

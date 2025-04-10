@@ -34,16 +34,17 @@ public class GTLModifier<T, K> : MonoBehaviour
     public virtual void ChangeTarget (K iTarget) {}
     public virtual void ChangeTargetWeight(float iValue) {}
 
-    public void Deactivate()
+    public virtual void Deactivate()
     {
         weight = 0f;
-        gameObject.SetActive(false);
+        isActive = false;
+        
     }
 
-    public void Activate()
+    public virtual void Activate()
     {
         weight = 1f;
-        gameObject.SetActive(true);
+        isActive = true;
     }
 }
 

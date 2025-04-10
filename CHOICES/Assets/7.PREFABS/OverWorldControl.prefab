@@ -1331,17 +1331,23 @@ MonoBehaviour:
   NeutralVal: 0.5
   volumeUnits:
   - GtL_Factor: 0.5
+    axisConstraint: 0
     volumeProfile: {fileID: 11400000, guid: 8ba92e2dd7f884a0f88b98fa2d235fe7, type: 2}
   - GtL_Factor: 0.52
+    axisConstraint: 6
     volumeProfile: {fileID: 11400000, guid: c164136aeff639a4b996d90c828bb719, type: 2}
   - GtL_Factor: 0.48
+    axisConstraint: 5
     volumeProfile: {fileID: 11400000, guid: 06f382a5b9606164d9ac0248b1ea2737, type: 2}
   - GtL_Factor: 0.1
+    axisConstraint: 5
     volumeProfile: {fileID: 11400000, guid: 0ddb992ad1a95e349b445063fb617288, type: 2}
   lightUnits:
   - GtL_Factor: 0.5
+    axisConstraint: 0
     light: {fileID: 1539959427416011575}
   - GtL_Factor: 0.52
+    axisConstraint: 6
     light: {fileID: 4567291200223396473}
   waterUnits: []
 --- !u!1 &7969623240217540831
