@@ -334,6 +334,7 @@ MonoBehaviour:
     m_Value:
     - {fileID: 11400000, guid: 48e911a1e337b44e2b85dbc65b47a594, type: 2}
     - {fileID: 11400000, guid: 879ffae44eefa4412bb327928f1a96dd, type: 2}
+    - {fileID: 11400000, guid: 5c2c892990baa5f4cb5a27eb18b0de42, type: 2}
 --- !u!114 &-7089757308646879465
 MonoBehaviour:
   m_ObjectHideFlags: 3
@@ -1756,10 +1757,10 @@ MonoBehaviour:
   active: 1
   mode:
     m_OverrideState: 1
-    m_Value: 1
+    m_Value: 4
   meteringMode:
     m_OverrideState: 1
-    m_Value: 2
+    m_Value: 0
   luminanceSource:
     m_OverrideState: 1
     m_Value: 1
@@ -1771,10 +1772,10 @@ MonoBehaviour:
     m_Value: 0
   limitMin:
     m_OverrideState: 1
-    m_Value: -1
+    m_Value: 1.5449635
   limitMax:
     m_OverrideState: 1
-    m_Value: 14
+    m_Value: 12.744471
   curveMap:
     m_OverrideState: 1
     m_Value:
@@ -1867,7 +1868,7 @@ MonoBehaviour:
     m_Value: {fileID: 0}
   histogramPercentages:
     m_OverrideState: 1
-    m_Value: {x: 40, y: 90}
+    m_Value: {x: 46.906075, y: 77.292816}
   histogramUseCurveRemapping:
     m_OverrideState: 1
     m_Value: 0
