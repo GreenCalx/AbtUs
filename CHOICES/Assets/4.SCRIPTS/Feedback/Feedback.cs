@@ -2,32 +2,46 @@ using UnityEngine;
 
 public class Feedback : MonoBehaviour
 {
-    [SerializeField]
+    [Range(0,1)]
     public float value = 0f;
 
-    public float max_influence = 1f;
-    public float min_influence = 0f;
+    [SerializeField, Range(0,1)]
+    private float maxVarInfluence = 1f;
 
-    public Type feedback_type;
-    public enum Type { GTL, OTC, MTO};
+    [SerializeField, Range(0, 1)]
+    private float minVarInfluence = 0f;
+
+    public FeedbackVariable.Type feedback_type;
+
+    [Header("Optional OWC range")]
+
+    [SerializeField, Range(0, 1)]
+    private float maxOWCInfluence = 1f;
+
+    [SerializeField, Range(0, 1)]
+    private float minOWCInfluence = 0f;
+
+
 
     private FeedbackManager fbm;
 
     private void Start()
     {
         fbm = FeedbackManager.Instance;
+
+        
     }
 
     //override for different feedbacks, default is add
-    public void applyFeedback(ref float OWC_value)
+    public void applyFeedback(FeedbackVariable FeedbackVar, float OWCValue)
     {
-        if(OWC_value < min_influence || OWC_value > max_influence) { return; }
+        if(OWCValue < minOWCInfluence || OWCValue > maxOWCInfluence) { return; }
 
-        var new_value = OWC_value + value;
+        var new_value = FeedbackVar._value + value;
         
-        new_value = Mathf.Clamp(new_value, min_influence, max_influence);
+        new_value = Mathf.Clamp(new_value, minVarInfluence, maxVarInfluence);
 
-        OWC_value = new_value;
+        FeedbackVar._value = new_value;
     }
 
     public void use()

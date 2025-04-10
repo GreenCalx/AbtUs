@@ -883,9 +883,11 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   value: 0.1
-  max_influence: 1
-  min_influence: 0.5
+  maxVarInfluence: 1
+  minVarInfluence: 0
   feedback_type: 0
+  maxOWCInfluence: 1
+  minOWCInfluence: 0
   one_shot: 0
   delay_between_consecutive_feedbacks: 1
   time_looking: 5

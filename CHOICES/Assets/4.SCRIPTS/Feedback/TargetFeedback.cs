@@ -15,7 +15,6 @@ public class TargetFeedback : Feedback
     public void player_looking(bool bol)
     {
         looking = bol;
-        Debug.Log(bol);
     }
 
     private void FixedUpdate()

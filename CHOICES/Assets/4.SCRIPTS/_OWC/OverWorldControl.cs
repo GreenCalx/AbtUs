@@ -6,6 +6,8 @@ using Unity.Mathematics;
 
 using System.Linq;
 
+public enum OWCAxis {GTL, OTC, MTO};
+
 public class OverWorldControl : MonoBehaviour
 {
     [Header("Debug")]
@@ -85,6 +87,21 @@ public class OverWorldControl : MonoBehaviour
     {   // just contain overflow with clamp for mins
         get { return math.remap(0.5f,0f,0f,1f, Mathf.Clamp(m_GloomyToLush,0f,0.5f)); }
     }
+
+    public float getAxisValue(OWCAxis axis)
+    {
+        if(axis == OWCAxis.GTL) { return GloomyToLush; }
+        else if(axis == OWCAxis.MTO) { return MineralToOrganic; }
+        return OrderToChaos;
+    }
+    public void setAxisValue(OWCAxis axis, float value)
+    {
+ 
+        if (axis == OWCAxis.GTL) { SetGloomyToLush(value); Debug.Log("GTL = " + value); }
+        else if (axis == OWCAxis.MTO) { SetMineralToOrganic(value); Debug.Log("MTO = " + value); }
+        else { SetOrderToChaos(value); Debug.Log("OTC = " + value); }
+    }
+
     [Header("LookUpTables")]
     public GTLLookupTable gtlLookupTable;
     public MTOLookupTable mtoLookupTable;
@@ -128,10 +145,12 @@ public class OverWorldControl : MonoBehaviour
         {
             instance = this;
         }
-
+        
+        /*
         SetGloomyToLush(Init_GloomyToLush);
         SetMineralToOrganic(Init_MineralToOrganic);
         SetOrderToChaos(Init_OrderToChaos);
+        */
 
         GTLExtraVolMods = new List<GTLVolumeMod>();
         GTLLightMods = new List<GTLLightMod>();
@@ -198,6 +217,7 @@ public class OverWorldControl : MonoBehaviour
         throw new System.Exception("Axis not recognized");
     }
     #endregion LISTENER
+
     #region GTL
     public void SetGloomyToLush(float iVal)
     {

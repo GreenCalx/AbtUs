@@ -5,18 +5,20 @@ public class HitboxFeedback : Feedback
     public bool one_shot = false;
     public bool destroy_after_use = false;
     public bool delay_between_consecutive_feedbacks = false;
+
     public float time_inside_for_feedback;
+    public string interact_tag;
     private float current_time_inside;
-    private bool player_inside_hitbox = false;
+    private bool object_inside_hitbox = false;
     private void Awake()
     {
         current_time_inside = time_inside_for_feedback;
     }
     private void OnTriggerEnter(Collider other)
     {
-        if (other.CompareTag("Player"))
+        if (other.CompareTag(interact_tag))
         {
-            player_inside_hitbox = true;
+            object_inside_hitbox = true;
             current_time_inside = time_inside_for_feedback;
         }
 
@@ -25,14 +27,14 @@ public class HitboxFeedback : Feedback
     private void OnTriggerExit(Collider other)
     {
         if (other.CompareTag("Player"))
-            player_inside_hitbox = false;
+            object_inside_hitbox = false;
         current_time_inside = time_inside_for_feedback;
     }
 
 
     private void FixedUpdate()
     {
-        if (player_inside_hitbox)
+        if (object_inside_hitbox)
         {
             current_time_inside -= Time.fixedDeltaTime;
             if (current_time_inside <= 0)

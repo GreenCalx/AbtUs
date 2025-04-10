@@ -12,7 +12,7 @@ public class InsectBehaviour : Creature
 
     private Vector3 terrainSize;
     private Vector3 terrainPos;
-    private Transform childTransform;
+    [SerializeField]
     void OnDrawGizmosSelected()
     {
         Gizmos.color = Color.red;
@@ -22,7 +22,6 @@ public class InsectBehaviour : Creature
     private void Start()
     {
         navAgent.updateUpAxis = false; 
-        childTransform = transform.GetChild(0);
         terrainSize = terrain.terrainData.size;
         terrainPos = terrain.transform.position;
     }
@@ -31,10 +30,10 @@ public class InsectBehaviour : Creature
     {
         if (!navAgent.enabled) { return;}
 
-        Vector2 terrainRelativePos = new Vector2((childTransform.position.x - terrainPos.x) / terrainSize.x, (childTransform.position.z - terrainPos.z) / terrainSize.z);
+        Vector2 terrainRelativePos = new Vector2((modelTransform.position.x - terrainPos.x) / terrainSize.x, (modelTransform.position.z - terrainPos.z) / terrainSize.z);
         transform.up = terrain.terrainData.GetInterpolatedNormal(terrainRelativePos.x, terrainRelativePos.y);
 
-        Debug.DrawLine(childTransform.position, childTransform.position + 10 * terrain.terrainData.GetInterpolatedNormal(terrainRelativePos.x, terrainRelativePos.y));
+        Debug.DrawLine(modelTransform.position, modelTransform.position + 10 * terrain.terrainData.GetInterpolatedNormal(terrainRelativePos.x, terrainRelativePos.y));
         if (!waiting && navAgent.remainingDistance <= navAgent.stoppingDistance)
         {
             StartCoroutine(WaitAndTurn());

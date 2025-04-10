@@ -298,7 +298,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: ce2bdee95a013634594251ff66d46cd1, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  axis: 0
   glow_strength: 3
+  maxGtlValue: 0
   glowDelay: 0
 --- !u!114 &6963799584973242688
 MonoBehaviour:
@@ -313,5 +315,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   value: 0
-  max_influence: 0.6
-  min_influence: 0
+  maxVarInfluence: 1
+  minVarInfluence: 0
+  feedback_type: 0
+  maxOWCInfluence: 0.5
+  minOWCInfluence: 0

@@ -5,6 +5,7 @@ using UnityEngine;
 public class Portal : MonoBehaviour
 {
     public Transform player;
+    public Transform portalCamera;
     public Transform reciever;
 
     public bool negative;
@@ -14,15 +15,9 @@ public class Portal : MonoBehaviour
     {
         if (other.gameObject.GetComponentInParent<PlayerController>())
         {
-            Vector3 portalToPlayer = player.position - transform.position;
-            float dotProduct = Vector3.Dot(transform.forward, portalToPlayer);
-            
-
-            if(dotProduct <0 && negative)
-                player.position = reciever.position + portalToPlayer;
-            else if(dotProduct > 0 && !negative)
-                player.position = reciever.position + portalToPlayer;
-
+            player.position = portalCamera.position - player.gameObject.GetComponentInChildren<Camera>().transform.localPosition;
+            float targetYaw = portalCamera.eulerAngles.y;
+            player.transform.rotation = Quaternion.Euler(0f, targetYaw, 0f);
         }
     }
 

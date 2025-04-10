@@ -59,7 +59,7 @@ MonoBehaviour:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 7808715935886537954}
-  m_Enabled: 0
+  m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: fb8c5ae9e2e122746807033e2db53142, type: 3}
   m_Name: 
@@ -81,6 +81,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 97a5d13f6665a4e46b27cdf7cdd2b7aa, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  updatePitchShift: 0
   MasterMixer: {fileID: 24100000, guid: db75389766bf90040ade59d8f62c88b9, type: 2}
   BGMMixerGroup: {fileID: -1379388474459623540, guid: db75389766bf90040ade59d8f62c88b9,
     type: 2}

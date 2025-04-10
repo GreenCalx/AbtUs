@@ -293,10 +293,12 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 88f00807c9a4af844864efc0707a9761, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  value: -0.03
-  max_influence: 1
-  min_influence: 0
+  value: 0
+  maxVarInfluence: 1
+  minVarInfluence: 0
   feedback_type: 2
+  maxOWCInfluence: 1
+  minOWCInfluence: 0
 --- !u!54 &6005165044390949204
 Rigidbody:
   m_ObjectHideFlags: 0
