@@ -1176,6 +1176,7 @@ GameObject:
   - component: {fileID: 6368157705962181286}
   - component: {fileID: 1322830312028234723}
   - component: {fileID: 2836076128186346905}
+  - component: {fileID: 5149965514951168648}
   m_Layer: 7
   m_Name: Isle0_terrain
   m_TagString: LEVEL1
@@ -1258,6 +1259,20 @@ TerrainCollider:
   serializedVersion: 2
   m_TerrainData: {fileID: 15600000, guid: 29b802a69689b3446bff3f3492736942, type: 2}
   m_EnableTreeColliders: 1
+--- !u!114 &5149965514951168648
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8169038854677834490}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 933e5b97b03239c41b69ad19d877a85e, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  terrain: {fileID: 1322830312028234723}
+  currLayers: []
 --- !u!1 &8717417295314106764
 GameObject:
   m_ObjectHideFlags: 0

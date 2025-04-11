@@ -318,6 +318,19 @@ MonoBehaviour:
   - axisConstraint: 3
     mat: {fileID: 2100000, guid: 5aa403bbf3e07d84e800d14b56fe18b8, type: 2}
     MtO_Factor: 0.4
+  terrainUnits:
+  - axisConstraint: 0
+    palette: {fileID: 11400000, guid: 8cb4fab0c15d2dc48a47aa23d501d30c, type: 2}
+    MtO_Factor: 0
+  - axisConstraint: 0
+    palette: {fileID: 11400000, guid: 2a7b1078aad15c44a99d84e973449d80, type: 2}
+    MtO_Factor: 0
+  - axisConstraint: 4
+    palette: {fileID: 11400000, guid: cbea47d79e6d1fa43876b257e67211f2, type: 2}
+    MtO_Factor: 0.7
+  - axisConstraint: 3
+    palette: {fileID: 11400000, guid: 7ea53cd4cc4a7ff478fe1d6045bdc4ce, type: 2}
+    MtO_Factor: 0.3
 --- !u!1 &1352790782487124492
 GameObject:
   m_ObjectHideFlags: 0
@@ -383,6 +396,7 @@ MonoBehaviour:
   GTLExtraVolMods: []
   GTLLightMods: []
   mtoModifiers: []
+  mtoTerrains: []
   otcModifiers: []
   otcClusters: []
   OTCListeners: []

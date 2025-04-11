@@ -14,8 +14,18 @@ public class MTOLookupTable : MonoBehaviour
         public float MtO_Factor;
         //public List<Material> replacingThose;
     }
+
+    [Serializable]
+    public class MTOTerrainLookupUnit
+    {
+        public WORLD_AXIS axisConstraint;
+        public SOTerrainPalette palette;
+        [Range(0f,1f)]
+        public float MtO_Factor;
+    }
     
     public List<MTOLookupUnit> units;
+    public List<MTOTerrainLookupUnit> terrainUnits;
 
     public Material ScoutForMatChange(Material iMat, float iMTOVal)
     {
@@ -64,6 +74,50 @@ public class MTOLookupTable : MonoBehaviour
 
         return eligibleMats[selected];
 
+    }
+
+    public List<TerrainLayer> ScoutForTerrainLayersChange(MTOTerrain iTerrain, float iMTOVal)
+    {
+        List<SOTerrainPalette> eligibleLayers = new List<SOTerrainPalette>();
+
+        bool isMineral = OverWorldControl.Instance.MineralMagnitude > 0f;
+        bool isOrganic = OverWorldControl.Instance.OrganicMagnitude > 0f;
+
+        foreach ( MTOTerrainLookupUnit u in terrainUnits)
+        {
+            if (!isOrganic && !isMineral)
+            {
+                // ZERO
+            }
+            else if (isOrganic && (u.axisConstraint == WORLD_AXIS.ORGANIC))
+            {
+                if (iMTOVal >= u.MtO_Factor)
+                {
+                    if (!eligibleLayers.Contains(u.palette))
+                    {
+                        eligibleLayers.Add(u.palette);
+                    }
+                }
+            }
+            else if (isMineral && (u.axisConstraint == WORLD_AXIS.MINERAL))
+            {
+                if (iMTOVal <= u.MtO_Factor)
+                {
+                    if (!eligibleLayers.Contains(u.palette))
+                    {
+                        eligibleLayers.Add(u.palette);
+                    }
+                }
+            }
+        }
+
+        int n_eligibles = eligibleLayers.Count;
+        if (n_eligibles==0)
+            return null;
+
+        int selected = UnityEngine.Random.Range(0, n_eligibles);
+
+        return eligibleLayers[selected].PaletteLayers;
     }
 
 }

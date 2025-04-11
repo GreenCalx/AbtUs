@@ -116,6 +116,7 @@ public class OverWorldControl : MonoBehaviour
     public List<GTLVolumeMod> GTLExtraVolMods;
     public List<GTLLightMod> GTLLightMods;
     public List<MTOModifier> mtoModifiers;
+    public List<MTOTerrain> mtoTerrains;
     public List<OTCModifier> otcModifiers;
     public List<OTCCluster> otcClusters;
 
@@ -376,11 +377,20 @@ public class OverWorldControl : MonoBehaviour
         }
     }
 
+    public void SubscribeMTOTerrain(MTOTerrain iTerrain)
+    {
+        if (!mtoTerrains.Contains(iTerrain))
+        {
+            mtoTerrains.Add(iTerrain);
+        }        
+    }
+
     public void RefreshMTOMods()
     {
         if (MTOIsZero())
         {
             foreach(MTOModifier mod in mtoModifiers) { mod.ResetMaterials(); }
+            foreach(MTOTerrain t in mtoTerrains) { t.ResetLayers(); }
             return;
         }
 
@@ -401,6 +411,14 @@ public class OverWorldControl : MonoBehaviour
             }
 
             mod.RefreshMaterials();
+        }
+
+        foreach(MTOTerrain t in mtoTerrains)
+        {
+            List<TerrainLayer> newPalette = mtoLookupTable.ScoutForTerrainLayersChange(t, MineralToOrganic);
+            if (newPalette==null)
+                continue;
+            t.ChangeLayers(newPalette);
         }
 
         foreach (OWCListener listener in MTOListeners)
