@@ -286,21 +286,38 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   units:
   - axisConstraint: 4
+    mat: {fileID: 2100000, guid: 9de3f87d23d87d648ae5fbf78894afaf, type: 2}
+    MtO_Factor: 0.9
+  - axisConstraint: 4
     mat: {fileID: 2100000, guid: 0b92825f5b293aa4a89a5fa1486c1912, type: 2}
-    MtO_Factor: 0.6
-    replacingThose:
-    - {fileID: 2100000, guid: f3952eae22c247c4e908882797fc9b1c, type: 2}
+    MtO_Factor: 0.8
   - axisConstraint: 4
     mat: {fileID: 2100000, guid: 16b0156a7a3bac241b9925eaab50eb3e, type: 2}
-    MtO_Factor: 0.6
-    replacingThose:
-    - {fileID: 2100000, guid: f3952eae22c247c4e908882797fc9b1c, type: 2}
+    MtO_Factor: 0.85
+  - axisConstraint: 4
+    mat: {fileID: 2100000, guid: 04815e598a1e12c40aed7b97988a33f2, type: 2}
+    MtO_Factor: 0.55
+  - axisConstraint: 4
+    mat: {fileID: 2100000, guid: 8bbfb5298004dc249a8f5f4902fed978, type: 2}
+    MtO_Factor: 0.75
+  - axisConstraint: 4
+    mat: {fileID: 2100000, guid: a79471d434ab77547befd7b708f3b8ee, type: 2}
+    MtO_Factor: 0.7
+  - axisConstraint: 3
+    mat: {fileID: 2100000, guid: 4c6c3f17d09208e4e96f353854ab2294, type: 2}
+    MtO_Factor: 0.45
+  - axisConstraint: 3
+    mat: {fileID: 2100000, guid: a239e49c046adc44b9b22bae5f962b74, type: 2}
+    MtO_Factor: 0.25
   - axisConstraint: 3
     mat: {fileID: 2100000, guid: f3952eae22c247c4e908882797fc9b1c, type: 2}
-    MtO_Factor: 0.491
-    replacingThose:
-    - {fileID: 2100000, guid: 0b92825f5b293aa4a89a5fa1486c1912, type: 2}
-    - {fileID: 2100000, guid: 16b0156a7a3bac241b9925eaab50eb3e, type: 2}
+    MtO_Factor: 0.3
+  - axisConstraint: 3
+    mat: {fileID: 2100000, guid: cbb3599c801047544bc9c10639325cbb, type: 2}
+    MtO_Factor: 0.35
+  - axisConstraint: 3
+    mat: {fileID: 2100000, guid: 5aa403bbf3e07d84e800d14b56fe18b8, type: 2}
+    MtO_Factor: 0.4
 --- !u!1 &1352790782487124492
 GameObject:
   m_ObjectHideFlags: 0

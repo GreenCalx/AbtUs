@@ -6,7 +6,9 @@ public class MTOModifier : MonoBehaviour
 {
     public MeshRenderer MR;
     public List<Material> currMats;
-    
+
+    private List<Material> initMats;
+
     // Start is called once before the first execution of Update after the MonoBehaviour is created
     void Start()
     {
@@ -15,6 +17,7 @@ public class MTOModifier : MonoBehaviour
 
         OverWorldControl.Instance.SubscribeMTO(this);
         currMats = new List<Material>(MR.materials);
+        initMats = currMats;
     }
 
     public void ChangeMaterial(Material iOldMat, Material iNewMat)
@@ -26,5 +29,10 @@ public class MTOModifier : MonoBehaviour
     public void RefreshMaterials()
     {
         MR.SetMaterials(currMats);
+    }
+
+    public void ResetMaterials()
+    {
+        MR.SetMaterials(initMats);
     }
 }

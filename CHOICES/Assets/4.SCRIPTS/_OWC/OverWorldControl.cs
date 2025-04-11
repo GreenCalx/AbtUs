@@ -378,6 +378,12 @@ public class OverWorldControl : MonoBehaviour
 
     public void RefreshMTOMods()
     {
+        if (MTOIsZero())
+        {
+            foreach(MTOModifier mod in mtoModifiers) { mod.ResetMaterials(); }
+            return;
+        }
+
         foreach(MTOModifier mod in mtoModifiers)
         {
             Dictionary<Material, Material> operations = new Dictionary<Material, Material>();
@@ -405,6 +411,11 @@ public class OverWorldControl : MonoBehaviour
     private void ChangeModMaterial(MTOModifier iMod, Material iOldMat, Material iNewMat)
     {
         iMod.ChangeMaterial (iOldMat, iNewMat);
+    }
+
+    public bool MTOIsZero()
+    {
+        return ( !(OrganicMagnitude>0f) && !(MineralMagnitude>0f) );
     }
     #endregion
 
