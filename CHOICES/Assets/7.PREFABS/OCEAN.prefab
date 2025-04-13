@@ -242,7 +242,7 @@ GameObject:
   - component: {fileID: 2270076691443684846}
   - component: {fileID: 7914400466275769184}
   m_Layer: 0
-  m_Name: Point Light
+  m_Name: GeodeLight
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -256,12 +256,12 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 5144214842184088579}
   serializedVersion: 2
-  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0, y: -0, z: 60.2}
-  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_LocalRotation: {x: -0.7071068, y: -0, z: -0, w: 0.7071067}
+  m_LocalPosition: {x: 1454, y: 317, z: 729}
+  m_LocalScale: {x: 4, y: 4, z: 4}
   m_ConstrainProportionsScale: 0
   m_Children: []
-  m_Father: {fileID: 8491574140425380409}
+  m_Father: {fileID: 5061598421244362680}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!108 &2270076691443684846
 Light:
@@ -275,7 +275,7 @@ Light:
   m_Type: 2
   m_Color: {r: 0.6117647, g: 0.40784314, b: 0.14901961, a: 1}
   m_Intensity: 7.161972e+10
-  m_Range: 1500
+  m_Range: 1600
   m_SpotAngle: 30
   m_InnerSpotAngle: 21.80208
   m_CookieSize: 10
@@ -312,7 +312,7 @@ Light:
   m_CullingMask:
     serializedVersion: 2
     m_Bits: 4294967295
-  m_RenderingLayerMask: 1
+  m_RenderingLayerMask: 4
   m_Lightmapping: 4
   m_LightShadowCasterMode: 2
   m_AreaSize: {x: 0.5, y: 0.5}
@@ -323,7 +323,7 @@ Light:
   m_UseBoundingSphereOverride: 0
   m_UseViewFrustumForShadowCasterCull: 1
   m_ForceVisible: 0
-  m_ShadowRadius: 500
+  m_ShadowRadius: 50
   m_ShadowAngle: 0
   m_LightUnit: 0
   m_LuxAtDistance: 1
@@ -359,7 +359,7 @@ MonoBehaviour:
   m_ShapeWidth: 0.5
   m_ShapeHeight: 0.5
   m_AspectRatio: 1
-  m_ShapeRadius: 500
+  m_ShapeRadius: 50
   m_SoftnessScale: 1
   m_UseCustomSpotLightShadowCone: 0
   m_CustomSpotLightShadowCone: 30
@@ -405,7 +405,7 @@ MonoBehaviour:
   m_EvsmLightLeakBias: 0
   m_EvsmVarianceBias: 0.00001
   m_EvsmBlurPasses: 0
-  m_LightlayersMask: 1
+  m_LightlayersMask: 4
   m_LinkShadowLayers: 1
   m_ShadowNearPlane: 0.1
   m_BlockerSampleCount: 24
@@ -542,6 +542,7 @@ Transform:
   - {fileID: 8404618558774725215}
   - {fileID: 5421105616978394026}
   - {fileID: 8491574140425380409}
+  - {fileID: 4202582675214182586}
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1001 &137150831730436326
@@ -1936,6 +1937,11 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: -7511558181221131132, guid: 372cb6f5c2aed8840bd18c8c70da1040,
         type: 3}
+      propertyPath: m_RenderingLayerMask
+      value: 5
+      objectReference: {fileID: 0}
+    - target: {fileID: -7511558181221131132, guid: 372cb6f5c2aed8840bd18c8c70da1040,
+        type: 3}
       propertyPath: 'm_Materials.Array.data[0]'
       value: 
       objectReference: {fileID: 2100000, guid: 2587da7fe92f87044bcf6fec06500b78, type: 2}
@@ -1946,11 +1952,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
-    m_AddedGameObjects:
-    - targetCorrespondingSourceObject: {fileID: -8679921383154817045, guid: 372cb6f5c2aed8840bd18c8c70da1040,
-        type: 3}
-      insertIndex: -1
-      addedObject: {fileID: 4202582675214182586}
+    m_AddedGameObjects: []
     m_AddedComponents:
     - targetCorrespondingSourceObject: {fileID: 919132149155446097, guid: 372cb6f5c2aed8840bd18c8c70da1040,
         type: 3}

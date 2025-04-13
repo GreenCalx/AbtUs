@@ -359,6 +359,11 @@ public class OverWorldControl : MonoBehaviour
         iTo.isActive = true;
         crossfadingVolDone = true;
     }
+
+    public bool GTLIsZero()
+    {
+        return ( !(GloomyMagnitude>0f) && !(LushMagnitude>0f) );
+    }
     #endregion
 
     #region MTO
@@ -494,6 +499,11 @@ public class OverWorldControl : MonoBehaviour
         {
             listener.Call(OrderToChaos);
         }
+    }
+
+    public bool OTCIsZero()
+    {
+        return ( !(OrderMagnitude>0f) && !(ChaosMagnitude>0f) );
     }
     #endregion
 }

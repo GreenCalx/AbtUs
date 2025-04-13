@@ -1193,6 +1193,7 @@ GameObject:
   - component: {fileID: 2800722616739139838}
   - component: {fileID: 5546876477575978157}
   - component: {fileID: 6717227362142764427}
+  - component: {fileID: 7688432168537562715}
   m_Layer: 7
   m_Name: Isle1_terrain
   m_TagString: Untagged
@@ -1275,6 +1276,20 @@ TerrainCollider:
   serializedVersion: 2
   m_TerrainData: {fileID: 15600000, guid: 44a2903da3e53fe47a03947870403bc8, type: 2}
   m_EnableTreeColliders: 1
+--- !u!114 &7688432168537562715
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 9126518196322841883}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 933e5b97b03239c41b69ad19d877a85e, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  terrain: {fileID: 5546876477575978157}
+  currLayers: []
 --- !u!1001 &1371790545104424424
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -1337,6 +1352,16 @@ PrefabInstance:
         type: 3}
       propertyPath: m_IsActive
       value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 5616494387314613954, guid: 8a5324d05060d4d46ae53812f3fa93aa,
+        type: 3}
+      propertyPath: m_LocalPosition.x
+      value: 0.000013393659
+      objectReference: {fileID: 0}
+    - target: {fileID: 5616494387314613954, guid: 8a5324d05060d4d46ae53812f3fa93aa,
+        type: 3}
+      propertyPath: m_LocalPosition.z
+      value: -0.00002481402
       objectReference: {fileID: 0}
     - target: {fileID: 5948984600277674917, guid: 8a5324d05060d4d46ae53812f3fa93aa,
         type: 3}

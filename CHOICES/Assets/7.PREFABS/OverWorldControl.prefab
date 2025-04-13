@@ -402,7 +402,7 @@ MonoBehaviour:
   OTCListeners: []
   MTOListeners: []
   GTLListeners: []
-  gtlCrossfadeTime: 10
+  gtlCrossfadeTime: 30
 --- !u!1 &1511744071200572054
 GameObject:
   m_ObjectHideFlags: 0
