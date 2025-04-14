@@ -29,9 +29,12 @@ public class InsectBehaviour : Creature
     public void Idle()
     {
         if (!navAgent.enabled) { return;}
-
+        if (terrainSize==null) { return; }
         Vector2 terrainRelativePos = new Vector2((modelTransform.position.x - terrainPos.x) / terrainSize.x, (modelTransform.position.z - terrainPos.z) / terrainSize.z);
-        transform.up = terrain.terrainData.GetInterpolatedNormal(terrainRelativePos.x, terrainRelativePos.y);
+        
+        Vector3 newUp = terrain.terrainData.GetInterpolatedNormal(terrainRelativePos.x, terrainRelativePos.y);
+        if (!Utils.IsNaN(newUp))
+        { transform.up = newUp; }
 
         Debug.DrawLine(modelTransform.position, modelTransform.position + 10 * terrain.terrainData.GetInterpolatedNormal(terrainRelativePos.x, terrainRelativePos.y));
         if (!waiting && navAgent.remainingDistance <= navAgent.stoppingDistance)

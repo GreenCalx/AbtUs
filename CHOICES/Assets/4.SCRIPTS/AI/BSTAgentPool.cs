@@ -18,6 +18,17 @@ public class BSTAgentPool : MonoBehaviour
 
     void Start()
     {
+        init();
+    }
+
+    void init()
+    {
+        InitInsects();
+        InitDreamCatchers();
+    }
+
+    void InitInsects()
+    {
         if (insects.Count > 0)
         {
             insectBST = BSTFactory.MakeInsectGraph();
@@ -29,7 +40,10 @@ public class BSTAgentPool : MonoBehaviour
 
             playInsects = autoPlayAll;
         }
+    }
 
+    void InitDreamCatchers()
+    {
         if (dreamcatchers.Count > 0)
         {
             dreamcatcherBST = BSTFactory.MakeDreamCatcherGraph();
@@ -56,5 +70,20 @@ public class BSTAgentPool : MonoBehaviour
             dreamcatcherBST.playMode = playDreamCatchers;
             dreamcatcherBST.Update();
         }
+    }
+
+    public void SubscribeInsect(InsectBehaviour iAgent)
+    {
+        if (!insects.Contains(iAgent))
+            insects.Add(iAgent);
+        
+        if (insectBST==null)
+        { InitInsects(); }
+        else
+        {
+            InsectToken tok = new InsectToken( insectBST.GetNodeFromState(BSTState.IDLE), iAgent, iAgent);
+            insectBST.AddToken( tok );
+        }
+
     }
 }

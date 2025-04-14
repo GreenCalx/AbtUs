@@ -12,4 +12,8 @@ public static class Utils
         return iNewMin + (iVal/(iOldMax - iOldMin))*(iNewMax-iNewMin);
     }
     
+    public static bool IsNaN(Vector3 iVec)
+    {
+        return (float.IsNaN(iVec.x) || float.IsNaN(iVec.y) || float.IsNaN(iVec.z));
+    }
 }

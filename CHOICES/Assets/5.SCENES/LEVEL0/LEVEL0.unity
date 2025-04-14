@@ -4076,6 +4076,11 @@ PrefabInstance:
       propertyPath: 'dreamcatchers.Array.data[0]'
       value: 
       objectReference: {fileID: 373571077}
+    - target: {fileID: 4937562177902134211, guid: 86fa92c3be5c4404c9bd2b3f2ab2d3e1,
+        type: 3}
+      propertyPath: m_IsActive
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 5706585848580645947, guid: 86fa92c3be5c4404c9bd2b3f2ab2d3e1,
         type: 3}
       propertyPath: m_Name

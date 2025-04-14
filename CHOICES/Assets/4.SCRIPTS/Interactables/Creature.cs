@@ -23,7 +23,7 @@ public class Creature : BSTAgent
         modelTransform = GetComponentInChildren<MeshRenderer>().transform;
         self_RB = transform.GetComponentInChildren<Rigidbody>();
         navAgent = transform.GetComponentInChildren<NavMeshAgent>();
-        enabler = transform.parent.GetComponent<OWCEnabler>();
+        enabler = GetComponentInParent<OWCEnabler>();
         terrain = transform.GetComponent<ModelTools>()?.GetTerrain();
     }
     /*
