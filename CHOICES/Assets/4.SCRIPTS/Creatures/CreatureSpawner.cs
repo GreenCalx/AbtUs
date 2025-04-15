@@ -57,6 +57,11 @@ public class CreatureSpawner<T> : MonoBehaviour where T : Creature
         CheckForSpawns();
     }
 
+    void OnDisable()
+    {
+        DeSpawnAll();
+    }
+
     protected void CheckForSpawns()
     {
         expectedPopulation = (int)Mathf.Ceil(spawnsByMagnitudeCurve.Evaluate(OverWorldControl.Instance.GetAxisMagnitude(axis)) * MAX_SPAWNS );
@@ -64,7 +69,7 @@ public class CreatureSpawner<T> : MonoBehaviour where T : Creature
         if (popDelta > 0)
         { Spawn(popDelta); }
         else if (popDelta < 0)
-        { DeSpawn(popDelta); }
+        { DeSpawn(Mathf.Abs(popDelta)); }
     }
 
     protected void InitBounds()
@@ -125,5 +130,10 @@ public class CreatureSpawner<T> : MonoBehaviour where T : Creature
         spawnedCreatures.Remove(as_T);
         NotifyBSTPoolDeSpawn(as_T);
         Destroy(as_T.gameObject);
+    }
+
+    public void DeSpawnAll()
+    {
+        DeSpawn(spawnedCreatures.Count);
     }
 }
