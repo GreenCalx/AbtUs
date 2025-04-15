@@ -87,7 +87,19 @@ public class BST<T, C, V>   where  T : BSTToken
 
     public void RemoveToken(T iTok)
     {
-        agents = agents.Where(e => e == iTok).ToList();
+        if (iTok==null)
+        { Debug.LogWarning("Removing null token in BST"); }
+        agents = agents.Where(e => e != iTok).ToList();
+    }
+
+    public T GetAgentToken(BSTAgent iAgent)
+    {
+        foreach(T tok in agents)
+        {
+            if (tok.agent == iAgent)
+                return tok;
+        }
+        return null;
     }
 
     public void AddConnection(BSTState iStateA, BSTState iStateB, Func<bool> iTriggers)

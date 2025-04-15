@@ -84,6 +84,13 @@ public class BSTAgentPool : MonoBehaviour
             InsectToken tok = new InsectToken( insectBST.GetNodeFromState(BSTState.IDLE), iAgent, iAgent);
             insectBST.AddToken( tok );
         }
+    }
 
+    public void UnSubscribeInsect(InsectBehaviour iAgent)
+    {
+        if (!insects.Contains(iAgent))
+            return;
+        insectBST.RemoveToken( insectBST.GetAgentToken(iAgent));
+        insects.Remove(iAgent);
     }
 }

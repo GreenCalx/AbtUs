@@ -103,6 +103,35 @@ public class OverWorldControl : MonoBehaviour
         else { SetOrderToChaos(value); Debug.Log("OTC = " + value); }
     }
 
+    public float GetAxisMagnitude(WORLD_AXIS iAxis)
+    {
+        float retval = 0f;
+        switch (iAxis)
+        {
+            case WORLD_AXIS.MINERAL:
+                retval= MineralMagnitude;
+                break;
+            case WORLD_AXIS.ORGANIC:
+                retval= OrganicMagnitude;
+                break;
+            case WORLD_AXIS.GLOOMY:
+                retval = GloomyMagnitude;
+                break;
+            case WORLD_AXIS.LUSH:
+                retval = LushMagnitude;
+                break;
+            case WORLD_AXIS.CHAOS:
+                retval = ChaosMagnitude;
+                break;
+            case WORLD_AXIS.ORDER:
+                retval = OrderMagnitude;
+                break;
+            default:
+                break;
+        }
+        return retval;
+    }
+
     [Header("LookUpTables")]
     public GTLLookupTable gtlLookupTable;
     public MTOLookupTable mtoLookupTable;

@@ -3,38 +3,35 @@ using System.Collections.Generic;
 
 public class OWCEnabler : OWCListener
 {
+    [Header("Tweaks")]
     public float minOWCSpawnRange = 0;
     public float maxOWCSpawnRange = 1;
+    [Header("Targets")]
+    public bool useChildren = true;
+    public List<GameObject> enablerChildren;
+    [Header("Internals")]
+    public bool isOWCInRange;
 
-    bool isOWCInRange;
-
-    private List<GameObject> enablerChildren;
     protected override void Init(float axis_value)
     {
-        enablerChildren = new List<GameObject>();
-        foreach(Transform child in transform) // Todo on editor 
+        isOWCInRange = axis_value > minOWCSpawnRange && axis_value < maxOWCSpawnRange;
+        if (useChildren)
         {
-            GameObject childObj = child.gameObject;
-            if (childObj != this.gameObject)
+            enablerChildren = new List<GameObject>();
+            foreach(Transform child in transform) // Todo on editor 
             {
-                enablerChildren.Add(childObj);
-                isOWCInRange = axis_value > minOWCSpawnRange && axis_value < maxOWCSpawnRange;
-                childObj.SetActive(isOWCInRange);
+                enablerChildren.Add(child.gameObject);
+                child.gameObject.SetActive(isOWCInRange);
             }
         }
     }
 
     public override void Call(float axis_value)
     {
-        if(isOWCInRange == (axis_value > minOWCSpawnRange && axis_value < maxOWCSpawnRange)) { return; }
-        isOWCInRange = !isOWCInRange;
-
+        isOWCInRange = (axis_value > minOWCSpawnRange && axis_value < maxOWCSpawnRange);
         foreach (Transform child in transform) // Todo on editor 
         {
-            if (child.gameObject != this.gameObject)
-            {
-                child.gameObject.SetActive(isOWCInRange);
-            }
+            child.gameObject.SetActive(isOWCInRange);
         }
     }
 

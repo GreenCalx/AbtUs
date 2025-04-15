@@ -1,7 +1,8 @@
 using UnityEngine;
 using UnityEngine.AI;
+using System;
 using System.Collections;
-
+using UnityEngine.Events;
 public class Creature : BSTAgent
 {
     [Header("Creature")]
@@ -13,10 +14,13 @@ public class Creature : BSTAgent
     public Feedback killFeedback;
 
     public Rigidbody self_RB;
-
+    
     [Header("Flags")]
     public bool isDead = false;
     public bool isFrozen = false;
+
+    [Header("Internals")]
+    public UnityAction<Creature> deathCallbacks;
 
     private void Awake()
     {
@@ -42,13 +46,12 @@ public class Creature : BSTAgent
         if (isFrozen) 
             return;
 
-        if( killFeedback != null) { killFeedback.use(); }
+        if( killFeedback != null) 
+        { killFeedback.use(); }
 
         if(enabler != null)
-        {
-            enabler.Remove(this.gameObject);
-        }
+        { enabler.Remove(this.gameObject); }
 
-        Destroy(this.gameObject);
+        deathCallbacks.Invoke(this);
     }
 }
