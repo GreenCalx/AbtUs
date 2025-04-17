@@ -12,24 +12,36 @@ public class DreamCatcherBehaviour : Creature
 
     private Vector3 terrainSize;
     private Vector3 terrainPos;
-    private Transform childTransform;
 
     private void Start()
     {
-        navAgent.updateUpAxis = false; 
-        childTransform = transform.GetChild(0);
+        navAgent.updateUpAxis = false;
+        navAgent.enabled = false;
         terrainSize = terrain.terrainData.size;
         terrainPos = terrain.transform.position;
     }
 
     public void Idle()
     {
-        if (!navAgent.enabled) { return;}
+        if (!navAgent.enabled) 
+        { 
+            InitAgent();
+            return;
+        }
+        if (!navAgent.isOnNavMesh)
+        {
+            WarpAgentPos();
+            return;
+        }
+        if (terrainSize==null) { return; }
 
-        Vector2 terrainRelativePos = new Vector2((childTransform.position.x - terrainPos.x) / terrainSize.x, (childTransform.position.z - terrainPos.z) / terrainSize.z);
-        transform.up = terrain.terrainData.GetInterpolatedNormal(terrainRelativePos.x, terrainRelativePos.y);
+        Vector2 terrainRelativePos = new Vector2((modelTransform.position.x - terrainPos.x) / terrainSize.x, (modelTransform.position.z - terrainPos.z) / terrainSize.z);
+        
+        Vector3 newUp = terrain.terrainData.GetInterpolatedNormal(terrainRelativePos.x, terrainRelativePos.y);
+        if (!Utils.IsNaN(newUp))
+        { transform.up = newUp; }
 
-        Debug.DrawLine(childTransform.position, childTransform.position + 10 * terrain.terrainData.GetInterpolatedNormal(terrainRelativePos.x, terrainRelativePos.y));
+        Debug.DrawLine(modelTransform.position, modelTransform.position + 10 * terrain.terrainData.GetInterpolatedNormal(terrainRelativePos.x, terrainRelativePos.y));
         if (!waiting && navAgent.remainingDistance <= navAgent.stoppingDistance)
         {
             StartCoroutine(WaitAndTurn());
@@ -56,6 +68,11 @@ public class DreamCatcherBehaviour : Creature
 
     void MoveToRandomPosition()
     {
+        if (!navAgent.isOnNavMesh)
+        {
+            WarpAgentPos();
+            return;
+        }
         Vector3 randomDirection = Random.insideUnitSphere * moveDistance; 
         randomDirection += transform.position;
         randomDirection.y = terrain.SampleHeight(transform.position);

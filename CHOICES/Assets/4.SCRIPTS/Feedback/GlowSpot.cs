@@ -1,7 +1,12 @@
 using UnityEngine;
 
-public class GlowSpot : OWCListener
+[RequireComponent(typeof(Feedback))]
+public class GlowSpot : MonoBehaviour
 {
+    [Header("Mand Refs")]
+    public Light lamp;
+    public Collider lightTrigger;
+    [Header("Tweaks")]
     [SerializeField]
     private float glow_strength; // + 0.01 GTL.s
 
@@ -10,22 +15,12 @@ public class GlowSpot : OWCListener
     public float maxGtlValue;
     public float glowDelay = 0;
     private float glowTimer = 0;
-
     private Feedback glowFeedback;
 
-    private Light lamp;
-    private Collider lightAura;
-    override protected void Init(float axis_value)
-    {
-        lamp = transform.GetComponent<Light>();
-        lightAura = transform.GetComponent<CapsuleCollider>();
-        if (axis_value < maxGtlValue) { lamp.enabled = lightAura.enabled = false; }
-        glowFeedback = GetComponent<Feedback>();
-    }
 
-    public override void Call(float gtl)
+    void Start()
     {
-        lamp.enabled = lightAura.enabled = gtl <= maxGtlValue;
+        glowFeedback = GetComponent<Feedback>();
     }
 
     private void OnTriggerEnter(Collider other)

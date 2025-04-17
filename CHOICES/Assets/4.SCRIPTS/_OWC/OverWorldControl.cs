@@ -233,19 +233,11 @@ public class OverWorldControl : MonoBehaviour
 
     #region LISTENER
 
-    public void SubscribeListener(OWCListener listener, OWCListener.AXIS axis)
+    public void SubscribeListener(OWCListener listener, WORLD_AXIS axis)
     {
-        if (axis == OWCListener.AXIS.gtl) { GTLListeners.Add(listener); }
-        if (axis == OWCListener.AXIS.otc) { OTCListeners.Add(listener); }
-        if (axis == OWCListener.AXIS.mto) { MTOListeners.Add(listener); }
-    }
-
-    public float getAxisValue(OWCListener.AXIS axis)
-    {
-        if (axis == OWCListener.AXIS.gtl) { return m_GloomyToLush; }
-        if (axis == OWCListener.AXIS.otc) { return m_OrderToChaos; }
-        if (axis == OWCListener.AXIS.mto) { return m_MineralToOrganic; }
-        throw new System.Exception("Axis not recognized");
+        if ((axis == WORLD_AXIS.ORGANIC)||(axis == WORLD_AXIS.MINERAL)) { MTOListeners.Add(listener); }
+        if ((axis == WORLD_AXIS.GLOOMY)||(axis == WORLD_AXIS.LUSH))  { GTLListeners.Add(listener); }
+        if ((axis == WORLD_AXIS.CHAOS)||(axis == WORLD_AXIS.ORDER))  { OTCListeners.Add(listener); }
     }
     #endregion LISTENER
 
@@ -348,7 +340,7 @@ public class OverWorldControl : MonoBehaviour
 
         foreach( OWCListener listener in GTLListeners)
         {
-            listener.Call(GloomyToLush);
+            listener.Call();
         }
     }
 
@@ -457,7 +449,7 @@ public class OverWorldControl : MonoBehaviour
 
         foreach (OWCListener listener in MTOListeners)
         {
-            listener.Call(MineralToOrganic);
+            listener.Call();
         }
     }
     private void ChangeModMaterial(MTOModifier iMod, Material iOldMat, Material iNewMat)
@@ -526,7 +518,7 @@ public class OverWorldControl : MonoBehaviour
 
         foreach (OWCListener listener in OTCListeners)
         {
-            listener.Call(OrderToChaos);
+            listener.Call();
         }
     }
 

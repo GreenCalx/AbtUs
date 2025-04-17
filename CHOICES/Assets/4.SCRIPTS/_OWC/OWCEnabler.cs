@@ -3,8 +3,7 @@ using System.Collections.Generic;
 
 public class OWCEnabler : OWCListener
 {
-    [Header("Tweaks")]
-    public AxisConstraint axisConstraint;
+
 
     [Header("Targets")]
     public bool useChildren = true;
@@ -12,7 +11,7 @@ public class OWCEnabler : OWCListener
     [Header("Internals")]
     public bool isOWCInRange;
 
-    protected override void Init(float axis_value)
+    protected override void Init()
     {
         if (useChildren)
         {
@@ -25,11 +24,11 @@ public class OWCEnabler : OWCListener
         }
     }
 
-    public override void Call(float axis_value)
+    public override void Call()
     {
-        foreach (Transform child in transform)
+        foreach (GameObject child in enablerChildren)
         {
-            child.gameObject.SetActive(axisConstraint.checkAll());
+            child.SetActive(axisConstraint.checkAll());
         }
     }
 

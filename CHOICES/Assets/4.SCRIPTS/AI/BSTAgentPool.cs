@@ -93,4 +93,26 @@ public class BSTAgentPool : MonoBehaviour
         insectBST.RemoveToken( insectBST.GetAgentToken(iAgent));
         insects.Remove(iAgent);
     }
+
+    public void SubscribeDreamCatcher(DreamCatcherBehaviour iAgent)
+    {
+        if (!dreamcatchers.Contains(iAgent))
+            dreamcatchers.Add(iAgent);
+        
+        if (dreamcatcherBST==null)
+        { InitDreamCatchers(); }
+        else
+        {
+            DreamCatcherToken tok = new DreamCatcherToken( dreamcatcherBST.GetNodeFromState(BSTState.IDLE), iAgent, iAgent);
+            dreamcatcherBST.AddToken( tok );
+        }
+    }
+
+    public void UnSubscribeDreamCatcher(DreamCatcherBehaviour iAgent)
+    {
+        if (!dreamcatchers.Contains(iAgent))
+            return;
+        dreamcatcherBST.RemoveToken( dreamcatcherBST.GetAgentToken(iAgent));
+        dreamcatchers.Remove(iAgent);
+    }
 }

@@ -9,7 +9,7 @@ public class Creature : BSTAgent
     public Transform modelTransform;
     public OWCEnabler enabler;
 
-    protected Terrain terrain;
+    public Terrain terrain;
 
     public Feedback killFeedback;
 
@@ -22,25 +22,36 @@ public class Creature : BSTAgent
     [Header("Internals")]
     public UnityAction<Creature> deathCallbacks;
 
-    private void Awake()
+    private void Start()
     {
-        modelTransform = GetComponentInChildren<MeshRenderer>().transform;
-        self_RB = transform.GetComponentInChildren<Rigidbody>();
+        if (modelTransform == null)
+            modelTransform = GetComponentInChildren<MeshRenderer>().transform;
+        if (self_RB==null)
+            self_RB = transform.GetComponentInChildren<Rigidbody>();
         navAgent = transform.GetComponentInChildren<NavMeshAgent>();
+        navAgent.enabled = false;
         enabler = GetComponentInParent<OWCEnabler>();
-        terrain = transform.GetComponent<ModelTools>()?.GetTerrain();
     }
-    /*
-    static private void Spawn(Vector3 pos, Transform parent)
+
+    public void InitAgent()
     {
-        Creature newCreature = Instantiate(creaturePrefab, parent);
-        newCreature.transform.position = pos;
-        if(newCreature.enabler == null)
+        if (navAgent.enabled)
+        {return;}
+        WarpAgentPos();
+        navAgent.enabled = true;
+    }
+
+    public void WarpAgentPos()
+    {
+        NavMeshHit hit;
+        if (NavMesh.SamplePosition(transform.position, out hit, Mathf.Infinity, NavMesh.AllAreas))
         {
-            Debug.LogWarning("Creature " + newCreature.name + "has no pool");
+            transform.position = hit.position;
+        } else {
+            Debug.LogWarning("Failed to Init Agent of : " + gameObject.name);
         }
     }
-    */
+
     public void Kill()
     {
         if (isFrozen) 

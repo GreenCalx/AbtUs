@@ -18,6 +18,9 @@ public class CreatureSpawner<T> : MonoBehaviour where T : Creature
     [Tooltip("X: Axis Magnitude [0,1] \nY: Population in Fraction of MAX_SPAWNS [0,1]")]
     public AnimationCurve spawnsByMagnitudeCurve;
 
+    [Header("Optional")]
+    public Terrain relatedTerrain;
+
     private List<T> spawnedCreatures = new List<T>();
 
     private float xmin;
@@ -95,15 +98,21 @@ public class CreatureSpawner<T> : MonoBehaviour where T : Creature
 
             new_C.transform.parent = transform;
             new_C.transform.localPosition = Vector3.zero;
-            
-            // sample position within bounds
+
+
+            T as_C = new_C.GetComponent<T>();
+            if (relatedTerrain!=null)
+            {
+                as_C.terrain = relatedTerrain;
+            }
+             // sample position within bounds
             new_C.transform.position = new Vector3(    Random.Range(xmin,xmax), 
                                                  Random.Range(ymin,ymax), 
                                                  Random.Range(zmin,zmax));
 
-            T as_C = new_C.GetComponent<T>();
             spawnedCreatures.Add( as_C );
             as_C.deathCallbacks += DeSpawnTarget;
+            as_C.agentPool = agentPool;
             NotifyBSTPoolSpawn(as_C);
         }
     }

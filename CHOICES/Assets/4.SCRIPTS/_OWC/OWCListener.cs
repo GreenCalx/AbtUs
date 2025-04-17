@@ -1,16 +1,21 @@
 using UnityEngine;
+using System.Collections.Generic;
 
 public abstract class OWCListener :  MonoBehaviour
 {
-    public enum AXIS { gtl = 0, otc = 1, mto = 2 }
-    public AXIS axis;
+    [Header("OWCListener : Tweaks")]
+    public AxisConstraint axisConstraint;
+
     private void Start()
     {
-        OverWorldControl.Instance.SubscribeListener(this, axis);
-        Init(OverWorldControl.Instance.getAxisValue(axis));
+        foreach(AxisConstraintUnit a in axisConstraint.constraints)
+        {
+            OverWorldControl.Instance.SubscribeListener(this, a.axis);
+        }
+        Init();
     }
 
-    protected abstract void Init(float axis_value);
-    public abstract void Call(float axis_value);
+    protected abstract void Init();
+    public abstract void Call();
 
 }

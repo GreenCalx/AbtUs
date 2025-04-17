@@ -45,7 +45,8 @@ public class DreamCatcherActionPool : BSTActionPool<DreamCatcherToken>
 {
     public override void OnIdle()
     {
-        target.behaviour.navAgent.enabled = true;
+        if (!target.behaviour.navAgent.enabled)
+        {target.behaviour.InitAgent();}
         target.behaviour.Idle();
     }
 

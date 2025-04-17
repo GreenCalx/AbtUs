@@ -13,7 +13,7 @@ GameObject:
   - component: {fileID: 313629643231107247}
   - component: {fileID: 3654180091832402963}
   - component: {fileID: 6979660446201832838}
-  - component: {fileID: 8462145392766806976}
+  - component: {fileID: -4794539874591217983}
   m_Layer: 0
   m_Name: NPC_DreamCatcher
   m_TagString: Untagged
@@ -30,7 +30,7 @@ Transform:
   m_GameObject: {fileID: 2518997513082356903}
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 25.825125, y: 9.73, z: 89.932014}
+  m_LocalPosition: {x: 25.825125, y: 7.2639456, z: 89.932014}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children:
@@ -99,7 +99,7 @@ NavMeshAgent:
   m_AutoBraking: 1
   m_AutoRepath: 1
   m_Height: 2
-  m_BaseOffset: 0
+  m_BaseOffset: 1
   m_WalkableMask: 4294967295
   m_ObstacleAvoidanceType: 4
 --- !u!114 &3654180091832402963
@@ -116,8 +116,10 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   currState: 0
   navAgent: {fileID: 313629643231107247}
+  agentPool: {fileID: 0}
   modelTransform: {fileID: 1325137163057475855}
   enabler: {fileID: 0}
+  terrain: {fileID: 0}
   killFeedback: {fileID: 0}
   self_RB: {fileID: 6979660446201832838}
   isDead: 0
@@ -152,7 +154,7 @@ Rigidbody:
   m_Interpolate: 0
   m_Constraints: 0
   m_CollisionDetection: 0
---- !u!114 &8462145392766806976
+--- !u!114 &-4794539874591217983
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -164,10 +166,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: ff18615684883bf458a64fe18db72095, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  clipToTerrain: 0
+  clipToTerrain: 1
   useModelForOffset: 0
   alignModelToTerrain: 0
-  terrainSize: {x: 0, y: 0}
+  terrainSize: {x: 500, y: 500}
   terrainOffset: 0
   terrain: {fileID: 0}
   addToIslandPool: 0

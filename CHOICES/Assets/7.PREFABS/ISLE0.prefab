@@ -61,6 +61,7 @@ MonoBehaviour:
     m_PreInfinity: 2
     m_PostInfinity: 2
     m_RotationOrder: 4
+  relatedTerrain: {fileID: 1322830312028234723}
 --- !u!1 &844780722319353093
 GameObject:
   m_ObjectHideFlags: 0
@@ -418,14 +419,11 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 3ce0fd8ac8dc97e4ba8738a29d4b46bf, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  axis: 2
   axisConstraint:
     constraints:
     - axis: 4
-      minMagnitude: 0.4
+      minMagnitude: 0.1
       maxMagnitude: 1
-  minOWCSpawnRange: 0.4
-  maxOWCSpawnRange: 1
   useChildren: 1
   enablerChildren: []
   isOWCInRange: 0
