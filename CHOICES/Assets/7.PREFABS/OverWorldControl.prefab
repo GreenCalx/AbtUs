@@ -331,6 +331,9 @@ MonoBehaviour:
   - axisConstraint: 3
     palette: {fileID: 11400000, guid: 7ea53cd4cc4a7ff478fe1d6045bdc4ce, type: 2}
     MtO_Factor: 0.3
+  - axisConstraint: 3
+    palette: {fileID: 11400000, guid: 0fdb6016fe1ce41428a10b5f484734e1, type: 2}
+    MtO_Factor: 0.1
 --- !u!1 &1352790782487124492
 GameObject:
   m_ObjectHideFlags: 0
@@ -1540,7 +1543,7 @@ MonoBehaviour:
   m_OverrideTileSize: 0
   m_TileSize: 256
   m_OverrideVoxelSize: 0
-  m_VoxelSize: 0.36
+  m_VoxelSize: 0.33333334
   m_MinRegionArea: 2
   m_NavMeshData: {fileID: 23800000, guid: efaedf09e1d72b14b942bd7189ac3aa0, type: 2}
   m_BuildHeightMesh: 0
