@@ -303,6 +303,12 @@ MonoBehaviour:
   - axisConstraint: 4
     mat: {fileID: 2100000, guid: a79471d434ab77547befd7b708f3b8ee, type: 2}
     MtO_Factor: 0.7
+  - axisConstraint: 4
+    mat: {fileID: 2100000, guid: 04815e598a1e12c40aed7b97988a33f2, type: 2}
+    MtO_Factor: 0.6
+  - axisConstraint: 3
+    mat: {fileID: 2100000, guid: 5aa403bbf3e07d84e800d14b56fe18b8, type: 2}
+    MtO_Factor: 0.7
   - axisConstraint: 3
     mat: {fileID: 2100000, guid: 4c6c3f17d09208e4e96f353854ab2294, type: 2}
     MtO_Factor: 0.45
@@ -328,6 +334,9 @@ MonoBehaviour:
   - axisConstraint: 4
     palette: {fileID: 11400000, guid: cbea47d79e6d1fa43876b257e67211f2, type: 2}
     MtO_Factor: 0.7
+  - axisConstraint: 4
+    palette: {fileID: 11400000, guid: 479a38066eef5c847956b87ca423d1f5, type: 2}
+    MtO_Factor: 0.58
   - axisConstraint: 3
     palette: {fileID: 11400000, guid: 7ea53cd4cc4a7ff478fe1d6045bdc4ce, type: 2}
     MtO_Factor: 0.3
