@@ -422,6 +422,9 @@ public class OverWorldControl : MonoBehaviour
 
         foreach(MTOModifier mod in mtoModifiers)
         {
+            if (!mod.lerp_done)
+                continue;
+
             Dictionary<Material, Material> operations = new Dictionary<Material, Material>();
 
             foreach(Material mat in mod.currMats)

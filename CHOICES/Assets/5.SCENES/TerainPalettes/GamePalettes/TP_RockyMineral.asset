@@ -13,5 +13,5 @@ MonoBehaviour:
   m_Name: TP_RockyMineral
   m_EditorClassIdentifier: 
   PaletteLayers:
-  - {fileID: 8574412962073106934, guid: 2a5e804825e41954a97827f44e88d2a1, type: 2}
+  - {fileID: 8574412962073106934, guid: f79d3721c023a5649a65478c0c52b3cf, type: 2}
   - {fileID: 8574412962073106934, guid: 50d7b97312c476a429166310cc98e056, type: 2}

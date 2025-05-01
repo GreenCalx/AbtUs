@@ -9,7 +9,7 @@ TerrainLayer:
   m_Name: IceGround_TB
   m_DiffuseTexture: {fileID: 2800000, guid: 3ad2d9d094942ee4c844f964a53c2fcf, type: 3}
   m_NormalMapTexture: {fileID: 2800000, guid: f49035b89e43f1541ad66df8ff2a3250, type: 3}
-  m_MaskMapTexture: {fileID: 0}
+  m_MaskMapTexture: {fileID: 2800000, guid: 7d9463c42964dc44099ba22c11597a13, type: 3}
   m_TileSize: {x: 10, y: 10}
   m_TileOffset: {x: 0, y: 0}
   m_Specular: {r: 0.8329477, g: 0.9245283, b: 0.9059062, a: 1}
