@@ -27,6 +27,14 @@ public class MTOLookupTable : MonoBehaviour
     public List<MTOLookupUnit> units;
     public List<MTOTerrainLookupUnit> terrainUnits;
 
+    void Start()
+    {
+        foreach( MTOLookupUnit u in units)
+        {
+            matCollection.TryAddMat(u.mat, u.mat.name);
+        }
+    }
+
     public MatDefSO ScoutForMatChange()
     {
         List<Material> eligibleMats = new List<Material>();

@@ -75,7 +75,7 @@ public class GFXWrapper : MonoBehaviour
         elapsedLerpTime = 0f;
     }
 
-    private void SetChaos(float iVal)
+    public void SetChaos(float iVal)
     {
         foreach(Material targetMat in targetMats)
             targetMat.SetFloat(shad_chaosParm, iVal);

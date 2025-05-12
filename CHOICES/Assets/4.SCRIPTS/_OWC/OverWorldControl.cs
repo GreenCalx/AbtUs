@@ -507,10 +507,15 @@ public class OverWorldControl : MonoBehaviour
         // Activate clusters
         otcClusters.ForEach( c => c.spread(otcLookupTable, m_OrderToChaos));
 
-
         foreach (OWCListener listener in OTCListeners)
         {
             listener.Call();
+        }
+
+        // notify materials of new chaos magnitude
+        foreach(MTOModifier mod in mtoModifiers)
+        {
+            mod.UpdateChaos(ChaosMagnitude);
         }
     }
 

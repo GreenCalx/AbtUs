@@ -288,11 +288,47 @@ MonoBehaviour:
   matCollection: {fileID: 2774399538134661601}
   units:
   - axisConstraint: 4
-    mat: {fileID: 2100000, guid: b9b134a723180e947bf73574ec318a17, type: 2}
-    threshold: 0.5
-  - axisConstraint: 4
     mat: {fileID: 2100000, guid: 2665ed82376716f46a09c2bf4cfe87f7, type: 2}
     threshold: 0.1
+  - axisConstraint: 4
+    mat: {fileID: 2100000, guid: 524015f3befde7040b816444d55a7783, type: 2}
+    threshold: 0.2
+  - axisConstraint: 4
+    mat: {fileID: 2100000, guid: 25dfcaed73a9a964abb5750592c3c87a, type: 2}
+    threshold: 0.4
+  - axisConstraint: 4
+    mat: {fileID: 2100000, guid: a28ef699577662346bafb73077c8f11b, type: 2}
+    threshold: 0.5
+  - axisConstraint: 4
+    mat: {fileID: 2100000, guid: b9b134a723180e947bf73574ec318a17, type: 2}
+    threshold: 0.6
+  - axisConstraint: 4
+    mat: {fileID: 2100000, guid: 7a60911b9a0312940a21064f4e076efe, type: 2}
+    threshold: 0.7
+  - axisConstraint: 4
+    mat: {fileID: 2100000, guid: 31af8f07291bef440ab7a2d8b9c78160, type: 2}
+    threshold: 0.8
+  - axisConstraint: 3
+    mat: {fileID: 2100000, guid: f2fe7440da148894ca07692cb06de4fa, type: 2}
+    threshold: 0.4
+  - axisConstraint: 3
+    mat: {fileID: 2100000, guid: ebaa8ce35a01d9643bf938d336d88433, type: 2}
+    threshold: 0.1
+  - axisConstraint: 3
+    mat: {fileID: 2100000, guid: d50eb4920dab31647ac37c2667bd1fc2, type: 2}
+    threshold: 0.2
+  - axisConstraint: 3
+    mat: {fileID: 2100000, guid: 4d7d382fc5d5db64ca05ca562e8e1036, type: 2}
+    threshold: 0.5
+  - axisConstraint: 3
+    mat: {fileID: 2100000, guid: 537040ca3508db946be0b40c9330c594, type: 2}
+    threshold: 0.6
+  - axisConstraint: 3
+    mat: {fileID: 2100000, guid: 1a07ddb8d706e1f4b929fedb1a12fe9b, type: 2}
+    threshold: 0.7
+  - axisConstraint: 3
+    mat: {fileID: 2100000, guid: 03cfb555964a6fc44a188117629b33ce, type: 2}
+    threshold: 0.8
   terrainUnits:
   - axisConstraint: 0
     palette: {fileID: 11400000, guid: 8cb4fab0c15d2dc48a47aa23d501d30c, type: 2}

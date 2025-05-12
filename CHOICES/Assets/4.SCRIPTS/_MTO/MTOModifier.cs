@@ -51,6 +51,11 @@ public class MTOModifier : MonoBehaviour
         shaderCom.ChangeMatText(iNewMats, lerpTime);
     }
 
+    public void UpdateChaos(float iValue)
+    {
+        shaderCom.SetChaos(iValue);
+    }
+
      public bool IsAvailable()
     {
         return shaderCom.IsAvailable();
