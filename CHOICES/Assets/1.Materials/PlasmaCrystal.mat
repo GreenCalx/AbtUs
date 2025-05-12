@@ -23,7 +23,7 @@ Material:
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_Name: CustomLitTest
+  m_Name: PlasmaCrystal
   m_Shader: {fileID: -6465566751694194690, guid: dd87de948e1e46e439d1f65903e29104,
     type: 3}
   m_Parent: {fileID: 0}
@@ -50,7 +50,7 @@ Material:
     serializedVersion: 3
     m_TexEnvs:
     - _Albedo:
-        m_Texture: {fileID: 2800000, guid: ae97ccec045a8fa4eafaa168eb31280c, type: 3}
+        m_Texture: {fileID: 2800000, guid: 8f8ac7bd7e55a704dbb077cadac6396e, type: 3}
         m_Scale: {x: 1, y: 1}
         m_Offset: {x: 0, y: 0}
     - _ChaosNoiseText:
@@ -58,11 +58,11 @@ Material:
         m_Scale: {x: 1, y: 1}
         m_Offset: {x: 0, y: 0}
     - _HeightMap:
-        m_Texture: {fileID: 2800000, guid: 276e607d6d3cbbd4e95b173bebe3543e, type: 3}
+        m_Texture: {fileID: 2800000, guid: 2049b88efc3db7c49a68643454b42c23, type: 3}
         m_Scale: {x: 1, y: 1}
         m_Offset: {x: 0, y: 0}
     - _Mask:
-        m_Texture: {fileID: 2800000, guid: 9ff63c77d6cb60640b7f26ea42ef554e, type: 3}
+        m_Texture: {fileID: 2800000, guid: 7790f0e4049da9441994a4224258d193, type: 3}
         m_Scale: {x: 1, y: 1}
         m_Offset: {x: 0, y: 0}
     - _Metallic:
@@ -70,15 +70,15 @@ Material:
         m_Scale: {x: 1, y: 1}
         m_Offset: {x: 0, y: 0}
     - _Mix_Albedo:
-        m_Texture: {fileID: 2800000, guid: 64fc6a5695ecad2489aa43c077e162cf, type: 3}
+        m_Texture: {fileID: 0}
         m_Scale: {x: 1, y: 1}
         m_Offset: {x: 0, y: 0}
     - _Mix_HeightMap:
-        m_Texture: {fileID: 2800000, guid: 6c632011de55fbf46b585237d72c48b1, type: 3}
+        m_Texture: {fileID: 0}
         m_Scale: {x: 1, y: 1}
         m_Offset: {x: 0, y: 0}
     - _Mix_Mask:
-        m_Texture: {fileID: 2800000, guid: 7790f0e4049da9441994a4224258d193, type: 3}
+        m_Texture: {fileID: 0}
         m_Scale: {x: 1, y: 1}
         m_Offset: {x: 0, y: 0}
     - _Mix_Metallic:
@@ -86,11 +86,11 @@ Material:
         m_Scale: {x: 1, y: 1}
         m_Offset: {x: 0, y: 0}
     - _Mix_NormalMap:
-        m_Texture: {fileID: 2800000, guid: 58db4e145d0f85a4898672089211f833, type: 3}
+        m_Texture: {fileID: 0}
         m_Scale: {x: 1, y: 1}
         m_Offset: {x: 0, y: 0}
     - _NormalMap:
-        m_Texture: {fileID: 2800000, guid: 2a73578600ff4514980559cb7f18885f, type: 3}
+        m_Texture: {fileID: 2800000, guid: bbabfc05cd66a8141a4faf91b5ab24f8, type: 3}
         m_Scale: {x: 1, y: 1}
         m_Offset: {x: 0, y: 0}
     - _SampleTexture2D_37c64bd909d940b6ae355816c0b4241e_Texture_1_Texture2D:
@@ -116,7 +116,7 @@ Material:
     - _AlphaDstBlend: 0
     - _AlphaSrcBlend: 1
     - _BlendMode: 0
-    - _Chaos: 0.388
+    - _Chaos: 0
     - _ChaosNoiseScale: 25.15
     - _ConservativeDepthOffsetEnable: 0
     - _CullMode: 2
@@ -133,13 +133,13 @@ Material:
     - _Lerp: 0
     - _MaterialID: 1
     - _MaterialTypeMask: 2
-    - _MaxMetallicRemap: 0.928
-    - _MaxSmoothnessRemap: 0.423
-    - _MinMetallicRemap: 0.506
-    - _MinSmoothnessRemap: 0.078
-    - _Mix_MaxMetallicRemap: 0.917
-    - _Mix_MaxSmoothnessRemap: 0.313
-    - _Mix_MinMetallicRemap: 0.083
+    - _MaxMetallicRemap: 0.564
+    - _MaxSmoothnessRemap: 0.313
+    - _MinMetallicRemap: 0.067
+    - _MinSmoothnessRemap: 0
+    - _Mix_MaxMetallicRemap: 0
+    - _Mix_MaxSmoothnessRemap: 0
+    - _Mix_MinMetallicRemap: 0
     - _Mix_MinSmoothnessRemap: 0
     - _OpaqueCullMode: 2
     - _PerPixelSorting: 0
@@ -182,10 +182,11 @@ Material:
     - _UseShadowThreshold: 0
     - _ZTestDepthEqualForOpaque: 3
     - _ZTestGBuffer: 4
-    - _ZTestTransparent: 4
+    - _ZTestTransparent: 8
     - _ZWrite: 1
     - _depth_offset: 1.56
     m_Colors:
+    - _Color: {r: 0, g: 0.8396226, b: 0.48024035, a: 1}
     - _DoubleSidedConstants: {r: 1, g: 1, b: -1, a: 0}
     - _EmissionColor: {r: 1, g: 1, b: 1, a: 1}
     - _MetallicRemap: {r: 0, g: 0.95, b: 0, a: 0}

@@ -10,6 +10,7 @@ GameObject:
   m_Component:
   - component: {fileID: 9122289198639214399}
   - component: {fileID: -8296452593611197135}
+  - component: {fileID: 1620705009832919506}
   m_Layer: 0
   m_Name: ROCK1
   m_TagString: LEVEL0
@@ -46,7 +47,24 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   MR: {fileID: 7396433555932388142}
-  currMats: []
+  shaderCom: {fileID: 1620705009832919506}
+  lerpTime: 10
+--- !u!114 &1620705009832919506
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1036105315555936207}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 66037394e03a17d4fb346bada773652b, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  targetRenderer: {fileID: 7396433555932388142}
+  initMats: []
+  targetMats: []
+  isMixed: 0
 --- !u!1001 &8170933251725297578
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -124,7 +142,7 @@ PrefabInstance:
         type: 3}
       propertyPath: 'm_Materials.Array.data[0]'
       value: 
-      objectReference: {fileID: 2100000, guid: 4c6c3f17d09208e4e96f353854ab2294, type: 2}
+      objectReference: {fileID: 2100000, guid: d50eb4920dab31647ac37c2667bd1fc2, type: 2}
     - target: {fileID: 919132149155446097, guid: 7a14e8e09fcbc5543974eae6b52ca61d,
         type: 3}
       propertyPath: m_Name

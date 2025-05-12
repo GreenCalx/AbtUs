@@ -11,7 +11,7 @@ public class MTOLookupTable : MonoBehaviour
         public WORLD_AXIS axisConstraint;
         public Material mat;
         [Range(0f,1f)]
-        public float MtO_Factor;
+        public float threshold;
         //public List<Material> replacingThose;
     }
 
@@ -23,15 +23,18 @@ public class MTOLookupTable : MonoBehaviour
         [Range(0f,1f)]
         public float MtO_Factor;
     }
-    
+    public MatDefSOCollection matCollection;
     public List<MTOLookupUnit> units;
     public List<MTOTerrainLookupUnit> terrainUnits;
 
-    public Material ScoutForMatChange(Material iMat, float iMTOVal)
+    public MatDefSO ScoutForMatChange()
     {
         List<Material> eligibleMats = new List<Material>();
-        bool isMineral = OverWorldControl.Instance.MineralMagnitude > 0f;
-        bool isOrganic = OverWorldControl.Instance.OrganicMagnitude > 0f;
+        float mineralMag = OverWorldControl.Instance.MineralMagnitude;
+        float organicMag = OverWorldControl.Instance.OrganicMagnitude;
+
+        bool isMineral = mineralMag > 0f;
+        bool isOrganic = organicMag > 0f;
         foreach(MTOLookupUnit u in units)
         {
             if (!isOrganic && !isMineral)
@@ -46,7 +49,7 @@ public class MTOLookupTable : MonoBehaviour
             }
             if (isOrganic && (u.axisConstraint == WORLD_AXIS.ORGANIC))
             {
-                if (iMTOVal >= u.MtO_Factor)
+                if (organicMag >= u.threshold)
                 {
                     if (!eligibleMats.Contains(u.mat))
                     {
@@ -56,7 +59,7 @@ public class MTOLookupTable : MonoBehaviour
             }
             else if (isMineral && (u.axisConstraint == WORLD_AXIS.MINERAL))
             {
-                if (iMTOVal <= u.MtO_Factor)
+                if (mineralMag >= u.threshold)
                 {
                     if (!eligibleMats.Contains(u.mat))
                     {
@@ -72,7 +75,11 @@ public class MTOLookupTable : MonoBehaviour
 
         int selected = UnityEngine.Random.Range(0, n_eligibles);
 
-        return eligibleMats[selected];
+        Material selectedMat = eligibleMats[selected];
+    
+        matCollection.TryAddMat(selectedMat, selectedMat.name);
+
+        return matCollection.GetMatDefFromName(selectedMat.name);
 
     }
 

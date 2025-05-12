@@ -1,0 +1,22 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: d66da58f9e3ef454392445590ee72353, type: 3}
+  m_Name: Gore
+  m_EditorClassIdentifier: 
+  albedo: {fileID: 2800000, guid: ae97ccec045a8fa4eafaa168eb31280c, type: 3}
+  normals: {fileID: 2800000, guid: 9bc768688b837ca42a5584d05e965b5a, type: 3}
+  height: {fileID: 2800000, guid: 276e607d6d3cbbd4e95b173bebe3543e, type: 3}
+  mask: {fileID: 2800000, guid: 9ff63c77d6cb60640b7f26ea42ef554e, type: 3}
+  minMetallicRemap: 0.506
+  maxMetallicRemap: 0.928
+  minSmoothnessRemap: 0.078
+  maxSmoothnessRemap: 0.423

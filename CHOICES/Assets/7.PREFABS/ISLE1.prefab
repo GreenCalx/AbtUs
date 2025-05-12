@@ -622,7 +622,7 @@ Terrain:
   m_DeringLightProbesForTrees: 1
   m_ReceiveGI: 1
   m_ScaleInLightmap: 0.0256
-  m_LightmapParameters: {fileID: 15203, guid: 0000000000000000f000000000000000, type: 0}
+  m_LightmapParameters: {fileID: 15204, guid: 0000000000000000f000000000000000, type: 0}
   m_GroupingID: 0
   m_RenderingLayerMask: 1
   m_AllowAutoConnect: 1
@@ -731,15 +731,20 @@ PrefabInstance:
       propertyPath: m_IsActive
       value: 1
       objectReference: {fileID: 0}
+    - target: {fileID: 3477623492160647712, guid: 8a5324d05060d4d46ae53812f3fa93aa,
+        type: 3}
+      propertyPath: m_BakedTexture
+      value: 
+      objectReference: {fileID: 8900000, guid: 54382001c237e8742b343c6b55d72fe0, type: 3}
     - target: {fileID: 5616494387314613954, guid: 8a5324d05060d4d46ae53812f3fa93aa,
         type: 3}
       propertyPath: m_LocalPosition.x
-      value: 0.000013393659
+      value: -62.109116
       objectReference: {fileID: 0}
     - target: {fileID: 5616494387314613954, guid: 8a5324d05060d4d46ae53812f3fa93aa,
         type: 3}
       propertyPath: m_LocalPosition.z
-      value: -0.00002481402
+      value: 0.000024303794
       objectReference: {fileID: 0}
     - target: {fileID: 5948984600277674917, guid: 8a5324d05060d4d46ae53812f3fa93aa,
         type: 3}
@@ -974,7 +979,9 @@ PrefabInstance:
       propertyPath: m_Name
       value: ChronoSphere (5)
       objectReference: {fileID: 0}
-    m_RemovedComponents: []
+    m_RemovedComponents:
+    - {fileID: 4518995255365620799, guid: 6b90159694351e3408da2683ab27465e, type: 3}
+    - {fileID: 8101921838268483895, guid: 6b90159694351e3408da2683ab27465e, type: 3}
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
     m_AddedComponents: []
@@ -1048,7 +1055,9 @@ PrefabInstance:
       propertyPath: m_Name
       value: ChronoSphere (8)
       objectReference: {fileID: 0}
-    m_RemovedComponents: []
+    m_RemovedComponents:
+    - {fileID: 4518995255365620799, guid: 6b90159694351e3408da2683ab27465e, type: 3}
+    - {fileID: 8101921838268483895, guid: 6b90159694351e3408da2683ab27465e, type: 3}
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
     m_AddedComponents: []
@@ -1122,7 +1131,9 @@ PrefabInstance:
       propertyPath: m_Name
       value: ChronoSphere (2)
       objectReference: {fileID: 0}
-    m_RemovedComponents: []
+    m_RemovedComponents:
+    - {fileID: 4518995255365620799, guid: 6b90159694351e3408da2683ab27465e, type: 3}
+    - {fileID: 8101921838268483895, guid: 6b90159694351e3408da2683ab27465e, type: 3}
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
     m_AddedComponents: []
@@ -1196,7 +1207,9 @@ PrefabInstance:
       propertyPath: m_Name
       value: ChronoSphere (7)
       objectReference: {fileID: 0}
-    m_RemovedComponents: []
+    m_RemovedComponents:
+    - {fileID: 4518995255365620799, guid: 6b90159694351e3408da2683ab27465e, type: 3}
+    - {fileID: 8101921838268483895, guid: 6b90159694351e3408da2683ab27465e, type: 3}
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
     m_AddedComponents: []
@@ -1285,7 +1298,9 @@ PrefabInstance:
       propertyPath: m_Name
       value: ChronoSphere (1)
       objectReference: {fileID: 0}
-    m_RemovedComponents: []
+    m_RemovedComponents:
+    - {fileID: 4518995255365620799, guid: 6b90159694351e3408da2683ab27465e, type: 3}
+    - {fileID: 8101921838268483895, guid: 6b90159694351e3408da2683ab27465e, type: 3}
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
     m_AddedComponents: []
@@ -1359,7 +1374,9 @@ PrefabInstance:
       propertyPath: m_Name
       value: ChronoSphere (10)
       objectReference: {fileID: 0}
-    m_RemovedComponents: []
+    m_RemovedComponents:
+    - {fileID: 4518995255365620799, guid: 6b90159694351e3408da2683ab27465e, type: 3}
+    - {fileID: 8101921838268483895, guid: 6b90159694351e3408da2683ab27465e, type: 3}
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
     m_AddedComponents: []
@@ -1433,7 +1450,9 @@ PrefabInstance:
       propertyPath: m_Name
       value: ChronoSphere (4)
       objectReference: {fileID: 0}
-    m_RemovedComponents: []
+    m_RemovedComponents:
+    - {fileID: 4518995255365620799, guid: 6b90159694351e3408da2683ab27465e, type: 3}
+    - {fileID: 8101921838268483895, guid: 6b90159694351e3408da2683ab27465e, type: 3}
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
     m_AddedComponents: []
@@ -1507,7 +1526,9 @@ PrefabInstance:
       propertyPath: m_Name
       value: ChronoSphere (3)
       objectReference: {fileID: 0}
-    m_RemovedComponents: []
+    m_RemovedComponents:
+    - {fileID: 4518995255365620799, guid: 6b90159694351e3408da2683ab27465e, type: 3}
+    - {fileID: 8101921838268483895, guid: 6b90159694351e3408da2683ab27465e, type: 3}
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
     m_AddedComponents: []
@@ -1581,7 +1602,9 @@ PrefabInstance:
       propertyPath: m_Name
       value: ChronoSphere
       objectReference: {fileID: 0}
-    m_RemovedComponents: []
+    m_RemovedComponents:
+    - {fileID: 4518995255365620799, guid: 6b90159694351e3408da2683ab27465e, type: 3}
+    - {fileID: 8101921838268483895, guid: 6b90159694351e3408da2683ab27465e, type: 3}
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
     m_AddedComponents: []
@@ -1655,7 +1678,9 @@ PrefabInstance:
       propertyPath: m_Name
       value: ChronoSphere (9)
       objectReference: {fileID: 0}
-    m_RemovedComponents: []
+    m_RemovedComponents:
+    - {fileID: 4518995255365620799, guid: 6b90159694351e3408da2683ab27465e, type: 3}
+    - {fileID: 8101921838268483895, guid: 6b90159694351e3408da2683ab27465e, type: 3}
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
     m_AddedComponents: []
@@ -1729,7 +1754,9 @@ PrefabInstance:
       propertyPath: m_Name
       value: ChronoSphere (6)
       objectReference: {fileID: 0}
-    m_RemovedComponents: []
+    m_RemovedComponents:
+    - {fileID: 4518995255365620799, guid: 6b90159694351e3408da2683ab27465e, type: 3}
+    - {fileID: 8101921838268483895, guid: 6b90159694351e3408da2683ab27465e, type: 3}
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
     m_AddedComponents: []

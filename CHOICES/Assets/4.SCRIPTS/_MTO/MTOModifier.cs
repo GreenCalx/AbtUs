@@ -13,68 +13,78 @@ using UnityEngine;
 
 public class MTOModifier : MonoBehaviour
 {
-    public MeshRenderer MR;
-    public List<Material> currMats;
-    public List<Material> targetMats;
-    private List<Material> initMats;
+    public Renderer MR;
+    //public MatDefSO initMats;
+    // public List<Material> currMats;
+    // public List<Material> targetMats;
+    // private List<Material> initMats;
 
-    public bool lerp_done = false;
+    public GFXWrapper shaderCom;
+    // public bool lerp_done = false;
     public float lerpTime = 10f;
-    private float elapsedLerp = 0f;
+    // private float elapsedLerp = 0f;
 
     // Start is called once before the first execution of Update after the MonoBehaviour is created
     void Start()
     {
         if (MR==null)
-            MR = GetComponent<MeshRenderer>();
+            MR = GetComponent<Renderer>();
         OverWorldControl.Instance.SubscribeMTO(this);
-        initMats = new List<Material>(MR.materials);;
-        currMats = initMats;
+        
+        shaderCom.InitShader();
+
+        // initMats = new List<Material>(MR.materials);
+        //currMats = initMats;
 
         ResetMod();
     }
 
-    public void ChangeMaterial(Material iOldMat, Material iNewMat)
+    public int GetMatSlotCount()
     {
-        int idx = currMats.IndexOf(iOldMat);
-        targetMats[idx] = iNewMat;
+        return shaderCom.targetMats.Count;
     }
 
-    public void RefreshMaterials()
+    public void ChangeMaterials(List<MatDefSO> iNewMats)
     {
-        elapsedLerp = 0f;
-        lerp_done = false;
+        // int idx = currMats.IndexOf(iOldMat);
+        // targetMats[idx] = iNewMat;
+        shaderCom.ChangeMatText(iNewMats, lerpTime);
+    }
+
+     public bool IsAvailable()
+    {
+        return shaderCom.IsAvailable();
     }
 
     public void ResetMaterials()
     {
-        MR.SetMaterials(initMats);
+        //MR.SetMaterials(initMats);
     }
 
     void Update()
     {
-        if (lerp_done)
-            return;
+        // if (lerp_done)
+        //     return;
         
-        for(int i=0; i<targetMats.Count; i++)
-        {
-            float frac = lerpTime / elapsedLerp;
-            MR.materials[i].Lerp(currMats[i], targetMats[i], frac);
-        }
-        elapsedLerp += Time.deltaTime;
-        if (elapsedLerp >= lerpTime)
-        {
+        // for(int i=0; i<targetMats.Count; i++)
+        // {
+        //     float frac = lerpTime / elapsedLerp;
+        //     MR.materials[i].Lerp(currMats[i], targetMats[i], frac);
+        // }
+        // elapsedLerp += Time.deltaTime;
+        // if (elapsedLerp >= lerpTime)
+        // {
             
-            MR.SetMaterials(targetMats);
-            currMats = new List<Material>(MR.materials);
+        //     MR.SetMaterials(targetMats);
+        //     currMats = new List<Material>(MR.materials);
 
-            ResetMod();
-        }
+        //     ResetMod();
+        // }
     }
 
     private void ResetMod()
     {
-        targetMats = new List<Material>(currMats);
-        lerp_done = true;
+        // targetMats = new List<Material>(currMats);
+        // lerp_done = true;
     }
 }

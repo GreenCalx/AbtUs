@@ -625,9 +625,14 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: -7511558181221131132, guid: a7b92c4a48f5b58478a4292b68101a0a,
         type: 3}
+      propertyPath: m_RenderingLayerMask
+      value: 5
+      objectReference: {fileID: 0}
+    - target: {fileID: -7511558181221131132, guid: a7b92c4a48f5b58478a4292b68101a0a,
+        type: 3}
       propertyPath: 'm_Materials.Array.data[0]'
       value: 
-      objectReference: {fileID: 2100000, guid: f3952eae22c247c4e908882797fc9b1c, type: 2}
+      objectReference: {fileID: 2100000, guid: 1a07ddb8d706e1f4b929fedb1a12fe9b, type: 2}
     - target: {fileID: 919132149155446097, guid: a7b92c4a48f5b58478a4292b68101a0a,
         type: 3}
       propertyPath: m_Name
@@ -660,6 +665,10 @@ PrefabInstance:
         type: 3}
       insertIndex: -1
       addedObject: {fileID: 1032334418776285822}
+    - targetCorrespondingSourceObject: {fileID: 919132149155446097, guid: a7b92c4a48f5b58478a4292b68101a0a,
+        type: 3}
+      insertIndex: -1
+      addedObject: {fileID: 7230846369339828077}
   m_SourcePrefab: {fileID: 100100000, guid: a7b92c4a48f5b58478a4292b68101a0a, type: 3}
 --- !u!4 &463299604307005197 stripped
 Transform:
@@ -702,7 +711,25 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   MR: {fileID: 1596196582696662114}
-  currMats: []
+  shaderCom: {fileID: 7230846369339828077}
+  lerpTime: 10
+--- !u!114 &7230846369339828077
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 947488913301968311}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 66037394e03a17d4fb346bada773652b, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  targetRenderer: {fileID: 1596196582696662114}
+  matCollection: {fileID: 0}
+  initMats: []
+  targetMats: []
+  isMixed: 0
 --- !u!23 &1596196582696662114 stripped
 MeshRenderer:
   m_CorrespondingSourceObject: {fileID: -7511558181221131132, guid: a7b92c4a48f5b58478a4292b68101a0a,
@@ -789,9 +816,14 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: -7511558181221131132, guid: a7b92c4a48f5b58478a4292b68101a0a,
         type: 3}
+      propertyPath: m_RenderingLayerMask
+      value: 5
+      objectReference: {fileID: 0}
+    - target: {fileID: -7511558181221131132, guid: a7b92c4a48f5b58478a4292b68101a0a,
+        type: 3}
       propertyPath: 'm_Materials.Array.data[0]'
       value: 
-      objectReference: {fileID: 2100000, guid: f3952eae22c247c4e908882797fc9b1c, type: 2}
+      objectReference: {fileID: 2100000, guid: 1a07ddb8d706e1f4b929fedb1a12fe9b, type: 2}
     - target: {fileID: 919132149155446097, guid: a7b92c4a48f5b58478a4292b68101a0a,
         type: 3}
       propertyPath: m_Name
@@ -824,6 +856,10 @@ PrefabInstance:
         type: 3}
       insertIndex: -1
       addedObject: {fileID: 541881621606158607}
+    - targetCorrespondingSourceObject: {fileID: 919132149155446097, guid: a7b92c4a48f5b58478a4292b68101a0a,
+        type: 3}
+      insertIndex: -1
+      addedObject: {fileID: 5933330196503287070}
   m_SourcePrefab: {fileID: 100100000, guid: a7b92c4a48f5b58478a4292b68101a0a, type: 3}
 --- !u!23 &791575152914130542 stripped
 MeshRenderer:
@@ -866,7 +902,25 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   MR: {fileID: 791575152914130542}
-  currMats: []
+  shaderCom: {fileID: 5933330196503287070}
+  lerpTime: 10
+--- !u!114 &5933330196503287070
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1296123103425284027}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 66037394e03a17d4fb346bada773652b, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  targetRenderer: {fileID: 791575152914130542}
+  matCollection: {fileID: 0}
+  initMats: []
+  targetMats: []
+  isMixed: 0
 --- !u!4 &1925026834649914625 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: -8679921383154817045, guid: a7b92c4a48f5b58478a4292b68101a0a,
@@ -953,9 +1007,14 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: -7511558181221131132, guid: a7b92c4a48f5b58478a4292b68101a0a,
         type: 3}
+      propertyPath: m_RenderingLayerMask
+      value: 5
+      objectReference: {fileID: 0}
+    - target: {fileID: -7511558181221131132, guid: a7b92c4a48f5b58478a4292b68101a0a,
+        type: 3}
       propertyPath: 'm_Materials.Array.data[0]'
       value: 
-      objectReference: {fileID: 2100000, guid: f3952eae22c247c4e908882797fc9b1c, type: 2}
+      objectReference: {fileID: 2100000, guid: 1a07ddb8d706e1f4b929fedb1a12fe9b, type: 2}
     - target: {fileID: 919132149155446097, guid: a7b92c4a48f5b58478a4292b68101a0a,
         type: 3}
       propertyPath: m_Name
@@ -988,6 +1047,10 @@ PrefabInstance:
         type: 3}
       insertIndex: -1
       addedObject: {fileID: 6902435196809736095}
+    - targetCorrespondingSourceObject: {fileID: 919132149155446097, guid: a7b92c4a48f5b58478a4292b68101a0a,
+        type: 3}
+      insertIndex: -1
+      addedObject: {fileID: 6817480901737382406}
   m_SourcePrefab: {fileID: 100100000, guid: a7b92c4a48f5b58478a4292b68101a0a, type: 3}
 --- !u!4 &2684018155463310540 stripped
 Transform:
@@ -1030,7 +1093,25 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   MR: {fileID: 3851880147867731875}
-  currMats: []
+  shaderCom: {fileID: 6817480901737382406}
+  lerpTime: 10
+--- !u!114 &6817480901737382406
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3347402566721250934}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 66037394e03a17d4fb346bada773652b, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  targetRenderer: {fileID: 3851880147867731875}
+  matCollection: {fileID: 0}
+  initMats: []
+  targetMats: []
+  isMixed: 0
 --- !u!23 &3851880147867731875 stripped
 MeshRenderer:
   m_CorrespondingSourceObject: {fileID: -7511558181221131132, guid: a7b92c4a48f5b58478a4292b68101a0a,
@@ -1117,9 +1198,14 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: -7511558181221131132, guid: a7b92c4a48f5b58478a4292b68101a0a,
         type: 3}
+      propertyPath: m_RenderingLayerMask
+      value: 5
+      objectReference: {fileID: 0}
+    - target: {fileID: -7511558181221131132, guid: a7b92c4a48f5b58478a4292b68101a0a,
+        type: 3}
       propertyPath: 'm_Materials.Array.data[0]'
       value: 
-      objectReference: {fileID: 2100000, guid: f3952eae22c247c4e908882797fc9b1c, type: 2}
+      objectReference: {fileID: 2100000, guid: 1a07ddb8d706e1f4b929fedb1a12fe9b, type: 2}
     - target: {fileID: 919132149155446097, guid: a7b92c4a48f5b58478a4292b68101a0a,
         type: 3}
       propertyPath: m_Name
@@ -1152,6 +1238,10 @@ PrefabInstance:
         type: 3}
       insertIndex: -1
       addedObject: {fileID: 8083461104787080366}
+    - targetCorrespondingSourceObject: {fileID: 919132149155446097, guid: a7b92c4a48f5b58478a4292b68101a0a,
+        type: 3}
+      insertIndex: -1
+      addedObject: {fileID: 4726321648639772564}
   m_SourcePrefab: {fileID: 100100000, guid: a7b92c4a48f5b58478a4292b68101a0a, type: 3}
 --- !u!23 &2958141357008228133 stripped
 MeshRenderer:
@@ -1194,7 +1284,25 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   MR: {fileID: 2958141357008228133}
-  currMats: []
+  shaderCom: {fileID: 4726321648639772564}
+  lerpTime: 10
+--- !u!114 &4726321648639772564
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3606698941928812272}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 66037394e03a17d4fb346bada773652b, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  targetRenderer: {fileID: 2958141357008228133}
+  matCollection: {fileID: 0}
+  initMats: []
+  targetMats: []
+  isMixed: 0
 --- !u!4 &4127057819583247434 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: -8679921383154817045, guid: a7b92c4a48f5b58478a4292b68101a0a,
@@ -1276,9 +1384,14 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: -7511558181221131132, guid: 3512a238eff4c1d4aabb7da6b62715e1,
         type: 3}
+      propertyPath: m_RenderingLayerMask
+      value: 5
+      objectReference: {fileID: 0}
+    - target: {fileID: -7511558181221131132, guid: 3512a238eff4c1d4aabb7da6b62715e1,
+        type: 3}
       propertyPath: 'm_Materials.Array.data[0]'
       value: 
-      objectReference: {fileID: 2100000, guid: f3952eae22c247c4e908882797fc9b1c, type: 2}
+      objectReference: {fileID: 2100000, guid: 1a07ddb8d706e1f4b929fedb1a12fe9b, type: 2}
     - target: {fileID: 919132149155446097, guid: 3512a238eff4c1d4aabb7da6b62715e1,
         type: 3}
       propertyPath: m_Name
@@ -1316,6 +1429,10 @@ PrefabInstance:
         type: 3}
       insertIndex: -1
       addedObject: {fileID: 708372650045947112}
+    - targetCorrespondingSourceObject: {fileID: 919132149155446097, guid: 3512a238eff4c1d4aabb7da6b62715e1,
+        type: 3}
+      insertIndex: -1
+      addedObject: {fileID: 2466779943647909604}
   m_SourcePrefab: {fileID: 100100000, guid: 3512a238eff4c1d4aabb7da6b62715e1, type: 3}
 --- !u!23 &5045883586399169034 stripped
 MeshRenderer:
@@ -1364,7 +1481,25 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   MR: {fileID: 5045883586399169034}
-  currMats: []
+  shaderCom: {fileID: 2466779943647909604}
+  lerpTime: 10
+--- !u!114 &2466779943647909604
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6703159526467849183}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 66037394e03a17d4fb346bada773652b, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  targetRenderer: {fileID: 5045883586399169034}
+  matCollection: {fileID: 0}
+  initMats: []
+  targetMats: []
+  isMixed: 0
 --- !u!1001 &6007444417544452925
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -1440,9 +1575,14 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: -7511558181221131132, guid: 3512a238eff4c1d4aabb7da6b62715e1,
         type: 3}
+      propertyPath: m_RenderingLayerMask
+      value: 5
+      objectReference: {fileID: 0}
+    - target: {fileID: -7511558181221131132, guid: 3512a238eff4c1d4aabb7da6b62715e1,
+        type: 3}
       propertyPath: 'm_Materials.Array.data[0]'
       value: 
-      objectReference: {fileID: 2100000, guid: 2587da7fe92f87044bcf6fec06500b78, type: 2}
+      objectReference: {fileID: 2100000, guid: 1a07ddb8d706e1f4b929fedb1a12fe9b, type: 2}
     - target: {fileID: 919132149155446097, guid: 3512a238eff4c1d4aabb7da6b62715e1,
         type: 3}
       propertyPath: m_Name
@@ -1480,6 +1620,10 @@ PrefabInstance:
         type: 3}
       insertIndex: -1
       addedObject: {fileID: 3772636485678736240}
+    - targetCorrespondingSourceObject: {fileID: 919132149155446097, guid: 3512a238eff4c1d4aabb7da6b62715e1,
+        type: 3}
+      insertIndex: -1
+      addedObject: {fileID: 4627606443216746335}
   m_SourcePrefab: {fileID: 100100000, guid: 3512a238eff4c1d4aabb7da6b62715e1, type: 3}
 --- !u!23 &4944723141084669881 stripped
 MeshRenderer:
@@ -1528,7 +1672,25 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   MR: {fileID: 4944723141084669881}
-  currMats: []
+  shaderCom: {fileID: 4627606443216746335}
+  lerpTime: 10
+--- !u!114 &4627606443216746335
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6890458018822932076}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 66037394e03a17d4fb346bada773652b, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  targetRenderer: {fileID: 4944723141084669881}
+  matCollection: {fileID: 0}
+  initMats: []
+  targetMats: []
+  isMixed: 0
 --- !u!1001 &7678334559724664146
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -1604,9 +1766,14 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: -7511558181221131132, guid: 3512a238eff4c1d4aabb7da6b62715e1,
         type: 3}
+      propertyPath: m_RenderingLayerMask
+      value: 5
+      objectReference: {fileID: 0}
+    - target: {fileID: -7511558181221131132, guid: 3512a238eff4c1d4aabb7da6b62715e1,
+        type: 3}
       propertyPath: 'm_Materials.Array.data[0]'
       value: 
-      objectReference: {fileID: 2100000, guid: f3952eae22c247c4e908882797fc9b1c, type: 2}
+      objectReference: {fileID: 2100000, guid: 1a07ddb8d706e1f4b929fedb1a12fe9b, type: 2}
     - target: {fileID: 919132149155446097, guid: 3512a238eff4c1d4aabb7da6b62715e1,
         type: 3}
       propertyPath: m_Name
@@ -1644,6 +1811,10 @@ PrefabInstance:
         type: 3}
       insertIndex: -1
       addedObject: {fileID: 1749270227633458832}
+    - targetCorrespondingSourceObject: {fileID: 919132149155446097, guid: 3512a238eff4c1d4aabb7da6b62715e1,
+        type: 3}
+      insertIndex: -1
+      addedObject: {fileID: 6047449198006450911}
   m_SourcePrefab: {fileID: 100100000, guid: 3512a238eff4c1d4aabb7da6b62715e1, type: 3}
 --- !u!1 &7372257660905932803 stripped
 GameObject:
@@ -1680,7 +1851,25 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   MR: {fileID: 9029569061077182934}
-  currMats: []
+  shaderCom: {fileID: 6047449198006450911}
+  lerpTime: 10
+--- !u!114 &6047449198006450911
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7372257660905932803}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 66037394e03a17d4fb346bada773652b, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  targetRenderer: {fileID: 9029569061077182934}
+  matCollection: {fileID: 0}
+  initMats: []
+  targetMats: []
+  isMixed: 0
 --- !u!4 &7855498091074622137 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: -8679921383154817045, guid: 3512a238eff4c1d4aabb7da6b62715e1,
@@ -1768,9 +1957,14 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: -7511558181221131132, guid: 3512a238eff4c1d4aabb7da6b62715e1,
         type: 3}
+      propertyPath: m_RenderingLayerMask
+      value: 5
+      objectReference: {fileID: 0}
+    - target: {fileID: -7511558181221131132, guid: 3512a238eff4c1d4aabb7da6b62715e1,
+        type: 3}
       propertyPath: 'm_Materials.Array.data[0]'
       value: 
-      objectReference: {fileID: 2100000, guid: 2587da7fe92f87044bcf6fec06500b78, type: 2}
+      objectReference: {fileID: 2100000, guid: 1a07ddb8d706e1f4b929fedb1a12fe9b, type: 2}
     - target: {fileID: 919132149155446097, guid: 3512a238eff4c1d4aabb7da6b62715e1,
         type: 3}
       propertyPath: m_Name
@@ -1808,6 +2002,10 @@ PrefabInstance:
         type: 3}
       insertIndex: -1
       addedObject: {fileID: 1204302596408533820}
+    - targetCorrespondingSourceObject: {fileID: 919132149155446097, guid: 3512a238eff4c1d4aabb7da6b62715e1,
+        type: 3}
+      insertIndex: -1
+      addedObject: {fileID: 8448691924769548080}
   m_SourcePrefab: {fileID: 100100000, guid: 3512a238eff4c1d4aabb7da6b62715e1, type: 3}
 --- !u!1 &7103674309390154456 stripped
 GameObject:
@@ -1844,7 +2042,25 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   MR: {fileID: 8761100334340446989}
-  currMats: []
+  shaderCom: {fileID: 8448691924769548080}
+  lerpTime: 10
+--- !u!114 &8448691924769548080
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7103674309390154456}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 66037394e03a17d4fb346bada773652b, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  targetRenderer: {fileID: 8761100334340446989}
+  matCollection: {fileID: 0}
+  initMats: []
+  targetMats: []
+  isMixed: 0
 --- !u!4 &7628678345243549794 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: -8679921383154817045, guid: 3512a238eff4c1d4aabb7da6b62715e1,
@@ -2067,9 +2283,14 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: -7511558181221131132, guid: a7b92c4a48f5b58478a4292b68101a0a,
         type: 3}
+      propertyPath: m_RenderingLayerMask
+      value: 5
+      objectReference: {fileID: 0}
+    - target: {fileID: -7511558181221131132, guid: a7b92c4a48f5b58478a4292b68101a0a,
+        type: 3}
       propertyPath: 'm_Materials.Array.data[0]'
       value: 
-      objectReference: {fileID: 2100000, guid: f3952eae22c247c4e908882797fc9b1c, type: 2}
+      objectReference: {fileID: 2100000, guid: 1a07ddb8d706e1f4b929fedb1a12fe9b, type: 2}
     - target: {fileID: 919132149155446097, guid: a7b92c4a48f5b58478a4292b68101a0a,
         type: 3}
       propertyPath: m_Name
@@ -2102,6 +2323,10 @@ PrefabInstance:
         type: 3}
       insertIndex: -1
       addedObject: {fileID: 7355676275456750295}
+    - targetCorrespondingSourceObject: {fileID: 919132149155446097, guid: a7b92c4a48f5b58478a4292b68101a0a,
+        type: 3}
+      insertIndex: -1
+      addedObject: {fileID: 6838371349749499196}
   m_SourcePrefab: {fileID: 100100000, guid: a7b92c4a48f5b58478a4292b68101a0a, type: 3}
 --- !u!23 &7329923570132887346 stripped
 MeshRenderer:
@@ -2150,4 +2375,22 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   MR: {fileID: 7329923570132887346}
-  currMats: []
+  shaderCom: {fileID: 6838371349749499196}
+  lerpTime: 10
+--- !u!114 &6838371349749499196
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 9131579132283913959}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 66037394e03a17d4fb346bada773652b, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  targetRenderer: {fileID: 7329923570132887346}
+  matCollection: {fileID: 0}
+  initMats: []
+  targetMats: []
+  isMixed: 0

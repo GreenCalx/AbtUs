@@ -250,6 +250,7 @@ GameObject:
   m_Component:
   - component: {fileID: 533871647506859211}
   - component: {fileID: 3137611546387111054}
+  - component: {fileID: 2774399538134661601}
   m_Layer: 0
   m_Name: MTOLookUpTable
   m_TagString: Untagged
@@ -284,46 +285,14 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 58888f6b15f83f64db5794a8a1d416cf, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  matCollection: {fileID: 2774399538134661601}
   units:
   - axisConstraint: 4
-    mat: {fileID: 2100000, guid: 9de3f87d23d87d648ae5fbf78894afaf, type: 2}
-    MtO_Factor: 0.9
+    mat: {fileID: 2100000, guid: b9b134a723180e947bf73574ec318a17, type: 2}
+    threshold: 0.5
   - axisConstraint: 4
-    mat: {fileID: 2100000, guid: 0b92825f5b293aa4a89a5fa1486c1912, type: 2}
-    MtO_Factor: 0.8
-  - axisConstraint: 4
-    mat: {fileID: 2100000, guid: 16b0156a7a3bac241b9925eaab50eb3e, type: 2}
-    MtO_Factor: 0.85
-  - axisConstraint: 4
-    mat: {fileID: 2100000, guid: 04815e598a1e12c40aed7b97988a33f2, type: 2}
-    MtO_Factor: 0.55
-  - axisConstraint: 4
-    mat: {fileID: 2100000, guid: 8bbfb5298004dc249a8f5f4902fed978, type: 2}
-    MtO_Factor: 0.75
-  - axisConstraint: 4
-    mat: {fileID: 2100000, guid: a79471d434ab77547befd7b708f3b8ee, type: 2}
-    MtO_Factor: 0.7
-  - axisConstraint: 4
-    mat: {fileID: 2100000, guid: 04815e598a1e12c40aed7b97988a33f2, type: 2}
-    MtO_Factor: 0.6
-  - axisConstraint: 3
-    mat: {fileID: 2100000, guid: 5aa403bbf3e07d84e800d14b56fe18b8, type: 2}
-    MtO_Factor: 0.7
-  - axisConstraint: 3
-    mat: {fileID: 2100000, guid: 4c6c3f17d09208e4e96f353854ab2294, type: 2}
-    MtO_Factor: 0.45
-  - axisConstraint: 3
-    mat: {fileID: 2100000, guid: a239e49c046adc44b9b22bae5f962b74, type: 2}
-    MtO_Factor: 0.25
-  - axisConstraint: 3
-    mat: {fileID: 2100000, guid: f3952eae22c247c4e908882797fc9b1c, type: 2}
-    MtO_Factor: 0.3
-  - axisConstraint: 3
-    mat: {fileID: 2100000, guid: cbb3599c801047544bc9c10639325cbb, type: 2}
-    MtO_Factor: 0.35
-  - axisConstraint: 3
-    mat: {fileID: 2100000, guid: 5aa403bbf3e07d84e800d14b56fe18b8, type: 2}
-    MtO_Factor: 0.4
+    mat: {fileID: 2100000, guid: 2665ed82376716f46a09c2bf4cfe87f7, type: 2}
+    threshold: 0.1
   terrainUnits:
   - axisConstraint: 0
     palette: {fileID: 11400000, guid: 8cb4fab0c15d2dc48a47aa23d501d30c, type: 2}
@@ -346,6 +315,19 @@ MonoBehaviour:
   - axisConstraint: 3
     palette: {fileID: 11400000, guid: 0fdb6016fe1ce41428a10b5f484734e1, type: 2}
     MtO_Factor: 0.1
+--- !u!114 &2774399538134661601
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 373766109970034940}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 7730dcf5023034f4ebbe1f4d225bece7, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  debug_dump: 1
 --- !u!1 &1352790782487124492
 GameObject:
   m_ObjectHideFlags: 0
@@ -1514,7 +1496,7 @@ MonoBehaviour:
   m_Center: {x: 0, y: 2, z: 0}
   m_LayerMask:
     serializedVersion: 2
-    m_Bits: 4294967295
+    m_Bits: 16512
   m_UseGeometry: 0
   m_DefaultArea: 0
   m_GenerateLinks: 0
@@ -1525,7 +1507,7 @@ MonoBehaviour:
   m_OverrideVoxelSize: 0
   m_VoxelSize: 0.16666667
   m_MinRegionArea: 2
-  m_NavMeshData: {fileID: 23800000, guid: 2674a5576fc384d408495b196afc89d8, type: 2}
+  m_NavMeshData: {fileID: 23800000, guid: 3541de8b9a0fd7b4082a69dfb631aeca, type: 2}
   m_BuildHeightMesh: 0
 --- !u!114 &173459401816311245
 MonoBehaviour:
@@ -1546,7 +1528,7 @@ MonoBehaviour:
   m_Center: {x: 0, y: 2, z: 0}
   m_LayerMask:
     serializedVersion: 2
-    m_Bits: 4294967295
+    m_Bits: 16512
   m_UseGeometry: 0
   m_DefaultArea: 0
   m_GenerateLinks: 0
@@ -1557,7 +1539,7 @@ MonoBehaviour:
   m_OverrideVoxelSize: 0
   m_VoxelSize: 0.33333334
   m_MinRegionArea: 2
-  m_NavMeshData: {fileID: 23800000, guid: efaedf09e1d72b14b942bd7189ac3aa0, type: 2}
+  m_NavMeshData: {fileID: 23800000, guid: 4a477a01434d5694e9128d1070cbb508, type: 2}
   m_BuildHeightMesh: 0
 --- !u!1 &8621421476976029802
 GameObject:

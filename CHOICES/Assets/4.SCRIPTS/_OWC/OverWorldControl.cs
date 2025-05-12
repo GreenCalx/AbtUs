@@ -422,24 +422,17 @@ public class OverWorldControl : MonoBehaviour
 
         foreach(MTOModifier mod in mtoModifiers)
         {
-            if (!mod.lerp_done)
+            if (!mod.IsAvailable())
                 continue;
 
-            Dictionary<Material, Material> operations = new Dictionary<Material, Material>();
-
-            foreach(Material mat in mod.currMats)
+            int n = mod.GetMatSlotCount();
+            List<MatDefSO> newMats = new List<MatDefSO>();
+            for (int i=0; i <= n ;i++ )
             {
-                Material newMat = mtoLookupTable.ScoutForMatChange(mat, MineralToOrganic);
-                if (newMat==null)
-                    continue;
-                operations.Add(mat, newMat);
+                MatDefSO newMat = mtoLookupTable.ScoutForMatChange();
+                newMats.Add(newMat);
             }
-            foreach(Material m in operations.Keys)
-            {
-                ChangeModMaterial(mod, m, operations[m]);
-            }
-
-            mod.RefreshMaterials();
+            mod.ChangeMaterials(newMats);
         }
 
         foreach(MTOTerrain t in mtoTerrains)
@@ -454,10 +447,6 @@ public class OverWorldControl : MonoBehaviour
         {
             listener.Call();
         }
-    }
-    private void ChangeModMaterial(MTOModifier iMod, Material iOldMat, Material iNewMat)
-    {
-        iMod.ChangeMaterial (iOldMat, iNewMat);
     }
 
     public bool MTOIsZero()
