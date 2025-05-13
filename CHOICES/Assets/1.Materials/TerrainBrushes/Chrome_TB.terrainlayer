@@ -9,7 +9,7 @@ TerrainLayer:
   m_Name: Chrome_TB
   m_DiffuseTexture: {fileID: 2800000, guid: acfb9e97135631145b5d17974aed6b1d, type: 3}
   m_NormalMapTexture: {fileID: 2800000, guid: a0ad0a3c77b7668408ccf6372fa0a4ab, type: 3}
-  m_MaskMapTexture: {fileID: 0}
+  m_MaskMapTexture: {fileID: 2800000, guid: 59f2a7e7d8a5fbf4698fa9f7fcc11586, type: 3}
   m_TileSize: {x: 10, y: 10}
   m_TileOffset: {x: 0, y: 0}
   m_Specular: {r: 0.8329477, g: 0.9245283, b: 0.9059062, a: 1}

@@ -10,6 +10,7 @@ public class MTOTerrain : MonoBehaviour
 
     private List<TerrainLayer> initLayers;
     private TerrainData terrainData;
+    private bool refreshReq = false;
 
     // Start is called once before the first execution of Update after the MonoBehaviour is created
     void Start()
@@ -26,7 +27,8 @@ public class MTOTerrain : MonoBehaviour
     public void ChangeLayers(List<TerrainLayer> iNewPalette)
     {
         currLayers = iNewPalette;
-        RefreshLayers();
+        refreshReq = true;
+        //RefreshLayers();
     }
 
     public void RefreshLayers()
@@ -46,4 +48,29 @@ public class MTOTerrain : MonoBehaviour
     {
         ResetLayers();
     }
+
+    void Update()
+    {
+        if (refreshReq)
+        {
+            if (!CheckFrustrum(Managers.Instance.Camera.playerCam.cam))
+            {
+                RefreshLayers();
+                refreshReq =false;
+            }
+        }
+    }
+
+    private bool CheckFrustrum(Camera cam)
+    {
+        Vector3 center = terrain.gameObject.transform.position + terrain.terrainData.size * 0.5f;
+        Vector3 size = terrain.terrainData.size;
+
+        Bounds bounds = new Bounds(center, size);
+
+        Plane[] frustrum = GeometryUtility.CalculateFrustumPlanes(cam);
+
+        return GeometryUtility.TestPlanesAABB(frustrum, bounds);
+    }
+
 }

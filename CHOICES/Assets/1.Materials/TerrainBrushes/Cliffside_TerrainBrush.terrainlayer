@@ -9,7 +9,7 @@ TerrainLayer:
   m_Name: Cliffside_TerrainBrush
   m_DiffuseTexture: {fileID: 2800000, guid: c16d98eacc070954d9d40b8253f7309c, type: 3}
   m_NormalMapTexture: {fileID: 2800000, guid: 803a40f617029214aad2360574cbcbb3, type: 3}
-  m_MaskMapTexture: {fileID: 0}
+  m_MaskMapTexture: {fileID: 2800000, guid: 7b0739a21d792124c84529bd25231cf8, type: 3}
   m_TileSize: {x: 20, y: 20}
   m_TileOffset: {x: 0, y: 0}
   m_Specular: {r: 0, g: 0, b: 0, a: 0}
@@ -19,5 +19,5 @@ TerrainLayer:
   m_DiffuseRemapMin: {x: 0, y: 0, z: 0, w: 0}
   m_DiffuseRemapMax: {x: 1, y: 1, z: 1, w: 1}
   m_MaskMapRemapMin: {x: 0, y: 0, z: 0, w: 0}
-  m_MaskMapRemapMax: {x: 1, y: 1, z: 1, w: 1}
+  m_MaskMapRemapMax: {x: 1, y: 1, z: 1, w: 0.6}
   m_SmoothnessSource: 1
