@@ -99,6 +99,11 @@ public class InteractibleObject : MonoBehaviour
         cancelAction.Invoke();
     }
 
+    public bool IsInAction()
+    {
+        return ActionCo != null;
+    }
+
     #region MOVE
     public virtual void Move()
     {

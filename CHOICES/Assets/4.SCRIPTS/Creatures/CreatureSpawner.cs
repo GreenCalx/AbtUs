@@ -21,6 +21,7 @@ public class CreatureSpawner<T> : MonoBehaviour where T : Creature
     [Header("Optional")]
     public Terrain relatedTerrain;
 
+    [Header("Internals")]
     private List<T> spawnedCreatures = new List<T>();
 
     private float xmin;
@@ -29,7 +30,9 @@ public class CreatureSpawner<T> : MonoBehaviour where T : Creature
     private float ymax;
     private float zmin;
     private float zmax;
-    private int expectedPopulation = 0;
+    public int expectedPopulation = 0;
+
+    private float maxSpawnMulFactor = 1f;
 
     void OnDrawGizmosSelected()
     {
@@ -67,7 +70,7 @@ public class CreatureSpawner<T> : MonoBehaviour where T : Creature
 
     protected void CheckForSpawns()
     {
-        expectedPopulation = (int)Mathf.Ceil(spawnsByMagnitudeCurve.Evaluate(OverWorldControl.Instance.GetAxisMagnitude(axis)) * MAX_SPAWNS );
+        expectedPopulation = (int)Mathf.Ceil(spawnsByMagnitudeCurve.Evaluate(OverWorldControl.Instance.GetAxisMagnitude(axis)) * MAX_SPAWNS * maxSpawnMulFactor );
         int popDelta = expectedPopulation - spawnedCreatures.Count;
         if (popDelta > 0)
         { Spawn(popDelta); }
@@ -144,5 +147,11 @@ public class CreatureSpawner<T> : MonoBehaviour where T : Creature
     public void DeSpawnAll()
     {
         DeSpawn(spawnedCreatures.Count);
+    }
+
+    public void UpdateSpawnMulFactor(int iVal)
+    {
+        maxSpawnMulFactor = 1f + (1f - (1f/((Mathf.Pow(iVal,2)/4) + 1f)));
+        Debug.Log(maxSpawnMulFactor);
     }
 }
