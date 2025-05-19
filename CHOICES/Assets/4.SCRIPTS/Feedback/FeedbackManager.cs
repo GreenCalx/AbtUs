@@ -1,30 +1,132 @@
 using UnityEngine;
+using UnityEngine.Events;
 using System.Collections.Generic;
+using System.Collections;
 using System;
 
+public enum FeedbackType
+{
+        glow,
+        sanity,
+        world,
+        player,
+        proximity,
+        movements,
+        birth,
+        death
+};
+
 [System.Serializable]
-    public class FeedbackVariable
+public class FeedbackData
+{
+
+    //public int tag; // Tags to evaluate groups separatly
+    public OWCAxis tag;
+    public FeedbackType type; // enum to define to refer to created feedbacks
+    public float baseValue;
+    public float loopStrength = 0f;
+    public bool isSynced = false;
+}
+
+public class FeedbackMatrix
+{
+    public float constCommonInput = 0.5f;
+    public List<List<Feedback>> feedbacks;
+    // tag to output dic
+    public Dictionary<int, float> outputs;
+    public FeedbackMatrix(int n_tags)
     {
-        public enum Type { GTL_glow, GTL_sanity, OTC_world, OTC_player, MTO_proximity, MTO_movements, MTO_livings };
-
-        public OWCAxis axis;
-        public Type type;
-        public float baseValue;
-        public float maxValue;  
-        public float minValue;
-
-        private float Value;
-        public float _value
+        outputs = new Dictionary<int, float>();
+        feedbacks = new List<List<Feedback>>();
+        for (int i = 0; i < n_tags; i++)
         {
-            get { return Value; }
-            set { Value = Mathf.Clamp(value, minValue, maxValue); }
+            feedbacks.Add(new List<Feedback>(0));
+            outputs.Add(i, constCommonInput);
+        }
+    }
+    public Feedback BuildFeedback(FeedbackData iFData)
+    {
+        Feedback new_fb = new Feedback();
+
+        new_fb.baseValue = iFData.baseValue;
+        new_fb.loopStrength = iFData.loopStrength;
+        new_fb.tag = (int)iFData.tag;
+        new_fb.isSync = iFData.isSynced;
+        new_fb.fType = iFData.type;
+
+        return new_fb;
+    }
+
+    public void AddFeedback(Feedback iF)
+    { feedbacks[iF.tag].Add(iF); }
+
+    public void RemoveFeedback(Feedback iF)
+    { feedbacks[iF.tag].Remove(iF); }
+
+    public void RefreshRow(List<Feedback> iRow)
+    {
+        float aggregate = 0f;
+        foreach (Feedback fb in iRow)
+        {
+            fb.influence = fb.Exec();
+            aggregate += fb.output;
+        }
+        outputs[feedbacks.IndexOf(iRow)] = constCommonInput + aggregate;
+    }
+
+    public void RefreshTag(int iTag)
+    {
+        RefreshRow(feedbacks[iTag]);
+    }
+
+    public void RefreshAll()
+    {
+        foreach (List<Feedback> row in feedbacks)
+        {
+            if (row.Count == 0)
+                continue;
+            RefreshRow(row);
         }
     }
 
+}
+public interface IFeedbackEval
+{
+    public float feedbackEvaluator();
+}
+public class Feedback
+{
+    public int tag { get; set; }
+    public float output
+    {
+        get
+        {
+            loopValue = (baseValue + loopValue) * influence * loopStrength;
+            return (baseValue + loopValue) * influence;
+        }
+    }
+    private float __influence { get; set; }
+    public float influence { get { return __influence; } set { __influence = Mathf.Clamp01(value); } } // 0f => disabled
+    public float loopStrength { get; set; } // 0f => disabled
+    public FeedbackType fType;
+    public bool isSync;
+    public float baseValue { get; set; }
+    public evaluate evaluator { get; set; }
+    public delegate float evaluate();
+    protected float loopValue
+    { get; set; }
+
+    public void Assign(evaluate iEvaluator)
+    { evaluator = iEvaluator; }
+
+    public float Exec()
+    {
+        return evaluator();
+    }
+}
+
 public class FeedbackManager : MonoBehaviour
 {
-
-
     private static FeedbackManager instance = null;
     public static FeedbackManager Instance => instance;
 
@@ -32,17 +134,10 @@ public class FeedbackManager : MonoBehaviour
     [SerializeField]
     private OverWorldControl OWC;
 
-    [SerializeField]
-    public List<FeedbackVariable> feedbackVariables;
-
-    public Dictionary<FeedbackVariable.Type, FeedbackVariable> feedbackVariablesDict;
-    private List<FeedbackVariable> GTLfeedbackVariables = new List<FeedbackVariable>();
-    private List<FeedbackVariable> OTCfeedbackVariables = new List<FeedbackVariable>();
-    private List<FeedbackVariable> MTOfeedbackVariables = new List<FeedbackVariable>();
+    public FeedbackMatrix fMatrix;
 
     public void Awake()
     {
-
         if (instance != null && instance != this)
         {
             Destroy(this.gameObject);
@@ -52,59 +147,42 @@ public class FeedbackManager : MonoBehaviour
         {
             instance = this;
         }
-
+        fMatrix = new FeedbackMatrix(3);
     }
 
     public void Start()
     {
         OWC = OverWorldControl.Instance;
-
-        float base_gtl = 0;
-        float base_otc = 0;
-        float base_mto = 0;
-        feedbackVariablesDict = new Dictionary<FeedbackVariable.Type, FeedbackVariable>();
-
-        foreach (FeedbackVariable fVar in feedbackVariables)
-        {
-            feedbackVariablesDict.Add(fVar.type, fVar);
-            fVar._value = fVar.baseValue;
-            if (fVar.axis == OWCAxis.GTL)
-            {
-                GTLfeedbackVariables.Add(fVar);
-                base_gtl += fVar._value;
-            }
-            else if (fVar.axis == OWCAxis.OTC)
-            {
-                OTCfeedbackVariables.Add(fVar);
-                base_mto += fVar._value;
-            }
-            else if (fVar.axis == OWCAxis.MTO)
-            {
-                MTOfeedbackVariables.Add(fVar);
-                base_otc += fVar._value;
-            }
-        }
-        OWC.setAxisValue(OWCAxis.GTL, base_gtl);
-        OWC.setAxisValue(OWCAxis.OTC, base_otc);
-        OWC.setAxisValue(OWCAxis.MTO, base_mto);
-
     }
 
-
-    public void ChangeOWC(Feedback feedback) 
+    public void RegisterGameFeedback(GameFeedback iF, Feedback.evaluate iEvaluator)
     {
+        Feedback new_fb = fMatrix.BuildFeedback(iF.fData);
+        fMatrix.AddFeedback(new_fb);
+        new_fb.Assign(iEvaluator);
+    }
 
-        FeedbackVariable var = feedbackVariablesDict[feedback.feedback_type];
-        float currentValue = var._value;
+    public void ChangeOWC()
+    {
+        OWC.SetOrderToChaos(fMatrix.outputs[(int)OWCAxis.OTC]);
+        OWC.SetMineralToOrganic(fMatrix.outputs[(int)OWCAxis.MTO]);
+        OWC.SetGloomyToLush(fMatrix.outputs[(int)OWCAxis.GTL]);
 
-        float axisValue = OWC.getAxisValue(var.axis);
-        feedback.applyFeedback(var, axisValue);
-        float deltaValue = var._value - currentValue;
-        if(deltaValue != 0)
-        {
-            OWC.setAxisValue(var.axis, axisValue + deltaValue);
-        }
-        
+        Debug.Log("output MTO : " + fMatrix.outputs[(int)OWCAxis.MTO]);
+    }
+
+    public void AsyncNotif(GameFeedback iF)
+    {
+        fMatrix.RefreshTag((int)iF.fData.tag);
+        ChangeOWC();
+    }
+
+    void Update()
+    {
+        // foreach (Feedback fVar in feedbackLoops)
+        // {
+        //     ChangeOWC(fVar);
+        // }
     }
 
 }

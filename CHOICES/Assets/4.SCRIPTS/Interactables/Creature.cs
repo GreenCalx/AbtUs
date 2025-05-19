@@ -57,8 +57,8 @@ public class Creature : BSTAgent
         if (isFrozen) 
             return;
 
-        if( killFeedback != null) 
-        { killFeedback.use(); }
+        // if( killFeedback != null) 
+        // { killFeedback.use(); }
 
         if(enabler != null)
         { enabler.Remove(this.gameObject); }

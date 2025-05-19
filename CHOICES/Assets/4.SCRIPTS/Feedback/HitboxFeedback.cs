@@ -1,6 +1,6 @@
 using UnityEngine;
 
-public class HitboxFeedback : Feedback
+public class HitboxFeedback : GameFeedback
 {
     public bool one_shot = false;
     public bool destroy_after_use = false;
@@ -39,7 +39,7 @@ public class HitboxFeedback : Feedback
             current_time_inside -= Time.fixedDeltaTime;
             if (current_time_inside <= 0)
             {
-                use();
+                //use();
                 if (one_shot && destroy_after_use) { Destroy(this.gameObject); }
                 else if (one_shot) { this.enabled = false; }
                 else if (delay_between_consecutive_feedbacks) { current_time_inside = time_inside_for_feedback; }

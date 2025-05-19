@@ -10,4 +10,24 @@ public class InsectSpawner : CreatureSpawner<InsectBehaviour>
     {
         agentPool.UnSubscribeInsect(iToDespawn);
     }
+
+    // protected override void UpdateSpawnFeedback()
+    // {
+    //     if (spawnFeedback == null)
+    //         return;
+        
+    //     float fValue = (float)spawnedCreatures.Count /  (float)MAX_SPAWNS;
+    //     spawnFeedback.Influence = fValue;
+    //     spawnFeedback.use();
+    // }
+    
+    public override float feedbackEvaluator()
+    {
+        return (float)spawnedCreatures.Count /  (float)MAX_SPAWNS;
+    }
+
+    public override void InitFromFeedbackFunc(float iFeedbackInfluence)
+    {
+
+    }
 }

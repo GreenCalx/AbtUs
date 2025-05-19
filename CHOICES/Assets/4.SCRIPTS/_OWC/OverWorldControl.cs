@@ -177,11 +177,11 @@ public class OverWorldControl : MonoBehaviour
             instance = this;
         }
         
-        /*
+        
         SetGloomyToLush(Init_GloomyToLush);
         SetMineralToOrganic(Init_MineralToOrganic);
         SetOrderToChaos(Init_OrderToChaos);
-        */
+        
 
         GTLExtraVolMods = new List<GTLVolumeMod>();
         GTLLightMods = new List<GTLLightMod>();

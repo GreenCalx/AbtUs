@@ -1,6 +1,6 @@
 using UnityEngine;
 
-public class TargetFeedback : Feedback
+public class TargetFeedback : GameFeedback
 {
     public bool one_shot = false;
     public bool delay_between_consecutive_feedbacks = false;
@@ -24,7 +24,7 @@ public class TargetFeedback : Feedback
             current_time_looking -=  Time.fixedDeltaTime;
             if(current_time_looking <= 0)
             {
-                use();
+                //use();
                 if (one_shot) { Destroy(this.gameObject); }
                 else if (delay_between_consecutive_feedbacks) { current_time_looking = time_looking; }
                 

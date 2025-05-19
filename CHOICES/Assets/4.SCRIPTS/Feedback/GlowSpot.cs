@@ -46,8 +46,8 @@ public class GlowSpot : MonoBehaviour
             glowTimer -= Time.fixedDeltaTime;
         else if(glowTimer < 0)
         {
-            glowFeedback.value += glow_strength * 0.01f * Time.fixedDeltaTime;
-            glowFeedback.use();
+            // glowFeedback.Influence += glow_strength * 0.01f * Time.fixedDeltaTime;
+            // glowFeedback.use();
         }
     }
 }

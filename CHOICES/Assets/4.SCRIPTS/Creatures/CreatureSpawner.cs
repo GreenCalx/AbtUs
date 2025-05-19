@@ -1,7 +1,8 @@
 using UnityEngine;
+using UnityEngine.Events;
 using System.Collections.Generic;
 
-public class CreatureSpawner<T> : MonoBehaviour where T : Creature
+public class CreatureSpawner<T> : MonoBehaviour, IFeedbackEval where T : Creature
 {
     [Header("Debug")]
     public bool spawnOne = false;
@@ -20,9 +21,10 @@ public class CreatureSpawner<T> : MonoBehaviour where T : Creature
 
     [Header("Optional")]
     public Terrain relatedTerrain;
+    public GameFeedback gameFeedback;
 
     [Header("Internals")]
-    private List<T> spawnedCreatures = new List<T>();
+    protected List<T> spawnedCreatures = new List<T>();
 
     private float xmin;
     private float xmax;
@@ -32,7 +34,7 @@ public class CreatureSpawner<T> : MonoBehaviour where T : Creature
     private float zmax;
     public int expectedPopulation = 0;
 
-    private float maxSpawnMulFactor = 1f;
+    protected float maxSpawnMulFactor = 1f;
 
     void OnDrawGizmosSelected()
     {
@@ -45,6 +47,14 @@ public class CreatureSpawner<T> : MonoBehaviour where T : Creature
     void Start()
     {
         InitBounds();
+        InitFeedback();
+    }
+
+    void InitFeedback()
+    {
+        if (gameFeedback == null)
+            Debug.LogError("MUST HAVE A GAMEFEEDBACK DEFINED FOR CREATURE SPAWNER.");
+        gameFeedback.Init(this);
     }
 
     void Update()
@@ -59,7 +69,6 @@ public class CreatureSpawner<T> : MonoBehaviour where T : Creature
             DespawnOne = false;
             DeSpawn(1);
         }
-
         CheckForSpawns();
     }
 
@@ -90,11 +99,17 @@ public class CreatureSpawner<T> : MonoBehaviour where T : Creature
         zmax = transform.position.z + spawnBounds.max.z * transform.lossyScale.z;
     }
 
+    protected virtual void GetFeedbackValue() {}
+    protected virtual void UpdateOWCFeedback() {}
+    
+    public virtual float feedbackEvaluator(){ return 0f; }
+    public virtual void InitFromFeedbackFunc(float iFeedbackInfluence) { }
+
     protected virtual void NotifyBSTPoolSpawn(T iSpawned) {}
     protected virtual void NotifyBSTPoolDeSpawn(T iSpawned) {}
     public void Spawn(int iNumber)
     {
-        for (int i=0; i < iNumber; i++)
+        for (int i = 0; i < iNumber; i++)
         {
             int selected = Random.Range(0, creaturesRefs.Count);
             GameObject new_C = Instantiate(creaturesRefs[selected]);
@@ -104,34 +119,38 @@ public class CreatureSpawner<T> : MonoBehaviour where T : Creature
 
 
             T as_C = new_C.GetComponent<T>();
-            if (relatedTerrain!=null)
+            if (relatedTerrain != null)
             {
                 as_C.terrain = relatedTerrain;
             }
-             // sample position within bounds
-            new_C.transform.position = new Vector3(    Random.Range(xmin,xmax), 
-                                                 Random.Range(ymin,ymax), 
-                                                 Random.Range(zmin,zmax));
+            // sample position within bounds
+            new_C.transform.position = new Vector3(Random.Range(xmin, xmax),
+                                                 Random.Range(ymin, ymax),
+                                                 Random.Range(zmin, zmax));
 
-            spawnedCreatures.Add( as_C );
+            spawnedCreatures.Add(as_C);
             as_C.deathCallbacks += DeSpawnTarget;
             as_C.agentPool = agentPool;
             NotifyBSTPoolSpawn(as_C);
         }
+
+        gameFeedback.Refresh();
     }
 
-    public void DeSpawn( int iNumber)
+    public void DeSpawn(int iNumber)
     {
         List<T> ToDelete = new List<T>();
-        for (int i=0; i < iNumber; i++)
+        for (int i = 0; i < iNumber; i++)
         { ToDelete.Add(spawnedCreatures[i]); }
 
-        for (int i=0; i < ToDelete.Count; i++)
+        for (int i = 0; i < ToDelete.Count; i++)
         {
             spawnedCreatures.Remove(ToDelete[i]);
             NotifyBSTPoolDeSpawn(ToDelete[i]);
             Destroy(ToDelete[i].gameObject);
         }
+
+        gameFeedback.Refresh();
     }
 
     public void DeSpawnTarget(Creature iTarget)
@@ -142,6 +161,8 @@ public class CreatureSpawner<T> : MonoBehaviour where T : Creature
         spawnedCreatures.Remove(as_T);
         NotifyBSTPoolDeSpawn(as_T);
         Destroy(as_T.gameObject);
+
+        gameFeedback.Refresh();
     }
 
     public void DeSpawnAll()
