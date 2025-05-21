@@ -24,7 +24,7 @@ public class InteractibleCreature : InteractibleObject
             ActionCo = null;
         }
 
-        UIGame.Instance.ForceCursorToCloseHand();
+        UIGame.Instance.UpdateAltCursorFromPlayerAction(PLAYER_ACTIONS.MOVE);
         ActionCo = StartCoroutine(MoveCo());
     }
 
@@ -36,6 +36,6 @@ public class InteractibleCreature : InteractibleObject
             StopCoroutine(ActionCo);
             ActionCo = null;
         }
-        UIGame.Instance.ForceCursorToOpenHand();
+        UIGame.Instance.UpdateCursorFromPlayerAction(PLAYER_ACTIONS.MOVE);
     }
 }

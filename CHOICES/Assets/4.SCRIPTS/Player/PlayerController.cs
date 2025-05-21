@@ -87,14 +87,48 @@ public class PlayerController : MonoBehaviour
 
     private void ProcessInputs()
     {
-        if (freezeToggle && (elapsedActionTimeLatch >= actionTimeLatch))
-        {   
-            freeze_inputs = !freeze_inputs; 
-            elapsedActionTimeLatch = 0f; 
+        
+        // player action
+        if (elapsedActionTimeLatch < actionTimeLatch)
+            return;
+
+        if (playerDoAction)
+        {
+            if (targetedInteractibleObject!=null)
+            {
+                if (!playerInAction)
+                {
+                    playerInAction = true;
+                    targetedInteractibleObject.OnInteract(this);
+                }
+                else
+                {
+                    targetedInteractibleObject.OnContinueInteract(this);
+                    playerInAction = targetedInteractibleObject.IsInAction();
+                     
+                }
+                elapsedActionTimeLatch = 0f;
+            }
         }
+
+        if (playerDoCancel && playerInAction)
+        {
+            playerInAction = false;
+            targetedInteractibleObject.OnCancelInteract(this);
+            elapsedActionTimeLatch = 0f;
+        }
+
+        // freeze cam / movement
+        if (freezeToggle && (elapsedActionTimeLatch >= actionTimeLatch))
+        {
+            freeze_inputs = !freeze_inputs;
+            elapsedActionTimeLatch = 0f;
+        }
+
         if (freeze_inputs)
         { return; }
 
+        // player movez
         if (!!self_rb && !isMoving && isGrounded())
         {
             self_rb.linearVelocity = new Vector3(0f, 0f, 0f);
@@ -153,34 +187,6 @@ public class PlayerController : MonoBehaviour
             FPSCamera.transform.localEulerAngles = Vector3.right * cameraVRot;
         }
 
-        // player action
-        if (elapsedActionTimeLatch < actionTimeLatch)
-            return;
-
-        if (playerDoAction)
-        {
-            if (targetedInteractibleObject!=null)
-            {
-                if (!playerInAction)
-                {
-                    playerInAction = true;
-                    targetedInteractibleObject.OnInteract(this);
-                    
-                } else {
-                    playerInAction = false;
-                    targetedInteractibleObject.OnContinueInteract(this);
-                }
-                elapsedActionTimeLatch = 0f;
-            }
-        }
-
-        if (playerDoCancel && playerInAction)
-        {
-            playerInAction = false;
-            targetedInteractibleObject.OnCancelInteract(this);
-            elapsedActionTimeLatch = 0f;
-        }
-
     }
 
     private bool isGrounded()
@@ -216,7 +222,7 @@ public class PlayerController : MonoBehaviour
         {
             //UIGame.Instance.TryChangeCrosshairColor(Color.white);
             targetedInteractibleObject = null;
-            UIGame.Instance.UpdateCursorFromPlayerAction(PLAYER_ACTIONS.NONE);
+            UIGame.Instance.UpdateCursorFromPlayerAction(PLAYER_ACTIONS.DEFAULT);
         }
 
     }
