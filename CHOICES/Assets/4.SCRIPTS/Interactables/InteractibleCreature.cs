@@ -7,9 +7,9 @@ public class InteractibleCreature : InteractibleObject
 
     void Awake()
     {
-        if (availableActions.Length >= 1)
+        if (def.availableActions.Length >= 1)
         {
-            ChangeSelectedAction(availableActions[0]);
+            ChangeSelectedAction(def.availableActions[0]);
         }
     }
 

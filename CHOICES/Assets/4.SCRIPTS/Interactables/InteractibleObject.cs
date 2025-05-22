@@ -13,7 +13,8 @@ public enum PLAYER_ACTIONS
 public class InteractibleObject : MonoBehaviour
 {
     [Header("Tweaks")]
-    public PLAYER_ACTIONS[] availableActions;
+    public ItemSO def;
+    
     public Transform targetedTransfrom;
     [Header("Optional References")]
     public Puzzle puzzle;
@@ -43,24 +44,24 @@ public class InteractibleObject : MonoBehaviour
     }
     public void ResetMultiAction()
     {
-        if (availableActions.Length == 4)
+        if (def.availableActions.Length == 4)
         {
             ChangeSelectedAction(PLAYER_ACTIONS.WHEEL4);
             IsInActionChain = true;
         }
-        else if (availableActions.Length == 3)
+        else if (def.availableActions.Length == 3)
         {
             ChangeSelectedAction(PLAYER_ACTIONS.WHEEL3);
             IsInActionChain = true;
         }
-        else if (availableActions.Length == 2)
+        else if (def.availableActions.Length == 2)
         {
             ChangeSelectedAction(PLAYER_ACTIONS.WHEEL2);
             IsInActionChain = true;
         }
-        else if (availableActions.Length == 1)
+        else if (def.availableActions.Length == 1)
         {
-            ChangeSelectedAction(availableActions[0]);
+            ChangeSelectedAction(def.availableActions[0]);
             IsInActionChain = false;
         }
     }
@@ -68,6 +69,7 @@ public class InteractibleObject : MonoBehaviour
     private void PostAction()
     {
         ResetMultiAction();
+        UIGame.Instance.UpdateCursorFromPlayerAction(selectedAction);
     }
 
     public PLAYER_ACTIONS GetSelectedAction() { return selectedAction; }
@@ -90,6 +92,20 @@ public class InteractibleObject : MonoBehaviour
 
                 cancelAction = new UnityEvent();
                 cancelAction.AddListener(StopMove);
+
+                IsInActionChain = false;
+                break;
+            case  PLAYER_ACTIONS.INFO:
+                selectedAction = iAction;
+
+                startAction = new UnityEvent();
+                startAction.AddListener(ShowInfo);
+
+                continueAction = new UnityEvent();
+                continueAction.AddListener(HideInfo);
+
+                cancelAction = new UnityEvent();
+                cancelAction.AddListener(HideInfo);
 
                 IsInActionChain = false;
                 break;
@@ -233,10 +249,48 @@ public class InteractibleObject : MonoBehaviour
     }
     #endregion
 
+    #region INFO
+    public void ShowInfo()
+    {
+        UIInfoPanel panel = UIGame.Instance.infoPanel;
+        panel.title.text = def.name;
+        panel.body.text = def.info;
+        UIGame.Instance.infoPanel.gameObject.SetActive(true);
+        if (ActionCo != null)
+        {
+            StopCoroutine(ActionCo);
+            ActionCo = null;
+        }
+        ActionCo = StartCoroutine(InfoCo());
+        UIGame.Instance.UpdateCursorFromPlayerAction(PLAYER_ACTIONS.INFO);
+    }
+
+    public void HideInfo()
+    {
+        UIGame.Instance.infoPanel.gameObject.SetActive(false);
+        if (ActionCo != null)
+        {
+            StopCoroutine(ActionCo);
+            ActionCo = null;
+            PostAction();
+        }
+        //UIGame.Instance.SetCursorToDefault();
+    }
+
+    public IEnumerator InfoCo()
+    {
+        float initTime = Time.time;
+        while ((Time.time - initTime) < def.showInfoDuration)
+        {
+            yield return null;
+        }
+        HideInfo();
+    }
+    #endregion
+
     #region PUZZLE
     public void SolvePuzzle()
     {
-
         if (ActionCo != null)
         {
             StopCoroutine(ActionCo);
@@ -282,7 +336,7 @@ public class InteractibleObject : MonoBehaviour
 
     public virtual void ActionWheel()
     {
-        UIGame.Instance.EnterActionWheelMode(availableActions);
+        UIGame.Instance.EnterActionWheelMode(def.availableActions);
     }
     public virtual void ExecSelectionActionInWheel()
     {

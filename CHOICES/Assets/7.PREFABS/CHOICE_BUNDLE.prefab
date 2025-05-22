@@ -3149,10 +3149,11 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: b6a1dbfcfbf7e1043b827e6479715588, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  availableActions: 04000000
+  def: {fileID: 11400000, guid: 5bc47674b9593324a805b716f9c02c01, type: 2}
   targetedTransfrom: {fileID: 0}
   puzzle: {fileID: 4013843522905737778}
   RB: {fileID: 0}
+  IsInActionChain: 0
 --- !u!1 &3523588332401265783 stripped
 GameObject:
   m_CorrespondingSourceObject: {fileID: -6263350643120396561, guid: df0316482d6eecc4b827d82bfa877839,

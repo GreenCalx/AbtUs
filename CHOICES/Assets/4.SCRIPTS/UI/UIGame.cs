@@ -7,6 +7,7 @@ public class UIGame : MonoBehaviour
     public UICursorCollection cursorCollection;
     
     public UICrosshair crosshair;
+    public UIInfoPanel infoPanel;
 
     [Header("UI Action Mode")]
     public Transform UIAction_Handle;
@@ -81,6 +82,12 @@ public class UIGame : MonoBehaviour
                 ChangeCrosshairSize(crosshairSizeForActionCursors);
                 break;
         }
+    }
+
+    public void SetCursorToDefault()
+    {
+        ChangeCrosshairSize(crosshairSizeForDefault);
+        crosshair.ChangeSprite(GetActionSprite(PLAYER_ACTIONS.DEFAULT));
     }
 
     public void UpdateAltCursorFromPlayerAction(PLAYER_ACTIONS iAct)

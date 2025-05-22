@@ -47,10 +47,11 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: b6a1dbfcfbf7e1043b827e6479715588, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  availableActions: 01000000
+  def: {fileID: 11400000, guid: 0ab8e34cfe940c349961a4512d608048, type: 2}
   targetedTransfrom: {fileID: 7757240277884394455}
   puzzle: {fileID: 0}
   RB: {fileID: 0}
+  IsInActionChain: 0
 --- !u!114 &4281831172578869786
 MonoBehaviour:
   m_ObjectHideFlags: 0
