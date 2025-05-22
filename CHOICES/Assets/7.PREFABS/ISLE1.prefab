@@ -475,6 +475,8 @@ MonoBehaviour:
     m_PostInfinity: 2
     m_RotationOrder: 4
   relatedTerrain: {fileID: 5546876477575978157}
+  gameFeedback: {fileID: 0}
+  expectedPopulation: 0
 --- !u!1 &8395040981173821935
 GameObject:
   m_ObjectHideFlags: 0
@@ -611,7 +613,7 @@ Terrain:
   m_HeightmapMaximumLOD: 0
   m_ShadowCastingMode: 2
   m_DrawHeightmap: 1
-  m_DrawInstanced: 0
+  m_DrawInstanced: 1
   m_DrawTreesAndFoliage: 1
   m_StaticShadowCaster: 0
   m_IgnoreQualitySettings: 0
