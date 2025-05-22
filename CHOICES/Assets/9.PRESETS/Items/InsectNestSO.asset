@@ -9,9 +9,10 @@ MonoBehaviour:
   m_GameObject: {fileID: 0}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 9cc726df21981244181d5a7fd951b8e2, type: 3}
-  m_Name: Cursor_DUPLICATE
+  m_Script: {fileID: 11500000, guid: 5e4a0532dc5eaeb45be7068d3c4aab7e, type: 3}
+  m_Name: InsectNestSO
   m_EditorClassIdentifier: 
-  relatedAction: 5
-  image: {fileID: 21300000, guid: 75ab5e29319d8b740980a5d81d866b14, type: 3}
-  alt_image: {fileID: 0}
+  name: Insect Nest
+  info: Home of many insects. Lure them out.
+  showInfoDuration: 5
+  availableActions: 02000000

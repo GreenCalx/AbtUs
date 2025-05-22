@@ -26,18 +26,19 @@ public class UIActionBubbles : MonoBehaviour
 
     public void Init(PLAYER_ACTIONS[] iActions)
     {
+        float angleStep = 360f / iActions.Length;
         for (int i = 0; i < iActions.Length; i++)
         {
             GameObject newBubble = Instantiate(prefab_ActionBubble);
-            
+
             RectTransform as_rt = newBubble.GetComponent<RectTransform>();
             as_rt.SetParent(self);
 
-            float angle = 360f / (i + 1f);
+            float angle = i * angleStep;
             as_rt.anchoredPosition =
                 new Vector2(
-                   ( ( (as_rt.rect.size.x + as_rt.rect.size.y ) / 2f ) + radius) * Mathf.Cos((angle) * Mathf.PI / 180f),
-                   ( ( (as_rt.rect.size.x + as_rt.rect.size.y ) / 2f ) + radius) * Mathf.Sin((angle) * Mathf.PI / 180f)
+                   (((as_rt.rect.size.x + as_rt.rect.size.y) / 2f) + radius) * Mathf.Cos((angle) * Mathf.PI / 180f),
+                   (((as_rt.rect.size.x + as_rt.rect.size.y) / 2f) + radius) * Mathf.Sin((angle) * Mathf.PI / 180f)
                 );
             UIActionBubble as_bubble = newBubble.GetComponent<UIActionBubble>();
             as_bubble.associatedAction = iActions[i];
@@ -49,8 +50,7 @@ public class UIActionBubbles : MonoBehaviour
             actionBubbles.Add(as_bubble);
         }
 
-        selector.selectedAction = PLAYER_ACTIONS.NONE;
-        selector.selfImg.sprite = UIGame.Instance.GetActionSprite(PLAYER_ACTIONS.NONE);
+        selector.Reset();
 
     }
 
@@ -59,8 +59,7 @@ public class UIActionBubbles : MonoBehaviour
         actionBubbles.ForEach(e => GameObject.Destroy(e.gameObject));
         actionBubbles.Clear();
 
-        selector.selectedAction = PLAYER_ACTIONS.NONE;
-        selector.selfImg.sprite = UIGame.Instance.GetActionSprite(PLAYER_ACTIONS.NONE);
+        selector.Reset();
     }
 
     void FixedUpdate()

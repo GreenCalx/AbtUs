@@ -25,7 +25,7 @@ public class InteractibleCreature : InteractibleObject
         }
 
         UIGame.Instance.UpdateAltCursorFromPlayerAction(PLAYER_ACTIONS.MOVE);
-        ActionCo = StartCoroutine(MoveCo());
+        ActionCo = StartCoroutine(MoveCo(targetedTransfrom, RB));
     }
 
     public override void StopMove()

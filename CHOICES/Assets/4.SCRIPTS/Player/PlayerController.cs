@@ -104,7 +104,7 @@ public class PlayerController : MonoBehaviour
                 else
                 {
                     targetedInteractibleObject.OnContinueInteract(this);
-                    playerInAction = targetedInteractibleObject.IsInAction();
+                    playerInAction = targetedInteractibleObject ? targetedInteractibleObject.IsInAction() : false;
                      
                 }
                 elapsedActionTimeLatch = 0f;
@@ -204,18 +204,20 @@ public class PlayerController : MonoBehaviour
         {
             // did hit
             InteractibleObject iobj = objectRayHit.collider.gameObject.GetComponentInParent<InteractibleObject>();
-            if (iobj==null)
+            if (iobj == null)
                 iobj = objectRayHit.collider.gameObject.GetComponent<InteractibleObject>();
 
-            if (iobj!=null)
+            if (iobj != null)
             {
-                if (iobj==targetedInteractibleObject)
+                if (iobj == targetedInteractibleObject)
                     return;
                 targetedInteractibleObject = iobj;
                 //UIGame.Instance.TryChangeCrosshairColor(Color.green);
                 UIGame.Instance.UpdateCursorFromPlayerAction(targetedInteractibleObject.GetSelectedAction());
                 return;
             }
+            else
+                UIGame.Instance.SetCursorToDefault();
         }
         
         if (targetedInteractibleObject!=null)

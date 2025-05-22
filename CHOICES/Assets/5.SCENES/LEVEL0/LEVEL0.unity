@@ -678,6 +678,23 @@ MonoBehaviour:
   relatedTerrain: {fileID: 116700329}
   gameFeedback: {fileID: 753399303}
   expectedPopulation: 0
+--- !u!114 &753399308
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 753399300}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: b6a1dbfcfbf7e1043b827e6479715588, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  def: {fileID: 11400000, guid: 78f586741f9cce44296b591c0f56fbcd, type: 2}
+  targetedTransfrom: {fileID: 753399304}
+  puzzle: {fileID: 0}
+  RB: {fileID: 0}
+  IsInActionChain: 0
 --- !u!114 &799053406 stripped
 MonoBehaviour:
   m_CorrespondingSourceObject: {fileID: 3695393443095862751, guid: 86fa92c3be5c4404c9bd2b3f2ab2d3e1,
@@ -1246,7 +1263,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: b6a1dbfcfbf7e1043b827e6479715588, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  def: {fileID: 0}
+  def: {fileID: 11400000, guid: 6d3a0f4c5b367e5498c32b7b954310be, type: 2}
   targetedTransfrom: {fileID: 0}
   puzzle: {fileID: 0}
   RB: {fileID: 1253205617}
@@ -3927,6 +3944,12 @@ PrefabInstance:
       propertyPath: player_cam
       value: 
       objectReference: {fileID: 1823688467}
+    - target: {fileID: 2589893251138781779, guid: 86fa92c3be5c4404c9bd2b3f2ab2d3e1,
+        type: 3}
+      propertyPath: def
+      value: 
+      objectReference: {fileID: 11400000, guid: 6d3a0f4c5b367e5498c32b7b954310be,
+        type: 2}
     - target: {fileID: 3996771646162460747, guid: 86fa92c3be5c4404c9bd2b3f2ab2d3e1,
         type: 3}
       propertyPath: m_LocalPosition.x
@@ -4052,6 +4075,10 @@ PrefabInstance:
         type: 3}
       insertIndex: -1
       addedObject: {fileID: 753399306}
+    - targetCorrespondingSourceObject: {fileID: 552405615286368286, guid: 86fa92c3be5c4404c9bd2b3f2ab2d3e1,
+        type: 3}
+      insertIndex: -1
+      addedObject: {fileID: 753399308}
   m_SourcePrefab: {fileID: 100100000, guid: 86fa92c3be5c4404c9bd2b3f2ab2d3e1, type: 3}
 --- !u!1001 &6570505879544942584
 PrefabInstance:

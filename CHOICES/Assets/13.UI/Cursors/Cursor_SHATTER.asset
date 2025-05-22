@@ -13,4 +13,5 @@ MonoBehaviour:
   m_Name: Cursor_SHATTER
   m_EditorClassIdentifier: 
   relatedAction: 6
-  image: {fileID: 0}
+  image: {fileID: 21300000, guid: 693ae326afd3e2a429d9b5aa4c7fcb51, type: 3}
+  alt_image: {fileID: 0}

@@ -68,8 +68,10 @@ public class InteractibleObject : MonoBehaviour
 
     private void PostAction()
     {
+        player.playerInAction = false;
+        player.targetedInteractibleObject = null;
         ResetMultiAction();
-        UIGame.Instance.UpdateCursorFromPlayerAction(selectedAction);
+        //UIGame.Instance.UpdateCursorFromPlayerAction(selectedAction);
     }
 
     public PLAYER_ACTIONS GetSelectedAction() { return selectedAction; }
@@ -125,10 +127,29 @@ public class InteractibleObject : MonoBehaviour
             case PLAYER_ACTIONS.DUPLICATE:
                 selectedAction = iAction;
                 IsInActionChain = false;
+
+                startAction = new UnityEvent();
+                startAction.AddListener(Duplicate);
+
+                continueAction = new UnityEvent();
+                continueAction.AddListener(StopDuplicate);
+
+                cancelAction = new UnityEvent();
+                cancelAction.AddListener(StopDuplicate);
                 break;
             case PLAYER_ACTIONS.SHATTER:
                 selectedAction = iAction;
                 IsInActionChain = false;
+
+                startAction = new UnityEvent();
+                startAction.AddListener(StartShatter);
+
+                //continueAction = new UnityEvent();
+                //continueAction.AddListener(StopShatter);
+
+                cancelAction = new UnityEvent();
+                cancelAction.AddListener(StopShatter);
+
                 break;
             case PLAYER_ACTIONS.WHEEL2:
             case PLAYER_ACTIONS.WHEEL3:
@@ -203,11 +224,6 @@ public class InteractibleObject : MonoBehaviour
     public virtual void Move()
     {
         isMovedByPlayer = true;
-        if (RB != null)
-        {
-            RB.isKinematic = true;
-            RB.useGravity = false;
-        }
 
         // Clamp pos to center of screen
         if (ActionCo != null)
@@ -216,36 +232,33 @@ public class InteractibleObject : MonoBehaviour
             ActionCo = null;
         }
         UIGame.Instance.UpdateAltCursorFromPlayerAction(PLAYER_ACTIONS.MOVE);
-        ActionCo = StartCoroutine(MoveCo());
+        ActionCo = StartCoroutine(MoveCo(targetedTransfrom, RB));
     }
 
     public virtual void StopMove()
     {
         isMovedByPlayer = false;
-        if (RB != null)
-        {
-            RB.isKinematic = false;
-            RB.useGravity = true;
-        }
-
-        if (ActionCo != null)
-        {
-            StopCoroutine(ActionCo);
-            ActionCo = null;
-            PostAction();
-        }
-
-        UIGame.Instance.UpdateCursorFromPlayerAction(PLAYER_ACTIONS.MOVE);
     }
 
-    public IEnumerator MoveCo()
+    public IEnumerator MoveCo(Transform iTarget, Rigidbody iTargetRB)
     {
+        if (iTargetRB != null)
+        {
+            iTargetRB.isKinematic = true;
+            iTargetRB.useGravity = false;
+        }
         while (isMovedByPlayer)
         {
             Vector3 worldPos = player.FPSCamera.GetRayFromScreenCenter().GetPoint(distFromPlayer);
-            targetedTransfrom.position = worldPos;
+            iTarget.position = worldPos;
             yield return null;
         }
+        if (iTargetRB != null)
+        {
+            iTargetRB.isKinematic = false;
+            iTargetRB.useGravity = true;
+        }
+        PostAction();
     }
     #endregion
 
@@ -272,9 +285,8 @@ public class InteractibleObject : MonoBehaviour
         {
             StopCoroutine(ActionCo);
             ActionCo = null;
-            PostAction();
         }
-        //UIGame.Instance.SetCursorToDefault();
+        PostAction();
     }
 
     public IEnumerator InfoCo()
@@ -325,9 +337,63 @@ public class InteractibleObject : MonoBehaviour
     #region DUPLICATE
     public virtual void Duplicate()
     {
+        if (RB != null)
+        {
+            RB.useGravity = false;
+            RB.isKinematic = true;
+        }
         GameObject duplicata = GameObject.Instantiate(gameObject);
         duplicata.transform.parent = transform.parent;
 
+        Rigidbody rb = duplicata.GetComponent<Rigidbody>();
+        if (rb == null)
+        {
+            rb = duplicata.GetComponent<InteractibleObject>()?.RB;
+        }
+
+        isMovedByPlayer = true;
+
+        // Clamp pos to center of screen
+        if (ActionCo != null)
+        {
+            StopCoroutine(ActionCo);
+            ActionCo = null;
+        }
+        UIGame.Instance.UpdateAltCursorFromPlayerAction(PLAYER_ACTIONS.MOVE);
+        ActionCo = StartCoroutine(MoveCo(duplicata.transform, rb));
+    }
+
+    public virtual void StopDuplicate()
+    {
+        isMovedByPlayer = false;
+        player.playerInAction = false;
+        if (RB != null)
+        {
+            RB.isKinematic = false;
+            RB.useGravity = true;
+        }
+    }
+    #endregion
+
+    #region SHATTER
+
+    public virtual void StartShatter()
+    {
+        if (ActionCo != null)
+        {
+            StopCoroutine(ActionCo);
+            ActionCo = null;
+        }
+
+        player.playerInAction = false;
+        player.targetedInteractibleObject = null;
+
+        Destroy(gameObject);
+    }
+
+    public virtual void StopShatter()
+    {
+        PostAction();
     }
     #endregion
 
