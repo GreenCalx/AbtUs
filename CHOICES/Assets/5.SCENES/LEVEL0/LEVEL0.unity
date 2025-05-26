@@ -24,7 +24,7 @@ RenderSettings:
   m_AmbientEquatorColor: {r: 0.114, g: 0.125, b: 0.133, a: 1}
   m_AmbientGroundColor: {r: 0.047, g: 0.043, b: 0.035, a: 1}
   m_AmbientIntensity: 1
-  m_AmbientMode: 0
+  m_AmbientMode: 4
   m_SubtractiveShadowColor: {r: 0.42, g: 0.478, b: 0.627, a: 1}
   m_SkyboxMaterial: {fileID: 0}
   m_HaloStrength: 0.5
@@ -2467,6 +2467,26 @@ PrefabInstance:
       propertyPath: m_AnchoredPosition.y
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 5355630312594070684, guid: b4736e98769ef324c8f2d1830d07e1f9,
+        type: 3}
+      propertyPath: m_ScaleFactor
+      value: 0.23
+      objectReference: {fileID: 0}
+    - target: {fileID: 5355630312594070684, guid: b4736e98769ef324c8f2d1830d07e1f9,
+        type: 3}
+      propertyPath: m_UiScaleMode
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 5355630312594070684, guid: b4736e98769ef324c8f2d1830d07e1f9,
+        type: 3}
+      propertyPath: m_ReferenceResolution.x
+      value: 1920
+      objectReference: {fileID: 0}
+    - target: {fileID: 5355630312594070684, guid: b4736e98769ef324c8f2d1830d07e1f9,
+        type: 3}
+      propertyPath: m_ReferenceResolution.y
+      value: 1080
+      objectReference: {fileID: 0}
     - target: {fileID: 5674964638784077363, guid: b4736e98769ef324c8f2d1830d07e1f9,
         type: 3}
       propertyPath: m_AnchorMax.y
@@ -2492,6 +2512,11 @@ PrefabInstance:
       propertyPath: m_AnchoredPosition.y
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 5736668319061972367, guid: b4736e98769ef324c8f2d1830d07e1f9,
+        type: 3}
+      propertyPath: m_AnchoredPosition.y
+      value: 51.59961
+      objectReference: {fileID: 0}
     - target: {fileID: 6030311579943415511, guid: b4736e98769ef324c8f2d1830d07e1f9,
         type: 3}
       propertyPath: m_AnchorMax.y
@@ -2540,6 +2565,26 @@ PrefabInstance:
     - target: {fileID: 6089584378576572217, guid: b4736e98769ef324c8f2d1830d07e1f9,
         type: 3}
       propertyPath: m_AnchoredPosition.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 6132944640319918037, guid: b4736e98769ef324c8f2d1830d07e1f9,
+        type: 3}
+      propertyPath: m_Camera
+      value: 
+      objectReference: {fileID: 0}
+    - target: {fileID: 6132944640319918037, guid: b4736e98769ef324c8f2d1830d07e1f9,
+        type: 3}
+      propertyPath: m_RenderMode
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 6132944640319918037, guid: b4736e98769ef324c8f2d1830d07e1f9,
+        type: 3}
+      propertyPath: m_PlaneDistance
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 6132944640319918037, guid: b4736e98769ef324c8f2d1830d07e1f9,
+        type: 3}
+      propertyPath: m_VertexColorAlwaysGammaSpace
       value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 6426499808805825470, guid: b4736e98769ef324c8f2d1830d07e1f9,
@@ -2826,6 +2871,11 @@ PrefabInstance:
         type: 3}
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 8189827158775484761, guid: b4736e98769ef324c8f2d1830d07e1f9,
+        type: 3}
+      propertyPath: m_AnchoredPosition.y
+      value: 51.59961
       objectReference: {fileID: 0}
     - target: {fileID: 8371047946528887362, guid: b4736e98769ef324c8f2d1830d07e1f9,
         type: 3}
@@ -3622,6 +3672,11 @@ PrefabInstance:
       propertyPath: m_Name
       value: Player
       objectReference: {fileID: 0}
+    - target: {fileID: 321791063083088996, guid: 5fabb3c500418244f938110bb767413d,
+        type: 3}
+      propertyPath: m_TargetTexture
+      value: 
+      objectReference: {fileID: 0}
     - target: {fileID: 2222761157463678877, guid: 5fabb3c500418244f938110bb767413d,
         type: 3}
       propertyPath: volumeLayerMask.m_Bits
@@ -3856,6 +3911,11 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 885423112792816955, guid: 06d5be980ceda8b48ba02e100ea03336,
+        type: 3}
+      propertyPath: m_Layer
+      value: 4
+      objectReference: {fileID: 0}
     - target: {fileID: 5061598421244362680, guid: 06d5be980ceda8b48ba02e100ea03336,
         type: 3}
       propertyPath: m_LocalPosition.x

@@ -170,7 +170,7 @@ Material:
     - _TessellationMaxDisplacement: 10
     - _TessellationMode: 1
     - _TessellationShapeFactor: 1
-    - _TessellationStrength: 0.59
+    - _TessellationStrength: 0.01
     - _TransmissionEnable: 1
     - _TransparentBackfaceEnable: 0
     - _TransparentCullMode: 2
@@ -186,6 +186,7 @@ Material:
     - _ZWrite: 1
     - _depth_offset: 1.56
     m_Colors:
+    - _Color: {r: 1, g: 1, b: 1, a: 1}
     - _DoubleSidedConstants: {r: 1, g: 1, b: -1, a: 0}
     - _EmissionColor: {r: 1, g: 1, b: 1, a: 1}
     - _MetallicRemap: {r: 0, g: 0.95, b: 0, a: 0}

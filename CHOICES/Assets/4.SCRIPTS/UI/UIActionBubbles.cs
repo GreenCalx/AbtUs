@@ -3,6 +3,8 @@ using UnityEngine.Events;
 using UnityEngine.UI;
 using System.Collections.Generic;
 
+using static Constants;
+
 [RequireComponent(typeof(RectTransform))]
 public class UIActionBubbles : MonoBehaviour
 {
@@ -10,6 +12,7 @@ public class UIActionBubbles : MonoBehaviour
     public GameObject prefab_ActionBubble;
 
     [Header("Mand Refs")]
+
     public UISelectedActionBubble selector;
     public List<UIActionBubble> actionBubbles;
     public Vector3 origin = Vector3.zero;
@@ -22,6 +25,8 @@ public class UIActionBubbles : MonoBehaviour
     {
         origin = self.transform.position;
         selectorRect = selector.GetComponent<RectTransform>();
+            
+        
     }
 
     public void Init(PLAYER_ACTIONS[] iActions)
@@ -41,6 +46,7 @@ public class UIActionBubbles : MonoBehaviour
                    (((as_rt.rect.size.x + as_rt.rect.size.y) / 2f) + radius) * Mathf.Sin((angle) * Mathf.PI / 180f)
                 );
             UIActionBubble as_bubble = newBubble.GetComponent<UIActionBubble>();
+            as_bubble.Init();
             as_bubble.associatedAction = iActions[i];
             as_bubble.selfImg.sprite = UIGame.Instance.GetActionSprite(iActions[i]);
 

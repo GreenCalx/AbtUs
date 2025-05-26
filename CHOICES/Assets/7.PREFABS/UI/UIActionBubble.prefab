@@ -11,7 +11,6 @@ GameObject:
   - component: {fileID: 5736456708708159457}
   - component: {fileID: 5621595413744107580}
   - component: {fileID: 9028744529855292221}
-  - component: {fileID: 4944577123944746668}
   - component: {fileID: 5683677992164992693}
   - component: {fileID: 4125817916219642351}
   m_Layer: 5
@@ -64,6 +63,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   associatedAction: 1
   selfImg: {fileID: 7248897696016991529}
+  shaderAnimatedImg: {fileID: 1360439279600673150}
   CollidedCB:
     m_PersistentCalls:
       m_Calls:
@@ -79,36 +79,6 @@ MonoBehaviour:
           m_StringArgument: 
           m_BoolArgument: 0
         m_CallState: 2
---- !u!114 &4944577123944746668
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 300152345014192416}
-  m_Enabled: 0
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: fe87c0e1cc204ed48ad3b37840f39efc, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  m_Material: {fileID: 0}
-  m_Color: {r: 1, g: 1, b: 1, a: 1}
-  m_RaycastTarget: 1
-  m_RaycastPadding: {x: 0, y: 0, z: 0, w: 0}
-  m_Maskable: 1
-  m_OnCullStateChanged:
-    m_PersistentCalls:
-      m_Calls: []
-  m_Sprite: {fileID: 10913, guid: 0000000000000000f000000000000000, type: 0}
-  m_Type: 0
-  m_PreserveAspect: 0
-  m_FillCenter: 1
-  m_FillMethod: 4
-  m_FillAmount: 1
-  m_FillClockwise: 1
-  m_FillOrigin: 0
-  m_UseSpriteMesh: 0
-  m_PixelsPerUnitMultiplier: 1
 --- !u!58 &5683677992164992693
 CircleCollider2D:
   m_ObjectHideFlags: 0
@@ -182,7 +152,7 @@ GameObject:
   m_Component:
   - component: {fileID: 4059795650419988737}
   - component: {fileID: 3057822266694418818}
-  - component: {fileID: 6144505686345395662}
+  - component: {fileID: 1360439279600673150}
   m_Layer: 5
   m_Name: InnerBG
   m_TagString: Untagged
@@ -217,7 +187,7 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 6010237436443067072}
   m_CullTransparentMesh: 1
---- !u!114 &6144505686345395662
+--- !u!114 &1360439279600673150
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -229,15 +199,15 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: fe87c0e1cc204ed48ad3b37840f39efc, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  m_Material: {fileID: 0}
+  m_Material: {fileID: 2100000, guid: 906caf09f6f283d44be81fddee0c8d8d, type: 2}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
-  m_RaycastTarget: 1
+  m_RaycastTarget: 0
   m_RaycastPadding: {x: 0, y: 0, z: 0, w: 0}
-  m_Maskable: 1
+  m_Maskable: 0
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_Sprite: {fileID: 21300000, guid: 3fe07ee8fc96921458332e49abdaaf7d, type: 3}
+  m_Sprite: {fileID: 0}
   m_Type: 0
   m_PreserveAspect: 0
   m_FillCenter: 1

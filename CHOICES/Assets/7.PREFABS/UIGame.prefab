@@ -613,7 +613,7 @@ MonoBehaviour:
   actionBubbles: []
   origin: {x: 0, y: 0, z: 0}
   self: {fileID: 3242829789088945477}
-  radius: 50
+  radius: 100
 --- !u!1 &1908061969132989178
 GameObject:
   m_ObjectHideFlags: 0
@@ -3035,6 +3035,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   selectedAction: 0
   selfImg: {fileID: 8335888112815541960}
+  shaderAnimatedImg: {fileID: 0}
   selfRB: {fileID: 3014151065995130445}
 --- !u!50 &3014151065995130445
 Rigidbody2D:

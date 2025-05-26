@@ -27,4 +27,11 @@ public static class Constants
     public const string shad_MixedMinSmoothnessRemap = "_Mix_MinSmoothnessRemap";
     public const string shad_MixedMaxSmoothnessRemap = "_Mix_MaxSmoothnessRemap";
     // ----------------------------------------------------
+
+    public const string uishad_centerOffset = "_CenterOffset";
+    public const string uishad_backgImg = "_BackGroundImg";
+    public const string uishad_impact = "_ImpactSpot";
+    public const string uishad_rippleStrength = "_RippleStr";
+    public const string uishad_rippleFreq = "_RippleFreq";
+    public const string uishad_rippleBlend = "_RippleBlend";
 }
