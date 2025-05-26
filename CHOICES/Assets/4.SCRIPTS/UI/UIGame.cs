@@ -5,7 +5,7 @@ public class UIGame : MonoBehaviour
 {
     [Header("Mand Refs")]
     public UICursorCollection cursorCollection;
-    
+
     public UICrosshair crosshair;
     public UIInfoPanel infoPanel;
 
@@ -84,6 +84,11 @@ public class UIGame : MonoBehaviour
         }
     }
 
+    public void ForceHideCursor()
+    {
+        crosshair.ChangeSprite(GetActionSprite(PLAYER_ACTIONS.NONE));
+    }
+
     public void SetCursorToDefault()
     {
         ChangeCrosshairSize(crosshairSizeForDefault);
@@ -97,9 +102,8 @@ public class UIGame : MonoBehaviour
 
     public void EnterActionWheelMode(PLAYER_ACTIONS[] iWheelActions)
     {
-        actionWheel.Init(iWheelActions);
-
         UIAction_Handle.gameObject.SetActive(true);
+        actionWheel.Init(iWheelActions);
     }
 
     public void ExitActionWheelMode()
@@ -140,6 +144,14 @@ public class UIGame : MonoBehaviour
     public Sprite GetAltActionSprite(PLAYER_ACTIONS iAct)
     {
         return cursorCollection.GetAltImageFromAction(iAct);
+    }
+    public Sprite GetHResActionSprite(PLAYER_ACTIONS iAct)
+    {
+        return cursorCollection.GetHResImageFromAction(iAct);
+    }
+    public Sprite GetHResAltActionSprite(PLAYER_ACTIONS iAct)
+    {
+        return cursorCollection.GetHResAltImageFromAction(iAct);
     }
     
 }

@@ -14,3 +14,6 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   relatedAction: 9
   image: {fileID: 21300000, guid: 5ecd12c2496572c469e7ebd7ee1449ee, type: 3}
+  alt_image: {fileID: 0}
+  hres_image: {fileID: 21300000, guid: c6a9255a31042bc46baf619bcd95df8f, type: 3}
+  hres_alt_image: {fileID: 0}

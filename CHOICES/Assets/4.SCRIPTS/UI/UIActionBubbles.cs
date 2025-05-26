@@ -2,6 +2,7 @@ using UnityEngine;
 using UnityEngine.Events;
 using UnityEngine.UI;
 using System.Collections.Generic;
+using System.Collections;
 
 using static Constants;
 
@@ -12,7 +13,9 @@ public class UIActionBubbles : MonoBehaviour
     public GameObject prefab_ActionBubble;
 
     [Header("Mand Refs")]
-
+    public Image wheelImage;
+    public Vector2 baseWheelImageSize = new Vector2(25f, 25f); // crosshair
+    private Vector2 targetWheelImageSize;
     public UISelectedActionBubble selector;
     public List<UIActionBubble> actionBubbles;
     public Vector3 origin = Vector3.zero;
@@ -20,17 +23,54 @@ public class UIActionBubbles : MonoBehaviour
     private RectTransform selectorRect;
 
     public float radius = 50f;
+    public float imgScaleDuration = 0.5f;
+    private Coroutine lerpImgCo;
 
-    void Start()
-    {
-        origin = self.transform.position;
-        selectorRect = selector.GetComponent<RectTransform>();
-            
+    // void Start()
+    // {
+    //     origin = self.transform.position;
+    //     selectorRect = selector.GetComponent<RectTransform>();
         
+    //     targetWheelImageSize = new Vector2( self.rect.width, self.rect.height);
+    // }
+
+    IEnumerator LerpImgSizeCo()
+    {
+        float elapsed = 0f;
+        while (elapsed < imgScaleDuration)
+        {
+            wheelImage.transform.localScale = Vector2.Lerp(baseWheelImageSize, targetWheelImageSize, elapsed / imgScaleDuration);
+            elapsed += Time.deltaTime;
+            yield return null;
+        }
+        wheelImage.transform.localScale = targetWheelImageSize;
     }
 
     public void Init(PLAYER_ACTIONS[] iActions)
     {
+        UIGame.Instance.ForceHideCursor();
+        if (iActions.Length==4)
+            wheelImage.sprite = UIGame.Instance.GetHResActionSprite(PLAYER_ACTIONS.WHEEL4);
+        else if (iActions.Length==3)
+            wheelImage.sprite = UIGame.Instance.GetHResActionSprite(PLAYER_ACTIONS.WHEEL3);
+        else
+            wheelImage.sprite = UIGame.Instance.GetHResActionSprite(PLAYER_ACTIONS.WHEEL2);
+
+        origin = self.transform.position;
+        selectorRect = selector.GetComponent<RectTransform>();
+        
+        targetWheelImageSize = new Vector2(
+                radius / 2.5f,
+                radius / 2.5f
+            );
+
+        if (lerpImgCo != null)
+        {
+            StopCoroutine(lerpImgCo);
+            lerpImgCo = null;
+        }
+        lerpImgCo = StartCoroutine(LerpImgSizeCo());
+
         float angleStep = 360f / iActions.Length;
         for (int i = 0; i < iActions.Length; i++)
         {
@@ -66,6 +106,7 @@ public class UIActionBubbles : MonoBehaviour
         actionBubbles.Clear();
 
         selector.Reset();
+        wheelImage.transform.localScale = baseWheelImageSize;
     }
 
     void FixedUpdate()
