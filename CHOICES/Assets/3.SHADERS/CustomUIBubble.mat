@@ -105,13 +105,13 @@ Material:
     - _RefractionModel: 0
     - _RenderQueueType: 4
     - _RequireSplitLighting: 0
-    - _RippleAmp: 0.5
-    - _RippleBlend: 0.003
+    - _RippleAmp: 0.38
+    - _RippleBlend: 1
     - _RippleDensity: 0.96
-    - _RippleFreq: 1
+    - _RippleFreq: 0.2
     - _RippleRadius: 8.36
-    - _RippleSize: 20
-    - _RippleStr: 1.5
+    - _RippleSize: 5
+    - _RippleStr: 2
     - _ScrollSpeedMul: 0.2
     - _SrcBlend: 1
     - _Stencil: 0
