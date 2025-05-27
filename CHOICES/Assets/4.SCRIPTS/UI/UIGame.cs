@@ -129,9 +129,12 @@ public class UIGame : MonoBehaviour
     }
     public bool ChangeCrosshairSize(Vector2 iSize)
     {
-        if (crosshair.rt.sizeDelta != iSize)
+        // if (crosshair.rt.sizeDelta != iSize)
+        Vector2 selfScale = new Vector2(crosshair.rt.localScale.x, crosshair.rt.localScale.y);
+        if (selfScale != iSize)
         {
-            crosshair.rt.sizeDelta = iSize;
+            crosshair.rt.localScale = new Vector2(iSize.x, iSize.y);
+            // crosshair.rt.sizeDelta = iSize;
             return true;
         }
         return false;

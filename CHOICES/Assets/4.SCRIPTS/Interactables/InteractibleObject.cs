@@ -14,7 +14,6 @@ public class InteractibleObject : MonoBehaviour
 {
     [Header("Tweaks")]
     public ItemSO def;
-    
     public Transform targetedTransfrom;
     [Header("Optional References")]
     public Puzzle puzzle;
@@ -27,7 +26,9 @@ public class InteractibleObject : MonoBehaviour
     private UnityEvent cancelAction;
     private PlayerController player;
     private float distFromPlayer = 0f;
+    [Header("Move action refs")]
     public Rigidbody RB;
+    public Collider mainCollider;
     protected Coroutine ActionCo;
     public bool IsInActionChain = false;
 
@@ -43,6 +44,7 @@ public class InteractibleObject : MonoBehaviour
         if (targetedTransfrom == null)
         { targetedTransfrom = transform; }
     }
+
     public void ResetMultiAction()
     {
         if (def.availableActions.Length == 4)
@@ -247,17 +249,31 @@ public class InteractibleObject : MonoBehaviour
         {
             iTargetRB.isKinematic = true;
             iTargetRB.useGravity = false;
+            //iTargetRB.collisionDetectionMode = CollisionDetectionMode.Continuous;
+            mainCollider.enabled = false;
         }
+        if (selectionFX != null)
+            selectionFX.intersectionOperationCheck = true;
+
         while (isMovedByPlayer)
         {
             Vector3 worldPos = player.FPSCamera.GetRayFromScreenCenter().GetPoint(distFromPlayer);
             iTarget.position = worldPos;
+
             yield return null;
         }
+
+        
+
+        if (selectionFX != null)
+            selectionFX.intersectionOperationCheck = false;
+
         if (iTargetRB != null)
         {
             iTargetRB.isKinematic = false;
             iTargetRB.useGravity = true;
+            mainCollider.enabled = true;
+            //iTargetRB.collisionDetectionMode = CollisionDetectionMode.Discrete;
         }
         PostAction();
     }
