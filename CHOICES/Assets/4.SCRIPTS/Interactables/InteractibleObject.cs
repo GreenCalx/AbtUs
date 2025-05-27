@@ -18,6 +18,7 @@ public class InteractibleObject : MonoBehaviour
     public Transform targetedTransfrom;
     [Header("Optional References")]
     public Puzzle puzzle;
+    public SelectionFX selectionFX;
 
     [Header("Internals")]
     private PLAYER_ACTIONS selectedAction;
@@ -352,6 +353,16 @@ public class InteractibleObject : MonoBehaviour
         }
 
         isMovedByPlayer = true;
+
+        if (selectionFX != null)
+        {
+            InteractibleObject as_obj = duplicata.GetComponent<InteractibleObject>();
+            as_obj.selectionFX.Init();
+
+            selectionFX.Deselect();
+            as_obj.selectionFX.Select();
+        }
+        
 
         // Clamp pos to center of screen
         if (ActionCo != null)

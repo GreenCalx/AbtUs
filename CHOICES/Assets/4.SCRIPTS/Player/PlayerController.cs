@@ -209,10 +209,22 @@ public class PlayerController : MonoBehaviour
 
             if (iobj != null)
             {
+                // exit if same
                 if (iobj == targetedInteractibleObject)
                     return;
+
+                // Deselect previous selection if exists
+                if (targetedInteractibleObject != null)
+                {
+                    if (targetedInteractibleObject.selectionFX != null)
+                    {
+                        targetedInteractibleObject.selectionFX.Deselect();
+                    }
+                }
+                // Select new target
                 targetedInteractibleObject = iobj;
-                //UIGame.Instance.TryChangeCrosshairColor(Color.green);
+                if (targetedInteractibleObject.selectionFX!=null)
+                    targetedInteractibleObject.selectionFX.Select();
                 UIGame.Instance.UpdateCursorFromPlayerAction(targetedInteractibleObject.GetSelectedAction());
                 return;
             }
@@ -222,7 +234,8 @@ public class PlayerController : MonoBehaviour
         
         if (targetedInteractibleObject!=null)
         {
-            //UIGame.Instance.TryChangeCrosshairColor(Color.white);
+            if (targetedInteractibleObject.selectionFX!=null)
+                targetedInteractibleObject.selectionFX.Deselect();
             targetedInteractibleObject = null;
             UIGame.Instance.UpdateCursorFromPlayerAction(PLAYER_ACTIONS.DEFAULT);
         }
