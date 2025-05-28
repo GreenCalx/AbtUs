@@ -8,8 +8,7 @@ public class PlayerController : MonoBehaviour
 
     [Header("Tweaks")]
     public float speed = 10f;
-    public float maxSpeed = 2f;
-    public float runningMaxSpeed = 4f;
+    public float runSpeed = 4f;
     public float turnSpeed = 5f;
     public float actionDistance = 5f;
     public float lookingDistance = 100f;
@@ -18,8 +17,12 @@ public class PlayerController : MonoBehaviour
     public bool freeze_inputs = false;
     public bool freeze_WASD = false;
     public bool freeze_CAM = false;
+
     public float hMove, vMove;
     public float hCam, vCam;
+    private Quaternion targetRot;
+    private Vector3 targetMove;
+
     public bool playerDoAction;
     public bool playerInAction = false;
     public bool playerDoRun;
@@ -27,7 +30,6 @@ public class PlayerController : MonoBehaviour
     public bool freezeToggle;
     private bool isMoving = false;
     private bool isRunning = false;
-    private float cameraVRot;
 
 
     [Header("Internals")]
@@ -45,8 +47,7 @@ public class PlayerController : MonoBehaviour
         hMove = 0f;
         vMove = 0f;
         elapsedActionTimeLatch = 0f;
-        
-        self_rb.maxLinearVelocity = maxSpeed;
+
     }
 
     void UpdateTimers()
@@ -87,106 +88,75 @@ public class PlayerController : MonoBehaviour
 
     private void ProcessInputs()
     {
-        
         // player action
-        if (elapsedActionTimeLatch < actionTimeLatch)
-            return;
-
-        if (playerDoAction)
+        if (elapsedActionTimeLatch >= actionTimeLatch)
         {
-            if (targetedInteractibleObject!=null)
+            if (playerDoAction)
             {
-                if (!playerInAction)
+                if (targetedInteractibleObject!=null)
                 {
-                    playerInAction = true;
-                    targetedInteractibleObject.OnInteract(this);
+                    if (!playerInAction)
+                    {
+                        playerInAction = true;
+                        targetedInteractibleObject.OnInteract(this);
+                    }
+                    else
+                    {
+                        targetedInteractibleObject.OnContinueInteract(this);
+                        playerInAction = targetedInteractibleObject ? targetedInteractibleObject.IsInAction() : false;
+                        
+                    }
+                    elapsedActionTimeLatch = 0f;
                 }
-                else
-                {
-                    targetedInteractibleObject.OnContinueInteract(this);
-                    playerInAction = targetedInteractibleObject ? targetedInteractibleObject.IsInAction() : false;
-                     
-                }
+            }
+
+            if (playerDoCancel && playerInAction)
+            {
+                playerInAction = false;
+                targetedInteractibleObject.OnCancelInteract(this);
+                elapsedActionTimeLatch = 0f;
+            }
+
+            // freeze cam / movement
+            if (freezeToggle && (elapsedActionTimeLatch >= actionTimeLatch))
+            {
+                freeze_inputs = !freeze_inputs;
                 elapsedActionTimeLatch = 0f;
             }
         }
 
-        if (playerDoCancel && playerInAction)
-        {
-            playerInAction = false;
-            targetedInteractibleObject.OnCancelInteract(this);
-            elapsedActionTimeLatch = 0f;
-        }
-
-        // freeze cam / movement
-        if (freezeToggle && (elapsedActionTimeLatch >= actionTimeLatch))
-        {
-            freeze_inputs = !freeze_inputs;
-            elapsedActionTimeLatch = 0f;
-        }
 
         if (freeze_inputs)
         { return; }
 
         // player movez
-        if (!!self_rb && !isMoving && isGrounded())
-        {
-            self_rb.linearVelocity = new Vector3(0f, 0f, 0f);
-            self_rb.angularVelocity = Vector3.zero;
-        }
-
         if (playerDoRun && !isRunning)
         {
-            self_rb.maxLinearVelocity = runningMaxSpeed;
             isRunning = true;
         } else if (!playerDoRun && isRunning) {
-            self_rb.maxLinearVelocity = maxSpeed;
             isRunning = false;
-        }
-
-        // side step
-        if (!freeze_WASD)
-        {
-            if (hMove < 0f)
-            {
-                self_rb.AddForce( -1 *  transform.right * speed, ForceMode.VelocityChange);
-                isMoving = true;
-            }
-            else if (hMove > 0f)
-            {
-                self_rb.AddForce(transform.right * speed, ForceMode.VelocityChange);
-                isMoving = true;
-            }
-            
-            // forward/backward
-            if (vMove > 0f)
-            {
-                // move forward
-                // Vector3 translation = new Vector3(0f, 0f, speed * Time.fixedDeltaTime);
-                // transform.Translate(translation);
-                self_rb.AddForce( transform.forward * speed, ForceMode.VelocityChange);
-                isMoving = true;
-            } else if ( vMove < 0f )
-            {
-                // move backward
-                // Vector3 translation = new Vector3(0f, 0f, (speed/2f) * Time.fixedDeltaTime * -1);
-                // transform.Translate(translation);
-                self_rb.AddForce( transform.forward * (speed/2f) * -1, ForceMode.VelocityChange);
-                isMoving = true;
-            }
         }
 
         if (!freeze_CAM)
         {
-            // cam horizontal
-            transform.Rotate(Vector3.up * hCam);
-
-            // cam vertical
-            cameraVRot -= vCam;
-            cameraVRot = Mathf.Clamp(cameraVRot, -90f, 90f);
-            FPSCamera.transform.localEulerAngles = Vector3.right * cameraVRot;
+            FPSCamera.transform.eulerAngles += new Vector3(-vCam, hCam);
+            targetRot = FPSCamera.transform.rotation;
         }
 
+        if (!freeze_WASD)
+        {
+            isMoving = ((vMove != 0f) || (hMove != 0f));
+            if (isMoving)
+            {
+                targetMove = new Vector3(hMove, 0f, vMove);
+                targetMove = Vector3.ClampMagnitude(targetMove, 1f);
+                targetMove = targetRot * targetMove;
+                if (!isRunning)
+                    self_rb.MovePosition(transform.position + (targetMove * speed));
+                else
+                    self_rb.MovePosition(transform.position + (targetMove * runSpeed));
+            }
+        }
     }
 
     private bool isGrounded()
