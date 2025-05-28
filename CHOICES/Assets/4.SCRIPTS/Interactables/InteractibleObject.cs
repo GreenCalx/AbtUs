@@ -24,6 +24,7 @@ public class InteractibleObject : MonoBehaviour
     public SelectionFX selectionFX;
 
     [Header("Internals")]
+    private bool initDone = false;
     private PLAYER_ACTIONS selectedAction;
     private UnityEvent startAction;
     private UnityEvent continueAction;
@@ -37,10 +38,20 @@ public class InteractibleObject : MonoBehaviour
     public bool IsInActionChain = false;
     private bool isMovedByPlayer = false;
     private bool isValidOperation = true;
-    
-    
+    [Header("Duplicate Refs")]
+    public List<InteractibleObject> duplicates;
+
+
     void Start()
     {
+        if (!initDone)
+            Init();
+    }
+
+    public void Init()
+    {
+        duplicates = new List<InteractibleObject>();
+
         if (RB == null)
         { RB = GetComponent<Rigidbody>(); }
 
@@ -48,6 +59,8 @@ public class InteractibleObject : MonoBehaviour
 
         if (targetedTransfrom == null)
         { targetedTransfrom = transform; }
+
+        initDone = true;
     }
 
     public void ResetMultiAction()
@@ -80,6 +93,11 @@ public class InteractibleObject : MonoBehaviour
         player.targetedInteractibleObject = null;
         ResetMultiAction();
         //UIGame.Instance.UpdateCursorFromPlayerAction(selectedAction);
+    }
+
+    bool IsPlayerTarget()
+    {
+        return player.targetedInteractibleObject.gameObject == gameObject;
     }
 
     public PLAYER_ACTIONS GetSelectedAction() { return selectedAction; }
@@ -143,7 +161,7 @@ public class InteractibleObject : MonoBehaviour
                 continueAction.AddListener(StopDuplicate);
 
                 cancelAction = new UnityEvent();
-                cancelAction.AddListener(StopDuplicate);
+                cancelAction.AddListener(CancelDuplicate);
                 break;
             case PLAYER_ACTIONS.SHATTER:
                 selectedAction = iAction;
@@ -191,8 +209,7 @@ public class InteractibleObject : MonoBehaviour
 
             startAction.Invoke();
 
-            if (IsInActionChain)
-                iPlayer.freeze_inputs = true;
+            iPlayer.freeze_inputs = IsInActionChain && IsPlayerTarget();
         }
     }
 
@@ -208,7 +225,6 @@ public class InteractibleObject : MonoBehaviour
 
         continueAction.Invoke();
         
-
         if (!IsInActionChain)
         {
             iPlayer.freeze_inputs = false;
@@ -238,7 +254,7 @@ public class InteractibleObject : MonoBehaviour
     public virtual void Move()
     {
         isMovedByPlayer = true;
-
+        IsInActionChain = false;
         // Clamp pos to center of screen
         if (ActionCo != null)
         {
@@ -388,43 +404,70 @@ public class InteractibleObject : MonoBehaviour
         GameObject duplicata = GameObject.Instantiate(gameObject);
         duplicata.transform.parent = transform.parent;
 
-        Rigidbody rb = duplicata.GetComponent<Rigidbody>();
-        if (rb == null)
-        {
-            rb = duplicata.GetComponent<InteractibleObject>()?.RB;
-        }
-
         isMovedByPlayer = true;
+
+        InteractibleObject as_obj = duplicata.GetComponent<InteractibleObject>();
+        as_obj.Init();
+        duplicates.Add(as_obj);
 
         if (selectionFX != null)
         {
-            InteractibleObject as_obj = duplicata.GetComponent<InteractibleObject>();
-            as_obj.selectionFX.Init();
+            //as_obj.selectionFX.Init();
 
             selectionFX.Deselect();
-            as_obj.selectionFX.Select();
+            //as_obj.selectionFX.Select();
         }
-        
 
         // Clamp pos to center of screen
-        if (ActionCo != null)
-        {
-            StopCoroutine(ActionCo);
-            ActionCo = null;
-        }
+        // if (ActionCo != null)
+        // {
+        //     StopCoroutine(ActionCo);
+        //     ActionCo = null;
+        // }
         UIGame.Instance.UpdateAltCursorFromPlayerAction(PLAYER_ACTIONS.MOVE);
-        ActionCo = StartCoroutine(MoveCo(duplicata.transform, rb));
+        SwapTo(as_obj, PLAYER_ACTIONS.MOVE);
+        //ActionCo = StartCoroutine(MoveCo(duplicata.transform, rb));
     }
 
     public virtual void StopDuplicate()
     {
-        isMovedByPlayer = false;
-        player.playerInAction = false;
-        if (RB != null)
+        // isMovedByPlayer = false;
+        // player.playerInAction = false;
+        // if (RB != null)
+        // {
+        //     RB.isKinematic = false;
+        //     RB.useGravity = true;
+        // }
+    }
+
+    public virtual void CancelDuplicate()
+    {
+        if (duplicates.Count > 0)
         {
-            RB.isKinematic = false;
-            RB.useGravity = true;
+            Destroy(duplicates[duplicates.Count - 1].gameObject);
         }
+        player.playerInAction = false;
+    }
+
+    public void ForceInteract(PLAYER_ACTIONS iAction)
+    {
+        player.targetedInteractibleObject = this;
+        player.playerInAction = true;
+
+        if (selectionFX != null)
+        {
+            selectionFX.Init();
+            selectionFX.Select();
+        }
+
+        ChangeSelectedAction(iAction);
+        OnInteract(player);
+    }
+    public void SwapTo(InteractibleObject iOtherObj, PLAYER_ACTIONS iAction)
+    {
+        iOtherObj.player = player;
+        iOtherObj.ForceInteract(iAction);
+        ResetMultiAction();
     }
     #endregion
 

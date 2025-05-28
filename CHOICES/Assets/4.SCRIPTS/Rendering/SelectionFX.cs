@@ -22,7 +22,8 @@ public class SelectionFX : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
-        Init();
+        if (!init)
+            Init();
     }
 
     void Update()
