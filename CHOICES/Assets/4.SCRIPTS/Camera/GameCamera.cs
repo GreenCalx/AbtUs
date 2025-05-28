@@ -4,6 +4,8 @@ public class GameCamera : MonoBehaviour
 {
     public bool isPlayerCam = false;
     public Camera cam;
+    public Vector3 camRotAsEulers;
+
     // Start is called once before the first execution of Update after the MonoBehaviour is created
     void Start()
     {
@@ -17,7 +19,7 @@ public class GameCamera : MonoBehaviour
             Managers.Instance.Camera.initPlayerFOV = cam.fieldOfView;
             Managers.Instance.Camera.initPlayerCamParent = transform.parent;
         }
-        
+        camRotAsEulers = transform.eulerAngles;
     }
 
     // Update is called once per frame
@@ -26,10 +28,17 @@ public class GameCamera : MonoBehaviour
         
     }
 
-    public bool TryRCFromScreenCenter(out RaycastHit oRayHit , float iDistance = Mathf.Infinity)
+    public void VClampedRotation(Vector3 iDeltaRot, float iClampMin, float iClampMax)
+    {
+        camRotAsEulers += iDeltaRot * GameSettings.Instance.mouseSensivity;
+        camRotAsEulers.x = Mathf.Clamp(camRotAsEulers.x, iClampMin, iClampMax);
+        transform.eulerAngles = camRotAsEulers;
+    }
+
+    public bool TryRCFromScreenCenter(out RaycastHit oRayHit, float iDistance = Mathf.Infinity)
     {
         Ray ray = GetRayFromScreenCenter();
-        return Physics.Raycast(ray, out oRayHit, iDistance );
+        return Physics.Raycast(ray, out oRayHit, iDistance);
     }
 
     public Ray GetRayFromScreenCenter()

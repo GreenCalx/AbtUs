@@ -139,8 +139,7 @@ public class PlayerController : MonoBehaviour
 
         if (!freeze_CAM)
         {
-            FPSCamera.transform.eulerAngles += new Vector3(-vCam, hCam);
-            targetRot = FPSCamera.transform.rotation;
+            FPSCamera.VClampedRotation(new Vector3(-vCam, hCam), -90f, 90f);
         }
 
         if (!freeze_WASD)
@@ -150,7 +149,7 @@ public class PlayerController : MonoBehaviour
             {
                 targetMove = new Vector3(hMove, 0f, vMove);
                 targetMove = Vector3.ClampMagnitude(targetMove, 1f);
-                targetMove = targetRot * targetMove;
+                targetMove = FPSCamera.transform.rotation * targetMove;
                 if (!isRunning)
                     self_rb.MovePosition(transform.position + (targetMove * speed));
                 else

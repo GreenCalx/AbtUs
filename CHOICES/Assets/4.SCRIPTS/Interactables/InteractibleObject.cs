@@ -1,5 +1,7 @@
 using System;
+using System.Linq;
 using System.Collections;
+using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.Events;
 
@@ -15,6 +17,8 @@ public class InteractibleObject : MonoBehaviour
     [Header("Tweaks")]
     public ItemSO def;
     public Transform targetedTransfrom;
+    public Renderer targetRend;
+    public LayerMask intersectionCheckMask;
     [Header("Optional References")]
     public Puzzle puzzle;
     public SelectionFX selectionFX;
@@ -31,8 +35,9 @@ public class InteractibleObject : MonoBehaviour
     public Collider mainCollider;
     protected Coroutine ActionCo;
     public bool IsInActionChain = false;
-
     private bool isMovedByPlayer = false;
+    private bool isValidOperation = true;
+    
     
     void Start()
     {
@@ -196,7 +201,13 @@ public class InteractibleObject : MonoBehaviour
         if (iPlayer != player)
             return false;
 
+        if (!isValidOperation)
+        {
+            return false;
+        }
+
         continueAction.Invoke();
+        
 
         if (!IsInActionChain)
         {
@@ -249,33 +260,48 @@ public class InteractibleObject : MonoBehaviour
         {
             iTargetRB.isKinematic = true;
             iTargetRB.useGravity = false;
-            //iTargetRB.collisionDetectionMode = CollisionDetectionMode.Continuous;
             mainCollider.enabled = false;
         }
         if (selectionFX != null)
             selectionFX.intersectionOperationCheck = true;
+        isValidOperation = true;
 
         while (isMovedByPlayer)
         {
             Vector3 worldPos = player.FPSCamera.GetRayFromScreenCenter().GetPoint(distFromPlayer);
             iTarget.position = worldPos;
-
+            isValidOperation = ValidateMoveOp();
+            if (selectionFX != null)
+                selectionFX.operationIsValid = isValidOperation;
             yield return null;
         }
 
-        
-
         if (selectionFX != null)
             selectionFX.intersectionOperationCheck = false;
+        isValidOperation = true;
 
         if (iTargetRB != null)
         {
             iTargetRB.isKinematic = false;
             iTargetRB.useGravity = true;
             mainCollider.enabled = true;
-            //iTargetRB.collisionDetectionMode = CollisionDetectionMode.Discrete;
         }
         PostAction();
+    }
+
+    bool ValidateMoveOp()
+    {
+        // is under map?
+        float height = Terrain.activeTerrain.SampleHeight(targetedTransfrom.position);
+        if (height > targetedTransfrom.position.y)
+            return false;
+
+        // renderer intersects other models flagged in layermask
+        Bounds b = targetRend.bounds;
+        List<Collider> cols = Physics.OverlapBox(b.center, b.extents / 2f, Quaternion.identity, intersectionCheckMask,QueryTriggerInteraction.Ignore).ToList();
+        int n = cols.Where(e => e.gameObject != gameObject).ToArray().Length;
+        return (n == 0);
+
     }
     #endregion
 

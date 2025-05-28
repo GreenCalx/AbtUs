@@ -16,7 +16,8 @@ public class SelectionFX : MonoBehaviour
     bool init = false;
     bool selected = false;
     public bool intersectionOperationCheck = false;
-    public LayerMask optIntersecMask;
+    public bool operationIsValid = true;
+  
 
     // Start is called before the first frame update
     void Start()
@@ -28,27 +29,8 @@ public class SelectionFX : MonoBehaviour
     {
         if (init && selected && intersectionOperationCheck)
         {
-            IntersectionColoring();
+            RefreshOperationColor();
         }
-    }
-
-    void IntersectionColoring()
-    {
-        Bounds b = selfRend.bounds;
-
-        // is under map
-        float height = Terrain.activeTerrain.SampleHeight(b.center);
-        if (height > transform.position.y)
-        {
-            MakeValidOperation(false);
-            Debug.Log("under map !");
-            return;
-        }
-        
-        // intersects other colliders
-        List<Collider> cols = Physics.OverlapBox(b.center, b.extents / 2f, Quaternion.identity, optIntersecMask, QueryTriggerInteraction.Ignore).ToList();
-        int n = cols.Where(e => e.gameObject != gameObject).ToArray().Length;
-        MakeValidOperation(n == 0);
     }
 
     public void Init()
@@ -77,10 +59,10 @@ public class SelectionFX : MonoBehaviour
         selected = false;
     }
 
-    public void MakeValidOperation(bool iState)
+    public void RefreshOperationColor()
     {
         selfMatProp.SetFloat("_MaxDistance", 40f);
-        SetColor(iState ? ValidOperationColor : InvalidOperationColor);
+        SetColor(operationIsValid ? ValidOperationColor : InvalidOperationColor);
     }
 
     void SetColor(Color iColor)
