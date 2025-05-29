@@ -106,6 +106,7 @@ public class ObjectChainManager : MonoBehaviour
         return true;
     }
 
+
     int GetChainIndex(InteractibleObject iObj)
     {
         int idx = -1;
