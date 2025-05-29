@@ -19,6 +19,7 @@ public class InteractibleObject : MonoBehaviour
     public Transform targetedTransfrom;
     public Renderer targetRend;
     public LayerMask intersectionCheckMask;
+    public GameFeedback feedback;
     [Header("Optional References")]
     public Puzzle puzzle;
     public SelectionFX selectionFX;
@@ -39,7 +40,7 @@ public class InteractibleObject : MonoBehaviour
     private bool isMovedByPlayer = false;
     private bool isValidOperation = true;
     [Header("Duplicate Refs")]
-    public List<InteractibleObject> duplicates;
+    public bool isDuplicata = false;
 
 
     void Start()
@@ -50,7 +51,8 @@ public class InteractibleObject : MonoBehaviour
 
     public void Init()
     {
-        duplicates = new List<InteractibleObject>();
+        if (!isDuplicata)
+            Managers.Instance.ObjectChains.CreateChain(this);
 
         if (RB == null)
         { RB = GetComponent<Rigidbody>(); }
@@ -407,45 +409,30 @@ public class InteractibleObject : MonoBehaviour
         isMovedByPlayer = true;
 
         InteractibleObject as_obj = duplicata.GetComponent<InteractibleObject>();
+        as_obj.isDuplicata = true;
         as_obj.Init();
-        duplicates.Add(as_obj);
+        Managers.Instance.ObjectChains.AddToChain(this, as_obj);
 
         if (selectionFX != null)
         {
-            //as_obj.selectionFX.Init();
-
             selectionFX.Deselect();
-            //as_obj.selectionFX.Select();
         }
-
-        // Clamp pos to center of screen
-        // if (ActionCo != null)
-        // {
-        //     StopCoroutine(ActionCo);
-        //     ActionCo = null;
-        // }
         UIGame.Instance.UpdateAltCursorFromPlayerAction(PLAYER_ACTIONS.MOVE);
         SwapTo(as_obj, PLAYER_ACTIONS.MOVE);
-        //ActionCo = StartCoroutine(MoveCo(duplicata.transform, rb));
     }
 
     public virtual void StopDuplicate()
     {
-        // isMovedByPlayer = false;
-        // player.playerInAction = false;
-        // if (RB != null)
-        // {
-        //     RB.isKinematic = false;
-        //     RB.useGravity = true;
-        // }
+
     }
 
     public virtual void CancelDuplicate()
     {
-        if (duplicates.Count > 0)
-        {
-            Destroy(duplicates[duplicates.Count - 1].gameObject);
-        }
+        // if (duplicates.Count > 0)
+        // {
+        //     Destroy(duplicates[duplicates.Count - 1].gameObject);
+        // }
+        Managers.Instance.ObjectChains.DeleteLastFromChain(this);
         player.playerInAction = false;
     }
 
@@ -484,7 +471,9 @@ public class InteractibleObject : MonoBehaviour
         player.playerInAction = false;
         player.targetedInteractibleObject = null;
 
-        Destroy(gameObject);
+
+        //Destroy(gameObject);
+        Managers.Instance.ObjectChains.DestroyChain(this);
     }
 
     public virtual void StopShatter()

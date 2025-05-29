@@ -5,6 +5,7 @@ public class Managers : MonoBehaviour
 
     public SoundManager Sound;
     public CameraManager Camera;
+    public ObjectChainManager ObjectChains;
 
     private static Managers instance = null;
     public static Managers Instance => instance;
@@ -24,7 +25,8 @@ public class Managers : MonoBehaviour
 
     void Start()
     {
-        Sound    = GetComponent<SoundManager>();
-        Camera   = GetComponent<CameraManager>();
+        Sound = GetComponent<SoundManager>();
+        Camera = GetComponent<CameraManager>();
+        ObjectChains = GetComponent<ObjectChainManager>();
     }
 }

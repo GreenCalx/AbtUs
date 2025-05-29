@@ -47,7 +47,7 @@ public class PlayerController : MonoBehaviour
         hMove = 0f;
         vMove = 0f;
         elapsedActionTimeLatch = 0f;
-
+        Managers.Instance.Sound.InitBGMSources(FPSCamera.transform);
     }
 
     void UpdateTimers()

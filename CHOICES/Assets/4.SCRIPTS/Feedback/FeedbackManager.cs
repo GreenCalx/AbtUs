@@ -6,14 +6,16 @@ using System;
 
 public enum FeedbackType
 {
-        glow,
-        sanity,
-        world,
-        player,
-        proximity,
-        movements,
-        birth,
-        death
+    glow,
+    sanity,
+    world,
+    player,
+    proximity,
+    movements,
+    birth,
+    death,
+    duplication,
+    shattering
 };
 
 [System.Serializable]

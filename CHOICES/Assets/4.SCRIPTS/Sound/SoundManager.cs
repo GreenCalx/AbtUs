@@ -70,7 +70,7 @@ public class SoundManager : MonoBehaviour
 
     void Start()
     {
-        InitBGMSources();
+        //InitBGMSources();
     }
     void Update()
     {
@@ -114,16 +114,16 @@ public class SoundManager : MonoBehaviour
     #endregion
 
     #region BGM
-    private void InitBGMSources()
+    public void InitBGMSources(Transform iAudioHost)
     {
-        Transform bgmHost = Managers.Instance.Camera.playerCam.transform;
+        //Transform bgmHost = Managers.Instance.Camera.playerCam.transform;
         
-        bgmOrderAudioCanal =  SpawnBGMAudioSource(bgmData.orderBGM,   bgmHost,    OrderMixerGroup);
-        bgmChaosAudioCanal = SpawnBGMAudioSource(bgmData.chaosBGM,   bgmHost,    ChaosMixerGroup);
-        bgmMineralAudioCanal =  SpawnBGMAudioSource(bgmData.mineralBGM, bgmHost,    MineralMixerGroup);
-        bgmOrganicAudioCanal = SpawnBGMAudioSource(bgmData.organicBGM, bgmHost,    OrganicMixerGroup);
-        bgmGloomyAudioCanal = SpawnBGMAudioSource(bgmData.gloomyBGM,  bgmHost,    GloomyMixerGroup);
-        bgmLushAudioCanal = SpawnBGMAudioSource(bgmData.lushBGM,    bgmHost,    LushMixerGroup);   
+        bgmOrderAudioCanal =  SpawnBGMAudioSource(bgmData.orderBGM,   iAudioHost,    OrderMixerGroup);
+        bgmChaosAudioCanal = SpawnBGMAudioSource(bgmData.chaosBGM,   iAudioHost,    ChaosMixerGroup);
+        bgmMineralAudioCanal =  SpawnBGMAudioSource(bgmData.mineralBGM, iAudioHost,    MineralMixerGroup);
+        bgmOrganicAudioCanal = SpawnBGMAudioSource(bgmData.organicBGM, iAudioHost,    OrganicMixerGroup);
+        bgmGloomyAudioCanal = SpawnBGMAudioSource(bgmData.gloomyBGM,  iAudioHost,    GloomyMixerGroup);
+        bgmLushAudioCanal = SpawnBGMAudioSource(bgmData.lushBGM,    iAudioHost,    LushMixerGroup);   
 
         bgmAudioCanals = new List<AudioSource>();
         bgmAudioCanals.Add(bgmOrderAudioCanal);
@@ -141,14 +141,6 @@ public class SoundManager : MonoBehaviour
     public void UpdateBGM()
     {
         OverWorldControl owc = OverWorldControl.Instance;
-
-        // update volumes from OWC
-        // float orderVol =    math.remap(0f, 1f, bgmData.BgmTrackCutVolume, BgmMaxVolume, owc.OrderMagnitude);
-        // float chaosVol =    math.remap(0f, 1f, bgmData.BgmTrackCutVolume, BgmMaxVolume, owc.ChaosMagnitude);
-        // float mineralVol =  math.remap(0f, 1f, bgmData.BgmTrackCutVolume, BgmMaxVolume, owc.MineralMagnitude);
-        // float organicVol =  math.remap(0f, 1f, bgmData.BgmTrackCutVolume, BgmMaxVolume, owc.OrganicMagnitude);
-        // float lushVol =     math.remap(0f, 1f, bgmData.BgmTrackCutVolume, BgmMaxVolume, owc.LushMagnitude);
-        // float gloomyVol =   math.remap(0f, 1f, bgmData.BgmTrackCutVolume, BgmMaxVolume, owc.GloomyMagnitude);
 
         float orderVol =    bgmData.bgmOrderedVolumeCurve.Evaluate(owc.OrderToChaos);
         float chaosVol =    bgmData.bgmChaosVolumeCurve.Evaluate(owc.OrderToChaos);

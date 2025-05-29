@@ -13,6 +13,7 @@ GameObject:
   - component: {fileID: 5141452711767027010}
   - component: {fileID: 4411285101250788071}
   - component: {fileID: 3641437771648589987}
+  - component: {fileID: 4399473777418484543}
   m_Layer: 0
   m_Name: MANAGERS
   m_TagString: Untagged
@@ -128,3 +129,18 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   Sound: {fileID: 0}
   Camera: {fileID: 0}
+  ObjectChains: {fileID: 0}
+--- !u!114 &4399473777418484543
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7808715935886537954}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: b16db2fc37ddb2e45a19ae30528ec52e, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  prefab_ChainLineRenderer: {fileID: 183621774858735447, guid: 897670e98ab50a74e93ac32584926ec9,
+    type: 3}

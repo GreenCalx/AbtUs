@@ -49,10 +49,17 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   def: {fileID: 11400000, guid: 0ab8e34cfe940c349961a4512d608048, type: 2}
   targetedTransfrom: {fileID: 7757240277884394455}
+  targetRend: {fileID: 8435926232105901905}
+  intersectionCheckMask:
+    serializedVersion: 2
+    m_Bits: 0
+  feedback: {fileID: 0}
   puzzle: {fileID: 0}
   selectionFX: {fileID: 2511441162795110904}
   RB: {fileID: 0}
+  mainCollider: {fileID: 0}
   IsInActionChain: 0
+  duplicates: []
 --- !u!114 &4281831172578869786
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -217,6 +224,10 @@ MonoBehaviour:
   ValidOperationColor: {r: 0, g: 1, b: 0, a: 1}
   InvalidOperationColor: {r: 1, g: 0, b: 0, a: 1}
   intersectionOperationCheck: 0
-  optIntersecMask:
-    serializedVersion: 2
-    m_Bits: 0
+  operationIsValid: 1
+--- !u!23 &8435926232105901905 stripped
+MeshRenderer:
+  m_CorrespondingSourceObject: {fileID: -7511558181221131132, guid: 8b9d95bd7e09bbf448acb0177633536b,
+    type: 3}
+  m_PrefabInstance: {fileID: 7121312064491013077}
+  m_PrefabAsset: {fileID: 0}
