@@ -23,6 +23,7 @@ public class InteractibleObject : MonoBehaviour
     [Header("Optional References")]
     public Puzzle puzzle;
     public SelectionFX selectionFX;
+    public GFXWrapper shaderCom;
 
     [Header("Internals")]
     private bool initDone = false;
@@ -61,6 +62,11 @@ public class InteractibleObject : MonoBehaviour
 
         if (targetedTransfrom == null)
         { targetedTransfrom = transform; }
+
+        if (shaderCom != null)
+        {
+            shaderCom.InitShader();
+        }
 
         initDone = true;
     }
@@ -479,6 +485,28 @@ public class InteractibleObject : MonoBehaviour
     public virtual void StopShatter()
     {
         PostAction();
+    }
+
+    public virtual bool ShatterAnim()
+    {
+        if (shaderCom == null)
+            return false;
+        StartCoroutine(ShatterCo());
+        return true;
+    }
+
+    IEnumerator ShatterCo()
+    {
+        float elapsed = 0f;
+        while (elapsed <= def.shatterTime)
+        {
+            float shatVal = elapsed / def.shatterTime;
+            shaderCom.SetShatter(shatVal);
+            elapsed += Time.deltaTime;
+
+            yield return null;
+        }
+        Destroy(gameObject);
     }
     #endregion
 

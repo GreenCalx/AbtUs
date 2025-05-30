@@ -122,6 +122,7 @@ Material:
     - _CullMode: 2
     - _CullModeForward: 2
     - _DepthOffsetEnable: 1
+    - _DissolveFactor: 0
     - _DoubleSidedEnable: 0
     - _DoubleSidedGIMode: 0
     - _DoubleSidedNormalMode: 2
@@ -130,6 +131,7 @@ Material:
     - _EnableBlendModePreserveSpecularLighting: 1
     - _EnableFogOnTransparent: 1
     - _ExcludeFromTUAndAA: 0
+    - _ImplosionFactor: 0
     - _Lerp: 0
     - _MaterialID: 1
     - _MaterialTypeMask: 2

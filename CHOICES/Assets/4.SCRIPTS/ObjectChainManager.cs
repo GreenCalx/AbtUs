@@ -35,7 +35,12 @@ public class ObjectChain<T> : IFeedbackEval, IDisposable where T : InteractibleO
         {
             foreach (ObjectChainLR lnk in fXLinks)
                 GameObject.Destroy(lnk.gameObject);
-            GameObject.Destroy(objects[i].gameObject);
+
+            //
+            if (!objects[i].ShatterAnim())
+            {
+                GameObject.Destroy(objects[i].gameObject);
+            }
         }
         GC.SuppressFinalize(this);
     }

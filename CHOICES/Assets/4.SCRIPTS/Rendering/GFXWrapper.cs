@@ -81,6 +81,12 @@ public class GFXWrapper : MonoBehaviour
             targetMat.SetFloat(shad_chaosParm, iVal);
     }
 
+    public void SetShatter(float iVal)
+    {
+        foreach (Material targetMat in targetMats)
+            targetMat.SetFloat(shad_shatterParm, iVal);
+    }
+
     private void refreshIsMixed()
     {
         bool b = true;

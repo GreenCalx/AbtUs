@@ -8,6 +8,7 @@ public static class Constants
     // global parm
     public const string shad_lerpParm = "_Lerp";
     public const string shad_chaosParm = "_Chaos";
+    public const string shad_shatterParm = "_DissolveFactor";
     // base shader parms
     public const string shad_baseAlbedo = "_Albedo";
     public const string shad_baseNormal = "_NormalMap";

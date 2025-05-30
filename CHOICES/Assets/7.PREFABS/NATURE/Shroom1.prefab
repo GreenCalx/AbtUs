@@ -12,6 +12,7 @@ GameObject:
   - component: {fileID: 4721677416091456350}
   - component: {fileID: 4281831172578869786}
   - component: {fileID: 1880183891354334774}
+  - component: {fileID: 9160469334266539076}
   m_Layer: 0
   m_Name: Shroom1
   m_TagString: Untagged
@@ -56,10 +57,11 @@ MonoBehaviour:
   feedback: {fileID: 0}
   puzzle: {fileID: 0}
   selectionFX: {fileID: 2511441162795110904}
+  shaderCom: {fileID: 9160469334266539076}
   RB: {fileID: 0}
   mainCollider: {fileID: 0}
   IsInActionChain: 0
-  duplicates: []
+  isDuplicata: 0
 --- !u!114 &4281831172578869786
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -103,6 +105,23 @@ Rigidbody:
   m_Interpolate: 0
   m_Constraints: 112
   m_CollisionDetection: 0
+--- !u!114 &9160469334266539076
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1735912079531761558}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 66037394e03a17d4fb346bada773652b, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  targetRenderer: {fileID: 8435926232105901905}
+  matCollection: {fileID: 0}
+  initMats: []
+  targetMats: []
+  isMixed: 0
 --- !u!1001 &7121312064491013077
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -165,12 +184,12 @@ PrefabInstance:
         type: 3}
       propertyPath: 'm_Materials.Array.data[0]'
       value: 
-      objectReference: {fileID: 2100000, guid: 958e6e0a0d907f44a93e36974e86d6a4, type: 2}
+      objectReference: {fileID: 2100000, guid: b277601e0e815e843afaeb04c7545ce9, type: 2}
     - target: {fileID: -7511558181221131132, guid: 8b9d95bd7e09bbf448acb0177633536b,
         type: 3}
       propertyPath: 'm_Materials.Array.data[1]'
       value: 
-      objectReference: {fileID: 2100000, guid: 958e6e0a0d907f44a93e36974e86d6a4, type: 2}
+      objectReference: {fileID: 2100000, guid: b277601e0e815e843afaeb04c7545ce9, type: 2}
     - target: {fileID: 919132149155446097, guid: 8b9d95bd7e09bbf448acb0177633536b,
         type: 3}
       propertyPath: m_Name

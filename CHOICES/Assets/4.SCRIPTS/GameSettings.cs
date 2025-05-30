@@ -21,5 +21,9 @@ public class GameSettings : MonoBehaviour
         }
     }
 
+    [Header("MetaGameData")]
     public float mouseSensivity = 1f;
+
+    [Header("AnimData")]
+    public AnimationCurve implosionCurve;
 }
