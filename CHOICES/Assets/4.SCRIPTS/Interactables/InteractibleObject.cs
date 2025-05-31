@@ -31,14 +31,17 @@ public class InteractibleObject : MonoBehaviour
     private UnityEvent startAction;
     private UnityEvent continueAction;
     private UnityEvent cancelAction;
-    private PlayerController player;
+    protected PlayerController player;
     private float distFromPlayer = 0f;
     [Header("Move action refs")]
     public Rigidbody RB;
     public Collider mainCollider;
     protected Coroutine ActionCo;
     public bool IsInActionChain = false;
-    private bool isMovedByPlayer = false;
+    public bool isMovedByPlayer
+    {
+        get; protected set;
+    }
     private bool isValidOperation = true;
     [Header("Duplicate Refs")]
     public bool isDuplicata = false;
@@ -69,6 +72,18 @@ public class InteractibleObject : MonoBehaviour
         }
 
         initDone = true;
+    }
+
+    public virtual void Select()
+    {
+        if (selectionFX!=null)
+            selectionFX.Select();
+    }
+
+    public virtual void Deselect()
+    {
+        if (selectionFX!=null)
+            selectionFX.Deselect();
     }
 
     public void ResetMultiAction()
@@ -280,9 +295,13 @@ public class InteractibleObject : MonoBehaviour
 
     public IEnumerator MoveCo(Transform iTarget, Rigidbody iTargetRB)
     {
+        // if interactible is already kinematic, dont change it after the moveCo.
+        bool makeKinematic = !iTargetRB.isKinematic;
+
         if (iTargetRB != null)
         {
-            iTargetRB.isKinematic = true;
+            if (makeKinematic)
+                iTargetRB.isKinematic = true;
             iTargetRB.useGravity = false;
             mainCollider.enabled = false;
         }
@@ -306,7 +325,8 @@ public class InteractibleObject : MonoBehaviour
 
         if (iTargetRB != null)
         {
-            iTargetRB.isKinematic = false;
+            if (makeKinematic)
+                iTargetRB.isKinematic = false;
             iTargetRB.useGravity = true;
             mainCollider.enabled = true;
         }
@@ -333,7 +353,7 @@ public class InteractibleObject : MonoBehaviour
     public void ShowInfo()
     {
         UIInfoPanel panel = UIGame.Instance.infoPanel;
-        panel.title.text = def.name;
+        panel.title.text = def.itemName;
         panel.body.text = def.info;
         UIGame.Instance.infoPanel.gameObject.SetActive(true);
         if (ActionCo != null)
@@ -412,8 +432,6 @@ public class InteractibleObject : MonoBehaviour
         GameObject duplicata = GameObject.Instantiate(gameObject);
         duplicata.transform.parent = transform.parent;
 
-        isMovedByPlayer = true;
-
         InteractibleObject as_obj = duplicata.GetComponent<InteractibleObject>();
         as_obj.isDuplicata = true;
         as_obj.Init();
@@ -480,6 +498,7 @@ public class InteractibleObject : MonoBehaviour
 
         //Destroy(gameObject);
         Managers.Instance.ObjectChains.DestroyChain(this);
+        Deselect(); 
     }
 
     public virtual void StopShatter()
@@ -506,6 +525,11 @@ public class InteractibleObject : MonoBehaviour
 
             yield return null;
         }
+        Kill();
+    }
+
+    public virtual void Kill()
+    {
         Destroy(gameObject);
     }
     #endregion

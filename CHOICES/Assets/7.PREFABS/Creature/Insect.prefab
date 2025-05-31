@@ -11,7 +11,7 @@ GameObject:
   - component: {fileID: 3504281779056445840}
   - component: {fileID: 1672179556270437020}
   - component: {fileID: 2494256328937717490}
-  m_Layer: 20
+  m_Layer: 21
   m_Name: Interactible
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -47,9 +47,18 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   def: {fileID: 11400000, guid: 1868b729fb1ccf342851070c184b3da8, type: 2}
   targetedTransfrom: {fileID: 5644358332541380162}
+  targetRend: {fileID: 5661681235762374581}
+  intersectionCheckMask:
+    serializedVersion: 2
+    m_Bits: 2113665
+  feedback: {fileID: 0}
   puzzle: {fileID: 0}
+  selectionFX: {fileID: 7373534696690349334}
+  shaderCom: {fileID: 4496340101552812664}
   RB: {fileID: 6005165044390949204}
+  mainCollider: {fileID: 1434275664549684233}
   IsInActionChain: 0
+  isDuplicata: 0
   target: {fileID: 5390973498288355164}
 --- !u!135 &2494256328937717490
 SphereCollider:
@@ -84,7 +93,8 @@ GameObject:
   - component: {fileID: 2418080552190453748}
   - component: {fileID: 5661681235762374581}
   - component: {fileID: 1434275664549684233}
-  m_Layer: 0
+  - component: {fileID: 7373534696690349334}
+  m_Layer: 21
   m_Name: InsectBody
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -137,7 +147,7 @@ MeshRenderer:
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
-  - {fileID: 2100000, guid: 73c176f402d2c2f4d929aa5da7585d17, type: 2}
+  - {fileID: 2100000, guid: 537040ca3508db946be0b40c9330c594, type: 2}
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0
@@ -176,10 +186,28 @@ SphereCollider:
   m_LayerOverridePriority: 0
   m_IsTrigger: 0
   m_ProvidesContacts: 0
-  m_Enabled: 1
+  m_Enabled: 0
   serializedVersion: 3
   m_Radius: 0.32
   m_Center: {x: 0.0000047683716, y: -0.66, z: 0}
+--- !u!114 &7373534696690349334
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2084313800361186253}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 1e259ff6fe75e454eb7e0cd20738bb99, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  selectionColor: {r: 0, g: 0.8310704, b: 1, a: 1}
+  unselectedColor: {r: 0, g: 0, b: 0, a: 1}
+  ValidOperationColor: {r: 0, g: 1, b: 0, a: 1}
+  InvalidOperationColor: {r: 1, g: 0, b: 0, a: 1}
+  intersectionOperationCheck: 0
+  operationIsValid: 1
 --- !u!1 &2611879537898107872
 GameObject:
   m_ObjectHideFlags: 0
@@ -194,7 +222,9 @@ GameObject:
   - component: {fileID: 1307941066686799277}
   - component: {fileID: 6005165044390949204}
   - component: {fileID: 1774019894320377619}
-  m_Layer: 0
+  - component: {fileID: 4496340101552812664}
+  - component: {fileID: 4101396117666487702}
+  m_Layer: 21
   m_Name: Insect
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -274,7 +304,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   fData:
-    tag: 0
+    tag: 2
     type: 0
     baseValue: 0
     loopStrength: 0
@@ -340,3 +370,47 @@ NavMeshAgent:
   m_BaseOffset: 0
   m_WalkableMask: 1
   m_ObstacleAvoidanceType: 4
+--- !u!114 &4496340101552812664
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2611879537898107872}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 66037394e03a17d4fb346bada773652b, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  targetRenderer: {fileID: 5661681235762374581}
+  matCollection: {fileID: 0}
+  initMats: []
+  targetMats: []
+  isMixed: 0
+--- !u!114 &4101396117666487702
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2611879537898107872}
+  m_Enabled: 0
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: e41af546882ba784daf3725328ed3c46, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  def: {fileID: 11400000, guid: 1868b729fb1ccf342851070c184b3da8, type: 2}
+  targetedTransfrom: {fileID: 5644358332541380162}
+  targetRend: {fileID: 5661681235762374581}
+  intersectionCheckMask:
+    serializedVersion: 2
+    m_Bits: 2113665
+  feedback: {fileID: 0}
+  puzzle: {fileID: 0}
+  selectionFX: {fileID: 7373534696690349334}
+  shaderCom: {fileID: 4496340101552812664}
+  RB: {fileID: 6005165044390949204}
+  mainCollider: {fileID: 1434275664549684233}
+  IsInActionChain: 0
+  isDuplicata: 0
+  target: {fileID: 5390973498288355164}

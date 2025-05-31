@@ -21,9 +21,15 @@ public class ReactiveArea : MonoBehaviour
     [Header("Internals")]
     public List<ActiveObject> activeObjects = new List<ActiveObject>();
 
+
+    void Update()
+    {
+    }
+
+
     private void RunEnterEffect(ActiveObject iObj)
     {
-        foreach(ReactUnit ru in reactUnits_OnEnter)
+        foreach (ReactUnit ru in reactUnits_OnEnter)
         {
             if (ru.type == iObj.type)
             {
@@ -50,6 +56,7 @@ public class ReactiveArea : MonoBehaviour
 
     public void AddActiveObject(ActiveObject iObj)
     {
+        Debug.Log("ADD " + iObj.gameObject.name);
         activeObjects.Add(iObj);
 
         // Don't execute effect if needs to be dropped
@@ -67,6 +74,7 @@ public class ReactiveArea : MonoBehaviour
 
     public void RemoveActiveObject(ActiveObject iObj)
     {
+        Debug.Log("RM " + iObj.gameObject.name);
         activeObjects.Remove(iObj);
         activeObjects = activeObjects.Where(e => e!=null).ToList();
 
@@ -83,18 +91,18 @@ public class ReactiveArea : MonoBehaviour
         {
             if (activeObjects.Contains(as_ao))
                 return;
-            AddActiveObject(as_ao);
+            as_ao.SubscribeToArea(this);
         }
     }
 
     void OnTriggerExit(Collider iCol)
-    {
+    { 
         ActiveObject as_ao = Utils.GetComp<ActiveObject>(iCol.gameObject);
         if (as_ao)
         {
             if (!activeObjects.Contains(as_ao))
                 return;
-            RemoveActiveObject(as_ao);
+            as_ao.UnsubscribeToArea(this);
         }
     }
 }

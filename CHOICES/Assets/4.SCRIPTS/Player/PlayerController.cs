@@ -1,4 +1,4 @@
-using UnityEngine;
+ using UnityEngine;
 
 public class PlayerController : MonoBehaviour
 {
@@ -185,15 +185,11 @@ public class PlayerController : MonoBehaviour
                 // Deselect previous selection if exists
                 if (targetedInteractibleObject != null)
                 {
-                    if (targetedInteractibleObject.selectionFX != null)
-                    {
-                        targetedInteractibleObject.selectionFX.Deselect();
-                    }
+                    targetedInteractibleObject.Deselect();
                 }
                 // Select new target
                 targetedInteractibleObject = iobj;
-                if (targetedInteractibleObject.selectionFX!=null)
-                    targetedInteractibleObject.selectionFX.Select();
+                targetedInteractibleObject.Select();
                 UIGame.Instance.UpdateCursorFromPlayerAction(targetedInteractibleObject.GetSelectedAction());
                 return;
             }
@@ -203,8 +199,7 @@ public class PlayerController : MonoBehaviour
         
         if (targetedInteractibleObject!=null)
         {
-            if (targetedInteractibleObject.selectionFX!=null)
-                targetedInteractibleObject.selectionFX.Deselect();
+            targetedInteractibleObject.Deselect();
             targetedInteractibleObject = null;
             UIGame.Instance.UpdateCursorFromPlayerAction(PLAYER_ACTIONS.DEFAULT);
         }

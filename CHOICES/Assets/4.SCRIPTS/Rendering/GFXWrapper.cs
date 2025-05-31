@@ -22,10 +22,11 @@ public class GFXWrapper : MonoBehaviour
     {
         matCollection = OverWorldControl.Instance.mtoLookupTable.matCollection;
         targetMats = new List<Material>(targetRenderer.materials);
-        foreach(Material mat in targetMats)
+        initMats.Clear();
+        foreach (Material mat in targetMats)
         {
             matCollection.TryAddMat(mat, mat.name);
-            initMats.Add ( matCollection.GetMatDefFromName(mat.name) );
+            initMats.Add(matCollection.GetMatDefFromName(mat.name));
         }
 
         lerp_done = true;
@@ -47,12 +48,20 @@ public class GFXWrapper : MonoBehaviour
         refreshIsMixed();
         foreach(Material mat in targetMats)
         {
-            if (isMixed)
+            if (iNewMatDefs[targetMats.IndexOf(mat)] == null)
             {
-                SetBaseMaterial(mat, iNewMatDefs[targetMats.IndexOf(mat)]);
-            } else {
-                SetMixedMaterial(mat, iNewMatDefs[targetMats.IndexOf(mat)]);
+                // Unchanged material
+                Debug.LogWarning("GFXWrapper: ChangeMatText called but there is null values in entry.");
+                continue;
             }
+            if (isMixed)
+                {
+                    SetBaseMaterial(mat, iNewMatDefs[targetMats.IndexOf(mat)]);
+                }
+                else
+                {
+                    SetMixedMaterial(mat, iNewMatDefs[targetMats.IndexOf(mat)]);
+                }
         }
 
 

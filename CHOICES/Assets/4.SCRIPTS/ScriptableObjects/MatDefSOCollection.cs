@@ -20,6 +20,7 @@ public class MatDefSOCollection : MonoBehaviour
             return false;
         
         MatDefSO matData = ScriptableObject.CreateInstance<MatDefSO>();
+        matData.name = matName + "Def";
         matData.init(iMat);
         mats.Add(matName, matData);
 

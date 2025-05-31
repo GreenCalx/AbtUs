@@ -33,8 +33,8 @@ public class CreatureSpawner<T> : MonoBehaviour, IFeedbackEval where T : Creatur
     private float zmin;
     private float zmax;
     public int expectedPopulation = 0;
-
     protected float maxSpawnMulFactor = 1f;
+    private int boosters = 0;
 
     void OnDrawGizmosSelected()
     {
@@ -80,11 +80,19 @@ public class CreatureSpawner<T> : MonoBehaviour, IFeedbackEval where T : Creatur
     protected void CheckForSpawns()
     {
         expectedPopulation = (int)Mathf.Ceil(spawnsByMagnitudeCurve.Evaluate(OverWorldControl.Instance.GetAxisMagnitude(axis)) * MAX_SPAWNS * maxSpawnMulFactor );
+     
+        if (expectedPopulation < boosters)
+        {
+            expectedPopulation = boosters;
+        }
+
         int popDelta = expectedPopulation - spawnedCreatures.Count;
         if (popDelta > 0)
-        { Spawn(popDelta); }
-        else if (popDelta < 0)
-        { DeSpawn(Mathf.Abs(popDelta)); }
+            { Spawn(popDelta); }
+            else if (popDelta < 0)
+            {
+                DeSpawn(Mathf.Abs(popDelta));
+            }
     }
 
     protected void InitBounds()
@@ -172,7 +180,9 @@ public class CreatureSpawner<T> : MonoBehaviour, IFeedbackEval where T : Creatur
 
     public void UpdateSpawnMulFactor(int iVal)
     {
-        maxSpawnMulFactor = 1f + (1f - (1f/((Mathf.Pow(iVal,2)/4) + 1f)));
-        Debug.Log(maxSpawnMulFactor);
+        maxSpawnMulFactor = 1f + (1f - (1f / ((Mathf.Pow(iVal, 2) / 4) + 1f)));
+        Debug.Log("iVal : " + iVal + " maxSpawnMulFactor : " + maxSpawnMulFactor);
+        boosters = iVal;
+
     }
 }

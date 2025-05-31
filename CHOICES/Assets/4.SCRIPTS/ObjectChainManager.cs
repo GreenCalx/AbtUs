@@ -4,7 +4,7 @@ using System;
 using UnityEngine;
 
 
-public class ObjectChain<T> : IFeedbackEval, IDisposable where T : InteractibleObject
+public class ObjectChain<T> : IDisposable where T : InteractibleObject
 {
     public List<T> objects;
     public List<ObjectChainLR> fXLinks;
@@ -19,13 +19,6 @@ public class ObjectChain<T> : IFeedbackEval, IDisposable where T : InteractibleO
         objects.Add(iChainRoot);
 
         fXLinks = new List<ObjectChainLR>();
-    }
-
-    public virtual float feedbackEvaluator()
-    {
-        if (objects == null)
-            return 0f;
-        return objects.Count * 0.05f;
     }
 
     public void Dispose()
@@ -51,14 +44,40 @@ public class ObjectChain<T> : IFeedbackEval, IDisposable where T : InteractibleO
         objects.RemoveAt(Count - 1);
         return obj;
     }
+
+    public float Evaluate()
+    {
+        //  chain root doesn't count towards chaos
+        return Count - 1;
+    }
 }
 
-public class ObjectChainManager : MonoBehaviour
+public class ObjectChainManager : MonoBehaviour, IFeedbackEval
 {
     [Header("Refs")]
     public GameObject prefab_ChainLineRenderer;
+    public GameFeedback feedback;
     [Header("Internals")]
     public List<ObjectChain<InteractibleObject>> chains = new List<ObjectChain<InteractibleObject>>();
+
+    void Start()
+    {
+        if (feedback == null)
+            Debug.LogError("Feedback ref missing on ObjectChainManager.");
+        feedback.Init(this);
+    }
+
+    public virtual float feedbackEvaluator()
+    {
+        if (chains == null)
+            return 0f;
+
+        float retval = 0f;
+        foreach (var chain in chains)
+        { retval += chain.Evaluate(); }
+
+        return retval * GameSettings.Instance.DuplicationMulFactor;
+    }
 
     public bool CreateChain(InteractibleObject iObj)
     {
@@ -76,6 +95,9 @@ public class ObjectChainManager : MonoBehaviour
             return false;
         chains[chainIndex].objects.Add(iToAdd);
         chains[chainIndex].fXLinks.Add(FXLink(iTargetedChainRefElem, iToAdd));
+
+        feedback.Refresh();
+
         return true;
     }
 
@@ -97,6 +119,8 @@ public class ObjectChainManager : MonoBehaviour
         int last_elem = chains[chainIndex].Count - 1;
         InteractibleObject to_rm = chains[chainIndex].PeekAndRemoveLast();
         Destroy(to_rm.gameObject);
+
+        feedback.Refresh();
     }
 
     public bool DestroyChain(InteractibleObject iObj)
@@ -108,6 +132,9 @@ public class ObjectChainManager : MonoBehaviour
         chains[chainIndex].Dispose();
         chains.RemoveAt(chainIndex);
         chains = chains.Where(e => e != null).ToList();
+
+        feedback.Refresh();
+
         return true;
     }
 

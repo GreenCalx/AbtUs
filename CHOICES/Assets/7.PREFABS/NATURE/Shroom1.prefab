@@ -53,7 +53,7 @@ MonoBehaviour:
   targetRend: {fileID: 8435926232105901905}
   intersectionCheckMask:
     serializedVersion: 2
-    m_Bits: 0
+    m_Bits: 2113665
   feedback: {fileID: 0}
   puzzle: {fileID: 0}
   selectionFX: {fileID: 2511441162795110904}
