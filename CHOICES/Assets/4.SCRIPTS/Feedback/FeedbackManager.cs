@@ -6,8 +6,8 @@ using System;
 
 public enum FeedbackType
 {
-    glow,
-    sanity,
+    luminance,
+    darkness,
     world,
     player,
     proximity,
@@ -108,7 +108,7 @@ public class Feedback
         }
     }
     private float __influence { get; set; }
-    public float influence { get { return __influence; } set { __influence = Mathf.Clamp01(value); } } // 0f => disabled
+    public float influence { get { return __influence; } set { __influence = Mathf.Clamp(value, -2f, 2f); } } // 0f => disabled
     public float loopStrength { get; set; } // 0f => disabled
     public FeedbackType fType;
     public bool isSync;

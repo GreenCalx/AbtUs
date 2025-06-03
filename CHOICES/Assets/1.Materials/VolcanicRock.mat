@@ -173,8 +173,8 @@ Material:
     - _TessellationFactorTriangleSize: 16.59
     - _TessellationMaxDisplacement: 0.07
     - _TessellationMode: 1
-    - _TessellationShapeFactor: 1
-    - _TessellationStrength: 0.02
+    - _TessellationShapeFactor: 0
+    - _TessellationStrength: 0
     - _TransmissionEnable: 1
     - _TransparentBackfaceEnable: 0
     - _TransparentCullMode: 2

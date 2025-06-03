@@ -3,6 +3,9 @@ using UnityEngine.UI;
 
 public class UIGame : MonoBehaviour
 {
+    [Header("Debug")]
+    public Image DbgLightDetectorImg;
+
     [Header("Mand Refs")]
     public UICursorCollection cursorCollection;
 
@@ -64,6 +67,12 @@ public class UIGame : MonoBehaviour
         {
             crosshair.transform.position = Input.mousePosition;
         }
+    }
+    public void DbgLightDetecRefresh(LightDetector iLightDetec)
+    {
+        if (DbgLightDetectorImg == null)
+            return;
+        DbgLightDetectorImg.color = new Color(iLightDetec.Luminance, iLightDetec.Luminance, iLightDetec.Luminance, 1f);
     }
     public void ResetCursorToCenter()
     {

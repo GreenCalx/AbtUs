@@ -424,11 +424,15 @@ public class InteractibleObject : MonoBehaviour
     #region DUPLICATE
     public virtual void Duplicate()
     {
-        if (RB != null)
-        {
-            RB.useGravity = false;
-            RB.isKinematic = true;
-        }
+        // bool makeKinematic = false;
+        
+        // if (RB != null)
+        // {
+        //     makeKinematic = !RB.isKinematic;
+        //     if (makeKinematic)
+        //         RB.isKinematic = true;
+        //     RB.useGravity = false;
+        // }
         GameObject duplicata = GameObject.Instantiate(gameObject);
         duplicata.transform.parent = transform.parent;
 

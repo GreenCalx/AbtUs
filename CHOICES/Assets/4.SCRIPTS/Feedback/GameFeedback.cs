@@ -9,7 +9,7 @@ public class GameFeedback : MonoBehaviour
     public FeedbackData fData;
     [Header("Internal View")]
     
-    [SerializeField, Range(0f, 2f)]
+    [SerializeField, Range(-2f, 2f)]
     public float Influence = 1f;
     public UnityEvent<float> InitFromFeedbackFunc;
 
@@ -39,7 +39,8 @@ public class GameFeedback : MonoBehaviour
 
     public void Refresh()
     {
-        fbm.AsyncNotif(this);
+        if (fbm!=null)
+            fbm.AsyncNotif(this);
         // fbm.ChangeOWC(this);
         // if (consumeOnUse)
         // {
