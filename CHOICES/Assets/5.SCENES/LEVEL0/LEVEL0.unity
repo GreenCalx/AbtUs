@@ -3510,6 +3510,11 @@ PrefabInstance:
       propertyPath: player_cam
       value: 
       objectReference: {fileID: 1823688467}
+    - target: {fileID: 4191856760563345058, guid: 86fa92c3be5c4404c9bd2b3f2ab2d3e1,
+        type: 3}
+      propertyPath: m_Name
+      value: Decal_3
+      objectReference: {fileID: 0}
     - target: {fileID: 5706585848580645947, guid: 86fa92c3be5c4404c9bd2b3f2ab2d3e1,
         type: 3}
       propertyPath: m_Name
