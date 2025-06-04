@@ -5,7 +5,7 @@ using UnityEngine.Rendering;
 public enum GTL_TYPE { EXTRA = 0, MAIN = 1, SUN=2, LIGHT=4, WATER=3}
 
 [Serializable]
-public class GTLModifier<T, K> : MonoBehaviour
+public class GTLModifier<T, K> : OWCModifier
 {
     public T modifierTarget;
     public GTL_TYPE gtlType = GTL_TYPE.EXTRA;

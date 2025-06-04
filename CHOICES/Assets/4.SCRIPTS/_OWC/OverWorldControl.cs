@@ -14,6 +14,7 @@ public class OverWorldControl : MonoBehaviour
     [Header("Debug")]
     public bool debug = true;
     public bool applyForcedControls = false;
+    public bool updateForcedControls = false;
     [Range(0f,1f)]
     public float ForceMineralToOrganic = 0f;
     [Range(0f,1f)]
@@ -37,6 +38,10 @@ public class OverWorldControl : MonoBehaviour
         set {
             if (m_GloomyToLush==value)
                 return;
+
+            if (applyForcedControls)
+                SetGloomyToLush(ForceGloomyToLush);
+
             SetGloomyToLush(value);
         }
     }
@@ -49,6 +54,10 @@ public class OverWorldControl : MonoBehaviour
         set {
             if (m_MineralToOrganic==value)
                 return;
+
+            if (applyForcedControls)
+                SetMineralToOrganic(ForceMineralToOrganic);
+
             SetMineralToOrganic(value);
         }
     }
@@ -61,6 +70,10 @@ public class OverWorldControl : MonoBehaviour
         set {
             if (m_OrderToChaos==value)
                 return;
+
+            if (applyForcedControls)
+                SetOrderToChaos(ForceOrderToChaos);
+
             SetOrderToChaos(value);
         }
     }
@@ -208,24 +221,31 @@ public class OverWorldControl : MonoBehaviour
 
     void Update()
     {
-        if (debug && applyForcedControls)
+        // if (debug && applyForcedControls)
+        // {
+        //     if (ForceMineralToOrganic!=MineralToOrganic)
+        //     {
+        //         MineralToOrganic = ForceMineralToOrganic;
+        //     }
+
+        //     if (OrderToChaos!=ForceOrderToChaos)
+        //     {
+        //         OrderToChaos = ForceOrderToChaos;
+        //     }
+
+        //     if (GloomyToLush!=ForceGloomyToLush)
+        //     {
+        //         GloomyToLush = ForceGloomyToLush;
+        //     }
+
+        //     applyForcedControls = false;
+        // }
+        if (updateForcedControls)
         {
-            if (ForceMineralToOrganic!=MineralToOrganic)
-            {
-                MineralToOrganic = ForceMineralToOrganic;
-            }
-
-            if (OrderToChaos!=ForceOrderToChaos)
-            {
-                OrderToChaos = ForceOrderToChaos;
-            }
-
-            if (GloomyToLush!=ForceGloomyToLush)
-            {
-                GloomyToLush = ForceGloomyToLush;
-            }
-
-            applyForcedControls = false;
+            MineralToOrganic = ForceMineralToOrganic;
+            OrderToChaos = ForceOrderToChaos;
+            GloomyToLush = ForceGloomyToLush;
+            updateForcedControls = false;
         }
     }
 

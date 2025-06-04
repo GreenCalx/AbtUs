@@ -1,0 +1,69 @@
+00:00:03 : [OK] Create chain for BCK_SIDE
+00:00:03 : [INFO] Add Poolable object BCK_SIDE by seekind ID in parent via manager
+00:00:03 : [FAIL] Retrieve ObjectPool for BCK_SIDE in parent hierarchy
+00:00:03 : [OK] Create chain for BCK_SIDE
+00:00:03 : [INFO] Add Poolable object BCK_SIDE by seekind ID in parent via manager
+00:00:03 : [FAIL] Retrieve ObjectPool for BCK_SIDE in parent hierarchy
+00:00:03 : [OK] Create chain for BCK_SIDE
+00:00:03 : [INFO] Add Poolable object BCK_SIDE by seekind ID in parent via manager
+00:00:03 : [FAIL] Retrieve ObjectPool for BCK_SIDE in parent hierarchy
+00:00:03 : [OK] Create chain for BCK_SIDE
+00:00:03 : [INFO] Add Poolable object BCK_SIDE by seekind ID in parent via manager
+00:00:03 : [FAIL] Retrieve ObjectPool for BCK_SIDE in parent hierarchy
+00:00:03 : [OK] Create chain for BCK_SIDE
+00:00:03 : [INFO] Add Poolable object BCK_SIDE by seekind ID in parent via manager
+00:00:03 : [FAIL] Retrieve ObjectPool for BCK_SIDE in parent hierarchy
+00:00:03 : [OK] Create chain for BCK_SIDE
+00:00:03 : [INFO] Add Poolable object BCK_SIDE by seekind ID in parent via manager
+00:00:03 : [FAIL] Retrieve ObjectPool for BCK_SIDE in parent hierarchy
+00:00:03 : [OK] Create chain for BCK_SIDE
+00:00:03 : [INFO] Add Poolable object BCK_SIDE by seekind ID in parent via manager
+00:00:03 : [FAIL] Retrieve ObjectPool for BCK_SIDE in parent hierarchy
+00:00:03 : [OK] Create chain for Shroom1
+00:00:03 : [INFO] Add Poolable object Shroom1 by seekind ID in parent via manager
+00:00:03 : [INFO] Add Poolable object Shroom1 to pool ID 0 via manager
+00:00:03 : [OK]  ADD Shroom1 in object pool ISLE0 (id:0)
+00:00:03 : [OK] Create chain for NestModel
+00:00:03 : [INFO] Add Poolable object NestModel by seekind ID in parent via manager
+00:00:03 : [INFO] Add Poolable object NestModel to pool ID 0 via manager
+00:00:03 : [OK]  ADD NestModel in object pool ISLE0 (id:0)
+00:00:03 : [OK] Create chain for InteractibleObjectWithWheel
+00:00:03 : [INFO] Add Poolable object InteractibleObjectWithWheel by seekind ID in parent via manager
+00:00:03 : [INFO] Add Poolable object InteractibleObjectWithWheel to pool ID 0 via manager
+00:00:03 : [OK]  ADD InteractibleObjectWithWheel in object pool ISLE0 (id:0)
+00:00:03 : [OK] Create chain for InteractibleObject
+00:00:03 : [INFO] Add Poolable object InteractibleObject by seekind ID in parent via manager
+00:00:03 : [INFO] Add Poolable object InteractibleObject to pool ID 0 via manager
+00:00:03 : [OK]  ADD InteractibleObject in object pool ISLE0 (id:0)
+00:00:03 : [OK] Create chain for ChoiceStone
+00:00:03 : [INFO] Add Poolable object ChoiceStone by seekind ID in parent via manager
+00:00:03 : [INFO] Add Poolable object ChoiceStone to pool ID 0 via manager
+00:00:03 : [OK]  ADD ChoiceStone in object pool ISLE0 (id:0)
+00:00:03 : [OK] Create chain for ChoiceStone
+00:00:03 : [INFO] Add Poolable object ChoiceStone by seekind ID in parent via manager
+00:00:03 : [INFO] Add Poolable object ChoiceStone to pool ID 1 via manager
+00:00:03 : [OK]  ADD ChoiceStone in object pool ISLE1 (id:1)
+00:00:08 : [OK] Add chain for InteractibleObject(Clone) with chainIndex 10
+00:00:08 : [INFO] Add Poolable object InteractibleObject(Clone) by seekind ID in parent via manager
+00:00:08 : [INFO] Add Poolable object InteractibleObject(Clone) to pool ID 0 via manager
+00:00:08 : [OK]  ADD InteractibleObject(Clone) in object pool ISLE0 (id:0)
+00:00:12 : [OK] Add chain for InteractibleObject(Clone) with chainIndex 10
+00:00:12 : [INFO] Add Poolable object InteractibleObject(Clone) by seekind ID in parent via manager
+00:00:12 : [INFO] Add Poolable object InteractibleObject(Clone) to pool ID 0 via manager
+00:00:12 : [OK]  ADD InteractibleObject(Clone) in object pool ISLE0 (id:0)
+00:00:14 : [OK] Add chain for InteractibleObjectWithWheel(Clone) with chainIndex 9
+00:00:14 : [INFO] Add Poolable object InteractibleObjectWithWheel(Clone) by seekind ID in parent via manager
+00:00:14 : [INFO] Add Poolable object InteractibleObjectWithWheel(Clone) to pool ID 0 via manager
+00:00:14 : [OK]  ADD InteractibleObjectWithWheel(Clone) in object pool ISLE0 (id:0)
+00:00:15 : [OK] Add chain for InteractibleObjectWithWheel(Clone)(Clone) with chainIndex 9
+00:00:15 : [INFO] Add Poolable object InteractibleObjectWithWheel(Clone)(Clone) by seekind ID in parent via manager
+00:00:15 : [INFO] Add Poolable object InteractibleObjectWithWheel(Clone)(Clone) to pool ID 0 via manager
+00:00:15 : [OK]  ADD InteractibleObjectWithWheel(Clone)(Clone) in object pool ISLE0 (id:0)
+00:00:25 : [OK] Add chain for Shroom1(Clone) with chainIndex 7
+00:00:25 : [INFO] Add Poolable object Shroom1(Clone) by seekind ID in parent via manager
+00:00:25 : [INFO] Add Poolable object Shroom1(Clone) to pool ID 0 via manager
+00:00:25 : [OK]  ADD Shroom1(Clone) in object pool ISLE0 (id:0)
+00:00:28 : [OK] Add chain for Shroom1(Clone)(Clone) with chainIndex 7
+00:00:28 : [INFO] Add Poolable object Shroom1(Clone)(Clone) by seekind ID in parent via manager
+00:00:28 : [INFO] Add Poolable object Shroom1(Clone)(Clone) to pool ID 0 via manager
+00:00:28 : [OK]  ADD Shroom1(Clone)(Clone) in object pool ISLE0 (id:0)

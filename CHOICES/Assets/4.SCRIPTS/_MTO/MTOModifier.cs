@@ -11,7 +11,7 @@ using UnityEngine;
 
 */
 
-public class MTOModifier : MonoBehaviour
+public class MTOModifier : OWCModifier
 {
     public Renderer MR;
     //public MatDefSO initMats;

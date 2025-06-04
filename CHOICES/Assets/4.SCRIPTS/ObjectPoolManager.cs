@@ -1,68 +1,150 @@
 using UnityEngine;
 using System;
+using System.Linq;
 using System.Collections.Generic;
+using static EventLog;
+public enum OBJ_NATURE {
+    NONE = WORLD_AXIS.ZERO,
+    MINERAL = WORLD_AXIS.MINERAL,
+    ORGANIC = WORLD_AXIS.ORGANIC
+};
+
+public interface IPoolable
+{
+    public Transform GetTransform();
+    public OBJ_NATURE GetNature();
+    public string GetName();
+    public bool UseInFeedback();
+    public void OnPoolSleep();
+    public void OnPoolAwake();
+}
 
 [ExecuteInEditMode]
-public class ObjectPoolManager : MonoBehaviour
+public class ObjectPoolManager : MonoBehaviour, IFeedbackEval
 {
-    private static ObjectPoolManager instance = null;
-    public static ObjectPoolManager Instance => instance;
-
-    private Dictionary<string, ObjectPool> poolsDict = new Dictionary<string, ObjectPool>();
+    [Header("MAND REFS")]
     public List<ObjectPool> pools;
-    public string activeIsland;
+    public int startPoolID = 0;
+    public GameFeedback mto_feedback;
+
+    [Header("Internals")]
+    public List<int> activePools;
 
 
+    private int mineralPool = 0;
+    private int organicPool = 0;
 
     public void Awake()
     {
-        instance = this;
-        foreach(ObjectPool pool in pools)
-        {
-            poolsDict.Add(pool.name, pool);
-        }
+        int index = 0;
+        foreach (ObjectPool pool in pools)
+        { pool.id = index; index++; }
     }
 
-
-    public void AddObject(GameObject iObj, string islandName)
+    void Start()
     {
-        if (poolsDict.ContainsKey(islandName))
+        if (mto_feedback != null)
+            mto_feedback.Init(this);
+
+        activePools = new List<int>();
+        activePools.Add(startPoolID);
+    }
+
+    public virtual float feedbackEvaluator()
+    {
+        return organicPool - mineralPool;
+    }
+
+    public void AddObject(IPoolable iObj)
+    {
+        INFO("Add Poolable object " + iObj.GetName() + " by seekind ID in parent via manager");
+        int poolID = -1;
+
+        ObjectPool parentPool = iObj.GetTransform().gameObject.GetComponentInParent<ObjectPool>();
+        if (parentPool == null)
         {
-            poolsDict[islandName].Add(iObj);
+            FAIL("Retrieve ObjectPool for " + iObj.GetName() + " in parent hierarchy");
             return;
         }
-        throw new System.Exception("island name not recognized : " + islandName);
+        poolID = parentPool.id;
+        AddObject(iObj, poolID);
+    }                 
+
+    public void AddObject(IPoolable iObj, int poolID)
+    {
+        INFO("Add Poolable object " + iObj.GetName() + " to pool ID " + poolID + " via manager");
+        pools[poolID]?.Add(iObj);
+
+        if (iObj.UseInFeedback())
+        {
+            if (iObj.GetNature() == OBJ_NATURE.MINERAL) { mineralPool++; }
+            else if (iObj.GetNature() == OBJ_NATURE.ORGANIC) { organicPool++; }
+        }
+        
+        mto_feedback?.Refresh();
     }
 
-    public void RemoveObject(GameObject iObj, string islandName)
+    public void RemoveObject(IPoolable iObj)
     {
-        if (poolsDict.ContainsKey(islandName))
+        INFO("Remove Poolable object " + iObj.GetName() + " by seekind ID in parent via manager");
+        int poolID = -1;
+
+        ObjectPool parentPool = iObj.GetTransform().gameObject.GetComponentInParent<ObjectPool>();
+        if (parentPool == null)
         {
-            poolsDict[islandName].Remove(iObj);
+            FAIL("Retrieve ObjectPool for " + iObj.GetName() + " in parent hierarchy");
             return;
         }
-        throw new System.Exception("island name not recognized : " + islandName);
+        poolID = parentPool.id;
+        RemoveObject(iObj, poolID);
     }
 
-    public void Enable(string islandName, bool bol)
+    public void RemoveObject(IPoolable iObj, int poolID)
     {
-        if (poolsDict.ContainsKey(islandName))
+        INFO("Remove Poolable object " + iObj.GetName() + " to pool ID " + poolID + " via manager");
+        pools[poolID]?.Remove(iObj);
+        if (iObj.UseInFeedback())
         {
-            poolsDict[islandName].Enable(bol);
-            return;
+            if (iObj.GetNature() == OBJ_NATURE.MINERAL) { mineralPool++; }
+            else if (iObj.GetNature() == OBJ_NATURE.ORGANIC) { organicPool++; }
         }
-        throw new System.Exception("island name not recognized : " + islandName);
+        mto_feedback?.Refresh();
     }
 
-    public void ChangeActiveIsland(string newIslandName)
+    public void Enable(int iPoolID)
     {
-        if (poolsDict.ContainsKey(newIslandName) && poolsDict.ContainsKey(activeIsland))
+        if (activePools.Contains(iPoolID))
         {
-            Enable(activeIsland, false);
-            Enable(newIslandName, true);
-            activeIsland = newIslandName;
+            FAIL("Enable pool id : " + iPoolID + " via manager");
             return;
         }
-        Debug.LogWarning("islands :" + newIslandName + " " + activeIsland + " not found in the ObjectPoolManager (change active island)");
+            
+        activePools.Add(iPoolID);
+        pools[iPoolID].OnEnable();
     }
+
+    public void Disable(int iPoolID)
+    {
+        if (!activePools.Contains(iPoolID))
+        {
+            FAIL("Disable pool id : " + iPoolID + " via manager");
+            return;
+        }
+        pools[iPoolID].OnDisable();
+        activePools.Remove(iPoolID);
+        activePools = activePools.Where(e => e != null).ToList();
+    }
+
+    public void EnableSolo(int iPoolID)
+    {
+        foreach (int i in activePools)
+        { pools[i].OnDisable(); }
+
+        activePools.Clear();
+
+        activePools.Add(iPoolID);
+        pools[iPoolID].OnEnable();
+        INFO("EnableSolo to pool ID " + iPoolID + " via manager");
+    }
+
 }

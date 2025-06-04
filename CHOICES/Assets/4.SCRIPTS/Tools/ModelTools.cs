@@ -1,3 +1,5 @@
+
+#if UNITY_EDITOR
 using UnityEngine;
 
 [ExecuteInEditMode]
@@ -17,7 +19,12 @@ public class ModelTools : MonoBehaviour
         if (clipToTerrain) { tapeToClosestTerrainHeigh();}
         if (addToIslandPool)
         {
-            GetTerrain().transform.parent.GetComponent<ObjectPool>().Add(this.gameObject);
+            Component[] comps = gameObject.GetComponents(typeof(IPoolable));
+            if ((comps!=null)&&(comps.Length > 0))
+            {
+                IPoolable as_poolable = comps[0] as IPoolable;
+                GetTerrain().transform.parent.GetComponent<ObjectPool>().Add(as_poolable);
+            }
             addToIslandPool = false;
         }
     }
@@ -104,3 +111,4 @@ public class ModelTools : MonoBehaviour
 
     #endregion
 }
+#endif

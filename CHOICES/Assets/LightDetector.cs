@@ -79,7 +79,7 @@ public class LightDetector : MonoBehaviour, IFeedbackEval
             LuminanceNext += (0.2126f * colors[i].r) + (0.7152f * colors[i].g) + (0.0722f + colors[i].b);
         }
         LuminanceNext /= (Screen.width * Screen.height);
-        LuminanceNext = Utils.Remap(LuminanceNext, 0f, 100f, 0f, 1f);
+        LuminanceNext = Utils.Remap(LuminanceNext, 0f, 150f, 0f, 1f);
 
         GPUReqDonne = true;
         //LuminanceFeedback.fData.baseValue = Luminance;

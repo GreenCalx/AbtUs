@@ -2,7 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class OTCModifier : MonoBehaviour
+public class OTCModifier : OWCModifier
 {
     public OTCCluster cluster;
     public Vector3 initPos;

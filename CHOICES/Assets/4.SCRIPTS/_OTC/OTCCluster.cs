@@ -21,9 +21,9 @@ public class OTCCluster : MonoBehaviour
     [Header("Internals")]
     public OTCLookupTable.SPREAD_SHAPE currSpreadShape = OTCLookupTable.SPREAD_SHAPE.NONE;
     public Bounds clusterBounds;
-    public BoundedObjectPool clusterPool;
+    public BoundedCluster clusterPool;
 
-    [Range(0,0.5f)]
+    [Range(0, 0.5f)]
     public float completeShapeThreshold = 0.5f;
 
 
@@ -44,37 +44,37 @@ public class OTCCluster : MonoBehaviour
     {
         if (retrieveModsInChildren)
         {
-            mods = new List<OTCModifier>( GetComponentsInChildren<OTCModifier>().ToList());
+            mods = new List<OTCModifier>(GetComponentsInChildren<OTCModifier>().ToList());
         }
     }
 
     void Start()
     {
-        foreach(OTCModifier m in mods) { m.Init_OTC(this); }
+        foreach (OTCModifier m in mods) { m.Init_OTC(this); }
         OverWorldControl.Instance.SubscribeOTCCluster(this);
 
         Vector3 center = Vector3.zero;
-        foreach(OTCModifier m in mods)
+        foreach (OTCModifier m in mods)
         {
             center += m.transform.localPosition;
         }
         center /= mods.Count;
 
         // set self to bound center
-        GameObject newPool = new GameObject("ClusterBounds", typeof(BoundedObjectPool));
-        clusterPool = newPool.GetComponent<BoundedObjectPool>();
+        GameObject newPool = new GameObject("ClusterBounds:" + gameObject.name, typeof(BoundedCluster));
+        clusterPool = newPool.GetComponent<BoundedCluster>();
 
         clusterPool.transform.position = center;
         clusterPool.transform.parent = transform;
 
-        foreach(OTCModifier m in mods)
+        foreach (OTCModifier m in mods)
         {
             clusterPool.Encapsulate(m.gameObject);
         }
         clusterPool.ApplyMargin(margin);
 
         clusterBounds = clusterPool.bounds;
-        
+
     }
 
     public void spread(OTCLookupTable iOTCTable, float iOTC_Factor)
@@ -84,13 +84,13 @@ public class OTCCluster : MonoBehaviour
             return;
 
         // 1. Get Spread shape & set destination for each mod
-        if ((orderForcedShape!=OTCLookupTable.SPREAD_SHAPE.NONE)||(chaosForcedShape!=OTCLookupTable.SPREAD_SHAPE.NONE))
+        if ((orderForcedShape != OTCLookupTable.SPREAD_SHAPE.NONE) || (chaosForcedShape != OTCLookupTable.SPREAD_SHAPE.NONE))
             iOTCTable.ComputeSpreadShape(this, iOTC_Factor, orderForcedShape, chaosForcedShape);
         else
             iOTCTable.ComputeSpreadShape(this, iOTC_Factor);
 
         // 2. Refresh Positions
-        iOTCTable.RefreshTargetPositions(this,iOTC_Factor);
+        iOTCTable.RefreshTargetPositions(this, iOTC_Factor);
 
         // 3. Set Rotations
         iOTCTable.RefreshTargetRotations(this, iOTC_Factor);
@@ -101,28 +101,37 @@ public class OTCCluster : MonoBehaviour
         // 5. Launch LERP !
         mods.ForEach(m => m.Launch());
     }
-    
+
     public void ResetPositions()
     {
-        foreach(OTCModifier m in mods)
+        foreach (OTCModifier m in mods)
         {
             m.targetPos = m.initPos;
         }
     }
     public void ResetRotations()
     {
-        foreach(OTCModifier m in mods)
+        foreach (OTCModifier m in mods)
         {
             m.targetRot = m.initRot;
         }
     }
     public void ResetScales()
     {
-        foreach(OTCModifier m in mods)
+        foreach (OTCModifier m in mods)
         {
             m.targetScale = m.initScale;
         }
     }
 
+    #region IPoolable
+    public string GetName() { return gameObject.name; }
+    public OBJ_NATURE GetNature() { return OBJ_NATURE.NONE; }
+    public void OnPoolSleep() { }
+
+    public void OnPoolAwake() { }
+
+    public bool UseInMTOFeedback() { return false; }
+    #endregion
 
 }

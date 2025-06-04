@@ -43,8 +43,11 @@ public class OTCLookupTable : MonoBehaviour
 
     public void ComputeSpreadShape(OTCCluster iCluster, float iOTC, SPREAD_SHAPE iForceShapeOrder = SPREAD_SHAPE.NONE, SPREAD_SHAPE iForceShapeChaos = SPREAD_SHAPE.NONE)
     {
-        bool askForChaos = OverWorldControl.Instance.ChaosMagnitude > 0f;
-        bool askForOrder = OverWorldControl.Instance.OrderMagnitude > 0f;
+        float chaosMag = OverWorldControl.Instance.ChaosMagnitude;
+        float orderMag = OverWorldControl.Instance.OrderMagnitude;
+
+        bool askForChaos = chaosMag > 0f;
+        bool askForOrder = orderMag > 0f;
 
         // Don't recompute shape if the computed one already fits
         if (askForOrder && ShapeIsOrder(iCluster.currSpreadShape))
@@ -66,12 +69,12 @@ public class OTCLookupTable : MonoBehaviour
             {
                 if (askForChaos && (u.axisConstraint == WORLD_AXIS.CHAOS))
                 { // CHAOS
-                    if (iOTC > u.OtC_Factor)
+                    if (chaosMag > u.OtC_Factor)
                         eligibleShapes.Add(u.spreadShape);
                 } else if (askForOrder && (u.axisConstraint == WORLD_AXIS.ORDER)) 
                 {
                     // ORDER
-                    if (iOTC < u.OtC_Factor)
+                    if (orderMag > u.OtC_Factor)
                         eligibleShapes.Add(u.spreadShape);
                 }
             }
@@ -319,7 +322,7 @@ public class OTCLookupTable : MonoBehaviour
         float pillarStep = pillarSize / pillarCount;
         Vector3 relative_center = iCluster.clusterBounds.center - iCluster.transform.position;
         Vector3 idealTargetPos;
-        Debug.Log(iOrderFactor);
+
         foreach (OTCModifier m in iCluster.mods)
         {
             if(order < pillarCount)

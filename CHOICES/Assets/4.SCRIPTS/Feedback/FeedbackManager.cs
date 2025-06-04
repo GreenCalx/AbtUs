@@ -8,7 +8,7 @@ public enum FeedbackType
 {
     luminance,
     darkness,
-    world,
+    obj_nature,
     player,
     proximity,
     movements,
@@ -170,10 +170,10 @@ public class FeedbackManager : MonoBehaviour
         OWC.SetMineralToOrganic(fMatrix.outputs[(int)OWCAxis.MTO]);
         OWC.SetGloomyToLush(fMatrix.outputs[(int)OWCAxis.GTL]);
 
-        Debug.Log("MATRIX OUTPUT : ");
-        Debug.Log("output OTC : " + fMatrix.outputs[(int)OWCAxis.OTC]);
-        Debug.Log("output MTO : " + fMatrix.outputs[(int)OWCAxis.MTO]);
-        Debug.Log("output GTL : " + fMatrix.outputs[(int)OWCAxis.GTL]);
+        // Debug.Log("MATRIX OUTPUT : ");
+        // Debug.Log("output OTC : " + fMatrix.outputs[(int)OWCAxis.OTC]);
+        // Debug.Log("output MTO : " + fMatrix.outputs[(int)OWCAxis.MTO]);
+        // Debug.Log("output GTL : " + fMatrix.outputs[(int)OWCAxis.GTL]);
     }
 
     public void AsyncNotif(GameFeedback iF)

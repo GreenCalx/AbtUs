@@ -7,11 +7,10 @@ public class IntEvent : UnityEvent<int> {}
 
 public static class Utils
 {
-
     // Returns f(iX) of cauchy PDF
-    public static float CauchySample(float iX0, float iQ, float iXSample )
+    public static float CauchySample(float iX0, float iQ, float iXSample)
     {
-        float f_den = Mathf.PI * iQ * (1 +Mathf.Pow((iXSample-iX0)/iQ, 2));
+        float f_den = Mathf.PI * iQ * (1 + Mathf.Pow((iXSample - iX0) / iQ, 2));
         return 1f / f_den;
     }
     public static void CauchyToAnimCurve(ref AnimationCurve ioCurve, float iX0, float iQ)

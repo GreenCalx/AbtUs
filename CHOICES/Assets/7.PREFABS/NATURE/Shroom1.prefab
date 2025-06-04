@@ -55,6 +55,7 @@ MonoBehaviour:
     serializedVersion: 2
     m_Bits: 2113665
   feedback: {fileID: 0}
+  nature: 4
   puzzle: {fileID: 0}
   selectionFX: {fileID: 2511441162795110904}
   shaderCom: {fileID: 9160469334266539076}

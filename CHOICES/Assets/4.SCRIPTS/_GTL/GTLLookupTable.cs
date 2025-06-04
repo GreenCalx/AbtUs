@@ -38,9 +38,13 @@ public class GTLLookupTable : MonoBehaviour
     public bool TryUpdateProfile(GTLVolumeMod iMod, VolumeProfile iActiveProfile, float iGTLFactor)
     {
         List<VolumeProfile> eligibleProfiles = new List<VolumeProfile>();
-        bool isLush = OverWorldControl.Instance.LushMagnitude > 0f;
-        bool isGloom = OverWorldControl.Instance.GloomyMagnitude > 0f;
-        foreach(GTLLookupVolumeUnit u in volumeUnits)
+
+        float lushMag = OverWorldControl.Instance.LushMagnitude;
+        float gloomMag = OverWorldControl.Instance.GloomyMagnitude;
+
+        bool isLush = lushMag > 0f;
+        bool isGloom = gloomMag > 0f;
+        foreach (GTLLookupVolumeUnit u in volumeUnits)
         {
             if (u.volumeProfile == iActiveProfile)
                 continue;
@@ -51,18 +55,19 @@ public class GTLLookupTable : MonoBehaviour
             }
             else if (isLush && (u.axisConstraint == WORLD_AXIS.LUSH))
             {
-                if (iGTLFactor >= u.GtL_Factor)
+                if (lushMag >= u.GtL_Factor)
                     eligibleProfiles.Add(u.volumeProfile);
-            } else if (isGloom && (u.axisConstraint == WORLD_AXIS.GLOOMY)) 
+            }
+            else if (isGloom && (u.axisConstraint == WORLD_AXIS.GLOOMY))
             {
-                if (iGTLFactor <= u.GtL_Factor)
+                if (gloomMag >= u.GtL_Factor)
                     eligibleProfiles.Add(u.volumeProfile);
             }
         }
-        if (eligibleProfiles.Count==0)
+        if (eligibleProfiles.Count == 0)
             return false;
-        
-        int selectedProfile = UnityEngine.Random.Range(0,eligibleProfiles.Count);
+
+        int selectedProfile = UnityEngine.Random.Range(0, eligibleProfiles.Count);
         iMod.ChangeTarget(eligibleProfiles[selectedProfile]);
         return true;
     }
@@ -70,14 +75,17 @@ public class GTLLookupTable : MonoBehaviour
     public bool TryUpdateSun(GTLLightMod iSunMod, Light iActiveSunLight, float iGTLFactor)
     {
         List<Light> eligibleSuns = new List<Light>();
-        bool isLush = OverWorldControl.Instance.LushMagnitude > 0f;
-        bool isGloom = OverWorldControl.Instance.GloomyMagnitude > 0f;
+        float lushMag = OverWorldControl.Instance.LushMagnitude;
+        float gloomMag = OverWorldControl.Instance.GloomyMagnitude;
 
-        foreach(GTLLookupLightUnit u in lightUnits)
+        bool isLush = lushMag > 0f;
+        bool isGloom = gloomMag > 0f;
+
+        foreach (GTLLookupLightUnit u in lightUnits)
         {
             if (u.light == iActiveSunLight)
                 continue;
-            
+
             if (!isLush && !isGloom)
             {
                 if (u.axisConstraint == WORLD_AXIS.ZERO)
@@ -85,22 +93,27 @@ public class GTLLookupTable : MonoBehaviour
             }
             else if (isLush && (u.axisConstraint == WORLD_AXIS.LUSH))
             {
-                if (iGTLFactor > u.GtL_Factor)
+                if (lushMag >= u.GtL_Factor)
                     eligibleSuns.Add(u.light);
-            } 
+            }
             else if (isGloom && (u.axisConstraint == WORLD_AXIS.GLOOMY))
             {
-                if (iGTLFactor < u.GtL_Factor)
+                if (gloomMag >= u.GtL_Factor)
                     eligibleSuns.Add(u.light);
             }
         }
-        
-        if (eligibleSuns.Count==0)
+
+        if (eligibleSuns.Count == 0)
             return false;
 
-        int selectedSun = UnityEngine.Random.Range(0,eligibleSuns.Count);
+        int selectedSun = UnityEngine.Random.Range(0, eligibleSuns.Count);
         iSunMod.ChangeTarget(eligibleSuns[selectedSun]);
 
         return true;
+    }
+
+    public void ModSelect()
+    {
+
     }
 }

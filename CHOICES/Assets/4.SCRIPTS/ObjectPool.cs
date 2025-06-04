@@ -1,43 +1,59 @@
 using System;
+using System.Linq;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using static EventLog;
 
 public class ObjectPool : MonoBehaviour
 {
-    public List<GameObject> pool = new List<GameObject>();
+    public int id;
+    public List<IPoolable> pool = new List<IPoolable>();
 
     public void Start()
     {
-        foreach(GameObject obj in pool)
-        {
-            if(obj == null) { pool.Remove(obj); }
-        }
+        pool = pool.Where(e => e != null).ToList();
     }
 
-    public void Enable(bool bol)
+    public void OnEnable()
     {
-        foreach(GameObject obj in pool)
+        foreach (IPoolable obj in pool)
         {
-            obj.SetActive(bol);
+            obj.OnPoolAwake();
+        }
+    }
+
+    public void OnDisable()
+    {
+        foreach (IPoolable obj in pool)
+        {
+            obj.OnPoolSleep();
         }
     }
 
 
-    public void Add(GameObject iObject)
+    public void Add(IPoolable iObject)
     {
         if (pool.Contains(iObject))
+        {
+            FAIL(" ADD " + iObject.GetName() + " in object pool " + gameObject.name + " (id:" + id + ")");
             return;
+        }
+            
         pool.Add(iObject);
-        Debug.Log(iObject.name + " has been added to pool " + name);
+        OK(" ADD " + iObject.GetName() + " in object pool " + gameObject.name + " (id:" + id + ")");
     }
 
-    public virtual void Remove(GameObject iObject)
+    public virtual void Remove(IPoolable iObject)
     {
         if (!pool.Contains(iObject))
+        {
+            FAIL(" ADD " + iObject.GetName() + " in object pool " + gameObject.name + " (id:" + id + ")");
             return;
-        pool.Remove(iObject);   
-        Debug.Log(iObject.name + " has been removed from pool " + name);
+        }
+            
+        pool.Remove(iObject);
+        OK(" RM " + iObject.GetName() + " from object pool" + gameObject.name + " (id:" + id + ")");
     }
 
 

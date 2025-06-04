@@ -11,8 +11,10 @@ public enum PLAYER_ACTIONS
     WHEEL2 = 7, WHEEL3 = 8, WHEEL4 = 9, DEFAULT = 10,
 };
 
+
+
 [Serializable]
-public class InteractibleObject : MonoBehaviour
+public class InteractibleObject : MonoBehaviour, IPoolable
 {
     [Header("Tweaks")]
     public ItemSO def;
@@ -20,6 +22,8 @@ public class InteractibleObject : MonoBehaviour
     public Renderer targetRend;
     public LayerMask intersectionCheckMask;
     public GameFeedback feedback;
+    public OBJ_NATURE nature;
+
     [Header("Optional References")]
     public Puzzle puzzle;
     public SelectionFX selectionFX;
@@ -51,6 +55,12 @@ public class InteractibleObject : MonoBehaviour
     {
         if (!initDone)
             Init();
+        Managers.Instance.ObjectPools.AddObject(this);
+    }
+
+    void OnDestroy()
+    {
+        Managers.Instance.ObjectPools.RemoveObject(this);
     }
 
     public void Init()
@@ -76,13 +86,13 @@ public class InteractibleObject : MonoBehaviour
 
     public virtual void Select()
     {
-        if (selectionFX!=null)
+        if (selectionFX != null)
             selectionFX.Select();
     }
 
     public virtual void Deselect()
     {
-        if (selectionFX!=null)
+        if (selectionFX != null)
             selectionFX.Deselect();
     }
 
@@ -129,7 +139,7 @@ public class InteractibleObject : MonoBehaviour
     {
         if (iAction == selectedAction)
             return;
-        
+
         switch (iAction)
         {
             case PLAYER_ACTIONS.MOVE:
@@ -146,7 +156,7 @@ public class InteractibleObject : MonoBehaviour
 
                 IsInActionChain = false;
                 break;
-            case  PLAYER_ACTIONS.INFO:
+            case PLAYER_ACTIONS.INFO:
                 selectedAction = iAction;
 
                 startAction = new UnityEvent();
@@ -247,7 +257,7 @@ public class InteractibleObject : MonoBehaviour
         }
 
         continueAction.Invoke();
-        
+
         if (!IsInActionChain)
         {
             iPlayer.freeze_inputs = false;
@@ -342,7 +352,7 @@ public class InteractibleObject : MonoBehaviour
 
         // renderer intersects other models flagged in layermask
         Bounds b = targetRend.bounds;
-        List<Collider> cols = Physics.OverlapBox(b.center, b.extents / 2f, Quaternion.identity, intersectionCheckMask,QueryTriggerInteraction.Ignore).ToList();
+        List<Collider> cols = Physics.OverlapBox(b.center, b.extents / 2f, Quaternion.identity, intersectionCheckMask, QueryTriggerInteraction.Ignore).ToList();
         int n = cols.Where(e => e.gameObject != gameObject).ToArray().Length;
         return (n == 0);
 
@@ -425,7 +435,7 @@ public class InteractibleObject : MonoBehaviour
     public virtual void Duplicate()
     {
         // bool makeKinematic = false;
-        
+
         // if (RB != null)
         // {
         //     makeKinematic = !RB.isKinematic;
@@ -502,7 +512,7 @@ public class InteractibleObject : MonoBehaviour
 
         //Destroy(gameObject);
         Managers.Instance.ObjectChains.DestroyChain(this);
-        Deselect(); 
+        Deselect();
     }
 
     public virtual void StopShatter()
@@ -561,6 +571,18 @@ public class InteractibleObject : MonoBehaviour
     {
         UIGame.Instance.ExitActionWheelMode();
     }
+    #endregion
+
+    #region IPoolable
+    public string GetName() { return gameObject.name; }
+    public OBJ_NATURE GetNature() { return nature; }
+    public void OnPoolSleep() { }
+
+    public void OnPoolAwake() { }
+
+    public bool UseInFeedback() { return true; }
+
+    public virtual Transform GetTransform() { return transform; }
     #endregion
 
 }
