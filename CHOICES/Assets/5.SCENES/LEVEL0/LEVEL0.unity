@@ -502,12 +502,6 @@ Transform:
   - {fileID: 992935242}
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 186.194, z: 0}
---- !u!4 &675719352 stripped
-Transform:
-  m_CorrespondingSourceObject: {fileID: 5234164145809327239, guid: ba09f9c1eef703141bddacf45610c1c0,
-    type: 3}
-  m_PrefabInstance: {fileID: 1243249019}
-  m_PrefabAsset: {fileID: 0}
 --- !u!1 &725612360
 GameObject:
   m_ObjectHideFlags: 0
@@ -1036,41 +1030,11 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 0}
     m_Modifications:
-    - target: {fileID: 757687611247728063, guid: ba09f9c1eef703141bddacf45610c1c0,
-        type: 3}
-      propertyPath: fData.baseValue
-      value: 0.5
-      objectReference: {fileID: 0}
     - target: {fileID: 1351181775370747892, guid: ba09f9c1eef703141bddacf45610c1c0,
         type: 3}
       propertyPath: playerCam
       value: 
       objectReference: {fileID: 1959044607}
-    - target: {fileID: 4399473777418484543, guid: ba09f9c1eef703141bddacf45610c1c0,
-        type: 3}
-      propertyPath: feedback
-      value: 
-      objectReference: {fileID: 1243249020}
-    - target: {fileID: 4399473777418484543, guid: ba09f9c1eef703141bddacf45610c1c0,
-        type: 3}
-      propertyPath: mto_feedback
-      value: 
-      objectReference: {fileID: 2052747363}
-    - target: {fileID: 4399473777418484543, guid: ba09f9c1eef703141bddacf45610c1c0,
-        type: 3}
-      propertyPath: otc_feedback
-      value: 
-      objectReference: {fileID: 1243249020}
-    - target: {fileID: 5141452711767027010, guid: ba09f9c1eef703141bddacf45610c1c0,
-        type: 3}
-      propertyPath: m_Enabled
-      value: 1
-      objectReference: {fileID: 0}
-    - target: {fileID: 5141452711767027010, guid: ba09f9c1eef703141bddacf45610c1c0,
-        type: 3}
-      propertyPath: mto_feedback
-      value: 
-      objectReference: {fileID: 2052747363}
     - target: {fileID: 5141452711767027010, guid: ba09f9c1eef703141bddacf45610c1c0,
         type: 3}
       propertyPath: 'pools.Array.data[0]'
@@ -1086,11 +1050,6 @@ PrefabInstance:
       propertyPath: 'pools.Array.data[2]'
       value: 
       objectReference: {fileID: 1496699006}
-    - target: {fileID: 5141452711767027010, guid: ba09f9c1eef703141bddacf45610c1c0,
-        type: 3}
-      propertyPath: activePools.Array.size
-      value: 1
-      objectReference: {fileID: 0}
     - target: {fileID: 5234164145809327239, guid: ba09f9c1eef703141bddacf45610c1c0,
         type: 3}
       propertyPath: m_LocalPosition.x
@@ -1141,6 +1100,11 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 6436285679740840751, guid: ba09f9c1eef703141bddacf45610c1c0,
+        type: 3}
+      propertyPath: fData.baseValue
+      value: 0.1
+      objectReference: {fileID: 0}
     - target: {fileID: 7808715935886537954, guid: ba09f9c1eef703141bddacf45610c1c0,
         type: 3}
       propertyPath: m_Name
@@ -1148,25 +1112,9 @@ PrefabInstance:
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
-    m_AddedGameObjects:
-    - targetCorrespondingSourceObject: {fileID: 5234164145809327239, guid: ba09f9c1eef703141bddacf45610c1c0,
-        type: 3}
-      insertIndex: -1
-      addedObject: {fileID: 2052747362}
+    m_AddedGameObjects: []
     m_AddedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: ba09f9c1eef703141bddacf45610c1c0, type: 3}
---- !u!114 &1243249020 stripped
-MonoBehaviour:
-  m_CorrespondingSourceObject: {fileID: 757687611247728063, guid: ba09f9c1eef703141bddacf45610c1c0,
-    type: 3}
-  m_PrefabInstance: {fileID: 1243249019}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 0}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 88f00807c9a4af844864efc0707a9761, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
 --- !u!114 &1287888913 stripped
 MonoBehaviour:
   m_CorrespondingSourceObject: {fileID: 3501630880115206046, guid: 7fca752e9fdc00344ad121eb2a363266,
@@ -2107,6 +2055,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 6d81cfb8ba6e97c48b2b2bc6fada6b9c, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  LogEvents: 1
   mouseSensivity: 0.52
   DuplicationMulFactor: 0.02
 --- !u!1001 &1891122276
@@ -2368,68 +2317,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: c0acd65c6c3da3541a7c5a10cd6b8a99, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
---- !u!1 &2052747361
-GameObject:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  serializedVersion: 6
-  m_Component:
-  - component: {fileID: 2052747362}
-  - component: {fileID: 2052747363}
-  m_Layer: 0
-  m_Name: ObjectNatureFeedback
-  m_TagString: Untagged
-  m_Icon: {fileID: 0}
-  m_NavMeshLayer: 0
-  m_StaticEditorFlags: 0
-  m_IsActive: 1
---- !u!4 &2052747362
-Transform:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 2052747361}
-  serializedVersion: 2
-  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0, y: 0, z: 0}
-  m_LocalScale: {x: 1, y: 1, z: 1}
-  m_ConstrainProportionsScale: 0
-  m_Children: []
-  m_Father: {fileID: 675719352}
-  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!114 &2052747363
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 2052747361}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 88f00807c9a4af844864efc0707a9761, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  fData:
-    tag: 2
-    type: 2
-    baseValue: 0.25
-    loopStrength: 0
-    isSynced: 0
-  Influence: 1
-  InitFromFeedbackFunc:
-    m_PersistentCalls:
-      m_Calls: []
-  maxOWCWindow: 1
-  minOWCWindow: 0
-  fInfluenceCurve:
-    serializedVersion: 2
-    m_Curve: []
-    m_PreInfinity: 2
-    m_PostInfinity: 2
-    m_RotationOrder: 4
 --- !u!114 &2059269390 stripped
 MonoBehaviour:
   m_CorrespondingSourceObject: {fileID: 5597959066957144353, guid: 86fa92c3be5c4404c9bd2b3f2ab2d3e1,

@@ -5,7 +5,6 @@ using System.Collections;
 
 public class Managers : MonoBehaviour
 {
-
     public SoundManager Sound;
     public CameraManager Camera;
     public ObjectChainManager ObjectChains;
@@ -34,20 +33,21 @@ public class Managers : MonoBehaviour
         ObjectChains = GetComponent<ObjectChainManager>();
         ObjectPools = GetComponent<ObjectPoolManager>();
 
-#if UNITY_EDITOR
-        EventLog.Init();
-        StartCoroutine(LogCo());
-#endif
+        if (GameSettings.Instance.LogEvents)
+        {
+            EventLog.Init();
+            StartCoroutine(LogCo());
+        }
     }
 
     void OnDestroy()
     {
-        #if UNITY_EDITOR
-        EventLog.Close();
-        #endif
+        if (GameSettings.Instance.LogEvents)
+        {
+            EventLog.Close();
+        }
     }
 
-#if UNITY_EDITOR
     IEnumerator LogCo()
     {
         while(Application.isPlaying)
@@ -59,5 +59,4 @@ public class Managers : MonoBehaviour
             yield return new WaitForSeconds(1f);
         }
     }
-#endif
 }

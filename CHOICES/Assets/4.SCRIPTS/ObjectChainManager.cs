@@ -47,8 +47,17 @@ public class ObjectChain<T> : IDisposable where T : InteractibleObject
 
     public float Evaluate()
     {
-        //  chain root doesn't count towards chaos
-        return Count - 1;
+        // chain root doesn't count towards chaos
+        float retval = Count - 1;
+
+        List<Vector3> positions = new List<Vector3>();
+        foreach(var o in objects) { positions.Add(o.transform.position); }
+        float orderMatchScore = OTCShapeChecker.GetTriangleMatching(positions);
+        Debug.Log("Tri matching : " + orderMatchScore);
+        if (orderMatchScore > 0f)
+            return -retval * orderMatchScore;
+        else
+            return retval;
     }
 }
 
@@ -80,17 +89,22 @@ public class ObjectChainManager : MonoBehaviour, IFeedbackEval
         return retval * GameSettings.Instance.DuplicationMulFactor;
     }
 
+    public void RefreshFeedback()
+    {
+        otc_feedback.Refresh();
+    }
+
     public bool CreateChain(InteractibleObject iObj)
     {
         var newChain = new ObjectChain<InteractibleObject>(iObj);
         if (chains.Contains(newChain))
         {
-            FAIL("Create chain for " + iObj.gameObject.name );
+            FAIL("Create chain for " + iObj.gameObject.name);
             return false;
         }
-            
+
         chains.Add(newChain);
-        OK("Create chain for " + iObj.gameObject.name );
+        OK("Create chain for " + iObj.gameObject.name);
         return true;
     }
 

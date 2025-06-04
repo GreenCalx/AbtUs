@@ -1,5 +1,6 @@
 using UnityEngine;
 using System.Collections;
+using static EventLog;
 
 public class InteractibleCreature : InteractibleObject
 {
@@ -35,6 +36,9 @@ public class InteractibleCreature : InteractibleObject
     {
         target.isFrozen = false;
         isMovedByPlayer = false;
+
+        Managers.Instance.ObjectChains.RefreshFeedback();
+        INFO("InteractibleCreature " + gameObject.name + " StopMove");
     }
 
     public override void Kill()

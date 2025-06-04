@@ -4,7 +4,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.Events;
-
+using static EventLog;
 public enum PLAYER_ACTIONS
 {
     NONE = 0, MOVE = 1, INFO = 2, TALK = 3, PUZZLE = 4, DUPLICATE = 5, SHATTER = 6,
@@ -301,6 +301,9 @@ public class InteractibleObject : MonoBehaviour, IPoolable
     public virtual void StopMove()
     {
         isMovedByPlayer = false;
+
+        Managers.Instance.ObjectChains.RefreshFeedback();
+        INFO("InteractibleObject " + gameObject.name + " StopMove");
     }
 
     public IEnumerator MoveCo(Transform iTarget, Rigidbody iTargetRB)

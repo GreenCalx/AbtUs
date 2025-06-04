@@ -1,24 +1,3 @@
-00:00:03 : [OK] Create chain for BCK_SIDE
-00:00:03 : [INFO] Add Poolable object BCK_SIDE by seekind ID in parent via manager
-00:00:03 : [FAIL] Retrieve ObjectPool for BCK_SIDE in parent hierarchy
-00:00:03 : [OK] Create chain for BCK_SIDE
-00:00:03 : [INFO] Add Poolable object BCK_SIDE by seekind ID in parent via manager
-00:00:03 : [FAIL] Retrieve ObjectPool for BCK_SIDE in parent hierarchy
-00:00:03 : [OK] Create chain for BCK_SIDE
-00:00:03 : [INFO] Add Poolable object BCK_SIDE by seekind ID in parent via manager
-00:00:03 : [FAIL] Retrieve ObjectPool for BCK_SIDE in parent hierarchy
-00:00:03 : [OK] Create chain for BCK_SIDE
-00:00:03 : [INFO] Add Poolable object BCK_SIDE by seekind ID in parent via manager
-00:00:03 : [FAIL] Retrieve ObjectPool for BCK_SIDE in parent hierarchy
-00:00:03 : [OK] Create chain for BCK_SIDE
-00:00:03 : [INFO] Add Poolable object BCK_SIDE by seekind ID in parent via manager
-00:00:03 : [FAIL] Retrieve ObjectPool for BCK_SIDE in parent hierarchy
-00:00:03 : [OK] Create chain for BCK_SIDE
-00:00:03 : [INFO] Add Poolable object BCK_SIDE by seekind ID in parent via manager
-00:00:03 : [FAIL] Retrieve ObjectPool for BCK_SIDE in parent hierarchy
-00:00:03 : [OK] Create chain for BCK_SIDE
-00:00:03 : [INFO] Add Poolable object BCK_SIDE by seekind ID in parent via manager
-00:00:03 : [FAIL] Retrieve ObjectPool for BCK_SIDE in parent hierarchy
 00:00:03 : [OK] Create chain for Shroom1
 00:00:03 : [INFO] Add Poolable object Shroom1 by seekind ID in parent via manager
 00:00:03 : [INFO] Add Poolable object Shroom1 to pool ID 0 via manager
@@ -39,131 +18,140 @@
 00:00:03 : [INFO] Add Poolable object ChoiceStone by seekind ID in parent via manager
 00:00:03 : [INFO] Add Poolable object ChoiceStone to pool ID 0 via manager
 00:00:03 : [OK]  ADD ChoiceStone in object pool ISLE0 (id:0)
+00:00:03 : [OK] Create chain for BCK_SIDE
+00:00:03 : [INFO] Add Poolable object BCK_SIDE by seekind ID in parent via manager
+00:00:03 : [FAIL] Retrieve ObjectPool for BCK_SIDE in parent hierarchy
+00:00:03 : [OK] Create chain for BCK_SIDE
+00:00:03 : [INFO] Add Poolable object BCK_SIDE by seekind ID in parent via manager
+00:00:03 : [FAIL] Retrieve ObjectPool for BCK_SIDE in parent hierarchy
+00:00:03 : [OK] Create chain for BCK_SIDE
+00:00:03 : [INFO] Add Poolable object BCK_SIDE by seekind ID in parent via manager
+00:00:03 : [FAIL] Retrieve ObjectPool for BCK_SIDE in parent hierarchy
+00:00:03 : [OK] Create chain for BCK_SIDE
+00:00:03 : [INFO] Add Poolable object BCK_SIDE by seekind ID in parent via manager
+00:00:03 : [FAIL] Retrieve ObjectPool for BCK_SIDE in parent hierarchy
+00:00:03 : [OK] Create chain for BCK_SIDE
+00:00:03 : [INFO] Add Poolable object BCK_SIDE by seekind ID in parent via manager
+00:00:03 : [FAIL] Retrieve ObjectPool for BCK_SIDE in parent hierarchy
+00:00:03 : [OK] Create chain for BCK_SIDE
+00:00:03 : [INFO] Add Poolable object BCK_SIDE by seekind ID in parent via manager
+00:00:03 : [FAIL] Retrieve ObjectPool for BCK_SIDE in parent hierarchy
+00:00:03 : [OK] Create chain for BCK_SIDE
+00:00:03 : [INFO] Add Poolable object BCK_SIDE by seekind ID in parent via manager
+00:00:03 : [FAIL] Retrieve ObjectPool for BCK_SIDE in parent hierarchy
 00:00:03 : [OK] Create chain for ChoiceStone
 00:00:03 : [INFO] Add Poolable object ChoiceStone by seekind ID in parent via manager
 00:00:03 : [INFO] Add Poolable object ChoiceStone to pool ID 1 via manager
 00:00:03 : [OK]  ADD ChoiceStone in object pool ISLE1 (id:1)
-00:00:11 : [OK] Add chain for Shroom1(Clone) with chainIndex 7
-00:00:11 : [INFO] Add Poolable object Shroom1(Clone) by seekind ID in parent via manager
-00:00:11 : [INFO] Add Poolable object Shroom1(Clone) to pool ID 0 via manager
-00:00:11 : [OK]  ADD Shroom1(Clone) in object pool ISLE0 (id:0)
-00:00:11 : [OK] Create chain for Interactible
-00:00:11 : [INFO] Add Poolable object Interactible by seekind ID in parent via manager
-00:00:11 : [INFO] Add Poolable object Interactible to pool ID 0 via manager
-00:00:11 : [OK]  ADD Interactible in object pool ISLE0 (id:0)
-00:00:11 : [OK] Create chain for Interactible
-00:00:11 : [INFO] Add Poolable object Interactible by seekind ID in parent via manager
-00:00:11 : [INFO] Add Poolable object Interactible to pool ID 0 via manager
-00:00:11 : [OK]  ADD Interactible in object pool ISLE0 (id:0)
-00:00:11 : [OK] Create chain for Interactible
-00:00:11 : [INFO] Add Poolable object Interactible by seekind ID in parent via manager
-00:00:11 : [INFO] Add Poolable object Interactible to pool ID 0 via manager
-00:00:11 : [OK]  ADD Interactible in object pool ISLE0 (id:0)
-00:00:11 : [OK] Create chain for Interactible
-00:00:11 : [INFO] Add Poolable object Interactible by seekind ID in parent via manager
-00:00:11 : [INFO] Add Poolable object Interactible to pool ID 0 via manager
-00:00:11 : [OK]  ADD Interactible in object pool ISLE0 (id:0)
-00:00:11 : [OK] Create chain for Interactible
-00:00:11 : [INFO] Add Poolable object Interactible by seekind ID in parent via manager
-00:00:11 : [INFO] Add Poolable object Interactible to pool ID 0 via manager
-00:00:11 : [OK]  ADD Interactible in object pool ISLE0 (id:0)
-00:00:11 : [OK] Create chain for Interactible
-00:00:11 : [INFO] Add Poolable object Interactible by seekind ID in parent via manager
-00:00:11 : [INFO] Add Poolable object Interactible to pool ID 0 via manager
-00:00:11 : [OK]  ADD Interactible in object pool ISLE0 (id:0)
-00:00:11 : [OK] Create chain for Interactible
-00:00:11 : [INFO] Add Poolable object Interactible by seekind ID in parent via manager
-00:00:11 : [INFO] Add Poolable object Interactible to pool ID 0 via manager
-00:00:11 : [OK]  ADD Interactible in object pool ISLE0 (id:0)
-00:00:11 : [OK] Create chain for Interactible
-00:00:11 : [INFO] Add Poolable object Interactible by seekind ID in parent via manager
-00:00:11 : [INFO] Add Poolable object Interactible to pool ID 0 via manager
-00:00:11 : [OK]  ADD Interactible in object pool ISLE0 (id:0)
-00:00:11 : [OK] Create chain for Interactible
-00:00:11 : [INFO] Add Poolable object Interactible by seekind ID in parent via manager
-00:00:11 : [INFO] Add Poolable object Interactible to pool ID 0 via manager
-00:00:11 : [OK]  ADD Interactible in object pool ISLE0 (id:0)
-00:00:11 : [OK] Create chain for Interactible
-00:00:11 : [INFO] Add Poolable object Interactible by seekind ID in parent via manager
-00:00:11 : [INFO] Add Poolable object Interactible to pool ID 0 via manager
-00:00:11 : [OK]  ADD Interactible in object pool ISLE0 (id:0)
-00:00:11 : [OK] Create chain for Interactible
-00:00:11 : [INFO] Add Poolable object Interactible by seekind ID in parent via manager
-00:00:11 : [INFO] Add Poolable object Interactible to pool ID 0 via manager
-00:00:11 : [OK]  ADD Interactible in object pool ISLE0 (id:0)
-00:00:11 : [OK] Create chain for Interactible
-00:00:11 : [INFO] Add Poolable object Interactible by seekind ID in parent via manager
-00:00:11 : [INFO] Add Poolable object Interactible to pool ID 0 via manager
-00:00:11 : [OK]  ADD Interactible in object pool ISLE0 (id:0)
-00:00:11 : [OK] Create chain for Interactible
-00:00:11 : [INFO] Add Poolable object Interactible by seekind ID in parent via manager
-00:00:11 : [INFO] Add Poolable object Interactible to pool ID 0 via manager
-00:00:11 : [OK]  ADD Interactible in object pool ISLE0 (id:0)
-00:00:11 : [OK] Create chain for Interactible
-00:00:11 : [INFO] Add Poolable object Interactible by seekind ID in parent via manager
-00:00:11 : [INFO] Add Poolable object Interactible to pool ID 0 via manager
-00:00:11 : [OK]  ADD Interactible in object pool ISLE0 (id:0)
-00:00:11 : [OK] Create chain for Interactible
-00:00:11 : [INFO] Add Poolable object Interactible by seekind ID in parent via manager
-00:00:11 : [INFO] Add Poolable object Interactible to pool ID 0 via manager
-00:00:11 : [OK]  ADD Interactible in object pool ISLE0 (id:0)
-00:00:11 : [OK] Create chain for Interactible
-00:00:11 : [INFO] Add Poolable object Interactible by seekind ID in parent via manager
-00:00:11 : [INFO] Add Poolable object Interactible to pool ID 0 via manager
-00:00:11 : [OK]  ADD Interactible in object pool ISLE0 (id:0)
-00:00:11 : [OK] Create chain for Interactible
-00:00:11 : [INFO] Add Poolable object Interactible by seekind ID in parent via manager
-00:00:11 : [INFO] Add Poolable object Interactible to pool ID 0 via manager
-00:00:11 : [OK]  ADD Interactible in object pool ISLE0 (id:0)
-00:00:11 : [OK] Create chain for Interactible
-00:00:11 : [INFO] Add Poolable object Interactible by seekind ID in parent via manager
-00:00:11 : [INFO] Add Poolable object Interactible to pool ID 0 via manager
-00:00:11 : [OK]  ADD Interactible in object pool ISLE0 (id:0)
-00:00:11 : [OK] Create chain for Interactible
-00:00:11 : [INFO] Add Poolable object Interactible by seekind ID in parent via manager
-00:00:11 : [INFO] Add Poolable object Interactible to pool ID 0 via manager
-00:00:11 : [OK]  ADD Interactible in object pool ISLE0 (id:0)
-00:00:11 : [OK] Create chain for Interactible
-00:00:11 : [INFO] Add Poolable object Interactible by seekind ID in parent via manager
-00:00:11 : [INFO] Add Poolable object Interactible to pool ID 0 via manager
-00:00:11 : [OK]  ADD Interactible in object pool ISLE0 (id:0)
-00:00:23 : [OK] Create chain for Interactible
-00:00:23 : [INFO] Add Poolable object Interactible by seekind ID in parent via manager
-00:00:23 : [INFO] Add Poolable object Interactible to pool ID 0 via manager
-00:00:23 : [OK]  ADD Interactible in object pool ISLE0 (id:0)
-00:00:23 : [INFO] Remove Poolable object Insect(Clone) by seekind ID in parent via manager
-00:00:23 : [INFO] Remove Poolable object Insect(Clone) to pool ID 0 via manager
-00:00:23 : [FAIL]  ADD Insect(Clone) in object pool ISLE0 (id:0)
-00:00:23 : [INFO] Remove Poolable object Interactible by seekind ID in parent via manager
-00:00:23 : [INFO] Remove Poolable object Interactible to pool ID 0 via manager
-00:00:23 : [OK]  RM Interactible from object poolISLE0 (id:0)
-00:00:35 : [OK] Delete chain for Interactible
-00:00:36 : [OK] Create chain for Interactible
-00:00:36 : [INFO] Add Poolable object Interactible by seekind ID in parent via manager
-00:00:36 : [INFO] Add Poolable object Interactible to pool ID 0 via manager
-00:00:36 : [OK]  ADD Interactible in object pool ISLE0 (id:0)
-00:00:36 : [INFO] Remove Poolable object Insect(Clone) by seekind ID in parent via manager
-00:00:36 : [INFO] Remove Poolable object Insect(Clone) to pool ID 0 via manager
-00:00:36 : [FAIL]  ADD Insect(Clone) in object pool ISLE0 (id:0)
-00:00:36 : [INFO] Remove Poolable object Interactible by seekind ID in parent via manager
-00:00:36 : [INFO] Remove Poolable object Interactible to pool ID 0 via manager
-00:00:36 : [OK]  RM Interactible from object poolISLE0 (id:0)
-00:00:38 : [OK] Delete chain for Interactible
-00:00:39 : [OK] Create chain for Interactible
-00:00:39 : [INFO] Add Poolable object Interactible by seekind ID in parent via manager
-00:00:39 : [INFO] Add Poolable object Interactible to pool ID 0 via manager
-00:00:39 : [OK]  ADD Interactible in object pool ISLE0 (id:0)
-00:00:39 : [INFO] Remove Poolable object Insect(Clone) by seekind ID in parent via manager
-00:00:39 : [INFO] Remove Poolable object Insect(Clone) to pool ID 0 via manager
-00:00:39 : [FAIL]  ADD Insect(Clone) in object pool ISLE0 (id:0)
-00:00:39 : [INFO] Remove Poolable object Interactible by seekind ID in parent via manager
-00:00:39 : [INFO] Remove Poolable object Interactible to pool ID 0 via manager
-00:00:39 : [OK]  RM Interactible from object poolISLE0 (id:0)
-00:00:50 : [OK] Add chain for InteractibleObject(Clone) with chainIndex 10
-00:00:50 : [INFO] Add Poolable object InteractibleObject(Clone) by seekind ID in parent via manager
-00:00:50 : [INFO] Add Poolable object InteractibleObject(Clone) to pool ID 0 via manager
-00:00:50 : [OK]  ADD InteractibleObject(Clone) in object pool ISLE0 (id:0)
-00:00:52 : [OK] Add chain for InteractibleObject(Clone)(Clone) with chainIndex 10
-00:00:52 : [INFO] Add Poolable object InteractibleObject(Clone)(Clone) by seekind ID in parent via manager
-00:00:52 : [INFO] Add Poolable object InteractibleObject(Clone)(Clone) to pool ID 0 via manager
-00:00:52 : [OK]  ADD InteractibleObject(Clone)(Clone) in object pool ISLE0 (id:0)
+00:00:10 : [INFO] Triangle matching is 0 because there is 1 positions
+00:00:10 : [INFO] Triangle matching is 0 because there is 1 positions
+00:00:10 : [INFO] Triangle matching is 0 because there is 1 positions
+00:00:10 : [INFO] Triangle matching is 0 because there is 1 positions
+00:00:10 : [INFO] Triangle matching is 0 because there is 1 positions
+00:00:10 : [INFO] Triangle matching is 0 because there is 1 positions
+00:00:10 : [INFO] Triangle matching is 0 because there is 1 positions
+00:00:10 : [INFO] Triangle matching is 0 because there is 1 positions
+00:00:10 : [INFO] Triangle matching is 0 because there is 1 positions
+00:00:10 : [INFO] Triangle matching is 0 because there is 1 positions
+00:00:10 : [INFO] Triangle matching is 0 because there is 1 positions
+00:00:10 : [INFO] Triangle matching is 0 because there is 1 positions
+00:00:10 : [INFO] Triangle matching is 0 because there is 1 positions
+00:00:10 : [INFO] InteractibleObject InteractibleObjectWithWheel StopMove
+00:00:12 : [INFO] Triangle matching is 0 because there is 1 positions
+00:00:12 : [INFO] Triangle matching is 0 because there is 1 positions
+00:00:12 : [INFO] Triangle matching is 0 because there is 2 positions
+00:00:12 : [INFO] Triangle matching is 0 because there is 1 positions
+00:00:12 : [INFO] Triangle matching is 0 because there is 1 positions
+00:00:12 : [INFO] Triangle matching is 0 because there is 1 positions
+00:00:12 : [INFO] Triangle matching is 0 because there is 1 positions
+00:00:12 : [INFO] Triangle matching is 0 because there is 1 positions
+00:00:12 : [INFO] Triangle matching is 0 because there is 1 positions
+00:00:12 : [INFO] Triangle matching is 0 because there is 1 positions
+00:00:12 : [INFO] Triangle matching is 0 because there is 1 positions
+00:00:12 : [INFO] Triangle matching is 0 because there is 1 positions
+00:00:12 : [INFO] Triangle matching is 0 because there is 1 positions
+00:00:12 : [OK] Add chain for InteractibleObjectWithWheel(Clone) with chainIndex 2
+00:00:12 : [INFO] Add Poolable object InteractibleObjectWithWheel(Clone) by seekind ID in parent via manager
+00:00:12 : [INFO] Add Poolable object InteractibleObjectWithWheel(Clone) to pool ID 0 via manager
+00:00:12 : [OK]  ADD InteractibleObjectWithWheel(Clone) in object pool ISLE0 (id:0)
+00:00:13 : [INFO] Triangle matching is 0 because there is 1 positions
+00:00:13 : [INFO] Triangle matching is 0 because there is 1 positions
+00:00:13 : [INFO] Triangle matching is 0 because there is 2 positions
+00:00:13 : [INFO] Triangle matching is 0 because there is 1 positions
+00:00:13 : [INFO] Triangle matching is 0 because there is 1 positions
+00:00:13 : [INFO] Triangle matching is 0 because there is 1 positions
+00:00:13 : [INFO] Triangle matching is 0 because there is 1 positions
+00:00:13 : [INFO] Triangle matching is 0 because there is 1 positions
+00:00:13 : [INFO] Triangle matching is 0 because there is 1 positions
+00:00:13 : [INFO] Triangle matching is 0 because there is 1 positions
+00:00:13 : [INFO] Triangle matching is 0 because there is 1 positions
+00:00:13 : [INFO] Triangle matching is 0 because there is 1 positions
+00:00:13 : [INFO] Triangle matching is 0 because there is 1 positions
+00:00:13 : [INFO] InteractibleObject InteractibleObjectWithWheel(Clone) StopMove
+00:00:14 : [INFO] Triangle matching is 0 because there is 1 positions
+00:00:14 : [INFO] Triangle matching is 0 because there is 1 positions
+00:00:14 : [INFO] Triangle Check : sumOfAngles is 0
+00:00:14 : [INFO] Triangle Check : Angle Divergence Penalty is 17,5
+00:00:14 : [INFO] Triangle Check : Final match score is 0
+00:00:14 : [INFO] Triangle matching is 0 because there is 1 positions
+00:00:14 : [INFO] Triangle matching is 0 because there is 1 positions
+00:00:14 : [INFO] Triangle matching is 0 because there is 1 positions
+00:00:14 : [INFO] Triangle matching is 0 because there is 1 positions
+00:00:14 : [INFO] Triangle matching is 0 because there is 1 positions
+00:00:14 : [INFO] Triangle matching is 0 because there is 1 positions
+00:00:14 : [INFO] Triangle matching is 0 because there is 1 positions
+00:00:14 : [INFO] Triangle matching is 0 because there is 1 positions
+00:00:14 : [INFO] Triangle matching is 0 because there is 1 positions
+00:00:14 : [INFO] Triangle matching is 0 because there is 1 positions
+00:00:14 : [OK] Add chain for InteractibleObjectWithWheel(Clone)(Clone) with chainIndex 2
+00:00:14 : [INFO] Add Poolable object InteractibleObjectWithWheel(Clone)(Clone) by seekind ID in parent via manager
+00:00:14 : [INFO] Add Poolable object InteractibleObjectWithWheel(Clone)(Clone) to pool ID 0 via manager
+00:00:14 : [OK]  ADD InteractibleObjectWithWheel(Clone)(Clone) in object pool ISLE0 (id:0)
+00:00:16 : [INFO] Triangle matching is 0 because there is 1 positions
+00:00:16 : [INFO] Triangle matching is 0 because there is 1 positions
+00:00:16 : [INFO] Triangle Check : sumOfAngles is 170,6678
+00:00:16 : [INFO] Triangle Check : Angle Divergence Penalty is 0,4332214
+00:00:16 : [INFO] Triangle Check : Final match score is 0
+00:00:16 : [INFO] Triangle matching is 0 because there is 1 positions
+00:00:16 : [INFO] Triangle matching is 0 because there is 1 positions
+00:00:16 : [INFO] Triangle matching is 0 because there is 1 positions
+00:00:16 : [INFO] Triangle matching is 0 because there is 1 positions
+00:00:16 : [INFO] Triangle matching is 0 because there is 1 positions
+00:00:16 : [INFO] Triangle matching is 0 because there is 1 positions
+00:00:16 : [INFO] Triangle matching is 0 because there is 1 positions
+00:00:16 : [INFO] Triangle matching is 0 because there is 1 positions
+00:00:16 : [INFO] Triangle matching is 0 because there is 1 positions
+00:00:16 : [INFO] Triangle matching is 0 because there is 1 positions
+00:00:16 : [INFO] InteractibleObject InteractibleObjectWithWheel(Clone)(Clone) StopMove
+00:00:21 : [INFO] Triangle matching is 0 because there is 1 positions
+00:00:21 : [INFO] Triangle matching is 0 because there is 1 positions
+00:00:21 : [INFO] Triangle Check : sumOfAngles is 179,8195
+00:00:21 : [INFO] Triangle Check : Perfect  matching
+00:00:21 : [INFO] Triangle Check : Final match score is 1
+00:00:21 : [INFO] Triangle matching is 0 because there is 1 positions
+00:00:21 : [INFO] Triangle matching is 0 because there is 1 positions
+00:00:21 : [INFO] Triangle matching is 0 because there is 1 positions
+00:00:21 : [INFO] Triangle matching is 0 because there is 1 positions
+00:00:21 : [INFO] Triangle matching is 0 because there is 1 positions
+00:00:21 : [INFO] Triangle matching is 0 because there is 1 positions
+00:00:21 : [INFO] Triangle matching is 0 because there is 1 positions
+00:00:21 : [INFO] Triangle matching is 0 because there is 1 positions
+00:00:21 : [INFO] Triangle matching is 0 because there is 1 positions
+00:00:21 : [INFO] Triangle matching is 0 because there is 1 positions
+00:00:21 : [INFO] InteractibleObject InteractibleObjectWithWheel(Clone)(Clone) StopMove
+00:00:23 : [INFO] Triangle matching is 0 because there is 1 positions
+00:00:23 : [INFO] Triangle matching is 0 because there is 1 positions
+00:00:23 : [INFO] Triangle Check : sumOfAngles is 176,23
+00:00:23 : [INFO] Triangle Check : Perfect  matching
+00:00:23 : [INFO] Triangle Check : Final match score is 1
+00:00:23 : [INFO] Triangle matching is 0 because there is 1 positions
+00:00:23 : [INFO] Triangle matching is 0 because there is 1 positions
+00:00:23 : [INFO] Triangle matching is 0 because there is 1 positions
+00:00:23 : [INFO] Triangle matching is 0 because there is 1 positions
+00:00:23 : [INFO] Triangle matching is 0 because there is 1 positions
+00:00:23 : [INFO] Triangle matching is 0 because there is 1 positions
+00:00:23 : [INFO] Triangle matching is 0 because there is 1 positions
+00:00:23 : [INFO] Triangle matching is 0 because there is 1 positions
+00:00:23 : [INFO] Triangle matching is 0 because there is 1 positions
+00:00:23 : [INFO] Triangle matching is 0 because there is 1 positions
+00:00:23 : [INFO] InteractibleObject InteractibleObjectWithWheel(Clone)(Clone) StopMove

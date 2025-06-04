@@ -81,6 +81,9 @@ public class MTOLookupTable : MonoBehaviour
         if (n_eligibles==0)
             return null;
 
+        // TODO : Base the selection on OTC axis
+        // > Order = more of the same material for everything
+        // > Chaos = more different materials
         int selected = UnityEngine.Random.Range(0, n_eligibles);
 
         Material selectedMat = eligibleMats[selected];

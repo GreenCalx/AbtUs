@@ -124,14 +124,4 @@ public class OTCCluster : MonoBehaviour
         }
     }
 
-    #region IPoolable
-    public string GetName() { return gameObject.name; }
-    public OBJ_NATURE GetNature() { return OBJ_NATURE.NONE; }
-    public void OnPoolSleep() { }
-
-    public void OnPoolAwake() { }
-
-    public bool UseInMTOFeedback() { return false; }
-    #endregion
-
 }

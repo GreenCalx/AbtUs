@@ -47,7 +47,7 @@ MonoBehaviour:
   fData:
     tag: 1
     type: 8
-    baseValue: 0
+    baseValue: 0.5
     loopStrength: 0
     isSynced: 0
   Influence: 1
@@ -97,6 +97,7 @@ Transform:
   m_ConstrainProportionsScale: 0
   m_Children:
   - {fileID: 7356153932460380356}
+  - {fileID: 6825114123927072141}
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!114 &1351181775370747892
@@ -123,7 +124,7 @@ MonoBehaviour:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 7808715935886537954}
-  m_Enabled: 0
+  m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: fb8c5ae9e2e122746807033e2db53142, type: 3}
   m_Name: 
@@ -132,7 +133,9 @@ MonoBehaviour:
   - {fileID: 0}
   - {fileID: 0}
   - {fileID: 0}
-  activeIsland: ISLE0
+  startPoolID: 0
+  mto_feedback: {fileID: 6436285679740840751}
+  activePools: 00000000
 --- !u!114 &4411285101250788071
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -193,6 +196,7 @@ MonoBehaviour:
   Sound: {fileID: 0}
   Camera: {fileID: 0}
   ObjectChains: {fileID: 0}
+  ObjectPools: {fileID: 0}
 --- !u!114 &4399473777418484543
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -207,4 +211,66 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   prefab_ChainLineRenderer: {fileID: 183621774858735447, guid: 897670e98ab50a74e93ac32584926ec9,
     type: 3}
-  feedback: {fileID: 0}
+  otc_feedback: {fileID: 757687611247728063}
+--- !u!1 &8893419657667492735
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 6825114123927072141}
+  - component: {fileID: 6436285679740840751}
+  m_Layer: 0
+  m_Name: ObjectNatureFeedback
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &6825114123927072141
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8893419657667492735}
+  serializedVersion: 2
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 5234164145809327239}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &6436285679740840751
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8893419657667492735}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 88f00807c9a4af844864efc0707a9761, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  fData:
+    tag: 2
+    type: 2
+    baseValue: 0.25
+    loopStrength: 0
+    isSynced: 0
+  Influence: 1
+  InitFromFeedbackFunc:
+    m_PersistentCalls:
+      m_Calls: []
+  maxOWCWindow: 1
+  minOWCWindow: 0
+  fInfluenceCurve:
+    serializedVersion: 2
+    m_Curve: []
+    m_PreInfinity: 2
+    m_PostInfinity: 2
+    m_RotationOrder: 4

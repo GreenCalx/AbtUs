@@ -20,11 +20,16 @@ public class GameSettings : MonoBehaviour
             instance = this;
         }
     }
+    [Header("Debug")]
+    public bool LogEvents = true;
 
     [Header("MetaGameData")]
     public float mouseSensivity = 1f;
 
     [Header("FeedbackData")]
     public float DuplicationMulFactor = 0.02f;
-    
+
+    [Header("Approximations")]
+    public float TriangleMatchingAngleEps = 5f;
+    public float TriangleAngleDivergencePenaltyFactor = 0.05f;
 }
