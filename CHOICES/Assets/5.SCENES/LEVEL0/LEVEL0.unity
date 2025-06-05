@@ -1100,11 +1100,6 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
-    - target: {fileID: 6436285679740840751, guid: ba09f9c1eef703141bddacf45610c1c0,
-        type: 3}
-      propertyPath: fData.baseValue
-      value: 0.1
-      objectReference: {fileID: 0}
     - target: {fileID: 7808715935886537954, guid: ba09f9c1eef703141bddacf45610c1c0,
         type: 3}
       propertyPath: m_Name
@@ -2060,7 +2055,7 @@ MonoBehaviour:
   DuplicationMulFactor: 0.02
   AlignementCheckDotProdThreshold: 0.7
   MisalignementPenaltyFactor: 0.5
-  TriangleMatchingAngleEps: 10
+  TriangleMatchingAngleEps: 30
   TriangleAngleDivergencePenaltyFactor: 0.1
   SquareMatchingAngleEps: 90
   SquareAngleDivergencePenaltyFactor: 0.1
@@ -3603,6 +3598,11 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 2069870417715235502, guid: 86fa92c3be5c4404c9bd2b3f2ab2d3e1,
+        type: 3}
+      propertyPath: m_DecalLayerMask
+      value: 256
+      objectReference: {fileID: 0}
     - target: {fileID: 2566509261544963988, guid: 86fa92c3be5c4404c9bd2b3f2ab2d3e1,
         type: 3}
       propertyPath: player_cam
@@ -3628,11 +3628,21 @@ PrefabInstance:
       propertyPath: player
       value: 
       objectReference: {fileID: 110237546}
+    - target: {fileID: 7409968469384970025, guid: 86fa92c3be5c4404c9bd2b3f2ab2d3e1,
+        type: 3}
+      propertyPath: m_StaticEditorFlags
+      value: 2147483647
+      objectReference: {fileID: 0}
     - target: {fileID: 9054044908951105832, guid: 86fa92c3be5c4404c9bd2b3f2ab2d3e1,
         type: 3}
       propertyPath: player_cam
       value: 
       objectReference: {fileID: 1823688467}
+    - target: {fileID: 9067297873525645052, guid: 86fa92c3be5c4404c9bd2b3f2ab2d3e1,
+        type: 3}
+      propertyPath: m_RenderingLayerMask
+      value: 257
+      objectReference: {fileID: 0}
     - target: {fileID: 9067297873525645052, guid: 86fa92c3be5c4404c9bd2b3f2ab2d3e1,
         type: 3}
       propertyPath: 'm_Materials.Array.data[1]'

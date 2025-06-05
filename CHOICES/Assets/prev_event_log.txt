@@ -1,85 +1,176 @@
-00:00:03 : [OK] Create chain for ChoiceStone
-00:00:03 : [INFO] Add Poolable object ChoiceStone by seekind ID in parent via manager
-00:00:03 : [INFO] Add Poolable object ChoiceStone to pool ID 1 via manager
-00:00:03 : [OK]  ADD ChoiceStone in object pool ISLE1 (id:1)
-00:00:03 : [OK] Create chain for Shroom1
-00:00:03 : [INFO] Add Poolable object Shroom1 by seekind ID in parent via manager
-00:00:03 : [INFO] Add Poolable object Shroom1 to pool ID 0 via manager
-00:00:03 : [OK]  ADD Shroom1 in object pool ISLE0 (id:0)
-00:00:03 : [OK] Create chain for NestModel
-00:00:03 : [INFO] Add Poolable object NestModel by seekind ID in parent via manager
-00:00:03 : [INFO] Add Poolable object NestModel to pool ID 0 via manager
-00:00:03 : [OK]  ADD NestModel in object pool ISLE0 (id:0)
-00:00:03 : [OK] Create chain for InteractibleObjectWithWheel
-00:00:03 : [INFO] Add Poolable object InteractibleObjectWithWheel by seekind ID in parent via manager
-00:00:03 : [INFO] Add Poolable object InteractibleObjectWithWheel to pool ID 0 via manager
-00:00:03 : [OK]  ADD InteractibleObjectWithWheel in object pool ISLE0 (id:0)
-00:00:03 : [OK] Create chain for InteractibleObject
-00:00:03 : [INFO] Add Poolable object InteractibleObject by seekind ID in parent via manager
-00:00:03 : [INFO] Add Poolable object InteractibleObject to pool ID 0 via manager
-00:00:03 : [OK]  ADD InteractibleObject in object pool ISLE0 (id:0)
-00:00:03 : [OK] Create chain for ChoiceStone
-00:00:03 : [INFO] Add Poolable object ChoiceStone by seekind ID in parent via manager
-00:00:03 : [INFO] Add Poolable object ChoiceStone to pool ID 0 via manager
-00:00:03 : [OK]  ADD ChoiceStone in object pool ISLE0 (id:0)
-00:00:03 : [OK] Create chain for BCK_SIDE
-00:00:03 : [INFO] Add Poolable object BCK_SIDE by seekind ID in parent via manager
-00:00:03 : [FAIL] Retrieve ObjectPool for BCK_SIDE in parent hierarchy
-00:00:03 : [OK] Create chain for BCK_SIDE
-00:00:03 : [INFO] Add Poolable object BCK_SIDE by seekind ID in parent via manager
-00:00:03 : [FAIL] Retrieve ObjectPool for BCK_SIDE in parent hierarchy
-00:00:03 : [OK] Create chain for BCK_SIDE
-00:00:03 : [INFO] Add Poolable object BCK_SIDE by seekind ID in parent via manager
-00:00:03 : [FAIL] Retrieve ObjectPool for BCK_SIDE in parent hierarchy
-00:00:03 : [OK] Create chain for BCK_SIDE
-00:00:03 : [INFO] Add Poolable object BCK_SIDE by seekind ID in parent via manager
-00:00:03 : [FAIL] Retrieve ObjectPool for BCK_SIDE in parent hierarchy
-00:00:03 : [OK] Create chain for BCK_SIDE
-00:00:03 : [INFO] Add Poolable object BCK_SIDE by seekind ID in parent via manager
-00:00:03 : [FAIL] Retrieve ObjectPool for BCK_SIDE in parent hierarchy
-00:00:03 : [OK] Create chain for BCK_SIDE
-00:00:03 : [INFO] Add Poolable object BCK_SIDE by seekind ID in parent via manager
-00:00:03 : [FAIL] Retrieve ObjectPool for BCK_SIDE in parent hierarchy
-00:00:03 : [OK] Create chain for BCK_SIDE
-00:00:03 : [INFO] Add Poolable object BCK_SIDE by seekind ID in parent via manager
-00:00:03 : [FAIL] Retrieve ObjectPool for BCK_SIDE in parent hierarchy
-00:00:31 : [OK] Add chain for InteractibleObject(Clone) with chainIndex 4
-00:00:31 : [INFO] Add Poolable object InteractibleObject(Clone) by seekind ID in parent via manager
-00:00:31 : [INFO] Add Poolable object InteractibleObject(Clone) to pool ID 0 via manager
-00:00:31 : [OK]  ADD InteractibleObject(Clone) in object pool ISLE0 (id:0)
-00:00:32 : [INFO] InteractibleObject InteractibleObject(Clone) StopMove
-00:00:33 : [INFO] Triangle Check : sumOfAngles is 0
-00:00:33 : [INFO] Triangle Check : Angle Divergence Penalty is 17 ,matchScore= 0
-00:00:33 : [INFO] Triangle Check Done. matchScore= 0
-00:00:33 : [OK] Add chain for InteractibleObject(Clone)(Clone) with chainIndex 4
-00:00:33 : [INFO] Add Poolable object InteractibleObject(Clone)(Clone) by seekind ID in parent via manager
-00:00:33 : [INFO] Add Poolable object InteractibleObject(Clone)(Clone) to pool ID 0 via manager
-00:00:33 : [OK]  ADD InteractibleObject(Clone)(Clone) in object pool ISLE0 (id:0)
-00:00:34 : [INFO] Triangle Check : sumOfAngles is 180
-00:00:34 : [INFO] Triangle Check : Perfect  matching
-00:00:34 : [INFO] Triangle Check Done. matchScore= 1
-00:00:34 : [INFO] InteractibleObject InteractibleObject(Clone)(Clone) StopMove
-00:00:44 : [INFO] Triangle Check : sumOfAngles is 179,9999
-00:00:44 : [INFO] Triangle Check : Perfect  matching
-00:00:44 : [INFO] Triangle Check Done. matchScore= 1
-00:00:44 : [INFO] InteractibleObject InteractibleObject StopMove
-00:00:50 : [INFO] Triangle Check : sumOfAngles is 180
-00:00:50 : [INFO] Triangle Check : Perfect  matching
-00:00:50 : [INFO] Triangle Check Done. matchScore= 1
-00:00:50 : [INFO] InteractibleObject InteractibleObject(Clone)(Clone) StopMove
-00:00:53 : [INFO] Triangle Check : sumOfAngles is 180
-00:00:53 : [INFO] Triangle Check : Perfect  matching
-00:00:53 : [INFO] Triangle Check Done. matchScore= 1
-00:00:53 : [INFO] InteractibleObject InteractibleObject(Clone)(Clone) StopMove
-00:00:55 : [INFO] Triangle Check : sumOfAngles is 180
-00:00:55 : [INFO] Triangle Check : Perfect  matching
-00:00:55 : [INFO] Triangle Check Done. matchScore= 1
-00:00:55 : [INFO] InteractibleObject InteractibleObject StopMove
-00:01:02 : [INFO] Triangle Check : sumOfAngles is 180
-00:01:02 : [INFO] Triangle Check : Perfect  matching
-00:01:02 : [INFO] Triangle Check Done. matchScore= 1
-00:01:02 : [INFO] InteractibleObject InteractibleObject StopMove
-00:01:08 : [INFO] Triangle Check : sumOfAngles is 180
-00:01:08 : [INFO] Triangle Check : Perfect  matching
-00:01:08 : [INFO] Triangle Check Done. matchScore= 1
-00:01:08 : [INFO] InteractibleObject InteractibleObject(Clone)(Clone) StopMove
+00:00:02 : [OK] Create chain for Shroom1
+00:00:02 : [INFO] Add Poolable object Shroom1 by seekind ID in parent via manager
+00:00:02 : [INFO] Add Poolable object Shroom1 to pool ID 0 via manager
+00:00:02 : [OK]  ADD Shroom1 in object pool ISLE0 (id:0)
+00:00:02 : [OK] Create chain for NestModel
+00:00:02 : [INFO] Add Poolable object NestModel by seekind ID in parent via manager
+00:00:02 : [INFO] Add Poolable object NestModel to pool ID 0 via manager
+00:00:02 : [OK]  ADD NestModel in object pool ISLE0 (id:0)
+00:00:02 : [OK] Create chain for InteractibleObjectWithWheel
+00:00:02 : [INFO] Add Poolable object InteractibleObjectWithWheel by seekind ID in parent via manager
+00:00:02 : [INFO] Add Poolable object InteractibleObjectWithWheel to pool ID 0 via manager
+00:00:02 : [OK]  ADD InteractibleObjectWithWheel in object pool ISLE0 (id:0)
+00:00:02 : [OK] Create chain for InteractibleObject
+00:00:02 : [INFO] Add Poolable object InteractibleObject by seekind ID in parent via manager
+00:00:02 : [INFO] Add Poolable object InteractibleObject to pool ID 0 via manager
+00:00:02 : [OK]  ADD InteractibleObject in object pool ISLE0 (id:0)
+00:00:02 : [OK] Create chain for ChoiceStone
+00:00:02 : [INFO] Add Poolable object ChoiceStone by seekind ID in parent via manager
+00:00:02 : [INFO] Add Poolable object ChoiceStone to pool ID 0 via manager
+00:00:02 : [OK]  ADD ChoiceStone in object pool ISLE0 (id:0)
+00:00:02 : [OK] Create chain for ChoiceStone
+00:00:02 : [INFO] Add Poolable object ChoiceStone by seekind ID in parent via manager
+00:00:02 : [INFO] Add Poolable object ChoiceStone to pool ID 1 via manager
+00:00:02 : [OK]  ADD ChoiceStone in object pool ISLE1 (id:1)
+00:00:02 : [OK] Create chain for BCK_SIDE
+00:00:02 : [INFO] Add Poolable object BCK_SIDE by seekind ID in parent via manager
+00:00:02 : [FAIL] Retrieve ObjectPool for BCK_SIDE in parent hierarchy
+00:00:02 : [OK] Create chain for BCK_SIDE
+00:00:02 : [INFO] Add Poolable object BCK_SIDE by seekind ID in parent via manager
+00:00:02 : [FAIL] Retrieve ObjectPool for BCK_SIDE in parent hierarchy
+00:00:02 : [OK] Create chain for BCK_SIDE
+00:00:02 : [INFO] Add Poolable object BCK_SIDE by seekind ID in parent via manager
+00:00:02 : [FAIL] Retrieve ObjectPool for BCK_SIDE in parent hierarchy
+00:00:02 : [OK] Create chain for BCK_SIDE
+00:00:02 : [INFO] Add Poolable object BCK_SIDE by seekind ID in parent via manager
+00:00:02 : [FAIL] Retrieve ObjectPool for BCK_SIDE in parent hierarchy
+00:00:02 : [OK] Create chain for BCK_SIDE
+00:00:02 : [INFO] Add Poolable object BCK_SIDE by seekind ID in parent via manager
+00:00:02 : [FAIL] Retrieve ObjectPool for BCK_SIDE in parent hierarchy
+00:00:02 : [OK] Create chain for BCK_SIDE
+00:00:02 : [INFO] Add Poolable object BCK_SIDE by seekind ID in parent via manager
+00:00:02 : [FAIL] Retrieve ObjectPool for BCK_SIDE in parent hierarchy
+00:00:02 : [OK] Create chain for BCK_SIDE
+00:00:02 : [INFO] Add Poolable object BCK_SIDE by seekind ID in parent via manager
+00:00:02 : [FAIL] Retrieve ObjectPool for BCK_SIDE in parent hierarchy
+00:00:10 : [OK] Add chain for InteractibleObject(Clone) with chainIndex 3
+00:00:10 : [INFO] Add Poolable object InteractibleObject(Clone) by seekind ID in parent via manager
+00:00:10 : [INFO] Add Poolable object InteractibleObject(Clone) to pool ID 0 via manager
+00:00:10 : [OK]  ADD InteractibleObject(Clone) in object pool ISLE0 (id:0)
+00:00:11 : [INFO] InteractibleObject InteractibleObject(Clone) StopMove
+00:00:13 : [INFO] Triangle Check : totAngleDiff is 0
+00:00:13 : [INFO] Triangle Check : Angle Divergence Penalty is 17 ,matchScore= 0
+00:00:13 : [INFO] Triangle Check Done. matchScore= 0
+00:00:13 : [OK] Add chain for InteractibleObject(Clone)(Clone) with chainIndex 3
+00:00:13 : [INFO] Add Poolable object InteractibleObject(Clone)(Clone) by seekind ID in parent via manager
+00:00:13 : [INFO] Add Poolable object InteractibleObject(Clone)(Clone) to pool ID 0 via manager
+00:00:13 : [OK]  ADD InteractibleObject(Clone)(Clone) in object pool ISLE0 (id:0)
+00:00:14 : [INFO] Triangle Check : totAngleDiff is 180
+00:00:14 : [INFO] Triangle Check : Angle Divergence Penalty is 1,244752 ,matchScore= 0
+00:00:14 : [INFO] Triangle Check Done. matchScore= 0
+00:00:14 : [INFO] InteractibleObject InteractibleObject(Clone)(Clone) StopMove
+00:00:19 : [INFO] Triangle Check : totAngleDiff is 180
+00:00:19 : [INFO] Triangle Check : Angle Divergence Penalty is 2,266901 ,matchScore= 0
+00:00:19 : [INFO] Triangle Check Done. matchScore= 0
+00:00:19 : [INFO] InteractibleObject InteractibleObject StopMove
+00:00:21 : [INFO] Triangle Check : totAngleDiff is 180
+00:00:21 : [INFO] Triangle Check : Angle Divergence Penalty is 2,899325 ,matchScore= 0
+00:00:21 : [INFO] Triangle Check Done. matchScore= 0
+00:00:21 : [INFO] InteractibleObject InteractibleObject StopMove
+00:00:24 : [INFO] Triangle Check : totAngleDiff is 180
+00:00:24 : [INFO] Triangle Check : Angle Divergence Penalty is 2,322392 ,matchScore= 0
+00:00:24 : [INFO] Triangle Check Done. matchScore= 0
+00:00:24 : [INFO] InteractibleObject InteractibleObject(Clone)(Clone) StopMove
+00:00:27 : [INFO] Triangle Check : totAngleDiff is 180
+00:00:27 : [INFO] Triangle Check : Angle Divergence Penalty is 1,226614 ,matchScore= 0
+00:00:27 : [INFO] Triangle Check Done. matchScore= 0
+00:00:27 : [INFO] InteractibleObject InteractibleObject StopMove
+00:00:29 : [INFO] Triangle Check : totAngleDiff is 180
+00:00:29 : [INFO] Triangle Check : Angle Divergence Penalty is 3,905272 ,matchScore= 0
+00:00:29 : [INFO] Triangle Check Done. matchScore= 0
+00:00:29 : [INFO] InteractibleObject InteractibleObject StopMove
+00:00:31 : [INFO] Triangle Check : totAngleDiff is 180
+00:00:31 : [INFO] Triangle Check : Angle Divergence Penalty is 0,5310227 ,matchScore= 0
+00:00:31 : [INFO] Triangle Check Done. matchScore= 0
+00:00:31 : [INFO] InteractibleObject InteractibleObject StopMove
+00:00:37 : [INFO] Triangle Check : totAngleDiff is 180
+00:00:37 : [INFO] Triangle Check : Angle Divergence Penalty is 3,928462 ,matchScore= 0
+00:00:37 : [INFO] Triangle Check Done. matchScore= 0
+00:00:37 : [INFO] InteractibleObject InteractibleObject(Clone)(Clone) StopMove
+00:00:40 : [INFO] Triangle Check : totAngleDiff is 180
+00:00:40 : [INFO] Triangle Check : Angle Divergence Penalty is 0,5377647 ,matchScore= 0
+00:00:40 : [INFO] Triangle Check Done. matchScore= 0
+00:00:40 : [INFO] InteractibleObject InteractibleObject(Clone) StopMove
+00:00:49 : [INFO] Triangle Check : totAngleDiff is 180
+00:00:49 : [INFO] Triangle Check : Angle Divergence Penalty is 1,926512 ,matchScore= 0
+00:00:49 : [INFO] Triangle Check Done. matchScore= 0
+00:00:49 : [INFO] InteractibleObject InteractibleObject(Clone) StopMove
+00:00:51 : [INFO] Triangle Check : totAngleDiff is 180
+00:00:51 : [INFO] Triangle Check : Perfect  matching
+00:00:51 : [INFO] Triangle Check Done. matchScore= 1
+00:00:51 : [INFO] InteractibleObject InteractibleObject(Clone) StopMove
+00:01:01 : [INFO] Triangle Check : totAngleDiff is 180
+00:01:01 : [INFO] Triangle Check : Perfect  matching
+00:01:01 : [INFO] Triangle Check Done. matchScore= 1
+00:01:01 : [INFO] InteractibleObject InteractibleObjectWithWheel StopMove
+00:01:03 : [INFO] Square Check : totAngleDiff is 180
+00:01:03 : [INFO] Square Check : Angle Divergence Penalty is 8,999999 ,matchScore= 0
+00:01:03 : [INFO] Square Check Done. matchScore= 0
+00:01:03 : [OK] Add chain for InteractibleObject(Clone) with chainIndex 3
+00:01:03 : [INFO] Add Poolable object InteractibleObject(Clone) by seekind ID in parent via manager
+00:01:03 : [INFO] Add Poolable object InteractibleObject(Clone) to pool ID 0 via manager
+00:01:03 : [OK]  ADD InteractibleObject(Clone) in object pool ISLE0 (id:0)
+00:01:07 : [INFO] Square Check : totAngleDiff is 86,60201
+00:01:07 : [INFO] Square Check : Perfect  matching
+00:01:07 : [INFO] Square Check Done. matchScore= 1
+00:01:07 : [INFO] InteractibleObject InteractibleObject(Clone) StopMove
+00:01:10 : [INFO] Square Check : totAngleDiff is 65,78696
+00:01:10 : [INFO] Square Check : Perfect  matching
+00:01:10 : [INFO] Square Check Done. matchScore= 1
+00:01:10 : [INFO] InteractibleObject InteractibleObject(Clone)(Clone) StopMove
+00:01:12 : [INFO] Square Check : totAngleDiff is 74,83088
+00:01:12 : [INFO] Square Check : Perfect  matching
+00:01:12 : [INFO] Square Check Done. matchScore= 1
+00:01:12 : [INFO] InteractibleObject InteractibleObject(Clone) StopMove
+00:01:14 : [INFO] Square Check : totAngleDiff is 72,66795
+00:01:14 : [INFO] Square Check : Perfect  matching
+00:01:14 : [INFO] Square Check Done. matchScore= 1
+00:01:14 : [INFO] InteractibleObject InteractibleObject(Clone) StopMove
+00:01:20 : [INFO] Square Check : totAngleDiff is 76,80468
+00:01:20 : [INFO] Square Check : Perfect  matching
+00:01:20 : [INFO] Square Check Done. matchScore= 1
+00:01:20 : [INFO] InteractibleObject InteractibleObject StopMove
+00:01:23 : [INFO] Square Check : totAngleDiff is 66,69119
+00:01:23 : [INFO] Square Check : Perfect  matching
+00:01:23 : [INFO] Square Check Done. matchScore= 1
+00:01:23 : [INFO] InteractibleObject InteractibleObject(Clone) StopMove
+00:01:27 : [INFO] Square Check : totAngleDiff is 61,27852
+00:01:27 : [INFO] Square Check : Perfect  matching
+00:01:27 : [INFO] Square Check Done. matchScore= 1
+00:01:27 : [INFO] InteractibleObject InteractibleObject(Clone) StopMove
+00:01:29 : [INFO] Square Check : totAngleDiff is 58,04778
+00:01:29 : [INFO] Square Check : Perfect  matching
+00:01:29 : [INFO] Square Check Done. matchScore= 1
+00:01:29 : [INFO] InteractibleObject InteractibleObject(Clone) StopMove
+00:01:31 : [INFO] Square Check : totAngleDiff is 48,03474
+00:01:31 : [INFO] Square Check : Perfect  matching
+00:01:31 : [INFO] Square Check Done. matchScore= 1
+00:01:31 : [INFO] InteractibleObject InteractibleObject(Clone)(Clone) StopMove
+00:01:38 : [INFO] Square Check : totAngleDiff is 79,40552
+00:01:38 : [INFO] Square Check : Perfect  matching
+00:01:38 : [INFO] Square Check Done. matchScore= 1
+00:01:38 : [INFO] InteractibleObject InteractibleObject(Clone)(Clone) StopMove
+00:01:41 : [INFO] Square Check : totAngleDiff is 82,00845
+00:01:41 : [INFO] Square Check : Perfect  matching
+00:01:41 : [INFO] Square Check Done. matchScore= 1
+00:01:41 : [INFO] InteractibleObject InteractibleObject(Clone)(Clone) StopMove
+00:01:45 : [INFO] Square Check : totAngleDiff is 54,76434
+00:01:45 : [INFO] Square Check : Perfect  matching
+00:01:45 : [INFO] Square Check Done. matchScore= 1
+00:01:45 : [INFO] InteractibleObject InteractibleObject(Clone)(Clone) StopMove
+00:01:59 : [INFO] Square Check : totAngleDiff is 54,36811
+00:01:59 : [INFO] Square Check : Perfect  matching
+00:01:59 : [INFO] Square Check Done. matchScore= 1
+00:01:59 : [INFO] InteractibleObject InteractibleObject StopMove
+00:02:04 : [INFO] Square Check : totAngleDiff is 53,90238
+00:02:04 : [INFO] Square Check : Perfect  matching
+00:02:04 : [INFO] Square Check Done. matchScore= 1
+00:02:04 : [INFO] InteractibleObject InteractibleObject(Clone) StopMove
+00:02:10 : [INFO] Square Check : totAngleDiff is 54,03351
+00:02:10 : [INFO] Square Check : Perfect  matching
+00:02:10 : [INFO] Square Check Done. matchScore= 1
+00:02:10 : [INFO] InteractibleObject InteractibleObject(Clone)(Clone) StopMove
+00:02:16 : [INFO] Square Check : totAngleDiff is 46,02437
+00:02:16 : [INFO] Square Check : Perfect  matching
+00:02:16 : [INFO] Square Check Done. matchScore= 1
+00:02:16 : [INFO] InteractibleObject InteractibleObject(Clone) StopMove

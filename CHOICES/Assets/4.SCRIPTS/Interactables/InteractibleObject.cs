@@ -446,6 +446,8 @@ public class InteractibleObject : MonoBehaviour, IPoolable
         //         RB.isKinematic = true;
         //     RB.useGravity = false;
         // }
+        Managers.Instance.ObjectChains.ClearChainState(this);
+
         GameObject duplicata = GameObject.Instantiate(gameObject);
         duplicata.transform.parent = transform.parent;
 

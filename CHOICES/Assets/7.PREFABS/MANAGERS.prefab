@@ -211,6 +211,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   prefab_ChainLineRenderer: {fileID: 183621774858735447, guid: 897670e98ab50a74e93ac32584926ec9,
     type: 3}
+  prefab_AltChainLineRenderer: {fileID: 183621774858735447, guid: 1fd43e211eb0f764fb5623c66c5d5f90,
+    type: 3}
   otc_feedback: {fileID: 757687611247728063}
 --- !u!1 &8893419657667492735
 GameObject:
@@ -259,7 +261,7 @@ MonoBehaviour:
   fData:
     tag: 2
     type: 2
-    baseValue: 0.25
+    baseValue: 0.1
     loopStrength: 0
     isSynced: 0
   Influence: 1

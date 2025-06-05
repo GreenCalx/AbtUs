@@ -8,17 +8,38 @@ public class ObjectChain<T> : IDisposable where T : InteractibleObject
 {
     public List<T> objects;
     public List<ObjectChainLR> fXLinks;
+    public ObjectChainLR fxLinkCompleteShape;
 
     public int Count
     {
         get { return objects.Count; }
     }
+    public T First
+    {
+        get { return objects[0]; }
+    }
+    public T Last
+    {
+        get { return objects[Count-1];  }
+    }
+
+    public bool MakesShape = false;
     public ObjectChain(T iChainRoot)
     {
         objects = new List<T>();
         objects.Add(iChainRoot);
 
         fXLinks = new List<ObjectChainLR>();
+    }
+
+    public void ClearCompleteShapeLink()
+    {
+        if (fxLinkCompleteShape != null)
+        {
+            GameObject.Destroy(fxLinkCompleteShape.gameObject);
+            fxLinkCompleteShape = null;    
+        }
+        
     }
 
     public void Dispose()
@@ -56,11 +77,11 @@ public class ObjectChain<T> : IDisposable where T : InteractibleObject
         foreach(var o in objects) { positions.Add(o.transform.position); }
         float orderMatchScore = OTCShapeChecker.GetShapeMatching(positions);
 
-        Debug.Log("Shape matching score : " + orderMatchScore);
-        if (orderMatchScore > 0f) // order
-            return -retval * orderMatchScore;
-        else // chaos
-            return retval;
+        MakesShape = orderMatchScore > 0f;
+        return MakesShape ?
+            -retval * orderMatchScore :
+            retval;
+
     }
 }
 
@@ -68,6 +89,7 @@ public class ObjectChainManager : MonoBehaviour, IFeedbackEval
 {
     [Header("Refs")]
     public GameObject prefab_ChainLineRenderer;
+    public GameObject prefab_AltChainLineRenderer;
     public GameFeedback otc_feedback;
 
     [Header("Internals")]
@@ -87,7 +109,19 @@ public class ObjectChainManager : MonoBehaviour, IFeedbackEval
 
         float retval = 0f;
         foreach (var chain in chains)
-        { retval += chain.Evaluate(); }
+        {
+            retval += chain.Evaluate();
+            if (chain.MakesShape)
+            {
+                if (chain.fxLinkCompleteShape == null)
+                    chain.fxLinkCompleteShape = FXLink(prefab_AltChainLineRenderer, chain.First, chain.Last);
+            }
+            else if (chain.fxLinkCompleteShape != null)
+            {
+                chain.MakesShape = false;
+                chain.ClearCompleteShapeLink();
+            }
+        }
 
         return retval * GameSettings.Instance.DuplicationMulFactor;
     }
@@ -95,6 +129,17 @@ public class ObjectChainManager : MonoBehaviour, IFeedbackEval
     public void RefreshFeedback()
     {
         otc_feedback.Refresh();
+    }
+
+    public void ClearChainState(InteractibleObject iTargetedChainRefElem)
+    {
+        int chainIndex = GetChainIndex(iTargetedChainRefElem);
+        if (chainIndex < 0)
+        {
+            FAIL("ClearChainState for " + iTargetedChainRefElem.gameObject.name + " with chainIndex " + chainIndex);
+            return;
+        }
+        chains[chainIndex].ClearCompleteShapeLink();
     }
 
     public bool CreateChain(InteractibleObject iObj)
@@ -121,16 +166,16 @@ public class ObjectChainManager : MonoBehaviour, IFeedbackEval
         }
             
         chains[chainIndex].objects.Add(iToAdd);
-        chains[chainIndex].fXLinks.Add(FXLink(iTargetedChainRefElem, iToAdd));
+        chains[chainIndex].fXLinks.Add(FXLink(prefab_ChainLineRenderer, iTargetedChainRefElem, iToAdd));
 
         otc_feedback.Refresh();
         OK("Add chain for " + iToAdd.gameObject.name+" with chainIndex " + chainIndex);
         return true;
     }
 
-    public ObjectChainLR FXLink(InteractibleObject iHolder, InteractibleObject iTarget)
+    public ObjectChainLR FXLink(GameObject iPrefab, InteractibleObject iHolder, InteractibleObject iTarget)
     {
-        GameObject link_inst = GameObject.Instantiate(prefab_ChainLineRenderer);
+        GameObject link_inst = GameObject.Instantiate(iPrefab);
         link_inst.transform.parent = null;
         link_inst.transform.position = Vector3.zero;
 
@@ -138,6 +183,7 @@ public class ObjectChainManager : MonoBehaviour, IFeedbackEval
         as_oclr.Init(iHolder.transform, iTarget.transform);
         return as_oclr;
     }
+    
 
     public void DeleteLastFromChain(InteractibleObject iChainMember)
     {
@@ -147,7 +193,7 @@ public class ObjectChainManager : MonoBehaviour, IFeedbackEval
         InteractibleObject to_rm = chains[chainIndex].PeekAndRemoveLast();
         Destroy(to_rm.gameObject);
 
-        OK("DeleteLastFromChain " + iChainMember.gameObject.name+" with chainIndex " + chainIndex);
+        OK("DeleteLastFromChain " + iChainMember.gameObject.name + " with chainIndex " + chainIndex);
 
         otc_feedback.Refresh();
     }
