@@ -1,3 +1,7 @@
+00:00:03 : [OK] Create chain for ChoiceStone
+00:00:03 : [INFO] Add Poolable object ChoiceStone by seekind ID in parent via manager
+00:00:03 : [INFO] Add Poolable object ChoiceStone to pool ID 1 via manager
+00:00:03 : [OK]  ADD ChoiceStone in object pool ISLE1 (id:1)
 00:00:03 : [OK] Create chain for Shroom1
 00:00:03 : [INFO] Add Poolable object Shroom1 by seekind ID in parent via manager
 00:00:03 : [INFO] Add Poolable object Shroom1 to pool ID 0 via manager
@@ -39,73 +43,71 @@
 00:00:03 : [OK] Create chain for BCK_SIDE
 00:00:03 : [INFO] Add Poolable object BCK_SIDE by seekind ID in parent via manager
 00:00:03 : [FAIL] Retrieve ObjectPool for BCK_SIDE in parent hierarchy
-00:00:03 : [OK] Create chain for ChoiceStone
-00:00:03 : [INFO] Add Poolable object ChoiceStone by seekind ID in parent via manager
-00:00:03 : [INFO] Add Poolable object ChoiceStone to pool ID 1 via manager
-00:00:03 : [OK]  ADD ChoiceStone in object pool ISLE1 (id:1)
-00:00:08 : [INFO] Triangle matching is 0 because there is 1 positions
-00:00:08 : [INFO] Triangle matching is 0 because there is 1 positions
-00:00:08 : [INFO] Triangle matching is 0 because there is 1 positions
-00:00:08 : [INFO] Triangle matching is 0 because there is 2 positions
-00:00:08 : [INFO] Triangle matching is 0 because there is 1 positions
-00:00:08 : [INFO] Triangle matching is 0 because there is 1 positions
-00:00:08 : [INFO] Triangle matching is 0 because there is 1 positions
-00:00:08 : [INFO] Triangle matching is 0 because there is 1 positions
-00:00:08 : [INFO] Triangle matching is 0 because there is 1 positions
-00:00:08 : [INFO] Triangle matching is 0 because there is 1 positions
-00:00:08 : [INFO] Triangle matching is 0 because there is 1 positions
-00:00:08 : [INFO] Triangle matching is 0 because there is 1 positions
-00:00:08 : [INFO] Triangle matching is 0 because there is 1 positions
-00:00:08 : [OK] Add chain for InteractibleObject(Clone) with chainIndex 3
-00:00:08 : [INFO] Add Poolable object InteractibleObject(Clone) by seekind ID in parent via manager
-00:00:08 : [INFO] Add Poolable object InteractibleObject(Clone) to pool ID 0 via manager
-00:00:08 : [OK]  ADD InteractibleObject(Clone) in object pool ISLE0 (id:0)
-00:00:09 : [INFO] Triangle matching is 0 because there is 1 positions
-00:00:09 : [INFO] Triangle matching is 0 because there is 1 positions
-00:00:09 : [INFO] Triangle matching is 0 because there is 1 positions
-00:00:09 : [INFO] Triangle matching is 0 because there is 2 positions
-00:00:09 : [INFO] Triangle matching is 0 because there is 1 positions
-00:00:09 : [INFO] Triangle matching is 0 because there is 1 positions
-00:00:09 : [INFO] Triangle matching is 0 because there is 1 positions
-00:00:09 : [INFO] Triangle matching is 0 because there is 1 positions
-00:00:09 : [INFO] Triangle matching is 0 because there is 1 positions
-00:00:09 : [INFO] Triangle matching is 0 because there is 1 positions
-00:00:09 : [INFO] Triangle matching is 0 because there is 1 positions
-00:00:09 : [INFO] Triangle matching is 0 because there is 1 positions
-00:00:09 : [INFO] Triangle matching is 0 because there is 1 positions
-00:00:09 : [INFO] InteractibleObject InteractibleObject(Clone) StopMove
-00:00:10 : [INFO] Triangle matching is 0 because there is 1 positions
-00:00:10 : [INFO] Triangle matching is 0 because there is 1 positions
-00:00:10 : [INFO] Triangle matching is 0 because there is 1 positions
-00:00:10 : [INFO] Triangle Check : sumOfAngles is 0
-00:00:10 : [INFO] Triangle Check : Angle Divergence Penalty is 17,5
-00:00:10 : [INFO] Triangle Check : Final match score is 0
-00:00:10 : [INFO] Triangle matching is 0 because there is 1 positions
-00:00:10 : [INFO] Triangle matching is 0 because there is 1 positions
-00:00:10 : [INFO] Triangle matching is 0 because there is 1 positions
-00:00:10 : [INFO] Triangle matching is 0 because there is 1 positions
-00:00:10 : [INFO] Triangle matching is 0 because there is 1 positions
-00:00:10 : [INFO] Triangle matching is 0 because there is 1 positions
-00:00:10 : [INFO] Triangle matching is 0 because there is 1 positions
-00:00:10 : [INFO] Triangle matching is 0 because there is 1 positions
-00:00:10 : [INFO] Triangle matching is 0 because there is 1 positions
-00:00:10 : [OK] Add chain for InteractibleObject(Clone)(Clone) with chainIndex 3
-00:00:10 : [INFO] Add Poolable object InteractibleObject(Clone)(Clone) by seekind ID in parent via manager
-00:00:10 : [INFO] Add Poolable object InteractibleObject(Clone)(Clone) to pool ID 0 via manager
-00:00:10 : [OK]  ADD InteractibleObject(Clone)(Clone) in object pool ISLE0 (id:0)
-00:00:13 : [INFO] Triangle matching is 0 because there is 1 positions
-00:00:13 : [INFO] Triangle matching is 0 because there is 1 positions
-00:00:13 : [INFO] Triangle matching is 0 because there is 1 positions
-00:00:13 : [INFO] Triangle Check : sumOfAngles is 182,9163
-00:00:13 : [INFO] Triangle Check : Perfect  matching
-00:00:13 : [INFO] Triangle Check : Final match score is 1
-00:00:13 : [INFO] Triangle matching is 0 because there is 1 positions
-00:00:13 : [INFO] Triangle matching is 0 because there is 1 positions
-00:00:13 : [INFO] Triangle matching is 0 because there is 1 positions
-00:00:13 : [INFO] Triangle matching is 0 because there is 1 positions
-00:00:13 : [INFO] Triangle matching is 0 because there is 1 positions
-00:00:13 : [INFO] Triangle matching is 0 because there is 1 positions
-00:00:13 : [INFO] Triangle matching is 0 because there is 1 positions
-00:00:13 : [INFO] Triangle matching is 0 because there is 1 positions
-00:00:13 : [INFO] Triangle matching is 0 because there is 1 positions
-00:00:13 : [INFO] InteractibleObject InteractibleObject(Clone)(Clone) StopMove
+00:00:12 : [INFO] InteractibleObject InteractibleObject StopMove
+00:00:14 : [OK] Add chain for InteractibleObject(Clone) with chainIndex 4
+00:00:14 : [INFO] Add Poolable object InteractibleObject(Clone) by seekind ID in parent via manager
+00:00:14 : [INFO] Add Poolable object InteractibleObject(Clone) to pool ID 0 via manager
+00:00:14 : [OK]  ADD InteractibleObject(Clone) in object pool ISLE0 (id:0)
+00:00:15 : [INFO] InteractibleObject InteractibleObject(Clone) StopMove
+00:00:16 : [INFO] Triangle Check : totAngleDiff is 0
+00:00:16 : [INFO] Triangle Check : Angle Divergence Penalty is 17 ,matchScore= 0
+00:00:16 : [INFO] Triangle Check Done. matchScore= 0
+00:00:16 : [OK] Add chain for InteractibleObject(Clone)(Clone) with chainIndex 4
+00:00:16 : [INFO] Add Poolable object InteractibleObject(Clone)(Clone) by seekind ID in parent via manager
+00:00:16 : [INFO] Add Poolable object InteractibleObject(Clone)(Clone) to pool ID 0 via manager
+00:00:16 : [OK]  ADD InteractibleObject(Clone)(Clone) in object pool ISLE0 (id:0)
+00:00:18 : [INFO] Triangle Check : totAngleDiff is 180
+00:00:18 : [INFO] Triangle Check : Angle Divergence Penalty is 2,898228 ,matchScore= 0
+00:00:18 : [INFO] Triangle Check Done. matchScore= 0
+00:00:18 : [INFO] InteractibleObject InteractibleObject(Clone)(Clone) StopMove
+00:00:22 : [INFO] Triangle Check : totAngleDiff is 180
+00:00:22 : [INFO] Triangle Check : Angle Divergence Penalty is 0,7960121 ,matchScore= 0
+00:00:22 : [INFO] Triangle Check Done. matchScore= 0
+00:00:22 : [INFO] InteractibleObject InteractibleObject(Clone)(Clone) StopMove
+00:00:31 : [INFO] Triangle Check : totAngleDiff is 180
+00:00:31 : [INFO] Triangle Check : Angle Divergence Penalty is 2,735386 ,matchScore= 0
+00:00:31 : [INFO] Triangle Check Done. matchScore= 0
+00:00:31 : [INFO] InteractibleObject InteractibleObject(Clone) StopMove
+00:00:44 : [INFO] Triangle Check : totAngleDiff is 180
+00:00:44 : [INFO] Triangle Check : Angle Divergence Penalty is 5,227498 ,matchScore= 0
+00:00:44 : [INFO] Triangle Check Done. matchScore= 0
+00:00:44 : [INFO] InteractibleObject InteractibleObject(Clone)(Clone) StopMove
+00:00:47 : [INFO] Triangle Check : totAngleDiff is 180
+00:00:47 : [INFO] Triangle Check : Angle Divergence Penalty is 0,6687153 ,matchScore= 0
+00:00:47 : [INFO] Triangle Check Done. matchScore= 0
+00:00:47 : [INFO] InteractibleObject InteractibleObject StopMove
+00:00:57 : [INFO] Triangle Check : totAngleDiff is 180
+00:00:57 : [INFO] Triangle Check : Perfect  matching
+00:00:57 : [INFO] Triangle Check Done. matchScore= 1
+00:00:57 : [INFO] InteractibleObject InteractibleObject(Clone) StopMove
+00:01:09 : [INFO] Triangle Check : totAngleDiff is 180
+00:01:09 : [INFO] Triangle Check : Angle Divergence Penalty is 4,35712 ,matchScore= 0
+00:01:09 : [INFO] Triangle Check Done. matchScore= 0
+00:01:09 : [INFO] InteractibleObject InteractibleObject(Clone)(Clone) StopMove
+00:01:11 : [INFO] Square Check : totAngleDiff is 224,5427
+00:01:11 : [INFO] Square Check : Angle Divergence Penalty is 13,45427 ,matchScore= 0
+00:01:11 : [INFO] Square Check Done. matchScore= 0
+00:01:11 : [OK] Add chain for InteractibleObject(Clone)(Clone)(Clone) with chainIndex 4
+00:01:11 : [INFO] Add Poolable object InteractibleObject(Clone)(Clone)(Clone) by seekind ID in parent via manager
+00:01:11 : [INFO] Add Poolable object InteractibleObject(Clone)(Clone)(Clone) to pool ID 0 via manager
+00:01:11 : [OK]  ADD InteractibleObject(Clone)(Clone)(Clone) in object pool ISLE0 (id:0)
+00:01:13 : [INFO] Square Check : totAngleDiff is 65,90932
+00:01:13 : [INFO] Square Check : Perfect  matching
+00:01:13 : [INFO] Square Check Done. matchScore= 1
+00:01:13 : [INFO] InteractibleObject InteractibleObject(Clone)(Clone)(Clone) StopMove
+00:01:18 : [INFO] Square Check : totAngleDiff is 45,98825
+00:01:18 : [INFO] Square Check : Perfect  matching
+00:01:18 : [INFO] Square Check Done. matchScore= 1
+00:01:18 : [INFO] InteractibleObject InteractibleObject(Clone)(Clone)(Clone) StopMove
+00:01:22 : [INFO] Square Check : totAngleDiff is 174,6446
+00:01:22 : [INFO] Square Check : Angle Divergence Penalty is 8,464457 ,matchScore= 0
+00:01:22 : [INFO] Square Check Done. matchScore= 0
+00:01:22 : [INFO] InteractibleObject InteractibleObject(Clone)(Clone)(Clone) StopMove
+00:01:27 : [INFO] Square Check : totAngleDiff is 58,36702
+00:01:27 : [INFO] Square Check : Perfect  matching
+00:01:27 : [INFO] Square Check Done. matchScore= 1
+00:01:27 : [INFO] InteractibleObject InteractibleObject(Clone)(Clone)(Clone) StopMove
+00:01:29 : [INFO] Square Check : totAngleDiff is 152,3715
+00:01:29 : [INFO] Square Check : Angle Divergence Penalty is 6,237149 ,matchScore= 0
+00:01:29 : [INFO] Square Check Done. matchScore= 0
+00:01:29 : [INFO] InteractibleObject InteractibleObject(Clone)(Clone)(Clone) StopMove

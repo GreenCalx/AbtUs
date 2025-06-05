@@ -2058,6 +2058,12 @@ MonoBehaviour:
   LogEvents: 1
   mouseSensivity: 0.52
   DuplicationMulFactor: 0.02
+  AlignementCheckDotProdThreshold: 0.7
+  MisalignementPenaltyFactor: 0.5
+  TriangleMatchingAngleEps: 10
+  TriangleAngleDivergencePenaltyFactor: 0.1
+  SquareMatchingAngleEps: 90
+  SquareAngleDivergencePenaltyFactor: 0.1
 --- !u!1001 &1891122276
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -3627,6 +3633,11 @@ PrefabInstance:
       propertyPath: player_cam
       value: 
       objectReference: {fileID: 1823688467}
+    - target: {fileID: 9067297873525645052, guid: 86fa92c3be5c4404c9bd2b3f2ab2d3e1,
+        type: 3}
+      propertyPath: 'm_Materials.Array.data[1]'
+      value: 
+      objectReference: {fileID: 2100000, guid: 5a67e8de121bbe943a76f1122b49a484, type: 2}
     - target: {fileID: 9143426367941622358, guid: 86fa92c3be5c4404c9bd2b3f2ab2d3e1,
         type: 3}
       propertyPath: nature

@@ -49,14 +49,17 @@ public class ObjectChain<T> : IDisposable where T : InteractibleObject
     {
         // chain root doesn't count towards chaos
         float retval = Count - 1;
+        if (Count < 3)
+            return retval;
 
         List<Vector3> positions = new List<Vector3>();
         foreach(var o in objects) { positions.Add(o.transform.position); }
-        float orderMatchScore = OTCShapeChecker.GetTriangleMatching(positions);
-        Debug.Log("Tri matching : " + orderMatchScore);
-        if (orderMatchScore > 0f)
+        float orderMatchScore = OTCShapeChecker.GetShapeMatching(positions);
+
+        Debug.Log("Shape matching score : " + orderMatchScore);
+        if (orderMatchScore > 0f) // order
             return -retval * orderMatchScore;
-        else
+        else // chaos
             return retval;
     }
 }

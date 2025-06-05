@@ -30,6 +30,10 @@ public class GameSettings : MonoBehaviour
     public float DuplicationMulFactor = 0.02f;
 
     [Header("Approximations")]
+    public float AlignementCheckDotProdThreshold = 0.7f;
+    public float MisalignementPenaltyFactor = 0.5f;
     public float TriangleMatchingAngleEps = 5f;
     public float TriangleAngleDivergencePenaltyFactor = 0.05f;
+    public float SquareMatchingAngleEps = 10f;
+    public float SquareAngleDivergencePenaltyFactor = 5f;
 }

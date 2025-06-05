@@ -6,6 +6,18 @@ using static EventLog;
 
 public static class OTCShapeChecker
 {
+
+    public static float GetShapeMatching(List<Vector3> iPositions)
+    {
+        int n_pos = iPositions.Count;
+        if ((n_pos % 3) == 0)
+        { return GetTriangleMatching(iPositions); }
+        else if ((n_pos % 4) == 0)
+        { return GetSquareMatching(iPositions); }
+
+        return 0f;
+    }
+
     public static float GetTriangleMatching(List<Vector3> iPositions)
     {
         float matchScore = 0f;
@@ -21,8 +33,9 @@ public static class OTCShapeChecker
         }
         // Discard Unity Y-axis
         Vector2[] projectedPositions = new Vector2[n_pos];
-        for (int i = 0; i < n_pos; i++)
-        { projectedPositions[i] = new Vector2(iPositions[i].x, iPositions[i].z); }
+        Project2D(iPositions, out projectedPositions);
+        // for (int i = 0; i < n_pos; i++)
+        // { projectedPositions[i] = new Vector2(iPositions[i].x, iPositions[i].z); }
 
         // step between summits indexes
         int summitSteps = n_pos / 3;
@@ -42,14 +55,20 @@ public static class OTCShapeChecker
 
         Vector2 CA = projectedPositions[A] - projectedPositions[C];
         Vector2 CB = projectedPositions[B] - projectedPositions[C];
-        float angle_C = Vector2.Angle(BA, BC);
+        float angle_C = Vector2.Angle(CA, CB);
 
-        // sum of angles needs to be 180f
+        // each angle must be as close to 180f/3f as possible
+        // it implies same magnitude and thus isocele
+        // maybe check for rect triangles also
+        float angleTarget = 180f / 3f;
+        float angle_A_diff = Mathf.Abs(angleTarget - angle_A);
+        float angle_B_diff = Mathf.Abs(angleTarget - angle_B);
+        float angle_C_diff = Mathf.Abs(angleTarget - angle_C);
+
         float sumOfAngles = angle_A + angle_B + angle_C;
-        INFO("Triangle Check : sumOfAngles is " + sumOfAngles);
-
-        float angleDiff = Mathf.Abs(180f - sumOfAngles);
-        if (angleDiff <= GameSettings.Instance.TriangleMatchingAngleEps)
+        float totAngleDiff = angle_A_diff + angle_B_diff + angle_C_diff;
+        INFO("Triangle Check : totAngleDiff is " + sumOfAngles);
+        if (totAngleDiff <= GameSettings.Instance.TriangleMatchingAngleEps)
         {
             // perfect match
             matchScore = 1f;
@@ -58,18 +77,155 @@ public static class OTCShapeChecker
         else
         {
             // compute penalty
-            float angleDivergencePenalty = angleDiff - GameSettings.Instance.TriangleMatchingAngleEps;
+            float angleDivergencePenalty = totAngleDiff - GameSettings.Instance.TriangleMatchingAngleEps;
             angleDivergencePenalty *= GameSettings.Instance.TriangleAngleDivergencePenaltyFactor;
-            INFO("Triangle Check : Angle Divergence Penalty is " + angleDivergencePenalty);
+            INFO("Triangle Check : Angle Divergence Penalty is " + angleDivergencePenalty + " ,matchScore= " + matchScore);
             matchScore = Mathf.Clamp01(matchScore - angleDivergencePenalty);
         }
 
         // if > 3, check alignements of inbetween vertices positions
+        if (n_pos > 3)
+        {
+            // // number of 'positions" inbetween pivot vertices(triangle corners)
+            // float misalignementPenalty = 0f;
+            // int edgeSteps = summitSteps - 1;
 
-        // number of 'positions" inbetween pivot vertices(triangle corners)
-        //int edgeSteps = summitSteps - 1;
+            // for (int e = 0; e < 3; e++)
+            // {
+            //     int from = e * summitSteps;
+            //     int to = (e + 1) * summitSteps;
+            //     if (to > n_pos) { to = 0; }
+            //     Vector2 alignTo = projectedPositions[to] - projectedPositions[from];
 
-        INFO("Triangle Check : Final match score is " + matchScore);
+            //     for (int j = 0; j < edgeSteps; j++)
+            //     {
+            //         Vector2 toAlign = projectedPositions[from + j] - projectedPositions[from];
+            //         float dp = Vector2.Dot(alignTo, toAlign);
+            //         if (dp < GameSettings.Instance.AlignementCheckDotProdThreshold)
+            //         {
+            //             misalignementPenalty += (dp < 0f ? 1f : 1f - dp) * GameSettings.Instance.MisalignementPenaltyFactor;
+            //         }
+            //     }
+            //     if (misalignementPenalty >= 1f)
+            //         break;
+            // }
+            // INFO("Triangle Check : Alignement penalty : " + misalignementPenalty);
+            float misalignementPenalty = GetAlignementPenalty(projectedPositions, summitSteps);
+            matchScore = Mathf.Clamp01(matchScore - misalignementPenalty);
+        }
+
+        INFO("Triangle Check Done. matchScore= " + matchScore);
         return matchScore;
     }
+
+    public static float GetSquareMatching(List<Vector3> iPositions)
+    {
+        float matchScore = 0f;
+
+        int n_pos = iPositions.Count;
+        if ((n_pos % 4) != 0)
+        {
+            // cannot be ordered triangle
+            // > if its not a multiple of 3, then one edge has more "positions" than the others
+            // thus its chaotic
+            INFO("Square matching is 0 because there is " + n_pos + " positions");
+            return matchScore;
+        }
+        // Discard Unity Y-axis
+        Vector2[] projectedPositions = new Vector2[n_pos];
+        Project2D(iPositions, out projectedPositions);
+
+        int summitSteps = n_pos / 4;
+
+        // summit indexes
+        int A = 0;
+        int B = summitSteps;
+        int C = summitSteps * 2;
+        int D = summitSteps * 3;
+
+        Vector2 AB = projectedPositions[B] - projectedPositions[A];
+        Vector2 AC = projectedPositions[C] - projectedPositions[A];
+        float angle_A = Vector2.Angle(AB, AC);
+
+        Vector2 BA = projectedPositions[A] - projectedPositions[B];
+        Vector2 BC = projectedPositions[C] - projectedPositions[B];
+        float angle_B = Vector2.Angle(BA, BC);
+
+        Vector2 CD = projectedPositions[D] - projectedPositions[C];
+        Vector2 CB = projectedPositions[B] - projectedPositions[C];
+        float angle_C = Vector2.Angle(CD, CB);
+
+        Vector2 DA = projectedPositions[A] - projectedPositions[D];
+        Vector2 DC = projectedPositions[C] - projectedPositions[D];
+        float angle_D = Vector2.Angle(DA, DC);
+
+        // Each Angle must be close to 90d
+        float angle_A_diff = Mathf.Abs(90f - angle_A);
+        float angle_B_diff = Mathf.Abs(90f - angle_B);
+        float angle_C_diff = Mathf.Abs(90f - angle_C);
+        float angle_D_diff = Mathf.Abs(90f - angle_D);
+
+        float totAngleDiff = angle_A_diff + angle_B_diff + angle_C_diff + angle_D_diff;
+        INFO("Square Check : totAngleDiff is " + totAngleDiff);
+        if (totAngleDiff <= GameSettings.Instance.SquareMatchingAngleEps)
+        {
+            // perfect match
+            matchScore = 1f;
+            INFO("Square Check : Perfect  matching");
+        }
+        else
+        {
+            // compute penalty
+            float angleDivergencePenalty = totAngleDiff - GameSettings.Instance.SquareMatchingAngleEps;
+            angleDivergencePenalty *= GameSettings.Instance.SquareAngleDivergencePenaltyFactor;
+            INFO("Square Check : Angle Divergence Penalty is " + angleDivergencePenalty + " ,matchScore= " + matchScore);
+            matchScore = Mathf.Clamp01(matchScore - angleDivergencePenalty);
+        }
+
+        if (n_pos > 4)
+        {
+            float misalignementPenalty = GetAlignementPenalty(projectedPositions, summitSteps);
+            matchScore = Mathf.Clamp01(matchScore - misalignementPenalty);
+        }
+
+        INFO("Square Check Done. matchScore= " + matchScore);
+        return matchScore;
+    }
+
+
+    private static float GetAlignementPenalty(Vector2[] i2DPositions, int iSummitSteps)
+    {
+        int n_pos = i2DPositions.Length;
+        float misalignementPenalty = 0f;
+        int edgeSteps = iSummitSteps - 1;
+        for (int e = 0; e < 3; e++)
+        {
+            int from = e * iSummitSteps;
+            int to = (e + 1) * iSummitSteps;
+            if (to > n_pos) { to = 0; }
+            Vector2 alignTo = i2DPositions[to] - i2DPositions[from];
+            for (int j = 0; j < edgeSteps; j++)
+            {
+                Vector2 toAlign = i2DPositions[from + j] - i2DPositions[from];
+                float dp = Vector2.Dot(alignTo, toAlign);
+                if (dp < GameSettings.Instance.AlignementCheckDotProdThreshold)
+                {
+                    misalignementPenalty += (dp < 0f ? 1f : 1f - dp) * GameSettings.Instance.MisalignementPenaltyFactor;
+                }
+            }
+            if (misalignementPenalty >= 1f)
+                break;
+        }
+        INFO("Computed Alignement penalty : " + misalignementPenalty);
+        return misalignementPenalty;
+    }
+
+    private static void Project2D(List<Vector3> iPositions, out Vector2[] ioProjected)
+    {
+        int n_pos = iPositions.Count;
+        ioProjected = new Vector2[n_pos];
+        for (int i = 0; i < n_pos; i++)
+        { ioProjected[i] = new Vector2(iPositions[i].x, iPositions[i].z); }
+    }
+
 }
