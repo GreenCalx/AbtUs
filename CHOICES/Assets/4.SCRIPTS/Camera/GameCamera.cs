@@ -12,13 +12,6 @@ public class GameCamera : MonoBehaviour
         if (cam==null)
             cam = GetComponent<Camera>();
 
-        if (isPlayerCam)
-        {
-            Managers.Instance.Camera.initPlayerCamLocalPos = transform.localPosition;
-            Managers.Instance.Camera.initPlayerCamLocalRot = transform.localRotation;
-            Managers.Instance.Camera.initPlayerFOV = cam.fieldOfView;
-            Managers.Instance.Camera.initPlayerCamParent = transform.parent;
-        }
         camRotAsEulers = transform.eulerAngles;
     }
 

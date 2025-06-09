@@ -47,6 +47,7 @@ public class PowerPlantPuzzle : Puzzle
 
         playerInPuzzle = iPC;
 
+        Managers.Instance.Camera.RegisterPlayerCamTransform();
         Managers.Instance.Camera.LerpCamToRef(puzzleCam, puzzleEntryInputLatch);
         playerInPuzzle.freeze_WASD = true;
         playerInPuzzle.freeze_CAM = true;
@@ -160,18 +161,18 @@ public class PowerPlantPuzzle : Puzzle
         }
         
         // Player actions
-        if (playerInPuzzle.playerDoAction)
-        {
-            if (TryValidatePuzzle())
-            {
-                OnPuzzleSolved();
-            } else {
-                // not solved
-            }
-        } else if (playerInPuzzle.playerDoCancel)
-        {
-            StopPuzzle();
-        }
+        // if (playerInPuzzle.playerDoAction)
+        // {
+        //     if (TryValidatePuzzle())
+        //     {
+        //         OnPuzzleSolved();
+        //     } else {
+        //         // not solved
+        //     }
+        // } else if (playerInPuzzle.playerDoCancel)
+        // {
+        //     StopPuzzle();
+        // }
     }
 
     public override void OnPuzzleSolved() 
@@ -193,7 +194,7 @@ public class PowerPlantPuzzle : Puzzle
         if (!puzzleStarted)
             return;
             
-        Managers.Instance.Camera.ResetPlayerCam( 1f);
+        Managers.Instance.Camera.SetCamToRegisteredTransform( 1f);
         playerInPuzzle.freeze_WASD = false;
         playerInPuzzle.freeze_CAM = false;
         foreach ( PowerPlantPuzzleGem gem in gemsToAlign ) { gem.GemIsActive = false; }

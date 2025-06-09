@@ -150,6 +150,7 @@ public class PlayerController : MonoBehaviour
                 targetMove = new Vector3(hMove, 0f, vMove);
                 targetMove = Vector3.ClampMagnitude(targetMove, 1f);
                 targetMove = FPSCamera.transform.rotation * targetMove;
+                targetMove.y = 0f;
                 if (!isRunning)
                     self_rb.MovePosition(transform.position + (targetMove * speed));
                 else

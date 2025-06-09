@@ -14,6 +14,8 @@ public class LightDetector : MonoBehaviour, IFeedbackEval
     public float RefreshRateInSec = 2f;
     public GameFeedback LuminanceFeedback;
     private bool GPUReqDonne = false;
+    private bool isFirstPass = true;
+    public float WarmUpTime = 10f;
 
     // Start is called once before the first execution of Update after the MonoBehaviour is created
     void Start()
@@ -21,6 +23,10 @@ public class LightDetector : MonoBehaviour, IFeedbackEval
         LuminanceFeedback.Init(this);
         if (renderCo == null)
             renderCo = StartCoroutine(RenderCo());
+        isFirstPass = true;
+        Luminance = 0f;
+        LuminancePrev = 0f;
+        LuminanceNext = 0f;
     }
 
     IEnumerator RenderCo()
@@ -30,8 +36,6 @@ public class LightDetector : MonoBehaviour, IFeedbackEval
 
         float lerpStartTime = 0f;
         float frac = 0f;
-        float LuminanceFrom = Luminance;
-        float LuminanceTo   = Luminance;
         while (true)
         {
             ScreenCapture.CaptureScreenshotIntoRenderTexture(SampledScreenRT);
@@ -79,8 +83,13 @@ public class LightDetector : MonoBehaviour, IFeedbackEval
             LuminanceNext += (0.2126f * colors[i].r) + (0.7152f * colors[i].g) + (0.0722f + colors[i].b);
         }
         LuminanceNext /= (Screen.width * Screen.height);
-        LuminanceNext = Utils.Remap(LuminanceNext, 0f, 150f, 0f, 1f);
 
+        LuminanceNext = Utils.Remap(LuminanceNext, 0f, 100f, 0f, 1f);
+        if (isFirstPass)
+        {
+            LuminancePrev = LuminanceNext;
+            isFirstPass = false;
+        }
         GPUReqDonne = true;
         //LuminanceFeedback.fData.baseValue = Luminance;
 

@@ -193,6 +193,46 @@ public static class OTCShapeChecker
     }
 
 
+    public static float GetCircleMatching(List<Vector3> iPositions)
+    {
+        float matchScore = 0f;
+
+        int n_pos = iPositions.Count;
+        if (n_pos < 5)
+        {
+            // cannot be ordered triangle
+            // > if its not a multiple of 3, then one edge has more "positions" than the others
+            // thus its chaotic
+            INFO("Circle matching is 0 because there is " + n_pos + " positions");
+            return matchScore;
+        }
+
+        // Discard Unity Y-axis
+        Vector2[] projectedPositions = new Vector2[n_pos];
+        Project2D(iPositions, out projectedPositions);
+
+        // find center position
+        // average of sum of positions
+        Vector2 center = Vector2.zero;
+        foreach (Vector2 p in projectedPositions) { center += p; }
+        center /= n_pos;
+        Debug.DrawRay(new Vector3(center.x, 0, center.y), Vector3.up * 100f, Color.red, 5f);
+        INFO("Circle matchin : center pos : " + center);
+
+        // get mean rho by averging sums of distance to center
+        float meanRho = 0f;
+        foreach (Vector2 p in projectedPositions)
+        { meanRho += Vector2.Distance(p, center); }
+        meanRho /= n_pos;
+        INFO("Circle matchin : mean rho : " + meanRho);
+
+        // deduce theta and thus compute ideal XZ position 
+        
+
+
+        return matchScore;
+    }
+
     private static float GetAlignementPenalty(Vector2[] i2DPositions, int iSummitSteps)
     {
         int n_pos = i2DPositions.Length;

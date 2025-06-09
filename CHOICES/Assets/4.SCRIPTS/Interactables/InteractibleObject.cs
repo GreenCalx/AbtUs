@@ -124,6 +124,8 @@ public class InteractibleObject : MonoBehaviour, IPoolable
     {
         player.playerInAction = false;
         player.targetedInteractibleObject = null;
+        player = null;
+        Deselect();
         ResetMultiAction();
         //UIGame.Instance.UpdateCursorFromPlayerAction(selectedAction);
     }
@@ -171,6 +173,9 @@ public class InteractibleObject : MonoBehaviour, IPoolable
                 IsInActionChain = false;
                 break;
             case PLAYER_ACTIONS.PUZZLE:
+                if (puzzle.puzzleSolved)
+                    break;
+
                 selectedAction = iAction;
 
                 IsInActionChain = false;
@@ -179,6 +184,7 @@ public class InteractibleObject : MonoBehaviour, IPoolable
                 startAction.AddListener(SolvePuzzle);
 
                 continueAction = new UnityEvent();
+                continueAction.AddListener(TryValidatePuzzle);
 
                 cancelAction = new UnityEvent();
                 cancelAction.AddListener(StopPuzzle);
@@ -412,6 +418,15 @@ public class InteractibleObject : MonoBehaviour, IPoolable
         ActionCo = StartCoroutine(SolvePuzzleCo());
     }
 
+    public void TryValidatePuzzle()
+    {
+        if (puzzle.TryValidatePuzzle())
+        {
+            puzzle.OnPuzzleSolved();
+            PostAction();
+        }
+    }
+
     public void StopPuzzle()
     {
         if (ActionCo != null)
@@ -425,7 +440,7 @@ public class InteractibleObject : MonoBehaviour, IPoolable
 
     public IEnumerator SolvePuzzleCo()
     {
-        while (player.playerInAction)
+        while (puzzle.playerInPuzzle)
         {
             // 
             yield return null;
