@@ -5,6 +5,7 @@ public class PlayerController : MonoBehaviour
     [Header("References")]
     public Rigidbody self_rb;
     public GameCamera FPSCamera;
+    public PlayerKillerAura killerAura;
 
     [Header("Tweaks")]
     public float speed = 10f;
@@ -42,7 +43,7 @@ public class PlayerController : MonoBehaviour
     // Start is called once before the first execution of Update after the MonoBehaviour is created
     void Start()
     {
-        if (self_rb==null)
+        if (self_rb == null)
             self_rb = GetComponentInChildren<Rigidbody>();
         hMove = 0f;
         vMove = 0f;
@@ -52,8 +53,8 @@ public class PlayerController : MonoBehaviour
 
     void UpdateTimers()
     {
-        if (elapsedActionTimeLatch<=actionTimeLatch) 
-        { elapsedActionTimeLatch += Time.deltaTime; } 
+        if (elapsedActionTimeLatch <= actionTimeLatch)
+        { elapsedActionTimeLatch += Time.deltaTime; }
     }
 
     // Update is called once per frame
@@ -81,9 +82,9 @@ public class PlayerController : MonoBehaviour
         playerDoRun = Input.GetButton("Run");
         playerDoAction = Input.GetButton("DoAction");
         playerDoCancel = Input.GetButton("Cancel");
-        freezeToggle  = Input.GetButton("Freeze");
+        freezeToggle = Input.GetButton("Freeze");
 
-        isMoving = (hMove!=0f)||(vMove!=0f);
+        isMoving = (hMove != 0f) || (vMove != 0f);
     }
 
     private void ProcessInputs()
@@ -93,7 +94,7 @@ public class PlayerController : MonoBehaviour
         {
             if (playerDoAction)
             {
-                if (targetedInteractibleObject!=null)
+                if (targetedInteractibleObject != null)
                 {
                     if (!playerInAction)
                     {
@@ -104,7 +105,7 @@ public class PlayerController : MonoBehaviour
                     {
                         targetedInteractibleObject.OnContinueInteract(this);
                         playerInAction = targetedInteractibleObject ? targetedInteractibleObject.IsInAction() : false;
-                        
+
                     }
                     elapsedActionTimeLatch = 0f;
                 }
@@ -133,7 +134,9 @@ public class PlayerController : MonoBehaviour
         if (playerDoRun && !isRunning)
         {
             isRunning = true;
-        } else if (!playerDoRun && isRunning) {
+        }
+        else if (!playerDoRun && isRunning)
+        {
             isRunning = false;
         }
 
@@ -197,8 +200,8 @@ public class PlayerController : MonoBehaviour
             else
                 UIGame.Instance.SetCursorToDefault();
         }
-        
-        if (targetedInteractibleObject!=null)
+
+        if (targetedInteractibleObject != null)
         {
             targetedInteractibleObject.Deselect();
             targetedInteractibleObject = null;
@@ -233,5 +236,10 @@ public class PlayerController : MonoBehaviour
             targetedFeedbackObject = null;
         }
 
+    }
+
+    public void OnCreatureKill()
+    {
+        killerAura.NotifyKill();
     }
 }

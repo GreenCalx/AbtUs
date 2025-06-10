@@ -18,6 +18,9 @@ public class CreatureSpawner<T> : MonoBehaviour, IFeedbackEval where T : Creatur
     public WORLD_AXIS axis;
     [Tooltip("X: Axis Magnitude [0,1] \nY: Population in Fraction of MAX_SPAWNS [0,1]")]
     public AnimationCurve spawnsByMagnitudeCurve;
+    [Tooltip("X: Time [0,1] \nY: Chance to call spawncheck")]
+    public AnimationCurve spawnChecksOverTime;
+    public float LongestSpawnTime = 20f;
 
     [Header("Optional")]
     public Terrain relatedTerrain;
@@ -35,6 +38,7 @@ public class CreatureSpawner<T> : MonoBehaviour, IFeedbackEval where T : Creatur
     public int expectedPopulation = 0;
     protected float maxSpawnMulFactor = 1f;
     private int boosters = 0;
+    private float elapsedTimeSinceLastSpawn = 0f;
 
     void OnDrawGizmosSelected()
     {
@@ -69,7 +73,15 @@ public class CreatureSpawner<T> : MonoBehaviour, IFeedbackEval where T : Creatur
             DespawnOne = false;
             DeSpawn(1);
         }
-        CheckForSpawns();
+
+        elapsedTimeSinceLastSpawn += Time.deltaTime;
+        float frac = Mathf.Clamp01(elapsedTimeSinceLastSpawn / LongestSpawnTime);
+        float proba = spawnChecksOverTime.Evaluate(frac);
+        float randRes = Random.Range(0f, 1f);
+        if (randRes <= proba)
+        {
+            CheckForSpawns();
+        }
     }
 
     void OnDisable()
@@ -88,11 +100,17 @@ public class CreatureSpawner<T> : MonoBehaviour, IFeedbackEval where T : Creatur
 
         int popDelta = expectedPopulation - spawnedCreatures.Count;
         if (popDelta > 0)
-            { Spawn(popDelta); }
-            else if (popDelta < 0)
-            {
-                DeSpawn(Mathf.Abs(popDelta));
-            }
+        {
+            int pop_to_add = Random.Range(1, popDelta);
+            Spawn(pop_to_add);
+            elapsedTimeSinceLastSpawn = 0f;
+        }
+        else if (popDelta < 0)
+        {
+            int pop_to_rm = Random.Range(0, -popDelta);
+            DeSpawn(pop_to_rm);
+            elapsedTimeSinceLastSpawn = 0f;
+        }
     }
 
     protected void InitBounds()

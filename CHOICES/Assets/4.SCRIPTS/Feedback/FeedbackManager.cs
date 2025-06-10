@@ -15,7 +15,8 @@ public enum FeedbackType
     birth,
     death,
     duplication,
-    shattering
+    shattering,
+    kill
 };
 
 [System.Serializable]

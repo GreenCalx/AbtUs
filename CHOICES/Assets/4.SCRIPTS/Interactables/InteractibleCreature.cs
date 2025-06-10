@@ -45,6 +45,8 @@ public class InteractibleCreature : InteractibleObject
     {
         target.isFrozen = false;
         target.isDead = true;
+
+        player.OnCreatureKill();
     }
 
     public override void Select()

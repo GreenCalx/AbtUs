@@ -1,45 +1,154 @@
-00:00:03 : [OK] Create chain for Shroom1
-00:00:03 : [INFO] Add Poolable object Shroom1 by seekind ID in parent via manager
-00:00:03 : [INFO] Add Poolable object Shroom1 to pool ID 0 via manager
-00:00:03 : [OK]  ADD Shroom1 in object pool ISLE0 (id:0)
-00:00:03 : [OK] Create chain for NestModel
-00:00:03 : [INFO] Add Poolable object NestModel by seekind ID in parent via manager
-00:00:03 : [INFO] Add Poolable object NestModel to pool ID 0 via manager
-00:00:03 : [OK]  ADD NestModel in object pool ISLE0 (id:0)
-00:00:03 : [OK] Create chain for InteractibleObjectWithWheel
-00:00:03 : [INFO] Add Poolable object InteractibleObjectWithWheel by seekind ID in parent via manager
-00:00:03 : [INFO] Add Poolable object InteractibleObjectWithWheel to pool ID 0 via manager
-00:00:03 : [OK]  ADD InteractibleObjectWithWheel in object pool ISLE0 (id:0)
-00:00:03 : [OK] Create chain for InteractibleObject
-00:00:03 : [INFO] Add Poolable object InteractibleObject by seekind ID in parent via manager
-00:00:03 : [INFO] Add Poolable object InteractibleObject to pool ID 0 via manager
-00:00:03 : [OK]  ADD InteractibleObject in object pool ISLE0 (id:0)
-00:00:03 : [OK] Create chain for ChoiceStone
-00:00:03 : [INFO] Add Poolable object ChoiceStone by seekind ID in parent via manager
-00:00:03 : [INFO] Add Poolable object ChoiceStone to pool ID 0 via manager
-00:00:03 : [OK]  ADD ChoiceStone in object pool ISLE0 (id:0)
-00:00:03 : [OK] Create chain for BCK_SIDE
-00:00:03 : [INFO] Add Poolable object BCK_SIDE by seekind ID in parent via manager
-00:00:03 : [FAIL] Retrieve ObjectPool for BCK_SIDE in parent hierarchy
-00:00:03 : [OK] Create chain for BCK_SIDE
-00:00:03 : [INFO] Add Poolable object BCK_SIDE by seekind ID in parent via manager
-00:00:03 : [FAIL] Retrieve ObjectPool for BCK_SIDE in parent hierarchy
-00:00:03 : [OK] Create chain for BCK_SIDE
-00:00:03 : [INFO] Add Poolable object BCK_SIDE by seekind ID in parent via manager
-00:00:03 : [FAIL] Retrieve ObjectPool for BCK_SIDE in parent hierarchy
-00:00:03 : [OK] Create chain for BCK_SIDE
-00:00:03 : [INFO] Add Poolable object BCK_SIDE by seekind ID in parent via manager
-00:00:03 : [FAIL] Retrieve ObjectPool for BCK_SIDE in parent hierarchy
-00:00:03 : [OK] Create chain for BCK_SIDE
-00:00:03 : [INFO] Add Poolable object BCK_SIDE by seekind ID in parent via manager
-00:00:03 : [FAIL] Retrieve ObjectPool for BCK_SIDE in parent hierarchy
-00:00:03 : [OK] Create chain for BCK_SIDE
-00:00:03 : [INFO] Add Poolable object BCK_SIDE by seekind ID in parent via manager
-00:00:03 : [FAIL] Retrieve ObjectPool for BCK_SIDE in parent hierarchy
-00:00:03 : [OK] Create chain for BCK_SIDE
-00:00:03 : [INFO] Add Poolable object BCK_SIDE by seekind ID in parent via manager
-00:00:03 : [FAIL] Retrieve ObjectPool for BCK_SIDE in parent hierarchy
-00:00:03 : [OK] Create chain for ChoiceStone
-00:00:03 : [INFO] Add Poolable object ChoiceStone by seekind ID in parent via manager
-00:00:03 : [INFO] Add Poolable object ChoiceStone to pool ID 1 via manager
-00:00:03 : [OK]  ADD ChoiceStone in object pool ISLE1 (id:1)
+00:00:05 : [OK] Create chain for Shroom1
+00:00:05 : [INFO] Add Poolable object Shroom1 by seekind ID in parent via manager
+00:00:05 : [INFO] Add Poolable object Shroom1 to pool ID 0 via manager
+00:00:05 : [OK]  ADD Shroom1 in object pool ISLE0 (id:0)
+00:00:05 : [OK] Create chain for NestModel
+00:00:05 : [INFO] Add Poolable object NestModel by seekind ID in parent via manager
+00:00:05 : [INFO] Add Poolable object NestModel to pool ID 0 via manager
+00:00:05 : [OK]  ADD NestModel in object pool ISLE0 (id:0)
+00:00:05 : [OK] Create chain for InteractibleObjectWithWheel
+00:00:05 : [INFO] Add Poolable object InteractibleObjectWithWheel by seekind ID in parent via manager
+00:00:05 : [INFO] Add Poolable object InteractibleObjectWithWheel to pool ID 0 via manager
+00:00:05 : [OK]  ADD InteractibleObjectWithWheel in object pool ISLE0 (id:0)
+00:00:05 : [OK] Create chain for InteractibleObject
+00:00:05 : [INFO] Add Poolable object InteractibleObject by seekind ID in parent via manager
+00:00:05 : [INFO] Add Poolable object InteractibleObject to pool ID 0 via manager
+00:00:05 : [OK]  ADD InteractibleObject in object pool ISLE0 (id:0)
+00:00:05 : [OK] Create chain for ChoiceStone
+00:00:05 : [INFO] Add Poolable object ChoiceStone by seekind ID in parent via manager
+00:00:05 : [INFO] Add Poolable object ChoiceStone to pool ID 0 via manager
+00:00:05 : [OK]  ADD ChoiceStone in object pool ISLE0 (id:0)
+00:00:05 : [OK] Create chain for BCK_SIDE
+00:00:05 : [INFO] Add Poolable object BCK_SIDE by seekind ID in parent via manager
+00:00:05 : [FAIL] Retrieve ObjectPool for BCK_SIDE in parent hierarchy
+00:00:05 : [OK] Create chain for BCK_SIDE
+00:00:05 : [INFO] Add Poolable object BCK_SIDE by seekind ID in parent via manager
+00:00:05 : [FAIL] Retrieve ObjectPool for BCK_SIDE in parent hierarchy
+00:00:05 : [OK] Create chain for BCK_SIDE
+00:00:05 : [INFO] Add Poolable object BCK_SIDE by seekind ID in parent via manager
+00:00:05 : [FAIL] Retrieve ObjectPool for BCK_SIDE in parent hierarchy
+00:00:05 : [OK] Create chain for BCK_SIDE
+00:00:05 : [INFO] Add Poolable object BCK_SIDE by seekind ID in parent via manager
+00:00:05 : [FAIL] Retrieve ObjectPool for BCK_SIDE in parent hierarchy
+00:00:05 : [OK] Create chain for BCK_SIDE
+00:00:05 : [INFO] Add Poolable object BCK_SIDE by seekind ID in parent via manager
+00:00:05 : [FAIL] Retrieve ObjectPool for BCK_SIDE in parent hierarchy
+00:00:05 : [OK] Create chain for BCK_SIDE
+00:00:05 : [INFO] Add Poolable object BCK_SIDE by seekind ID in parent via manager
+00:00:05 : [FAIL] Retrieve ObjectPool for BCK_SIDE in parent hierarchy
+00:00:05 : [OK] Create chain for BCK_SIDE
+00:00:05 : [INFO] Add Poolable object BCK_SIDE by seekind ID in parent via manager
+00:00:05 : [FAIL] Retrieve ObjectPool for BCK_SIDE in parent hierarchy
+00:00:05 : [OK] Create chain for ChoiceStone
+00:00:05 : [INFO] Add Poolable object ChoiceStone by seekind ID in parent via manager
+00:00:05 : [INFO] Add Poolable object ChoiceStone to pool ID 1 via manager
+00:00:05 : [OK]  ADD ChoiceStone in object pool ISLE1 (id:1)
+00:00:13 : [OK] Add chain for Shroom1(Clone) with chainIndex 0
+00:00:13 : [INFO] Add Poolable object Shroom1(Clone) by seekind ID in parent via manager
+00:00:13 : [INFO] Add Poolable object Shroom1(Clone) to pool ID 0 via manager
+00:00:13 : [OK]  ADD Shroom1(Clone) in object pool ISLE0 (id:0)
+00:00:14 : [OK] Create chain for Interactible
+00:00:14 : [INFO] Add Poolable object Interactible by seekind ID in parent via manager
+00:00:14 : [INFO] Add Poolable object Interactible to pool ID 0 via manager
+00:00:14 : [OK]  ADD Interactible in object pool ISLE0 (id:0)
+00:00:15 : [INFO] InteractibleObject Shroom1(Clone) StopMove
+00:00:18 : [OK] Delete chain for Interactible
+00:00:19 : [INFO] Remove Poolable object Insect(Clone) by seekind ID in parent via manager
+00:00:19 : [INFO] Remove Poolable object Insect(Clone) to pool ID 0 via manager
+00:00:19 : [FAIL]  ADD Insect(Clone) in object pool ISLE0 (id:0)
+00:00:19 : [INFO] Remove Poolable object Interactible by seekind ID in parent via manager
+00:00:19 : [INFO] Remove Poolable object Interactible to pool ID 0 via manager
+00:00:19 : [OK]  RM Interactible from object poolISLE0 (id:0)
+00:00:22 : [OK] Create chain for Interactible
+00:00:22 : [INFO] Add Poolable object Interactible by seekind ID in parent via manager
+00:00:22 : [INFO] Add Poolable object Interactible to pool ID 0 via manager
+00:00:22 : [OK]  ADD Interactible in object pool ISLE0 (id:0)
+00:00:35 : [OK] Delete chain for Interactible
+00:00:36 : [INFO] Remove Poolable object Insect(Clone) by seekind ID in parent via manager
+00:00:36 : [INFO] Remove Poolable object Insect(Clone) to pool ID 0 via manager
+00:00:36 : [FAIL]  ADD Insect(Clone) in object pool ISLE0 (id:0)
+00:00:36 : [INFO] Remove Poolable object Interactible by seekind ID in parent via manager
+00:00:36 : [INFO] Remove Poolable object Interactible to pool ID 0 via manager
+00:00:36 : [OK]  RM Interactible from object poolISLE0 (id:0)
+00:00:37 : [OK] Create chain for Interactible
+00:00:37 : [INFO] Add Poolable object Interactible by seekind ID in parent via manager
+00:00:37 : [INFO] Add Poolable object Interactible to pool ID 0 via manager
+00:00:37 : [OK]  ADD Interactible in object pool ISLE0 (id:0)
+00:01:08 : [OK] Delete chain for Interactible
+00:01:09 : [OK] Create chain for Interactible
+00:01:09 : [INFO] Add Poolable object Interactible by seekind ID in parent via manager
+00:01:09 : [INFO] Add Poolable object Interactible to pool ID 0 via manager
+00:01:09 : [OK]  ADD Interactible in object pool ISLE0 (id:0)
+00:01:09 : [INFO] Remove Poolable object Insect(Clone) by seekind ID in parent via manager
+00:01:09 : [INFO] Remove Poolable object Insect(Clone) to pool ID 0 via manager
+00:01:09 : [FAIL]  ADD Insect(Clone) in object pool ISLE0 (id:0)
+00:01:09 : [INFO] Remove Poolable object Interactible by seekind ID in parent via manager
+00:01:09 : [INFO] Remove Poolable object Interactible to pool ID 0 via manager
+00:01:09 : [OK]  RM Interactible from object poolISLE0 (id:0)
+00:02:07 : [INFO] Triangle Check : totAngleDiff is 0
+00:02:07 : [INFO] Triangle Check : Angle Divergence Penalty is 15 ,matchScore= 0
+00:02:07 : [INFO] Triangle Check Done. matchScore= 0
+00:02:07 : [OK] Add chain for Shroom1(Clone)(Clone) with chainIndex 0
+00:02:07 : [INFO] Add Poolable object Shroom1(Clone)(Clone) by seekind ID in parent via manager
+00:02:07 : [INFO] Add Poolable object Shroom1(Clone)(Clone) to pool ID 0 via manager
+00:02:07 : [OK]  ADD Shroom1(Clone)(Clone) in object pool ISLE0 (id:0)
+00:02:07 : [OK] Create chain for Interactible
+00:02:07 : [INFO] Add Poolable object Interactible by seekind ID in parent via manager
+00:02:07 : [INFO] Add Poolable object Interactible to pool ID 0 via manager
+00:02:07 : [OK]  ADD Interactible in object pool ISLE0 (id:0)
+00:02:07 : [INFO] Triangle Check : totAngleDiff is 180
+00:02:07 : [INFO] Triangle Check : Angle Divergence Penalty is 18,01208 ,matchScore= 0
+00:02:07 : [INFO] Triangle Check Done. matchScore= 0
+00:02:07 : [INFO] InteractibleObject Shroom1(Clone)(Clone) StopMove
+00:02:10 : [OK] Delete chain for Interactible
+00:02:10 : [INFO] Triangle Check : totAngleDiff is 179,9999
+00:02:10 : [INFO] Triangle Check : Angle Divergence Penalty is 18,04041 ,matchScore= 0
+00:02:10 : [INFO] Triangle Check Done. matchScore= 0
+00:02:11 : [INFO] Remove Poolable object Insect(Clone) by seekind ID in parent via manager
+00:02:11 : [INFO] Remove Poolable object Insect(Clone) to pool ID 0 via manager
+00:02:11 : [FAIL]  ADD Insect(Clone) in object pool ISLE0 (id:0)
+00:02:11 : [INFO] Remove Poolable object Interactible by seekind ID in parent via manager
+00:02:11 : [INFO] Remove Poolable object Interactible to pool ID 0 via manager
+00:02:11 : [OK]  RM Interactible from object poolISLE0 (id:0)
+00:02:12 : [OK] Create chain for Interactible
+00:02:12 : [INFO] Add Poolable object Interactible by seekind ID in parent via manager
+00:02:12 : [INFO] Add Poolable object Interactible to pool ID 0 via manager
+00:02:12 : [OK]  ADD Interactible in object pool ISLE0 (id:0)
+00:02:13 : [OK] Delete chain for Interactible
+00:02:13 : [INFO] Triangle Check : totAngleDiff is 179,9999
+00:02:13 : [INFO] Triangle Check : Angle Divergence Penalty is 18,04041 ,matchScore= 0
+00:02:13 : [INFO] Triangle Check Done. matchScore= 0
+00:02:14 : [INFO] Remove Poolable object Insect(Clone) by seekind ID in parent via manager
+00:02:14 : [INFO] Remove Poolable object Insect(Clone) to pool ID 0 via manager
+00:02:14 : [FAIL]  ADD Insect(Clone) in object pool ISLE0 (id:0)
+00:02:14 : [INFO] Remove Poolable object Interactible by seekind ID in parent via manager
+00:02:14 : [INFO] Remove Poolable object Interactible to pool ID 0 via manager
+00:02:14 : [OK]  RM Interactible from object poolISLE0 (id:0)
+00:02:17 : [OK] Delete chain for Interactible
+00:02:17 : [INFO] Triangle Check : totAngleDiff is 179,9999
+00:02:17 : [INFO] Triangle Check : Angle Divergence Penalty is 18,04041 ,matchScore= 0
+00:02:17 : [INFO] Triangle Check Done. matchScore= 0
+00:02:18 : [OK] Create chain for Interactible
+00:02:18 : [INFO] Add Poolable object Interactible by seekind ID in parent via manager
+00:02:18 : [INFO] Add Poolable object Interactible to pool ID 0 via manager
+00:02:18 : [OK]  ADD Interactible in object pool ISLE0 (id:0)
+00:02:18 : [INFO] Remove Poolable object Insect(Clone) by seekind ID in parent via manager
+00:02:18 : [INFO] Remove Poolable object Insect(Clone) to pool ID 0 via manager
+00:02:18 : [FAIL]  ADD Insect(Clone) in object pool ISLE0 (id:0)
+00:02:18 : [INFO] Remove Poolable object Interactible by seekind ID in parent via manager
+00:02:18 : [INFO] Remove Poolable object Interactible to pool ID 0 via manager
+00:02:18 : [OK]  RM Interactible from object poolISLE0 (id:0)
+00:02:20 : [OK] Delete chain for Interactible
+00:02:20 : [INFO] Triangle Check : totAngleDiff is 179,9999
+00:02:20 : [INFO] Triangle Check : Angle Divergence Penalty is 18,04041 ,matchScore= 0
+00:02:20 : [INFO] Triangle Check Done. matchScore= 0
+00:02:21 : [INFO] Remove Poolable object Insect(Clone) by seekind ID in parent via manager
+00:02:21 : [INFO] Remove Poolable object Insect(Clone) to pool ID 0 via manager
+00:02:21 : [FAIL]  ADD Insect(Clone) in object pool ISLE0 (id:0)
+00:02:21 : [INFO] Remove Poolable object Interactible by seekind ID in parent via manager
+00:02:21 : [INFO] Remove Poolable object Interactible to pool ID 0 via manager
+00:02:21 : [OK]  RM Interactible from object poolISLE0 (id:0)
+00:02:26 : [OK] Create chain for Interactible
+00:02:26 : [INFO] Add Poolable object Interactible by seekind ID in parent via manager
+00:02:26 : [INFO] Add Poolable object Interactible to pool ID 0 via manager
+00:02:26 : [OK]  ADD Interactible in object pool ISLE0 (id:0)
