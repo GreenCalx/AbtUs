@@ -19,10 +19,16 @@ public class UIActionBubble : MonoBehaviour
     private Coroutine RippleCo;
 
     private bool lockedInFX = false;
+    [Header("Tweaks")]
+    public AnimationCurve ImpactLerpCurve;
+    public float rippleDuration = 2f;
+    [Header("Internals")]
+    public float radius = 50f;
 
     public void Init()
     {
         rt = GetComponent<RectTransform>();
+        radius = rt.rect.width / 2f;
         if (shaderAnimatedImg != null)
         {
             localMat = Instantiate(shaderAnimatedImg.material);
@@ -42,7 +48,10 @@ public class UIActionBubble : MonoBehaviour
         // clean localmat
     }
 
-    private void RefreshImg() { shaderAnimatedImg.SetMaterialDirty(); }
+    private void RefreshImg()
+    {
+        //shaderAnimatedImg.SetMaterialDirty();
+    }
     void OnCollisionEnter2D(Collision2D iCollider)
     {
         CollidedCB.Invoke(this);
@@ -51,10 +60,10 @@ public class UIActionBubble : MonoBehaviour
             return;
 
         ContactPoint2D c = iCollider.GetContact(0);
-        Vector2 impactSpot = c.normal;
-        //impactSpot += new Vector2(0.5f, 0.5f);
-        localMat.SetVector(uishad_impact, -impactSpot);
-        localMat.SetFloat(uishad_rippleBlend, 1f);
+        Vector2 selfPos = new Vector2(transform.localPosition.x, transform.localPosition.y);
+        Vector2 impactSpot = -rt.anchoredPosition.normalized - (c.normal*radius);
+        localMat.SetVector(uishad_impact, impactSpot.normalized/2f);
+        //localMat.SetFloat(uishad_rippleBlend, 1f);
         RefreshImg();
 
         if (RippleCo != null)
@@ -69,21 +78,21 @@ public class UIActionBubble : MonoBehaviour
     {
         lockedInFX = true;
 
-        float duration = 1f;
-
         float elapsedTime = 0f;
 
-        localMat.SetFloat(uishad_rippleBlend, 1f);
+        //localMat.SetFloat(uishad_rippleBlend, 1f);
+        
         RefreshImg();
 
         float blendVal = 0f;
         float frac = 0f;
-        while (elapsedTime <= duration)
+        while (elapsedTime <= rippleDuration)
         {
             elapsedTime += Time.deltaTime;
 
-            frac = elapsedTime / duration;
-            blendVal = Utils.Lerp(1f, 0f, frac);
+            frac = elapsedTime / rippleDuration;
+            //blendVal = Utils.Lerp(1f, 0f, frac);
+            blendVal = ImpactLerpCurve.Evaluate(frac);
             localMat.SetFloat(uishad_rippleBlend, blendVal);
             RefreshImg();
             yield return null;

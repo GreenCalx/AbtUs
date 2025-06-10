@@ -105,13 +105,13 @@ Material:
     - _RefractionModel: 0
     - _RenderQueueType: 4
     - _RequireSplitLighting: 0
-    - _RippleAmp: 0.38
-    - _RippleBlend: 1
-    - _RippleDensity: 0.96
-    - _RippleFreq: 0.2
+    - _RippleAmp: 0.5
+    - _RippleBlend: 0
+    - _RippleDensity: 2
+    - _RippleFreq: 1
     - _RippleRadius: 8.36
-    - _RippleSize: 5
-    - _RippleStr: 2
+    - _RippleSize: 3
+    - _RippleStr: 0.33
     - _ScrollSpeedMul: 0.2
     - _SrcBlend: 1
     - _Stencil: 0
@@ -153,7 +153,7 @@ Material:
     - _ZTestTransparent: 4
     - _ZWrite: 0
     m_Colors:
-    - _CenterOffset: {r: 0.000000011924881, g: -1, b: 0, a: 0}
+    - _CenterOffset: {r: 0.000000011924881, g: 1, b: 0, a: 0}
     - _ClipRect: {r: 0, g: 0, b: 0, a: 0}
     - _DoubleSidedConstants: {r: 1, g: 1, b: -1, a: 0}
     - _EmissionColor: {r: 1, g: 1, b: 1, a: 1}

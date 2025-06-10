@@ -22,6 +22,7 @@ public class UIActionBubbles : MonoBehaviour
     public RectTransform self;
     private RectTransform selectorRect;
 
+    [Header("Internals")]
     public float radius = 50f;
     public float imgScaleDuration = 0.5f;
     private Coroutine lerpImgCo;
