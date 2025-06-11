@@ -35,7 +35,7 @@ public class MTOLookupTable : MonoBehaviour
         }
     }
 
-    public MatDefSO ScoutForMatChange()
+    public MatDefSO GetRandomEligibleMat()
     {
         List<Material> eligibleMats = new List<Material>();
         float mineralMag = OverWorldControl.Instance.MineralMagnitude;
@@ -81,9 +81,10 @@ public class MTOLookupTable : MonoBehaviour
         if (n_eligibles==0)
             return null;
 
-        // TODO : Base the selection on OTC axis
+        // Base the selection on OTC axis
         // > Order = more of the same material for everything
         // > Chaos = more different materials
+        // >> Done in RefreshMTOMods()
         int selected = UnityEngine.Random.Range(0, n_eligibles);
 
         Material selectedMat = eligibleMats[selected];

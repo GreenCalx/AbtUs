@@ -440,18 +440,43 @@ public class OverWorldControl : MonoBehaviour
             return;
         }
 
-        foreach(MTOModifier mod in mtoModifiers)
+        List<MatDefSO> preferredMats = new List<MatDefSO>();
+
+        foreach (MTOModifier mod in mtoModifiers)
         {
             if (!mod.IsAvailable())
                 continue;
 
             int n = mod.GetMatSlotCount();
             List<MatDefSO> newMats = new List<MatDefSO>();
-            for (int i=0; i <= n ;i++ )
+
+            // if order use preferred mat
+            if (OrderMagnitude > 0f)
             {
-                MatDefSO newMat = mtoLookupTable.ScoutForMatChange();
+                if (preferredMats.Count <= n)
+                {
+                    for (int i = preferredMats.Count; i < n; i++)
+                    {
+                        preferredMats.Add(mtoLookupTable.GetRandomEligibleMat());
+                    }
+                }
+                float randRes = UnityEngine.Random.Range(0f, 1f);
+                if (randRes <= OrderMagnitude)
+                {
+                    // pick preferred mat
+                    mod.ChangeMaterials(preferredMats);
+                    continue;
+                }
+            }
+
+            // full random on chaos
+            for (int i = 0; i <= n; i++)
+            {
+                // else fully random
+                MatDefSO newMat = mtoLookupTable.GetRandomEligibleMat();
                 newMats.Add(newMat);
             }
+
             mod.ChangeMaterials(newMats);
         }
 

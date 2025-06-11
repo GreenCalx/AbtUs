@@ -55,13 +55,13 @@ public class GFXWrapper : MonoBehaviour
                 continue;
             }
             if (isMixed)
-                {
-                    SetBaseMaterial(mat, iNewMatDefs[targetMats.IndexOf(mat)]);
-                }
-                else
-                {
-                    SetMixedMaterial(mat, iNewMatDefs[targetMats.IndexOf(mat)]);
-                }
+            {
+                SetBaseMaterial(mat, iNewMatDefs[targetMats.IndexOf(mat)]);
+            }
+            else
+            {
+                SetMixedMaterial(mat, iNewMatDefs[targetMats.IndexOf(mat)]);
+            }
         }
 
 
