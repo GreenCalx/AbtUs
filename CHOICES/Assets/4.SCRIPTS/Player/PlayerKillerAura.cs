@@ -16,22 +16,26 @@ public class PlayerKillerAura : MonoBehaviour, IFeedbackEval
         accumulated = 0f;
         elapsedSinceLastDecay = 0f;
         killFeedback.Init(this);
+
+        lastKillTime = Time.time;
     }
 
     void Update()
     {
-        if ((lastKillTime.time - lastKillTime) < decayStartTime)
+        if (accumulated <= 0)
             return;
-        
+        if ((Time.time - lastKillTime) < decayStartTime)
+            return;
+            
         if (elapsedSinceLastDecay >= decayPeriodicityInSec)
-            {
-                Decay();
-                elapsedSinceLastDecay = 0f;
-            }
-            else
-            {
-                elapsedSinceLastDecay += Time.deltaTime;
-            }
+        {
+            Decay();
+            elapsedSinceLastDecay = 0f;
+        }
+        else
+        {
+            elapsedSinceLastDecay += Time.deltaTime;
+        }
     }
 
     void Decay()

@@ -84,7 +84,7 @@ public class LightDetector : MonoBehaviour, IFeedbackEval
         }
         LuminanceNext /= (Screen.width * Screen.height);
 
-        LuminanceNext = Utils.Remap(LuminanceNext, 0f, 100f, 0f, 1f);
+        LuminanceNext = Utils.Remap(LuminanceNext, 0f, 115f, 0f, 1f);
         if (isFirstPass)
         {
             LuminancePrev = LuminanceNext;

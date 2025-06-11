@@ -940,6 +940,11 @@ PrefabInstance:
       objectReference: {fileID: 1287888913}
     - target: {fileID: 2189840459550447521, guid: c29dea5df46a03542a9fba93fc5a0423,
         type: 3}
+      propertyPath: syncStep
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 2189840459550447521, guid: c29dea5df46a03542a9fba93fc5a0423,
+        type: 3}
       propertyPath: gameFeedbacks.Array.size
       value: 1
       objectReference: {fileID: 0}
@@ -976,6 +981,36 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 757687611247728063, guid: ba09f9c1eef703141bddacf45610c1c0,
+        type: 3}
+      propertyPath: fData.useIntertia
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 757687611247728063, guid: ba09f9c1eef703141bddacf45610c1c0,
+        type: 3}
+      propertyPath: fData.intertiaCurve.m_Curve.Array.size
+      value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: 757687611247728063, guid: ba09f9c1eef703141bddacf45610c1c0,
+        type: 3}
+      propertyPath: fData.intertiaCurve.m_Curve.Array.data[1].time
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 757687611247728063, guid: ba09f9c1eef703141bddacf45610c1c0,
+        type: 3}
+      propertyPath: fData.intertiaCurve.m_Curve.Array.data[1].value
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 757687611247728063, guid: ba09f9c1eef703141bddacf45610c1c0,
+        type: 3}
+      propertyPath: fData.intertiaCurve.m_Curve.Array.data[0].inSlope
+      value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: 757687611247728063, guid: ba09f9c1eef703141bddacf45610c1c0,
+        type: 3}
+      propertyPath: fData.intertiaCurve.m_Curve.Array.data[0].outSlope
+      value: 2
+      objectReference: {fileID: 0}
     - target: {fileID: 1351181775370747892, guid: ba09f9c1eef703141bddacf45610c1c0,
         type: 3}
       propertyPath: playerCam
@@ -1046,6 +1081,36 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 6436285679740840751, guid: ba09f9c1eef703141bddacf45610c1c0,
+        type: 3}
+      propertyPath: fData.useIntertia
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 6436285679740840751, guid: ba09f9c1eef703141bddacf45610c1c0,
+        type: 3}
+      propertyPath: fData.intertiaCurve.m_Curve.Array.size
+      value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: 6436285679740840751, guid: ba09f9c1eef703141bddacf45610c1c0,
+        type: 3}
+      propertyPath: fData.intertiaCurve.m_Curve.Array.data[1].time
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 6436285679740840751, guid: ba09f9c1eef703141bddacf45610c1c0,
+        type: 3}
+      propertyPath: fData.intertiaCurve.m_Curve.Array.data[1].value
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 6436285679740840751, guid: ba09f9c1eef703141bddacf45610c1c0,
+        type: 3}
+      propertyPath: fData.intertiaCurve.m_Curve.Array.data[0].inSlope
+      value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: 6436285679740840751, guid: ba09f9c1eef703141bddacf45610c1c0,
+        type: 3}
+      propertyPath: fData.intertiaCurve.m_Curve.Array.data[0].outSlope
+      value: 2
+      objectReference: {fileID: 0}
     - target: {fileID: 7808715935886537954, guid: ba09f9c1eef703141bddacf45610c1c0,
         type: 3}
       propertyPath: m_Name
@@ -1056,18 +1121,6 @@ PrefabInstance:
     m_AddedGameObjects: []
     m_AddedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: ba09f9c1eef703141bddacf45610c1c0, type: 3}
---- !u!114 &1272018054 stripped
-MonoBehaviour:
-  m_CorrespondingSourceObject: {fileID: 5156531748742634101, guid: 5fabb3c500418244f938110bb767413d,
-    type: 3}
-  m_PrefabInstance: {fileID: 6704114810726565210}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 0}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 88f00807c9a4af844864efc0707a9761, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
 --- !u!114 &1287888913 stripped
 MonoBehaviour:
   m_CorrespondingSourceObject: {fileID: 3501630880115206046, guid: 7fca752e9fdc00344ad121eb2a363266,
@@ -3954,19 +4007,69 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 5156531748742634101, guid: 5fabb3c500418244f938110bb767413d,
         type: 3}
-      propertyPath: fData.baseValue
-      value: -1
+      propertyPath: fData.useIntertia
+      value: 1
       objectReference: {fileID: 0}
-    - target: {fileID: 6334128688018544350, guid: 5fabb3c500418244f938110bb767413d,
+    - target: {fileID: 5156531748742634101, guid: 5fabb3c500418244f938110bb767413d,
         type: 3}
-      propertyPath: decay
-      value: 0.2
+      propertyPath: fData.timeToReachMaxInertia
+      value: 2
       objectReference: {fileID: 0}
-    - target: {fileID: 6334128688018544350, guid: 5fabb3c500418244f938110bb767413d,
+    - target: {fileID: 5156531748742634101, guid: 5fabb3c500418244f938110bb767413d,
         type: 3}
-      propertyPath: killFeedback
-      value: 
-      objectReference: {fileID: 1272018054}
+      propertyPath: fData.intertiaCurve.m_Curve.Array.size
+      value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: 5156531748742634101, guid: 5fabb3c500418244f938110bb767413d,
+        type: 3}
+      propertyPath: fData.intertiaCurve.m_Curve.Array.data[1].time
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 5156531748742634101, guid: 5fabb3c500418244f938110bb767413d,
+        type: 3}
+      propertyPath: fData.intertiaCurve.m_Curve.Array.data[1].value
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 5156531748742634101, guid: 5fabb3c500418244f938110bb767413d,
+        type: 3}
+      propertyPath: fData.intertiaCurve.m_Curve.Array.data[0].inSlope
+      value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: 5156531748742634101, guid: 5fabb3c500418244f938110bb767413d,
+        type: 3}
+      propertyPath: fData.intertiaCurve.m_Curve.Array.data[0].outSlope
+      value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: 6531702765253527374, guid: 5fabb3c500418244f938110bb767413d,
+        type: 3}
+      propertyPath: fData.useIntertia
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 6531702765253527374, guid: 5fabb3c500418244f938110bb767413d,
+        type: 3}
+      propertyPath: fData.intertiaCurve.m_Curve.Array.size
+      value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: 6531702765253527374, guid: 5fabb3c500418244f938110bb767413d,
+        type: 3}
+      propertyPath: fData.intertiaCurve.m_Curve.Array.data[1].time
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 6531702765253527374, guid: 5fabb3c500418244f938110bb767413d,
+        type: 3}
+      propertyPath: fData.intertiaCurve.m_Curve.Array.data[1].value
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 6531702765253527374, guid: 5fabb3c500418244f938110bb767413d,
+        type: 3}
+      propertyPath: fData.intertiaCurve.m_Curve.Array.data[1].inSlope
+      value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: 6531702765253527374, guid: 5fabb3c500418244f938110bb767413d,
+        type: 3}
+      propertyPath: fData.intertiaCurve.m_Curve.Array.data[1].outSlope
+      value: 2
+      objectReference: {fileID: 0}
     - target: {fileID: 6713510498469400784, guid: 5fabb3c500418244f938110bb767413d,
         type: 3}
       propertyPath: m_LocalPosition.x
@@ -4015,6 +4118,46 @@ PrefabInstance:
     - target: {fileID: 6713510498469400784, guid: 5fabb3c500418244f938110bb767413d,
         type: 3}
       propertyPath: m_LocalEulerAnglesHint.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 8855938462133246777, guid: 5fabb3c500418244f938110bb767413d,
+        type: 3}
+      propertyPath: fData.useIntertia
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 8855938462133246777, guid: 5fabb3c500418244f938110bb767413d,
+        type: 3}
+      propertyPath: fData.intertiaCurve.m_Curve.Array.size
+      value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: 8855938462133246777, guid: 5fabb3c500418244f938110bb767413d,
+        type: 3}
+      propertyPath: fData.intertiaCurve.m_Curve.Array.data[1].time
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 8855938462133246777, guid: 5fabb3c500418244f938110bb767413d,
+        type: 3}
+      propertyPath: fData.intertiaCurve.m_Curve.Array.data[1].value
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 8855938462133246777, guid: 5fabb3c500418244f938110bb767413d,
+        type: 3}
+      propertyPath: fData.intertiaCurve.m_Curve.Array.data[0].inSlope
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 8855938462133246777, guid: 5fabb3c500418244f938110bb767413d,
+        type: 3}
+      propertyPath: fData.intertiaCurve.m_Curve.Array.data[1].inSlope
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 8855938462133246777, guid: 5fabb3c500418244f938110bb767413d,
+        type: 3}
+      propertyPath: fData.intertiaCurve.m_Curve.Array.data[0].outSlope
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 8855938462133246777, guid: 5fabb3c500418244f938110bb767413d,
+        type: 3}
+      propertyPath: fData.intertiaCurve.m_Curve.Array.data[1].outSlope
       value: 0
       objectReference: {fileID: 0}
     m_RemovedComponents: []

@@ -29,8 +29,8 @@ public class PlayerController : MonoBehaviour
     public bool playerDoRun;
     public bool playerDoCancel = false;
     public bool freezeToggle;
-    private bool isMoving = false;
-    private bool isRunning = false;
+    public bool isMoving = false;
+    public bool isRunning = false;
 
 
     [Header("Internals")]

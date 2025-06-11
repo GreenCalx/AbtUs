@@ -35,6 +35,7 @@ Transform:
   - {fileID: 597401304647413442}
   - {fileID: 4907217085713027188}
   - {fileID: 3645607741552720475}
+  - {fileID: 3820253262921793349}
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!114 &2347003353081361280
@@ -70,6 +71,8 @@ MonoBehaviour:
   playerDoRun: 0
   playerDoCancel: 0
   freezeToggle: 0
+  isMoving: 0
+  isRunning: 0
   targetedInteractibleObject: {fileID: 0}
 --- !u!54 &6867457432002551375
 Rigidbody:
@@ -165,7 +168,7 @@ GameObject:
   - component: {fileID: 5156531748742634101}
   - component: {fileID: 6334128688018544350}
   m_Layer: 6
-  m_Name: KillerAura
+  m_Name: KillerAuraFB
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -246,7 +249,7 @@ GameObject:
   - component: {fileID: 973858384381661071}
   - component: {fileID: 8855938462133246777}
   m_Layer: 6
-  m_Name: LightProbe
+  m_Name: LightProbeFB
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -560,3 +563,83 @@ MonoBehaviour:
   isPlayerCam: 1
   cam: {fileID: 321791063083088996}
   camRotAsEulers: {x: 0, y: 0, z: 0}
+--- !u!1 &8113890637752390966
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 3820253262921793349}
+  - component: {fileID: 7249205033240980273}
+  - component: {fileID: 6531702765253527374}
+  m_Layer: 0
+  m_Name: MovementFB
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &3820253262921793349
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8113890637752390966}
+  serializedVersion: 2
+  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
+  m_LocalPosition: {x: -3.19, y: -6.96, z: -81.99}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 6713510498469400784}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &7249205033240980273
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8113890637752390966}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 41c220f432594bf48b216675c5b1bb8d, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  PC: {fileID: 2347003353081361280}
+  feedback: {fileID: 6531702765253527374}
+  samplingStep: 0.2
+  stopMovingTriggerTime: 10
+  lastMovementTime: 0
+--- !u!114 &6531702765253527374
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8113890637752390966}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 88f00807c9a4af844864efc0707a9761, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  fData:
+    tag: 1
+    type: 5
+    baseValue: 0.2
+    loopStrength: 0
+    isSynced: 0
+  Influence: 1
+  InitFromFeedbackFunc:
+    m_PersistentCalls:
+      m_Calls: []
+  maxOWCWindow: 1
+  minOWCWindow: 0
+  fInfluenceCurve:
+    serializedVersion: 2
+    m_Curve: []
+    m_PreInfinity: 2
+    m_PostInfinity: 2
+    m_RotationOrder: 4

@@ -3,6 +3,7 @@ using UnityEngine.Events;
 using System.Collections.Generic;
 using System.Collections;
 using System;
+using static EventLog;
 
 public enum FeedbackType
 {
@@ -28,7 +29,11 @@ public class FeedbackData
     public FeedbackType type; // enum to define to refer to created feedbacks
     public float baseValue;
     public float loopStrength = 0f;
-    public bool isSynced = false;
+
+    public bool useIntertia = false;
+    [Tooltip("X: Time [0,1] \nY: Chance to call spawncheck")]
+    public AnimationCurve intertiaCurve;
+    public float timeToReachMaxInertia = 5f;
 }
 
 public class FeedbackMatrix
@@ -37,25 +42,30 @@ public class FeedbackMatrix
     public List<List<Feedback>> feedbacks;
     // tag to output dic
     public Dictionary<int, float> outputs;
+    public List<Feedback> syncedFeedbacks;
     public FeedbackMatrix(int n_tags)
     {
         outputs = new Dictionary<int, float>();
         feedbacks = new List<List<Feedback>>();
+        syncedFeedbacks = new List<Feedback>();
         for (int i = 0; i < n_tags; i++)
         {
             feedbacks.Add(new List<Feedback>(0));
             outputs.Add(i, constCommonInput);
         }
     }
-    public Feedback BuildFeedback(FeedbackData iFData)
+    public Feedback BuildFeedback(GameFeedback iGFB)
     {
-        Feedback new_fb = new Feedback();
+        FeedbackData fData = iGFB.fData;
+        Feedback new_fb = new Feedback(iGFB);
 
-        new_fb.baseValue = iFData.baseValue;
-        new_fb.loopStrength = iFData.loopStrength;
-        new_fb.tag = (int)iFData.tag;
-        new_fb.isSync = iFData.isSynced;
-        new_fb.fType = iFData.type;
+        new_fb.baseValue = fData.baseValue;
+        new_fb.loopStrength = fData.loopStrength;
+        new_fb.tag = (int)fData.tag;
+        new_fb.fType = fData.type;
+        new_fb.useIntertia = fData.useIntertia;
+        new_fb.intertiaCurve = fData.intertiaCurve;
+        new_fb.timeToReachMaxInertia = fData.timeToReachMaxInertia;
 
         return new_fb;
     }
@@ -71,7 +81,8 @@ public class FeedbackMatrix
         float aggregate = 0f;
         foreach (Feedback fb in iRow)
         {
-            fb.influence = fb.Exec();
+            if (fb.isDirty)
+                fb.Exec();
             aggregate += fb.output;
         }
         outputs[feedbacks.IndexOf(iRow)] = constCommonInput + aggregate;
@@ -80,6 +91,20 @@ public class FeedbackMatrix
     public void RefreshTag(int iTag)
     {
         RefreshRow(feedbacks[iTag]);
+    }
+
+    public void SetDirty(GameFeedback iF)
+    {
+        foreach (Feedback f in feedbacks[ (int) iF.fData.tag])
+        {
+            if (f.originator == iF)
+            {
+                f.isDirty = true;
+                return;
+            }
+        }
+        FAIL("Feedback Matrix : SetDirty on feedback because originators couldn't be match or found. Originator = " + iF.gameObject.name);
+
     }
 
     public void RefreshAll()
@@ -92,6 +117,11 @@ public class FeedbackMatrix
         }
     }
 
+    public void OnSync()
+    {
+        RefreshAll();
+    }
+
 }
 public interface IFeedbackEval
 {
@@ -100,6 +130,8 @@ public interface IFeedbackEval
 public class Feedback
 {
     public int tag { get; set; }
+    public GameFeedback originator;
+    public bool isDirty = true;
     public float output
     {
         get
@@ -119,12 +151,49 @@ public class Feedback
     protected float loopValue
     { get; set; }
 
+    public bool useIntertia = false;
+    [Tooltip("X: Time [0,1] \nY: Chance to call spawncheck")]
+    public AnimationCurve intertiaCurve;
+    public float timeToReachMaxInertia = 5f;
+    private float lastEvaluationChangedTime;
+    private float targetEval = 0f;
+    private float currEval = 0f;
+    private float prevEval = 0f;
+
+    public Feedback(GameFeedback iOriginator)
+    {
+        originator = iOriginator;
+    }
+
     public void Assign(evaluate iEvaluator)
     { evaluator = iEvaluator; }
 
-    public float Exec()
+    public void Exec()
     {
-        return evaluator();
+        float eval = evaluator();
+
+        if (!useIntertia)
+        {
+            influence = eval;
+        }
+        else if (eval != targetEval)
+        {
+            float frac = Mathf.Clamp01((Time.time - lastEvaluationChangedTime) / timeToReachMaxInertia);
+            float lerpFac = intertiaCurve.Evaluate(frac);
+            currEval = Utils.Lerp(prevEval, targetEval, lerpFac);
+
+            targetEval = eval;
+            lastEvaluationChangedTime = Time.time;
+            influence = currEval;
+        }
+        else
+        {
+            float frac = Mathf.Clamp01((Time.time - lastEvaluationChangedTime) / timeToReachMaxInertia);
+            float lerpFac = intertiaCurve.Evaluate(frac);
+            prevEval = Utils.Lerp(currEval, targetEval, lerpFac);
+            influence = prevEval;
+        }
+        isDirty = false;
     }
 }
 
@@ -132,13 +201,11 @@ public class FeedbackManager : MonoBehaviour
 {
     private static FeedbackManager instance = null;
     public static FeedbackManager Instance => instance;
-
-
     [SerializeField]
     private OverWorldControl OWC;
-
     public FeedbackMatrix fMatrix;
-
+    public float syncStep = 0.2f;
+    private float lastSyncTime = 0f;
     public void Awake()
     {
         if (instance != null && instance != this)
@@ -156,11 +223,12 @@ public class FeedbackManager : MonoBehaviour
     public void Start()
     {
         OWC = OverWorldControl.Instance;
+        lastSyncTime = Time.time;
     }
 
     public void RegisterGameFeedback(GameFeedback iF, Feedback.evaluate iEvaluator)
     {
-        Feedback new_fb = fMatrix.BuildFeedback(iF.fData);
+        Feedback new_fb = fMatrix.BuildFeedback(iF);
         fMatrix.AddFeedback(new_fb);
         new_fb.Assign(iEvaluator);
     }
@@ -172,23 +240,25 @@ public class FeedbackManager : MonoBehaviour
         OWC.SetGloomyToLush(fMatrix.outputs[(int)OWCAxis.GTL]);
 
         // Debug.Log("MATRIX OUTPUT : ");
-        // Debug.Log("output OTC : " + fMatrix.outputs[(int)OWCAxis.OTC]);
-        // Debug.Log("output MTO : " + fMatrix.outputs[(int)OWCAxis.MTO]);
-        // Debug.Log("output GTL : " + fMatrix.outputs[(int)OWCAxis.GTL]);
+        INFO("output OTC : " + fMatrix.outputs[(int)OWCAxis.OTC]);
+        INFO("output MTO : " + fMatrix.outputs[(int)OWCAxis.MTO]);
+        INFO("output GTL : " + fMatrix.outputs[(int)OWCAxis.GTL]);
     }
 
     public void AsyncNotif(GameFeedback iF)
     {
-        fMatrix.RefreshTag((int)iF.fData.tag);
-        ChangeOWC();
+        fMatrix.SetDirty(iF);
     }
 
     void Update()
     {
-        // foreach (Feedback fVar in feedbackLoops)
-        // {
-        //     ChangeOWC(fVar);
-        // }
+        if ((Time.time - lastSyncTime) > syncStep)
+        {
+            fMatrix.OnSync();
+            ChangeOWC();
+            lastSyncTime = Time.time;
+        }
+        
     }
 
 }
