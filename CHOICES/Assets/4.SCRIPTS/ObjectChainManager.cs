@@ -176,8 +176,8 @@ public class ObjectChainManager : MonoBehaviour, IFeedbackEval
     public ObjectChainLR FXLink(GameObject iPrefab, InteractibleObject iHolder, InteractibleObject iTarget)
     {
         GameObject link_inst = GameObject.Instantiate(iPrefab);
-        link_inst.transform.parent = null;
-        link_inst.transform.position = Vector3.zero;
+        link_inst.transform.parent = transform;
+        //link_inst.transform.position = Vector3.zero;
 
         ObjectChainLR as_oclr = link_inst.GetComponent<ObjectChainLR>();
         as_oclr.Init(iHolder.transform, iTarget.transform);

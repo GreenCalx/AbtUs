@@ -11,7 +11,8 @@ GameObject:
   - component: {fileID: 6271476692159109654}
   - component: {fileID: 431582146006728627}
   - component: {fileID: 8437443773473251862}
-  m_Layer: 0
+  - component: {fileID: 603980044327259156}
+  m_Layer: 17
   m_Name: ChainLRAlt
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -89,7 +90,7 @@ LineRenderer:
       m_Curve:
       - serializedVersion: 3
         time: 0
-        value: 0.05
+        value: 0.2
         inSlope: -0.4091293
         outSlope: 0
         tangentMode: 69
@@ -98,7 +99,7 @@ LineRenderer:
         outWeight: 0.22178988
       - serializedVersion: 3
         time: 1
-        value: 0.05
+        value: 0.2
         inSlope: 0
         outSlope: 0
         tangentMode: 0
@@ -164,3 +165,24 @@ MonoBehaviour:
   LR: {fileID: 0}
   holderAnchor: {fileID: 0}
   connectedAnchor: {fileID: 0}
+--- !u!65 &603980044327259156
+BoxCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 183621774858735447}
+  m_Material: {fileID: 0}
+  m_IncludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_ExcludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_LayerOverridePriority: 0
+  m_IsTrigger: 0
+  m_ProvidesContacts: 0
+  m_Enabled: 1
+  serializedVersion: 3
+  m_Size: {x: 1, y: 1, z: 11}
+  m_Center: {x: 0, y: 0, z: 5}
