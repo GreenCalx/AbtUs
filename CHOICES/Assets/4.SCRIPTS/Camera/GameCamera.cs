@@ -5,6 +5,7 @@ public class GameCamera : MonoBehaviour
     public bool isPlayerCam = false;
     public Camera cam;
     public Vector3 camRotAsEulers;
+    public LayerMask InteractibleRCMaskLayer; 
 
     // Start is called once before the first execution of Update after the MonoBehaviour is created
     void Start()
@@ -31,7 +32,7 @@ public class GameCamera : MonoBehaviour
     public bool TryRCFromScreenCenter(out RaycastHit oRayHit, float iDistance = Mathf.Infinity)
     {
         Ray ray = GetRayFromScreenCenter();
-        return Physics.Raycast(ray, out oRayHit, iDistance);
+        return Physics.Raycast(ray, out oRayHit, iDistance, InteractibleRCMaskLayer);
     }
 
     public Ray GetRayFromScreenCenter()

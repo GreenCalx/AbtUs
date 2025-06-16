@@ -3,6 +3,7 @@ using UnityEngine.Events;
 using System;
 using System.Linq;
 using System.Collections.Generic;
+using static EventLog;
 
 
 [System.Serializable]
@@ -56,7 +57,7 @@ public class ReactiveArea : MonoBehaviour
 
     public void AddActiveObject(ActiveObject iObj)
     {
-        Debug.Log("ADD " + iObj.gameObject.name);
+        INFO("Reactive area " + gameObject.name + " ADD " +  iObj.gameObject.name);
         activeObjects.Add(iObj);
 
         // Don't execute effect if needs to be dropped
@@ -74,7 +75,7 @@ public class ReactiveArea : MonoBehaviour
 
     public void RemoveActiveObject(ActiveObject iObj)
     {
-        Debug.Log("RM " + iObj.gameObject.name);
+        INFO("Reactive area " + gameObject.name + " RM " +  iObj.gameObject.name);
         activeObjects.Remove(iObj);
         activeObjects = activeObjects.Where(e => e!=null).ToList();
 

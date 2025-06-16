@@ -35,6 +35,8 @@ public class InteractibleObject : MonoBehaviour, IPoolable
     private UnityEvent startAction;
     private UnityEvent continueAction;
     private UnityEvent cancelAction;
+    private List<UnityEvent<InteractibleObject,bool>> moveActionListeners;
+    private List<UnityEvent<InteractibleObject>> shatterActionListeners;
     protected PlayerController player;
     private float distFromPlayer = 0f;
     [Header("Move action refs")]
@@ -65,6 +67,9 @@ public class InteractibleObject : MonoBehaviour, IPoolable
 
     public void Init()
     {
+        moveActionListeners = new List<UnityEvent<InteractibleObject, bool>>();
+        shatterActionListeners = new List<UnityEvent<InteractibleObject>>();
+
         if (!isDuplicata)
             Managers.Instance.ObjectChains.CreateChain(this);
 
@@ -294,6 +299,7 @@ public class InteractibleObject : MonoBehaviour, IPoolable
     {
         isMovedByPlayer = true;
         IsInActionChain = false;
+
         // Clamp pos to center of screen
         if (ActionCo != null)
         {
@@ -307,6 +313,7 @@ public class InteractibleObject : MonoBehaviour, IPoolable
     public virtual void StopMove()
     {
         isMovedByPlayer = false;
+
 
         Managers.Instance.ObjectChains.RefreshFeedback();
         INFO("InteractibleObject " + gameObject.name + " StopMove");
@@ -324,6 +331,10 @@ public class InteractibleObject : MonoBehaviour, IPoolable
             iTargetRB.useGravity = false;
             mainCollider.enabled = false;
         }
+        
+        foreach (var l in moveActionListeners)
+        { l.Invoke(this, true); }
+
         if (selectionFX != null)
             selectionFX.intersectionOperationCheck = true;
         isValidOperation = true;
@@ -349,6 +360,10 @@ public class InteractibleObject : MonoBehaviour, IPoolable
             iTargetRB.useGravity = true;
             mainCollider.enabled = true;
         }
+
+        foreach (var l in moveActionListeners)
+        { l.Invoke(this, false); }
+
         PostAction();
     }
 
@@ -365,6 +380,20 @@ public class InteractibleObject : MonoBehaviour, IPoolable
         int n = cols.Where(e => e.gameObject != gameObject).ToArray().Length;
         return (n == 0);
 
+    }
+
+    public void AddMoveListener(UnityEvent<InteractibleObject, bool> iListener)
+    {
+        if (!moveActionListeners.Contains(iListener))
+            moveActionListeners.Add(iListener);
+    }
+    public void RemoveMoveListener(UnityEvent<InteractibleObject,bool> iListener)
+    {
+        if (moveActionListeners.Contains(iListener))
+        {
+            moveActionListeners.Remove(iListener);
+            //moveActionListeners = moveActionListeners.Where(e => e != null);
+        }
     }
     #endregion
 
@@ -529,8 +558,6 @@ public class InteractibleObject : MonoBehaviour, IPoolable
         player.playerInAction = false;
         player.targetedInteractibleObject = null;
 
-
-        //Destroy(gameObject);
         Managers.Instance.ObjectChains.DestroyChain(this);
         Deselect();
     }
@@ -550,6 +577,9 @@ public class InteractibleObject : MonoBehaviour, IPoolable
 
     IEnumerator ShatterCo()
     {
+        foreach (var l in shatterActionListeners)
+        { l.Invoke(this); }
+
         float elapsed = 0f;
         while (elapsed <= def.shatterTime)
         {
@@ -565,6 +595,18 @@ public class InteractibleObject : MonoBehaviour, IPoolable
     public virtual void Kill()
     {
         Destroy(gameObject);
+    }
+    public void AddShatterListener(UnityEvent<InteractibleObject> iListener)
+    {
+        if (!shatterActionListeners.Contains(iListener))
+            shatterActionListeners.Add(iListener);
+    }
+    public void RemoveShatterListener(UnityEvent<InteractibleObject> iListener)
+    {
+        if (shatterActionListeners.Contains(iListener))
+        {
+            shatterActionListeners.Remove(iListener);
+        }
     }
     #endregion
 
