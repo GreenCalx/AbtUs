@@ -1,5 +1,5 @@
 
-#if UNITY_EDITOR
+//#if UNITY_EDITOR
 using UnityEngine;
 
 [ExecuteInEditMode]
@@ -111,4 +111,4 @@ public class ModelTools : MonoBehaviour
 
     #endregion
 }
-#endif
+//#endif
