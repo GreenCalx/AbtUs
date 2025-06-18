@@ -1,7 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
-
+using static EventLog;
 public class OTCModifier : OWCModifier
 {
     public OTCCluster cluster;
@@ -26,12 +26,17 @@ public class OTCModifier : OWCModifier
 
     private float y_offset = 0f;
     public bool debug = false;
+
+    private bool asleep = false;
+
     public void Init_OTC(OTCCluster iCluster)
     {
         OverWorldControl.Instance.SubscribeOTC(this);
+        Managers.Instance.ObjectPools.AddObject(this);
+
         cluster = iCluster;
         ModelTools mt = GetComponent<ModelTools>();
-        if(mt != null && mt.clipToTerrain && FollowTerrainHeight)
+        if (mt != null && mt.clipToTerrain && FollowTerrainHeight)
         {
             y_offset = mt.terrainOffset;
         }
@@ -39,7 +44,7 @@ public class OTCModifier : OWCModifier
         {
             Vector3 pos = transform.position;
             pos.y = cluster.relatedTerrain.SampleHeight(transform.position);
-            transform.position =  pos;
+            transform.position = pos;
         }
 
         initPos = transform.localPosition;
@@ -49,9 +54,18 @@ public class OTCModifier : OWCModifier
         GoToTarget = false;
 
     }
+    
+
+    void OnDestroy()
+    {
+        Managers.Instance.ObjectPools.RemoveObject(this);
+    }
 
     void Update()
     {
+        if (asleep)
+            return;
+            
         if (GoToTarget)
         {
             elapsedTime += Time.deltaTime;
@@ -59,7 +73,7 @@ public class OTCModifier : OWCModifier
             bool changePos = ChangePosition();
             bool changeRot = ChangeRotation();
             bool changeScale = ChangeScale();
-            if (    changePos &&
+            if (changePos &&
                     changeRot &&
                     changeScale
                 )
@@ -67,8 +81,16 @@ public class OTCModifier : OWCModifier
         }
     }
 
+    public bool IsAvailable()
+    {
+        return !asleep;
+    }
+
     public void Launch()
     {
+        if (asleep)
+            return;
+
         GoToTarget = true;
         elapsedTime = 0f;
 
@@ -80,7 +102,7 @@ public class OTCModifier : OWCModifier
     public bool ChangePosition()
     {
         float journeyFrac = elapsedTime / TimeToReachTarget;
-        if (journeyFrac>=1f)
+        if (journeyFrac >= 1f)
         {
             if (FollowTerrainHeight)
             {
@@ -99,10 +121,10 @@ public class OTCModifier : OWCModifier
         if (FollowTerrainHeight)
         {
             Vector3 globalNextStep = transform.parent.transform.TransformPoint(nextStep);
-            globalNextStep.y = cluster.relatedTerrain.SampleHeight(globalNextStep) + y_offset; 
+            globalNextStep.y = cluster.relatedTerrain.SampleHeight(globalNextStep) + y_offset;
             nextStep = transform.parent.transform.InverseTransformPoint(globalNextStep);
             if (debug)
-                { Debug.DrawRay(globalNextStep, Vector3.up * 50, Color.red); }
+            { Debug.DrawRay(globalNextStep, Vector3.up * 50, Color.red); }
         }
         transform.localPosition = nextStep;
 
@@ -112,7 +134,7 @@ public class OTCModifier : OWCModifier
     public bool ChangeRotation()
     {
         float journeyFrac = elapsedTime / TimeToReachTarget;
-        if (journeyFrac>=1f)
+        if (journeyFrac >= 1f)
         {
             transform.localRotation = targetRot;
             return true;
@@ -126,7 +148,7 @@ public class OTCModifier : OWCModifier
     public bool ChangeScale()
     {
         float journeyFrac = elapsedTime / TimeToReachTarget;
-        if (journeyFrac==1f)
+        if (journeyFrac == 1f)
         {
             transform.localScale = targetScale;
             return true;
@@ -135,5 +157,17 @@ public class OTCModifier : OWCModifier
         transform.localScale = nextStep;
 
         return false;
+    }
+    
+    public override void OnPoolSleep()
+    {
+        INFO("OTCModifier::OnPoolSleep : " + gameObject.name);
+        asleep = true;
+    }
+
+    public override void OnPoolAwake()
+    {
+        INFO("OTCModifier::OnPoolAwake : " + gameObject.name);
+        asleep = false;
     }
 }

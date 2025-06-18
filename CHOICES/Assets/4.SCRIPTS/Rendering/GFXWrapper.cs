@@ -16,9 +16,9 @@ public class GFXWrapper : MonoBehaviour
     private bool lerp_done = true;
     private float lerpTime = 10f;
     private float elapsedLerpTime = 0f;
+    private bool asleep = false;
 
-
-    public void InitShader() 
+    public void InitShader()
     {
         matCollection = OverWorldControl.Instance.mtoLookupTable.matCollection;
         targetMats = new List<Material>(targetRenderer.materials);
@@ -33,12 +33,16 @@ public class GFXWrapper : MonoBehaviour
 
         refreshIsMixed();
         SetChaos(OverWorldControl.Instance.ChaosMagnitude);
+        
+        asleep = false;
     }
 
     public bool IsAvailable()
     {
-        return lerp_done;
+        return lerp_done && !asleep;
     }
+    
+    public void Sleep(bool iState) { asleep = iState; }
 
     public bool ChangeMatText(List<MatDefSO> iNewMatDefs, float iCrossfadeTime)
     {
@@ -46,7 +50,7 @@ public class GFXWrapper : MonoBehaviour
             return false;
 
         refreshIsMixed();
-        foreach(Material mat in targetMats)
+        foreach (Material mat in targetMats)
         {
             if (iNewMatDefs[targetMats.IndexOf(mat)] == null)
             {

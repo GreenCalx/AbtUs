@@ -34,6 +34,24 @@ public static class Utils
             return comp;
         return iGO.GetComponentInParent<T>();
     }
+
+    public static T GetCompInParent<T>(GameObject iGO)
+    {
+        T ret = iGO.GetComponentInParent<T>();
+        if (ret != null)
+            return ret;
+        Transform parent = iGO.transform.parent;
+        while (parent != null)
+        {
+            ret = parent.gameObject.GetComponent<T>();
+            if (ret != null)
+                break;
+            parent = parent.parent;
+        }
+
+        return ret;
+    }
+
     public static float Lerp(float a, float b, float f)
     {
         return a * (1f - f) + (b * f);

@@ -14,11 +14,13 @@ public class CameraManager : MonoBehaviour
 
     public Quaternion registeredRotation;
     public Vector3 registeredPosition;
+    public RenderTexture lastRender;
 
     void Start()
     {
         initPlayerCamParent = playerCam.transform.parent;
         initPlayerFOV = playerCam.cam.fieldOfView;
+        
     }
 
     public void RegisterPlayerCamTransform()
@@ -44,8 +46,9 @@ public class CameraManager : MonoBehaviour
             camLerpCo = null;
         }
         StartCoroutine(LerpCamToCo(registeredPosition, registeredRotation, initPlayerFOV, iTime));
-
     }
+
+
 
 
     public void ResetParent()

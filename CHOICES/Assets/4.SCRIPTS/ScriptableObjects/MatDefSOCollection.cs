@@ -1,6 +1,7 @@
 using UnityEngine;
 using System.Collections.Generic;
 using static Constants;
+using static EventLog;
 
 public class MatDefSOCollection : MonoBehaviour
 {
@@ -26,12 +27,11 @@ public class MatDefSOCollection : MonoBehaviour
 
         if (debug_dump)
         {
-            Debug.Log("Mats in collections : ");
+            INFO("Mats in collections : ");
             foreach( string name in mats.Keys)
             {
-                Debug.Log(name);
+                INFO(name.ToString());
             }
-            Debug.Log('\n');
         }
         return true;
     }

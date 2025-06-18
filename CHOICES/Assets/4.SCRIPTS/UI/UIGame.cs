@@ -5,6 +5,7 @@ public class UIGame : MonoBehaviour
 {
     [Header("Debug")]
     public Image DbgLightDetectorImg;
+    public RawImage DbgLightDetectorSC;
 
     [Header("Mand Refs")]
     public UICursorCollection cursorCollection;
@@ -73,6 +74,7 @@ public class UIGame : MonoBehaviour
         if (DbgLightDetectorImg == null)
             return;
         DbgLightDetectorImg.color = new Color(iLightDetec.Luminance, iLightDetec.Luminance, iLightDetec.Luminance, 1f);
+        DbgLightDetectorSC.texture = iLightDetec.tex;
     }
     public void ResetCursorToCenter()
     {

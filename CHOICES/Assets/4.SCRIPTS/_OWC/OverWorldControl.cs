@@ -221,25 +221,6 @@ public class OverWorldControl : MonoBehaviour
 
     void Update()
     {
-        // if (debug && applyForcedControls)
-        // {
-        //     if (ForceMineralToOrganic!=MineralToOrganic)
-        //     {
-        //         MineralToOrganic = ForceMineralToOrganic;
-        //     }
-
-        //     if (OrderToChaos!=ForceOrderToChaos)
-        //     {
-        //         OrderToChaos = ForceOrderToChaos;
-        //     }
-
-        //     if (GloomyToLush!=ForceGloomyToLush)
-        //     {
-        //         GloomyToLush = ForceGloomyToLush;
-        //     }
-
-        //     applyForcedControls = false;
-        // }
         if (updateForcedControls)
         {
             MineralToOrganic = ForceMineralToOrganic;
@@ -305,9 +286,11 @@ public class OverWorldControl : MonoBehaviour
     }
     public void RefreshGTLMods()
     {
+        return;
+        
         if (crossfadingVolDone)
         {
-            if (gtlCrossfadeVolCo!=null)
+            if (gtlCrossfadeVolCo != null)
             {
                 StopCoroutine(gtlCrossfadeVolCo);
                 gtlCrossfadeVolCo = null;

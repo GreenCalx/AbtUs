@@ -38,7 +38,10 @@ public class ObjectPoolManager : MonoBehaviour, IFeedbackEval
     {
         int index = 0;
         foreach (ObjectPool pool in pools)
-        { pool.id = index; index++; }
+        {
+            pool.id = index;
+            index++;
+        }
     }
 
     void Start()
@@ -60,7 +63,8 @@ public class ObjectPoolManager : MonoBehaviour, IFeedbackEval
         INFO("Add Poolable object " + iObj.GetName() + " by seekind ID in parent via manager");
         int poolID = -1;
 
-        ObjectPool parentPool = iObj.GetTransform().gameObject.GetComponentInParent<ObjectPool>();
+        //ObjectPool parentPool = iObj.GetTransform().gameObject.GetComponentInParent<ObjectPool>();
+        ObjectPool parentPool = Utils.GetCompInParent<ObjectPool>(iObj.GetTransform().gameObject);
         if (parentPool == null)
         {
             FAIL("Retrieve ObjectPool for " + iObj.GetName() + " in parent hierarchy");
