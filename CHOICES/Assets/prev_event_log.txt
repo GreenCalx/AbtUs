@@ -1,17 +1,20 @@
-00:00:36 : [INFO] SceneLoader::LoadScene : LEVEL0
-00:00:36 : [INFO] Loading scene LOAD
-00:00:36 : [INFO] scene progress 0,2045455
-00:00:36 : [INFO] scene progress 0,9
-00:00:36 : [INFO] Loading Complete Callback
-00:00:36 : [INFO] Loading scene LOAD Complete
-00:00:36 : [INFO] Scene LOAD activated
-00:00:36 : [INFO] Unloading Scene TitleScene
-00:00:36 : [INFO] Unloading Scene TitleScene Complete
-00:00:36 : [INFO] Loading scene LEVEL0
-00:00:36 : [INFO] scene progress 0
-00:00:36 : [INFO] scene progress 0,9
-00:00:36 : [INFO] scene progress 0,9
-00:00:36 : [INFO] Pool ID 2 Enabled
-00:00:36 : [INFO] Pool ID 1 Enabled
-00:00:36 : [INFO] Pool ID 0 Enabled
-00:00:36 : [INFO] Loading Complete Callback
+00:00:34 : [INFO] SceneLoader::LoadScene : LEVEL0
+00:00:34 : [INFO] Loading scene LOAD
+00:00:34 : [INFO] scene progress 0
+00:00:34 : [INFO] scene progress 0,9
+00:00:34 : [INFO] Loading Complete Callback
+00:00:34 : [INFO] Loading scene LOAD Complete
+00:00:34 : [INFO] Scene LOAD activated
+00:00:34 : [INFO] Unloading Scene TitleScene
+00:00:34 : [INFO] Unloading Scene TitleScene Complete
+00:00:34 : [INFO] Loading scene LEVEL0
+00:00:34 : [INFO] scene progress 0
+00:00:35 : [INFO] scene progress 0,9
+00:00:35 : [INFO] scene progress 0,9
+00:00:35 : [INFO] scene progress 0,9
+00:00:35 : [INFO] scene progress 0,9
+00:00:35 : [INFO] scene progress 0,9
+00:00:35 : [INFO] Pool ID 2 Enabled
+00:00:35 : [INFO] Pool ID 1 Enabled
+00:00:35 : [INFO] Pool ID 0 Enabled
+00:00:35 : [INFO] Loading Complete Callback

@@ -1,20 +1,469 @@
-00:00:34 : [INFO] SceneLoader::LoadScene : LEVEL0
-00:00:34 : [INFO] Loading scene LOAD
-00:00:34 : [INFO] scene progress 0
-00:00:34 : [INFO] scene progress 0,9
-00:00:34 : [INFO] Loading Complete Callback
-00:00:34 : [INFO] Loading scene LOAD Complete
-00:00:34 : [INFO] Scene LOAD activated
-00:00:34 : [INFO] Unloading Scene TitleScene
-00:00:34 : [INFO] Unloading Scene TitleScene Complete
-00:00:34 : [INFO] Loading scene LEVEL0
-00:00:34 : [INFO] scene progress 0
-00:00:35 : [INFO] scene progress 0,9
-00:00:35 : [INFO] scene progress 0,9
-00:00:35 : [INFO] scene progress 0,9
-00:00:35 : [INFO] scene progress 0,9
-00:00:35 : [INFO] scene progress 0,9
-00:00:35 : [INFO] Pool ID 2 Enabled
-00:00:35 : [INFO] Pool ID 1 Enabled
-00:00:35 : [INFO] Pool ID 0 Enabled
-00:00:35 : [INFO] Loading Complete Callback
+00:00:22 : [INFO] SceneLoader::LoadScene : LEVEL0
+00:00:22 : [INFO] Loading scene LOAD
+00:00:22 : [INFO] scene progress 0,2045455
+00:00:22 : [INFO] scene progress 0,9
+00:00:22 : [INFO] Loading Complete Callback
+00:00:22 : [INFO] Loading scene LOAD Complete
+00:00:22 : [INFO] Scene LOAD activated
+00:00:22 : [INFO] Unloading Scene TitleScene
+00:00:22 : [INFO] Unloading Scene TitleScene Complete
+00:00:22 : [INFO] Loading scene LEVEL0
+00:00:22 : [INFO] scene progress 0
+00:00:23 : [INFO] scene progress 0,9
+00:00:23 : [INFO] scene progress 0,9
+00:00:23 : [INFO] scene progress 0,9
+00:00:23 : [INFO] scene progress 0,9
+00:00:23 : [INFO] Pool ID 2 Enabled
+00:00:23 : [INFO] Pool ID 1 Enabled
+00:00:23 : [INFO] Pool ID 0 Enabled
+00:00:23 : [INFO] Loading Complete Callback
+00:00:23 : [OK] Create chain for ChoiceStone
+00:00:23 : [INFO] Add Poolable object ChoiceStone by seekind ID in parent via manager
+00:00:23 : [INFO] Add Poolable object ChoiceStone to pool ID 1 via manager
+00:00:23 : [OK]  ADD ChoiceStone in object pool ISLE1 (id:1)
+00:00:23 : [OK] Create chain for Shroom1
+00:00:23 : [INFO] Add Poolable object Shroom1 by seekind ID in parent via manager
+00:00:23 : [INFO] Add Poolable object Shroom1 to pool ID 0 via manager
+00:00:23 : [OK]  ADD Shroom1 in object pool ISLE0 (id:0)
+00:00:23 : [OK] Create chain for NestModel
+00:00:23 : [INFO] Add Poolable object NestModel by seekind ID in parent via manager
+00:00:23 : [INFO] Add Poolable object NestModel to pool ID 0 via manager
+00:00:23 : [OK]  ADD NestModel in object pool ISLE0 (id:0)
+00:00:23 : [OK] Create chain for InteractibleObjectWithWheel
+00:00:23 : [INFO] Add Poolable object InteractibleObjectWithWheel by seekind ID in parent via manager
+00:00:23 : [INFO] Add Poolable object InteractibleObjectWithWheel to pool ID 0 via manager
+00:00:23 : [OK]  ADD InteractibleObjectWithWheel in object pool ISLE0 (id:0)
+00:00:23 : [OK] Create chain for InteractibleObject
+00:00:23 : [INFO] Add Poolable object InteractibleObject by seekind ID in parent via manager
+00:00:23 : [INFO] Add Poolable object InteractibleObject to pool ID 0 via manager
+00:00:23 : [OK]  ADD InteractibleObject in object pool ISLE0 (id:0)
+00:00:23 : [OK] Create chain for ChoiceStone
+00:00:23 : [INFO] Add Poolable object ChoiceStone by seekind ID in parent via manager
+00:00:23 : [INFO] Add Poolable object ChoiceStone to pool ID 0 via manager
+00:00:23 : [OK]  ADD ChoiceStone in object pool ISLE0 (id:0)
+00:00:23 : [OK] Create chain for BCK_SIDE_PP6
+00:00:23 : [INFO] Add Poolable object BCK_SIDE_PP6 by seekind ID in parent via manager
+00:00:23 : [INFO] Add Poolable object BCK_SIDE_PP6 to pool ID 2 via manager
+00:00:23 : [OK]  ADD BCK_SIDE_PP6 in object pool ISLE2 (id:2)
+00:00:23 : [OK] Create chain for BCK_SIDE_PP5
+00:00:23 : [INFO] Add Poolable object BCK_SIDE_PP5 by seekind ID in parent via manager
+00:00:23 : [INFO] Add Poolable object BCK_SIDE_PP5 to pool ID 2 via manager
+00:00:23 : [OK]  ADD BCK_SIDE_PP5 in object pool ISLE2 (id:2)
+00:00:23 : [OK] Create chain for BCK_SIDE_PP4
+00:00:23 : [INFO] Add Poolable object BCK_SIDE_PP4 by seekind ID in parent via manager
+00:00:23 : [INFO] Add Poolable object BCK_SIDE_PP4 to pool ID 2 via manager
+00:00:23 : [OK]  ADD BCK_SIDE_PP4 in object pool ISLE2 (id:2)
+00:00:23 : [OK] Create chain for BCK_SIDE_PP3
+00:00:23 : [INFO] Add Poolable object BCK_SIDE_PP3 by seekind ID in parent via manager
+00:00:23 : [INFO] Add Poolable object BCK_SIDE_PP3 to pool ID 2 via manager
+00:00:23 : [OK]  ADD BCK_SIDE_PP3 in object pool ISLE2 (id:2)
+00:00:23 : [OK] Create chain for BCK_SIDE_PP2
+00:00:23 : [INFO] Add Poolable object BCK_SIDE_PP2 by seekind ID in parent via manager
+00:00:23 : [INFO] Add Poolable object BCK_SIDE_PP2 to pool ID 2 via manager
+00:00:23 : [OK]  ADD BCK_SIDE_PP2 in object pool ISLE2 (id:2)
+00:00:23 : [OK] Create chain for BCK_SIDE_PP1
+00:00:23 : [INFO] Add Poolable object BCK_SIDE_PP1 by seekind ID in parent via manager
+00:00:23 : [INFO] Add Poolable object BCK_SIDE_PP1 to pool ID 2 via manager
+00:00:23 : [OK]  ADD BCK_SIDE_PP1 in object pool ISLE2 (id:2)
+00:00:23 : [OK] Create chain for BCK_SIDE_PP0
+00:00:23 : [INFO] Add Poolable object BCK_SIDE_PP0 by seekind ID in parent via manager
+00:00:23 : [INFO] Add Poolable object BCK_SIDE_PP0 to pool ID 2 via manager
+00:00:23 : [OK]  ADD BCK_SIDE_PP0 in object pool ISLE2 (id:2)
+00:00:23 : [INFO] Add Poolable object thintorus (3) by seekind ID in parent via manager
+00:00:23 : [FAIL] Retrieve ObjectPool for thintorus (3) in parent hierarchy
+00:00:23 : [INFO] Add Poolable object thintorus (4) by seekind ID in parent via manager
+00:00:23 : [FAIL] Retrieve ObjectPool for thintorus (4) in parent hierarchy
+00:00:23 : [INFO] Add Poolable object thintorus (2) by seekind ID in parent via manager
+00:00:23 : [FAIL] Retrieve ObjectPool for thintorus (2) in parent hierarchy
+00:00:23 : [INFO] Add Poolable object thintorus (1) by seekind ID in parent via manager
+00:00:23 : [FAIL] Retrieve ObjectPool for thintorus (1) in parent hierarchy
+00:00:23 : [INFO] Add Poolable object thintorus by seekind ID in parent via manager
+00:00:23 : [FAIL] Retrieve ObjectPool for thintorus in parent hierarchy
+00:00:23 : [INFO] Add Poolable object torus (2) by seekind ID in parent via manager
+00:00:23 : [FAIL] Retrieve ObjectPool for torus (2) in parent hierarchy
+00:00:23 : [INFO] Add Poolable object torus (1) by seekind ID in parent via manager
+00:00:23 : [FAIL] Retrieve ObjectPool for torus (1) in parent hierarchy
+00:00:23 : [INFO] Add Poolable object torus (3) by seekind ID in parent via manager
+00:00:23 : [FAIL] Retrieve ObjectPool for torus (3) in parent hierarchy
+00:00:23 : [INFO] Add Poolable object torus by seekind ID in parent via manager
+00:00:23 : [FAIL] Retrieve ObjectPool for torus in parent hierarchy
+00:00:23 : [INFO] Add Poolable object Cube by seekind ID in parent via manager
+00:00:23 : [INFO] Add Poolable object Cube to pool ID 0 via manager
+00:00:23 : [OK]  ADD Cube in object pool ISLE0 (id:0)
+00:00:23 : [FAIL] Feedback Matrix : SetDirty on feedback because originators couldn't be match or found. Originator = ObjectNatureFeedback
+00:00:23 : [INFO] Add Poolable object Cube (1) by seekind ID in parent via manager
+00:00:23 : [INFO] Add Poolable object Cube (1) to pool ID 0 via manager
+00:00:23 : [OK]  ADD Cube (1) in object pool ISLE0 (id:0)
+00:00:23 : [FAIL] Feedback Matrix : SetDirty on feedback because originators couldn't be match or found. Originator = ObjectNatureFeedback
+00:00:23 : [INFO] Add Poolable object Cube (2) by seekind ID in parent via manager
+00:00:23 : [INFO] Add Poolable object Cube (2) to pool ID 0 via manager
+00:00:23 : [OK]  ADD Cube (2) in object pool ISLE0 (id:0)
+00:00:23 : [FAIL] Feedback Matrix : SetDirty on feedback because originators couldn't be match or found. Originator = ObjectNatureFeedback
+00:00:23 : [INFO] Add Poolable object ROCK3 (2) by seekind ID in parent via manager
+00:00:23 : [INFO] Add Poolable object ROCK3 (2) to pool ID 0 via manager
+00:00:23 : [OK]  ADD ROCK3 (2) in object pool ISLE0 (id:0)
+00:00:23 : [FAIL] Feedback Matrix : SetDirty on feedback because originators couldn't be match or found. Originator = ObjectNatureFeedback
+00:00:23 : [INFO] Add Poolable object ROCK3 (1) by seekind ID in parent via manager
+00:00:23 : [INFO] Add Poolable object ROCK3 (1) to pool ID 0 via manager
+00:00:23 : [OK]  ADD ROCK3 (1) in object pool ISLE0 (id:0)
+00:00:23 : [FAIL] Feedback Matrix : SetDirty on feedback because originators couldn't be match or found. Originator = ObjectNatureFeedback
+00:00:23 : [INFO] Add Poolable object ROCK3 (4) by seekind ID in parent via manager
+00:00:23 : [INFO] Add Poolable object ROCK3 (4) to pool ID 0 via manager
+00:00:23 : [OK]  ADD ROCK3 (4) in object pool ISLE0 (id:0)
+00:00:23 : [FAIL] Feedback Matrix : SetDirty on feedback because originators couldn't be match or found. Originator = ObjectNatureFeedback
+00:00:23 : [INFO] Add Poolable object ROCK3 (3) by seekind ID in parent via manager
+00:00:23 : [INFO] Add Poolable object ROCK3 (3) to pool ID 0 via manager
+00:00:23 : [OK]  ADD ROCK3 (3) in object pool ISLE0 (id:0)
+00:00:23 : [FAIL] Feedback Matrix : SetDirty on feedback because originators couldn't be match or found. Originator = ObjectNatureFeedback
+00:00:23 : [INFO] Add Poolable object ROCK3 by seekind ID in parent via manager
+00:00:23 : [INFO] Add Poolable object ROCK3 to pool ID 0 via manager
+00:00:23 : [OK]  ADD ROCK3 in object pool ISLE0 (id:0)
+00:00:23 : [FAIL] Feedback Matrix : SetDirty on feedback because originators couldn't be match or found. Originator = ObjectNatureFeedback
+00:00:23 : [INFO] Add Poolable object ROCK2 (1) by seekind ID in parent via manager
+00:00:23 : [INFO] Add Poolable object ROCK2 (1) to pool ID 0 via manager
+00:00:23 : [OK]  ADD ROCK2 (1) in object pool ISLE0 (id:0)
+00:00:23 : [FAIL] Feedback Matrix : SetDirty on feedback because originators couldn't be match or found. Originator = ObjectNatureFeedback
+00:00:23 : [INFO] Add Poolable object ROCK2 by seekind ID in parent via manager
+00:00:23 : [INFO] Add Poolable object ROCK2 to pool ID 0 via manager
+00:00:23 : [OK]  ADD ROCK2 in object pool ISLE0 (id:0)
+00:00:23 : [FAIL] Feedback Matrix : SetDirty on feedback because originators couldn't be match or found. Originator = ObjectNatureFeedback
+00:00:23 : [INFO] Add Poolable object ROCK1 (1) by seekind ID in parent via manager
+00:00:23 : [INFO] Add Poolable object ROCK1 (1) to pool ID 0 via manager
+00:00:23 : [OK]  ADD ROCK1 (1) in object pool ISLE0 (id:0)
+00:00:23 : [FAIL] Feedback Matrix : SetDirty on feedback because originators couldn't be match or found. Originator = ObjectNatureFeedback
+00:00:23 : [INFO] Add Poolable object ROCK1 by seekind ID in parent via manager
+00:00:23 : [INFO] Add Poolable object ROCK1 to pool ID 0 via manager
+00:00:23 : [OK]  ADD ROCK1 in object pool ISLE0 (id:0)
+00:00:23 : [FAIL] Feedback Matrix : SetDirty on feedback because originators couldn't be match or found. Originator = ObjectNatureFeedback
+00:00:23 : [INFO] Add Poolable object rock01 by seekind ID in parent via manager
+00:00:23 : [INFO] Add Poolable object rock01 to pool ID 2 via manager
+00:00:23 : [OK]  ADD rock01 in object pool ISLE2 (id:2)
+00:00:23 : [FAIL] Feedback Matrix : SetDirty on feedback because originators couldn't be match or found. Originator = ObjectNatureFeedback
+00:00:23 : [INFO] Add Poolable object rock01 (2) by seekind ID in parent via manager
+00:00:23 : [INFO] Add Poolable object rock01 (2) to pool ID 2 via manager
+00:00:23 : [OK]  ADD rock01 (2) in object pool ISLE2 (id:2)
+00:00:23 : [FAIL] Feedback Matrix : SetDirty on feedback because originators couldn't be match or found. Originator = ObjectNatureFeedback
+00:00:23 : [INFO] Add Poolable object rock01 (3) by seekind ID in parent via manager
+00:00:23 : [INFO] Add Poolable object rock01 (3) to pool ID 2 via manager
+00:00:23 : [OK]  ADD rock01 (3) in object pool ISLE2 (id:2)
+00:00:23 : [FAIL] Feedback Matrix : SetDirty on feedback because originators couldn't be match or found. Originator = ObjectNatureFeedback
+00:00:23 : [INFO] Add Poolable object rock01 (4) by seekind ID in parent via manager
+00:00:23 : [INFO] Add Poolable object rock01 (4) to pool ID 2 via manager
+00:00:23 : [OK]  ADD rock01 (4) in object pool ISLE2 (id:2)
+00:00:23 : [FAIL] Feedback Matrix : SetDirty on feedback because originators couldn't be match or found. Originator = ObjectNatureFeedback
+00:00:23 : [INFO] Add Poolable object rock01 (5) by seekind ID in parent via manager
+00:00:23 : [INFO] Add Poolable object rock01 (5) to pool ID 2 via manager
+00:00:23 : [OK]  ADD rock01 (5) in object pool ISLE2 (id:2)
+00:00:23 : [FAIL] Feedback Matrix : SetDirty on feedback because originators couldn't be match or found. Originator = ObjectNatureFeedback
+00:00:23 : [INFO] Add Poolable object rock01 (1) by seekind ID in parent via manager
+00:00:23 : [INFO] Add Poolable object rock01 (1) to pool ID 2 via manager
+00:00:23 : [OK]  ADD rock01 (1) in object pool ISLE2 (id:2)
+00:00:23 : [FAIL] Feedback Matrix : SetDirty on feedback because originators couldn't be match or found. Originator = ObjectNatureFeedback
+00:00:23 : [INFO] Add Poolable object rock02 by seekind ID in parent via manager
+00:00:23 : [INFO] Add Poolable object rock02 to pool ID 2 via manager
+00:00:23 : [OK]  ADD rock02 in object pool ISLE2 (id:2)
+00:00:23 : [FAIL] Feedback Matrix : SetDirty on feedback because originators couldn't be match or found. Originator = ObjectNatureFeedback
+00:00:23 : [INFO] Add Poolable object rock02 (3) by seekind ID in parent via manager
+00:00:23 : [INFO] Add Poolable object rock02 (3) to pool ID 2 via manager
+00:00:23 : [OK]  ADD rock02 (3) in object pool ISLE2 (id:2)
+00:00:23 : [FAIL] Feedback Matrix : SetDirty on feedback because originators couldn't be match or found. Originator = ObjectNatureFeedback
+00:00:23 : [INFO] Add Poolable object rock02 (1) by seekind ID in parent via manager
+00:00:23 : [INFO] Add Poolable object rock02 (1) to pool ID 2 via manager
+00:00:23 : [OK]  ADD rock02 (1) in object pool ISLE2 (id:2)
+00:00:23 : [FAIL] Feedback Matrix : SetDirty on feedback because originators couldn't be match or found. Originator = ObjectNatureFeedback
+00:00:23 : [INFO] Add Poolable object rock02 (4) by seekind ID in parent via manager
+00:00:23 : [INFO] Add Poolable object rock02 (4) to pool ID 2 via manager
+00:00:23 : [OK]  ADD rock02 (4) in object pool ISLE2 (id:2)
+00:00:23 : [FAIL] Feedback Matrix : SetDirty on feedback because originators couldn't be match or found. Originator = ObjectNatureFeedback
+00:00:23 : [INFO] Add Poolable object rock02 (2) by seekind ID in parent via manager
+00:00:23 : [INFO] Add Poolable object rock02 (2) to pool ID 2 via manager
+00:00:23 : [OK]  ADD rock02 (2) in object pool ISLE2 (id:2)
+00:00:23 : [FAIL] Feedback Matrix : SetDirty on feedback because originators couldn't be match or found. Originator = ObjectNatureFeedback
+00:00:23 : [INFO] Add Poolable object rock01 by seekind ID in parent via manager
+00:00:23 : [INFO] Add Poolable object rock01 to pool ID 2 via manager
+00:00:23 : [OK]  ADD rock01 in object pool ISLE2 (id:2)
+00:00:23 : [FAIL] Feedback Matrix : SetDirty on feedback because originators couldn't be match or found. Originator = ObjectNatureFeedback
+00:00:23 : [INFO] Add Poolable object rock01 (1) by seekind ID in parent via manager
+00:00:23 : [INFO] Add Poolable object rock01 (1) to pool ID 2 via manager
+00:00:23 : [OK]  ADD rock01 (1) in object pool ISLE2 (id:2)
+00:00:23 : [FAIL] Feedback Matrix : SetDirty on feedback because originators couldn't be match or found. Originator = ObjectNatureFeedback
+00:00:23 : [INFO] Add Poolable object rock02 by seekind ID in parent via manager
+00:00:23 : [INFO] Add Poolable object rock02 to pool ID 2 via manager
+00:00:23 : [OK]  ADD rock02 in object pool ISLE2 (id:2)
+00:00:23 : [FAIL] Feedback Matrix : SetDirty on feedback because originators couldn't be match or found. Originator = ObjectNatureFeedback
+00:00:23 : [INFO] Add Poolable object rock02 (1) by seekind ID in parent via manager
+00:00:23 : [INFO] Add Poolable object rock02 (1) to pool ID 2 via manager
+00:00:23 : [OK]  ADD rock02 (1) in object pool ISLE2 (id:2)
+00:00:23 : [FAIL] Feedback Matrix : SetDirty on feedback because originators couldn't be match or found. Originator = ObjectNatureFeedback
+00:00:23 : [INFO] Add Poolable object rock01 by seekind ID in parent via manager
+00:00:23 : [INFO] Add Poolable object rock01 to pool ID 2 via manager
+00:00:23 : [OK]  ADD rock01 in object pool ISLE2 (id:2)
+00:00:23 : [FAIL] Feedback Matrix : SetDirty on feedback because originators couldn't be match or found. Originator = ObjectNatureFeedback
+00:00:23 : [INFO] Add Poolable object rock01 (2) by seekind ID in parent via manager
+00:00:23 : [INFO] Add Poolable object rock01 (2) to pool ID 2 via manager
+00:00:23 : [OK]  ADD rock01 (2) in object pool ISLE2 (id:2)
+00:00:23 : [FAIL] Feedback Matrix : SetDirty on feedback because originators couldn't be match or found. Originator = ObjectNatureFeedback
+00:00:23 : [INFO] Add Poolable object rock01 (3) by seekind ID in parent via manager
+00:00:23 : [INFO] Add Poolable object rock01 (3) to pool ID 2 via manager
+00:00:23 : [OK]  ADD rock01 (3) in object pool ISLE2 (id:2)
+00:00:23 : [FAIL] Feedback Matrix : SetDirty on feedback because originators couldn't be match or found. Originator = ObjectNatureFeedback
+00:00:23 : [INFO] Add Poolable object rock01 (4) by seekind ID in parent via manager
+00:00:23 : [INFO] Add Poolable object rock01 (4) to pool ID 2 via manager
+00:00:23 : [OK]  ADD rock01 (4) in object pool ISLE2 (id:2)
+00:00:23 : [FAIL] Feedback Matrix : SetDirty on feedback because originators couldn't be match or found. Originator = ObjectNatureFeedback
+00:00:23 : [INFO] Add Poolable object rock01 (5) by seekind ID in parent via manager
+00:00:23 : [INFO] Add Poolable object rock01 (5) to pool ID 2 via manager
+00:00:23 : [OK]  ADD rock01 (5) in object pool ISLE2 (id:2)
+00:00:23 : [FAIL] Feedback Matrix : SetDirty on feedback because originators couldn't be match or found. Originator = ObjectNatureFeedback
+00:00:23 : [INFO] Add Poolable object rock01 (1) by seekind ID in parent via manager
+00:00:23 : [INFO] Add Poolable object rock01 (1) to pool ID 2 via manager
+00:00:23 : [OK]  ADD rock01 (1) in object pool ISLE2 (id:2)
+00:00:23 : [FAIL] Feedback Matrix : SetDirty on feedback because originators couldn't be match or found. Originator = ObjectNatureFeedback
+00:00:23 : [INFO] Add Poolable object rock02 by seekind ID in parent via manager
+00:00:23 : [INFO] Add Poolable object rock02 to pool ID 2 via manager
+00:00:23 : [OK]  ADD rock02 in object pool ISLE2 (id:2)
+00:00:23 : [FAIL] Feedback Matrix : SetDirty on feedback because originators couldn't be match or found. Originator = ObjectNatureFeedback
+00:00:23 : [INFO] Add Poolable object rock02 (3) by seekind ID in parent via manager
+00:00:23 : [INFO] Add Poolable object rock02 (3) to pool ID 2 via manager
+00:00:23 : [OK]  ADD rock02 (3) in object pool ISLE2 (id:2)
+00:00:23 : [FAIL] Feedback Matrix : SetDirty on feedback because originators couldn't be match or found. Originator = ObjectNatureFeedback
+00:00:23 : [INFO] Add Poolable object rock02 (1) by seekind ID in parent via manager
+00:00:23 : [INFO] Add Poolable object rock02 (1) to pool ID 2 via manager
+00:00:23 : [OK]  ADD rock02 (1) in object pool ISLE2 (id:2)
+00:00:23 : [FAIL] Feedback Matrix : SetDirty on feedback because originators couldn't be match or found. Originator = ObjectNatureFeedback
+00:00:23 : [INFO] Add Poolable object rock02 (4) by seekind ID in parent via manager
+00:00:23 : [INFO] Add Poolable object rock02 (4) to pool ID 2 via manager
+00:00:23 : [OK]  ADD rock02 (4) in object pool ISLE2 (id:2)
+00:00:23 : [FAIL] Feedback Matrix : SetDirty on feedback because originators couldn't be match or found. Originator = ObjectNatureFeedback
+00:00:23 : [INFO] Add Poolable object rock02 (2) by seekind ID in parent via manager
+00:00:23 : [INFO] Add Poolable object rock02 (2) to pool ID 2 via manager
+00:00:23 : [OK]  ADD rock02 (2) in object pool ISLE2 (id:2)
+00:00:23 : [FAIL] Feedback Matrix : SetDirty on feedback because originators couldn't be match or found. Originator = ObjectNatureFeedback
+00:00:23 : [INFO] Add Poolable object rock01 (2) by seekind ID in parent via manager
+00:00:23 : [INFO] Add Poolable object rock01 (2) to pool ID 2 via manager
+00:00:23 : [OK]  ADD rock01 (2) in object pool ISLE2 (id:2)
+00:00:23 : [FAIL] Feedback Matrix : SetDirty on feedback because originators couldn't be match or found. Originator = ObjectNatureFeedback
+00:00:23 : [INFO] Add Poolable object rock01 by seekind ID in parent via manager
+00:00:23 : [INFO] Add Poolable object rock01 to pool ID 2 via manager
+00:00:23 : [OK]  ADD rock01 in object pool ISLE2 (id:2)
+00:00:23 : [FAIL] Feedback Matrix : SetDirty on feedback because originators couldn't be match or found. Originator = ObjectNatureFeedback
+00:00:23 : [INFO] Add Poolable object rock01 (2) by seekind ID in parent via manager
+00:00:23 : [INFO] Add Poolable object rock01 (2) to pool ID 2 via manager
+00:00:23 : [OK]  ADD rock01 (2) in object pool ISLE2 (id:2)
+00:00:23 : [FAIL] Feedback Matrix : SetDirty on feedback because originators couldn't be match or found. Originator = ObjectNatureFeedback
+00:00:23 : [INFO] Add Poolable object rock01 (3) by seekind ID in parent via manager
+00:00:23 : [INFO] Add Poolable object rock01 (3) to pool ID 2 via manager
+00:00:23 : [OK]  ADD rock01 (3) in object pool ISLE2 (id:2)
+00:00:23 : [FAIL] Feedback Matrix : SetDirty on feedback because originators couldn't be match or found. Originator = ObjectNatureFeedback
+00:00:23 : [INFO] Add Poolable object rock01 (4) by seekind ID in parent via manager
+00:00:23 : [INFO] Add Poolable object rock01 (4) to pool ID 2 via manager
+00:00:23 : [OK]  ADD rock01 (4) in object pool ISLE2 (id:2)
+00:00:23 : [FAIL] Feedback Matrix : SetDirty on feedback because originators couldn't be match or found. Originator = ObjectNatureFeedback
+00:00:23 : [INFO] Add Poolable object rock01 (5) by seekind ID in parent via manager
+00:00:23 : [INFO] Add Poolable object rock01 (5) to pool ID 2 via manager
+00:00:23 : [OK]  ADD rock01 (5) in object pool ISLE2 (id:2)
+00:00:23 : [FAIL] Feedback Matrix : SetDirty on feedback because originators couldn't be match or found. Originator = ObjectNatureFeedback
+00:00:23 : [INFO] Add Poolable object rock01 (1) by seekind ID in parent via manager
+00:00:23 : [INFO] Add Poolable object rock01 (1) to pool ID 2 via manager
+00:00:23 : [OK]  ADD rock01 (1) in object pool ISLE2 (id:2)
+00:00:23 : [FAIL] Feedback Matrix : SetDirty on feedback because originators couldn't be match or found. Originator = ObjectNatureFeedback
+00:00:23 : [INFO] Add Poolable object rock02 by seekind ID in parent via manager
+00:00:23 : [INFO] Add Poolable object rock02 to pool ID 2 via manager
+00:00:23 : [OK]  ADD rock02 in object pool ISLE2 (id:2)
+00:00:23 : [FAIL] Feedback Matrix : SetDirty on feedback because originators couldn't be match or found. Originator = ObjectNatureFeedback
+00:00:23 : [INFO] Add Poolable object rock02 (3) by seekind ID in parent via manager
+00:00:23 : [INFO] Add Poolable object rock02 (3) to pool ID 2 via manager
+00:00:23 : [OK]  ADD rock02 (3) in object pool ISLE2 (id:2)
+00:00:23 : [FAIL] Feedback Matrix : SetDirty on feedback because originators couldn't be match or found. Originator = ObjectNatureFeedback
+00:00:23 : [INFO] Add Poolable object rock02 (1) by seekind ID in parent via manager
+00:00:23 : [INFO] Add Poolable object rock02 (1) to pool ID 2 via manager
+00:00:23 : [OK]  ADD rock02 (1) in object pool ISLE2 (id:2)
+00:00:23 : [FAIL] Feedback Matrix : SetDirty on feedback because originators couldn't be match or found. Originator = ObjectNatureFeedback
+00:00:23 : [INFO] Add Poolable object rock02 (4) by seekind ID in parent via manager
+00:00:23 : [INFO] Add Poolable object rock02 (4) to pool ID 2 via manager
+00:00:23 : [OK]  ADD rock02 (4) in object pool ISLE2 (id:2)
+00:00:23 : [FAIL] Feedback Matrix : SetDirty on feedback because originators couldn't be match or found. Originator = ObjectNatureFeedback
+00:00:23 : [INFO] Add Poolable object rock02 (2) by seekind ID in parent via manager
+00:00:23 : [INFO] Add Poolable object rock02 (2) to pool ID 2 via manager
+00:00:23 : [OK]  ADD rock02 (2) in object pool ISLE2 (id:2)
+00:00:23 : [FAIL] Feedback Matrix : SetDirty on feedback because originators couldn't be match or found. Originator = ObjectNatureFeedback
+00:00:23 : [INFO] Add Poolable object rock01 (2) by seekind ID in parent via manager
+00:00:23 : [INFO] Add Poolable object rock01 (2) to pool ID 2 via manager
+00:00:23 : [OK]  ADD rock01 (2) in object pool ISLE2 (id:2)
+00:00:23 : [FAIL] Feedback Matrix : SetDirty on feedback because originators couldn't be match or found. Originator = ObjectNatureFeedback
+00:00:23 : [INFO] Add Poolable object rock01 by seekind ID in parent via manager
+00:00:23 : [INFO] Add Poolable object rock01 to pool ID 2 via manager
+00:00:23 : [OK]  ADD rock01 in object pool ISLE2 (id:2)
+00:00:23 : [FAIL] Feedback Matrix : SetDirty on feedback because originators couldn't be match or found. Originator = ObjectNatureFeedback
+00:00:23 : [INFO] Add Poolable object rock01 (2) by seekind ID in parent via manager
+00:00:23 : [INFO] Add Poolable object rock01 (2) to pool ID 2 via manager
+00:00:23 : [OK]  ADD rock01 (2) in object pool ISLE2 (id:2)
+00:00:23 : [FAIL] Feedback Matrix : SetDirty on feedback because originators couldn't be match or found. Originator = ObjectNatureFeedback
+00:00:23 : [INFO] Add Poolable object rock01 (3) by seekind ID in parent via manager
+00:00:23 : [INFO] Add Poolable object rock01 (3) to pool ID 2 via manager
+00:00:23 : [OK]  ADD rock01 (3) in object pool ISLE2 (id:2)
+00:00:23 : [FAIL] Feedback Matrix : SetDirty on feedback because originators couldn't be match or found. Originator = ObjectNatureFeedback
+00:00:23 : [INFO] Add Poolable object rock01 (4) by seekind ID in parent via manager
+00:00:23 : [INFO] Add Poolable object rock01 (4) to pool ID 2 via manager
+00:00:23 : [OK]  ADD rock01 (4) in object pool ISLE2 (id:2)
+00:00:23 : [FAIL] Feedback Matrix : SetDirty on feedback because originators couldn't be match or found. Originator = ObjectNatureFeedback
+00:00:23 : [INFO] Add Poolable object rock01 (5) by seekind ID in parent via manager
+00:00:23 : [INFO] Add Poolable object rock01 (5) to pool ID 2 via manager
+00:00:23 : [OK]  ADD rock01 (5) in object pool ISLE2 (id:2)
+00:00:23 : [FAIL] Feedback Matrix : SetDirty on feedback because originators couldn't be match or found. Originator = ObjectNatureFeedback
+00:00:23 : [INFO] Add Poolable object rock01 (1) by seekind ID in parent via manager
+00:00:23 : [INFO] Add Poolable object rock01 (1) to pool ID 2 via manager
+00:00:23 : [OK]  ADD rock01 (1) in object pool ISLE2 (id:2)
+00:00:23 : [FAIL] Feedback Matrix : SetDirty on feedback because originators couldn't be match or found. Originator = ObjectNatureFeedback
+00:00:23 : [INFO] Add Poolable object rock02 by seekind ID in parent via manager
+00:00:23 : [INFO] Add Poolable object rock02 to pool ID 2 via manager
+00:00:23 : [OK]  ADD rock02 in object pool ISLE2 (id:2)
+00:00:23 : [FAIL] Feedback Matrix : SetDirty on feedback because originators couldn't be match or found. Originator = ObjectNatureFeedback
+00:00:23 : [INFO] Add Poolable object rock02 (3) by seekind ID in parent via manager
+00:00:23 : [INFO] Add Poolable object rock02 (3) to pool ID 2 via manager
+00:00:23 : [OK]  ADD rock02 (3) in object pool ISLE2 (id:2)
+00:00:23 : [FAIL] Feedback Matrix : SetDirty on feedback because originators couldn't be match or found. Originator = ObjectNatureFeedback
+00:00:23 : [INFO] Add Poolable object rock02 (1) by seekind ID in parent via manager
+00:00:23 : [INFO] Add Poolable object rock02 (1) to pool ID 2 via manager
+00:00:23 : [OK]  ADD rock02 (1) in object pool ISLE2 (id:2)
+00:00:23 : [FAIL] Feedback Matrix : SetDirty on feedback because originators couldn't be match or found. Originator = ObjectNatureFeedback
+00:00:23 : [INFO] Add Poolable object rock02 (4) by seekind ID in parent via manager
+00:00:23 : [INFO] Add Poolable object rock02 (4) to pool ID 2 via manager
+00:00:23 : [OK]  ADD rock02 (4) in object pool ISLE2 (id:2)
+00:00:23 : [FAIL] Feedback Matrix : SetDirty on feedback because originators couldn't be match or found. Originator = ObjectNatureFeedback
+00:00:23 : [INFO] Add Poolable object rock02 (2) by seekind ID in parent via manager
+00:00:23 : [INFO] Add Poolable object rock02 (2) to pool ID 2 via manager
+00:00:23 : [OK]  ADD rock02 (2) in object pool ISLE2 (id:2)
+00:00:23 : [FAIL] Feedback Matrix : SetDirty on feedback because originators couldn't be match or found. Originator = ObjectNatureFeedback
+00:00:23 : [INFO] Add Poolable object rock01 (2) by seekind ID in parent via manager
+00:00:23 : [INFO] Add Poolable object rock01 (2) to pool ID 2 via manager
+00:00:23 : [OK]  ADD rock01 (2) in object pool ISLE2 (id:2)
+00:00:23 : [FAIL] Feedback Matrix : SetDirty on feedback because originators couldn't be match or found. Originator = ObjectNatureFeedback
+00:00:23 : [INFO]  LightDetector RT dimensions : 0x0
+00:00:23 : [INFO] OTCModifier::OnPoolSleep : rock01
+00:00:23 : [INFO] OTCModifier::OnPoolSleep : rock01 (2)
+00:00:23 : [INFO] OTCModifier::OnPoolSleep : rock01 (3)
+00:00:23 : [INFO] OTCModifier::OnPoolSleep : rock01 (4)
+00:00:23 : [INFO] OTCModifier::OnPoolSleep : rock01 (5)
+00:00:23 : [INFO] OTCModifier::OnPoolSleep : rock01 (1)
+00:00:23 : [INFO] OTCModifier::OnPoolSleep : rock02
+00:00:23 : [INFO] OTCModifier::OnPoolSleep : rock02 (3)
+00:00:23 : [INFO] OTCModifier::OnPoolSleep : rock02 (1)
+00:00:23 : [INFO] OTCModifier::OnPoolSleep : rock02 (4)
+00:00:23 : [INFO] OTCModifier::OnPoolSleep : rock02 (2)
+00:00:23 : [INFO] OTCModifier::OnPoolSleep : rock01
+00:00:23 : [INFO] OTCModifier::OnPoolSleep : rock01 (1)
+00:00:23 : [INFO] OTCModifier::OnPoolSleep : rock02
+00:00:23 : [INFO] OTCModifier::OnPoolSleep : rock02 (1)
+00:00:23 : [INFO] OTCModifier::OnPoolSleep : rock01
+00:00:23 : [INFO] OTCModifier::OnPoolSleep : rock01 (2)
+00:00:23 : [INFO] OTCModifier::OnPoolSleep : rock01 (3)
+00:00:23 : [INFO] OTCModifier::OnPoolSleep : rock01 (4)
+00:00:23 : [INFO] OTCModifier::OnPoolSleep : rock01 (5)
+00:00:23 : [INFO] OTCModifier::OnPoolSleep : rock01 (1)
+00:00:23 : [INFO] OTCModifier::OnPoolSleep : rock02
+00:00:23 : [INFO] OTCModifier::OnPoolSleep : rock02 (3)
+00:00:23 : [INFO] OTCModifier::OnPoolSleep : rock02 (1)
+00:00:23 : [INFO] OTCModifier::OnPoolSleep : rock02 (4)
+00:00:23 : [INFO] OTCModifier::OnPoolSleep : rock02 (2)
+00:00:23 : [INFO] OTCModifier::OnPoolSleep : rock01 (2)
+00:00:23 : [INFO] OTCModifier::OnPoolSleep : rock01
+00:00:23 : [INFO] OTCModifier::OnPoolSleep : rock01 (2)
+00:00:23 : [INFO] OTCModifier::OnPoolSleep : rock01 (3)
+00:00:23 : [INFO] OTCModifier::OnPoolSleep : rock01 (4)
+00:00:23 : [INFO] OTCModifier::OnPoolSleep : rock01 (5)
+00:00:23 : [INFO] OTCModifier::OnPoolSleep : rock01 (1)
+00:00:23 : [INFO] OTCModifier::OnPoolSleep : rock02
+00:00:23 : [INFO] OTCModifier::OnPoolSleep : rock02 (3)
+00:00:23 : [INFO] OTCModifier::OnPoolSleep : rock02 (1)
+00:00:23 : [INFO] OTCModifier::OnPoolSleep : rock02 (4)
+00:00:23 : [INFO] OTCModifier::OnPoolSleep : rock02 (2)
+00:00:23 : [INFO] OTCModifier::OnPoolSleep : rock01 (2)
+00:00:23 : [INFO] OTCModifier::OnPoolSleep : rock01
+00:00:23 : [INFO] OTCModifier::OnPoolSleep : rock01 (2)
+00:00:23 : [INFO] OTCModifier::OnPoolSleep : rock01 (3)
+00:00:23 : [INFO] OTCModifier::OnPoolSleep : rock01 (4)
+00:00:23 : [INFO] OTCModifier::OnPoolSleep : rock01 (5)
+00:00:23 : [INFO] OTCModifier::OnPoolSleep : rock01 (1)
+00:00:23 : [INFO] OTCModifier::OnPoolSleep : rock02
+00:00:23 : [INFO] OTCModifier::OnPoolSleep : rock02 (3)
+00:00:23 : [INFO] OTCModifier::OnPoolSleep : rock02 (1)
+00:00:23 : [INFO] OTCModifier::OnPoolSleep : rock02 (4)
+00:00:23 : [INFO] OTCModifier::OnPoolSleep : rock02 (2)
+00:00:23 : [INFO] OTCModifier::OnPoolSleep : rock01 (2)
+00:00:23 : [INFO] Pool ID 2 Disabled
+00:00:23 : [INFO] Pool ID 1 Disabled
+00:00:23 : [OK] Create chain for InteractibleBox(Clone)
+00:00:23 : [INFO] Add Poolable object InteractibleBox(Clone) by seekind ID in parent via manager
+00:00:23 : [INFO] Add Poolable object InteractibleBox(Clone) to pool ID 0 via manager
+00:00:23 : [OK]  ADD InteractibleBox(Clone) in object pool ISLE0 (id:0)
+00:00:23 : [INFO] Loading scene LEVEL0 Complete
+00:00:23 : [INFO] Scene LEVEL0 activated
+00:00:24 : [INFO] output OTC : 0,5
+00:00:24 : [INFO] output MTO : 0,5
+00:00:24 : [INFO] output GTL : 0,25
+00:00:24 : [INFO] output OTC : 0,5
+00:00:24 : [INFO] output MTO : 0,5
+00:00:24 : [INFO] output GTL : 0,25
+00:00:24 : [INFO] Unloading Scene LOAD
+00:00:24 : [INFO] output OTC : 0,5
+00:00:24 : [INFO] output MTO : 0,5
+00:00:24 : [INFO] output GTL : 0,25
+00:00:24 : [INFO] Unloading Scene LOAD Complete
+00:00:24 : [INFO] output OTC : 0,5
+00:00:24 : [INFO] output MTO : 0,5
+00:00:24 : [INFO] output GTL : 0,25
+00:00:24 : [INFO] output OTC : 0,5
+00:00:24 : [INFO] output MTO : 0,5
+00:00:24 : [INFO] output GTL : 0,25
+00:00:24 : [INFO] output OTC : 0,5
+00:00:24 : [INFO] output MTO : 0,5
+00:00:24 : [INFO] output GTL : 0,25
+00:00:24 : [INFO] output OTC : 0,5
+00:00:24 : [INFO] output MTO : 0,5
+00:00:24 : [INFO] output GTL : 0,25
+00:00:24 : [INFO] output OTC : 0,5
+00:00:24 : [INFO] output MTO : 0,5
+00:00:24 : [INFO] output GTL : 0,25
+00:00:24 : [INFO] output OTC : 0,5
+00:00:24 : [INFO] output MTO : 0,5
+00:00:24 : [INFO] output GTL : 0,25
+00:00:24 : [INFO] output OTC : 0,5
+00:00:24 : [INFO] output MTO : 0,5
+00:00:24 : [INFO] output GTL : 0,25
+00:00:24 : [INFO] output OTC : 0,5
+00:00:24 : [INFO] output MTO : 0,5
+00:00:24 : [INFO] output GTL : 0,25
+00:00:24 : [INFO] output OTC : 0,5
+00:00:24 : [INFO] output MTO : 0,5
+00:00:24 : [INFO] output GTL : 0,25
+00:00:24 : [INFO] output OTC : 0,5
+00:00:24 : [INFO] output MTO : 0,5
+00:00:24 : [INFO] output GTL : 0,25
+00:00:24 : [INFO] output OTC : 0,5
+00:00:24 : [INFO] output MTO : 0,5
+00:00:24 : [INFO] output GTL : 0,25
+00:00:24 : [INFO] output OTC : 0,5
+00:00:24 : [INFO] output MTO : 0,5
+00:00:24 : [INFO] output GTL : 0,25
+00:00:25 : [INFO] output OTC : 0,5
+00:00:25 : [INFO] output MTO : 0,5
+00:00:25 : [INFO] output GTL : 0,25
+00:00:25 : [INFO] output OTC : 0,5
+00:00:25 : [INFO] output MTO : 0,5
+00:00:25 : [INFO] output GTL : 0,25
+00:00:25 : [INFO] output OTC : 0,5
+00:00:25 : [INFO] output MTO : 0,5
+00:00:25 : [INFO] output GTL : 0,25
+00:00:25 : [INFO] output OTC : 0,5
+00:00:25 : [INFO] output MTO : 0,5
+00:00:25 : [INFO] output GTL : 0,25
+00:00:25 : [INFO] output OTC : 0,5
+00:00:25 : [INFO] output MTO : 0,5
+00:00:25 : [INFO] output GTL : 0,25
+00:00:25 : [INFO] output OTC : 0,5
+00:00:25 : [INFO] output MTO : 0,5
+00:00:25 : [INFO] output GTL : 0,25
+00:00:25 : [INFO] output OTC : 0,5
+00:00:25 : [INFO] output MTO : 0,5
+00:00:25 : [INFO] output GTL : 0,25

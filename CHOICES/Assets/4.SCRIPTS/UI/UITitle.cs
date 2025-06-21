@@ -36,8 +36,8 @@ public class UITitle : MonoBehaviour
         TitleGFXMat.SetVector(mouseParmName, Input.mousePosition);
         if (Input.anyKey)
         {
-            sceneLoader.loadScene(gameScene);
-            Destroy(gameObject);
+            // sceneLoader.loadScene(gameScene);
+            // Destroy(gameObject);
         }
     }
 }

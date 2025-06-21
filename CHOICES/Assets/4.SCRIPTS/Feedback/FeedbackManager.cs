@@ -3,6 +3,7 @@ using UnityEngine.Events;
 using System.Collections.Generic;
 using System.Collections;
 using System;
+using System.Linq;
 using static EventLog;
 
 public enum FeedbackType
@@ -39,18 +40,16 @@ public class FeedbackData
 public class FeedbackMatrix
 {
     public float constCommonInput = 0.5f;
-    public List<List<Feedback>> feedbacks;
+    public List<FeedbackChain> feedbacks;
     // tag to output dic
     public Dictionary<int, float> outputs;
-    public List<Feedback> syncedFeedbacks;
     public FeedbackMatrix(int n_tags)
     {
         outputs = new Dictionary<int, float>();
-        feedbacks = new List<List<Feedback>>();
-        syncedFeedbacks = new List<Feedback>();
+        feedbacks = new List<FeedbackChain>();
         for (int i = 0; i < n_tags; i++)
         {
-            feedbacks.Add(new List<Feedback>(0));
+            feedbacks.Add(new FeedbackChain());
             outputs.Add(i, constCommonInput);
         }
     }
@@ -71,12 +70,24 @@ public class FeedbackMatrix
     }
 
     public void AddFeedback(Feedback iF)
-    { feedbacks[iF.tag].Add(iF); }
+    {
+        if (iF.tag >= feedbacks.Count)
+            return;
+        if (feedbacks[iF.tag].Contains(iF))
+            return;
+        feedbacks[iF.tag].Add(iF);
+    }
 
     public void RemoveFeedback(Feedback iF)
-    { feedbacks[iF.tag].Remove(iF); }
+    {
+        if (iF.tag >= feedbacks.Count)
+            return;
+        if (!feedbacks[iF.tag].Contains(iF))
+            return;
+        feedbacks[iF.tag].Remove(iF);
+    }
 
-    public void RefreshRow(List<Feedback> iRow)
+    public void RefreshRow(FeedbackChain iRow)
     {
         float aggregate = 0f;
         foreach (Feedback fb in iRow)
@@ -95,7 +106,7 @@ public class FeedbackMatrix
 
     public void SetDirty(GameFeedback iF)
     {
-        foreach (Feedback f in feedbacks[ (int) iF.fData.tag])
+        foreach (Feedback f in feedbacks[(int)iF.fData.tag])
         {
             if (f.originator == iF)
             {
@@ -107,19 +118,25 @@ public class FeedbackMatrix
 
     }
 
-    public void RefreshAll()
+    public bool RefreshAll()
     {
-        foreach (List<Feedback> row in feedbacks)
+        bool refreshed = false;
+        foreach (FeedbackChain row in feedbacks)
         {
             if (row.Count == 0)
                 continue;
+            if (!row.isDirty)
+                continue;
+
             RefreshRow(row);
+            refreshed = true;
         }
+        return refreshed;
     }
 
-    public void OnSync()
+    public bool OnSync()
     {
-        RefreshAll();
+        return RefreshAll();
     }
 
 }
@@ -127,11 +144,41 @@ public interface IFeedbackEval
 {
     public float feedbackEvaluator();
 }
+
+public class FeedbackChain : IEnumerable<Feedback>
+{
+    private List<Feedback> m_feedbacks = new List<Feedback>(0);
+    public Feedback this[int i]
+    {
+        get => m_feedbacks[i];
+        set => m_feedbacks[i] = value;
+    }
+    public bool isDirty = false;
+    public int Count { get => m_feedbacks.Count; }
+    public IEnumerator<Feedback> GetEnumerator() { foreach(Feedback f in m_feedbacks){ yield return f; }}
+    public void Add(Feedback iF) { m_feedbacks.Add(iF); }
+    public void Remove(Feedback iF) { m_feedbacks.Remove(iF); m_feedbacks = m_feedbacks.Where(e => e != null).ToList(); }
+    System.Collections.IEnumerator System.Collections.IEnumerable.GetEnumerator()
+    {
+        return GetEnumerator();
+    }
+}
 public class Feedback
 {
     public int tag { get; set; }
     public GameFeedback originator;
-    public bool isDirty = true;
+    private FeedbackChain matrixRow;
+    private bool m_isDirty;
+    public bool isDirty
+    {
+        set
+        {
+            if (value)
+                matrixRow.isDirty = true;
+            m_isDirty = value;
+        }
+        get { return m_isDirty; } 
+    }
     public float output
     {
         get
@@ -235,14 +282,27 @@ public class FeedbackManager : MonoBehaviour
 
     public void ChangeOWC()
     {
-        OWC.SetOrderToChaos(fMatrix.outputs[(int)OWCAxis.OTC]);
-        OWC.SetMineralToOrganic(fMatrix.outputs[(int)OWCAxis.MTO]);
-        OWC.SetGloomyToLush(fMatrix.outputs[(int)OWCAxis.GTL]);
+        float otc = fMatrix.outputs[(int)OWCAxis.OTC];
+        float mto = fMatrix.outputs[(int)OWCAxis.MTO];
+        float gtl = fMatrix.outputs[(int)OWCAxis.GTL];
 
-        // Debug.Log("MATRIX OUTPUT : ");
-        INFO("output OTC : " + fMatrix.outputs[(int)OWCAxis.OTC]);
-        INFO("output MTO : " + fMatrix.outputs[(int)OWCAxis.MTO]);
-        INFO("output GTL : " + fMatrix.outputs[(int)OWCAxis.GTL]);
+        if (otc != OWC.OrderToChaos)
+        {
+            OWC.SetOrderToChaos(otc);
+            INFO("output OTC : " + fMatrix.outputs[(int)OWCAxis.OTC]);
+        }
+
+        if (mto != OWC.MineralToOrganic)
+        {
+            OWC.SetMineralToOrganic(mto);
+            INFO("output MTO : " + fMatrix.outputs[(int)OWCAxis.MTO]);
+        }
+
+        if (gtl != OWC.GloomyToLush)
+        {
+            OWC.SetGloomyToLush(gtl);
+            INFO("output GTL : " + fMatrix.outputs[(int)OWCAxis.GTL]);
+        }
     }
 
     public void AsyncNotif(GameFeedback iF)
@@ -254,8 +314,8 @@ public class FeedbackManager : MonoBehaviour
     {
         if ((Time.time - lastSyncTime) > syncStep)
         {
-            fMatrix.OnSync();
-            ChangeOWC();
+            if (fMatrix.OnSync())
+                ChangeOWC();
             lastSyncTime = Time.time;
         }
         
