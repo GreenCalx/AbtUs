@@ -1,20 +1,1096 @@
-00:00:34 : [INFO] SceneLoader::LoadScene : LEVEL0
-00:00:34 : [INFO] Loading scene LOAD
-00:00:34 : [INFO] scene progress 0
-00:00:34 : [INFO] scene progress 0,9
-00:00:34 : [INFO] Loading Complete Callback
-00:00:34 : [INFO] Loading scene LOAD Complete
-00:00:34 : [INFO] Scene LOAD activated
-00:00:34 : [INFO] Unloading Scene TitleScene
-00:00:34 : [INFO] Unloading Scene TitleScene Complete
-00:00:34 : [INFO] Loading scene LEVEL0
-00:00:34 : [INFO] scene progress 0
-00:00:35 : [INFO] scene progress 0,9
-00:00:35 : [INFO] scene progress 0,9
-00:00:35 : [INFO] scene progress 0,9
-00:00:35 : [INFO] scene progress 0,9
-00:00:35 : [INFO] scene progress 0,9
-00:00:35 : [INFO] Pool ID 2 Enabled
-00:00:35 : [INFO] Pool ID 1 Enabled
-00:00:35 : [INFO] Pool ID 0 Enabled
-00:00:35 : [INFO] Loading Complete Callback
+00:00:02 : [INFO] Pool ID 2 Enabled
+00:00:02 : [INFO] Pool ID 1 Enabled
+00:00:02 : [INFO] Pool ID 0 Enabled
+00:00:02 : [OK] Create chain for Shroom1
+00:00:02 : [INFO] Add Poolable object Shroom1 by seekind ID in parent via manager
+00:00:02 : [INFO] Add Poolable object Shroom1 to pool ID 0 via manager
+00:00:02 : [OK]  ADD Shroom1 in object pool ISLE0 (id:0)
+00:00:02 : [OK] Create chain for NestModel
+00:00:02 : [INFO] Add Poolable object NestModel by seekind ID in parent via manager
+00:00:02 : [INFO] Add Poolable object NestModel to pool ID 0 via manager
+00:00:02 : [OK]  ADD NestModel in object pool ISLE0 (id:0)
+00:00:02 : [OK] Create chain for InteractibleObjectWithWheel
+00:00:02 : [INFO] Add Poolable object InteractibleObjectWithWheel by seekind ID in parent via manager
+00:00:02 : [INFO] Add Poolable object InteractibleObjectWithWheel to pool ID 0 via manager
+00:00:02 : [OK]  ADD InteractibleObjectWithWheel in object pool ISLE0 (id:0)
+00:00:02 : [OK] Create chain for InteractibleObject
+00:00:02 : [INFO] Add Poolable object InteractibleObject by seekind ID in parent via manager
+00:00:02 : [INFO] Add Poolable object InteractibleObject to pool ID 0 via manager
+00:00:02 : [OK]  ADD InteractibleObject in object pool ISLE0 (id:0)
+00:00:02 : [OK] Create chain for ChoiceStone
+00:00:02 : [INFO] Add Poolable object ChoiceStone by seekind ID in parent via manager
+00:00:02 : [INFO] Add Poolable object ChoiceStone to pool ID 0 via manager
+00:00:02 : [OK]  ADD ChoiceStone in object pool ISLE0 (id:0)
+00:00:02 : [OK] Create chain for ChoiceStone
+00:00:02 : [INFO] Add Poolable object ChoiceStone by seekind ID in parent via manager
+00:00:02 : [INFO] Add Poolable object ChoiceStone to pool ID 1 via manager
+00:00:02 : [OK]  ADD ChoiceStone in object pool ISLE1 (id:1)
+00:00:02 : [OK] Create chain for BCK_SIDE_PP6
+00:00:02 : [INFO] Add Poolable object BCK_SIDE_PP6 by seekind ID in parent via manager
+00:00:02 : [INFO] Add Poolable object BCK_SIDE_PP6 to pool ID 2 via manager
+00:00:02 : [OK]  ADD BCK_SIDE_PP6 in object pool ISLE2 (id:2)
+00:00:02 : [OK] Create chain for BCK_SIDE_PP5
+00:00:02 : [INFO] Add Poolable object BCK_SIDE_PP5 by seekind ID in parent via manager
+00:00:02 : [INFO] Add Poolable object BCK_SIDE_PP5 to pool ID 2 via manager
+00:00:02 : [OK]  ADD BCK_SIDE_PP5 in object pool ISLE2 (id:2)
+00:00:02 : [OK] Create chain for BCK_SIDE_PP4
+00:00:02 : [INFO] Add Poolable object BCK_SIDE_PP4 by seekind ID in parent via manager
+00:00:02 : [INFO] Add Poolable object BCK_SIDE_PP4 to pool ID 2 via manager
+00:00:02 : [OK]  ADD BCK_SIDE_PP4 in object pool ISLE2 (id:2)
+00:00:02 : [OK] Create chain for BCK_SIDE_PP3
+00:00:02 : [INFO] Add Poolable object BCK_SIDE_PP3 by seekind ID in parent via manager
+00:00:02 : [INFO] Add Poolable object BCK_SIDE_PP3 to pool ID 2 via manager
+00:00:02 : [OK]  ADD BCK_SIDE_PP3 in object pool ISLE2 (id:2)
+00:00:02 : [OK] Create chain for BCK_SIDE_PP2
+00:00:02 : [INFO] Add Poolable object BCK_SIDE_PP2 by seekind ID in parent via manager
+00:00:02 : [INFO] Add Poolable object BCK_SIDE_PP2 to pool ID 2 via manager
+00:00:02 : [OK]  ADD BCK_SIDE_PP2 in object pool ISLE2 (id:2)
+00:00:02 : [OK] Create chain for BCK_SIDE_PP1
+00:00:02 : [INFO] Add Poolable object BCK_SIDE_PP1 by seekind ID in parent via manager
+00:00:02 : [INFO] Add Poolable object BCK_SIDE_PP1 to pool ID 2 via manager
+00:00:02 : [OK]  ADD BCK_SIDE_PP1 in object pool ISLE2 (id:2)
+00:00:02 : [OK] Create chain for BCK_SIDE_PP0
+00:00:02 : [INFO] Add Poolable object BCK_SIDE_PP0 by seekind ID in parent via manager
+00:00:02 : [INFO] Add Poolable object BCK_SIDE_PP0 to pool ID 2 via manager
+00:00:02 : [OK]  ADD BCK_SIDE_PP0 in object pool ISLE2 (id:2)
+00:00:02 : [INFO] Add Poolable object rock01 by seekind ID in parent via manager
+00:00:02 : [INFO] Add Poolable object rock01 to pool ID 2 via manager
+00:00:02 : [OK]  ADD rock01 in object pool ISLE2 (id:2)
+00:00:02 : [INFO] Add Poolable object rock01 (2) by seekind ID in parent via manager
+00:00:02 : [INFO] Add Poolable object rock01 (2) to pool ID 2 via manager
+00:00:02 : [OK]  ADD rock01 (2) in object pool ISLE2 (id:2)
+00:00:02 : [INFO] Add Poolable object rock01 (3) by seekind ID in parent via manager
+00:00:02 : [INFO] Add Poolable object rock01 (3) to pool ID 2 via manager
+00:00:02 : [OK]  ADD rock01 (3) in object pool ISLE2 (id:2)
+00:00:02 : [INFO] Add Poolable object rock01 (4) by seekind ID in parent via manager
+00:00:02 : [INFO] Add Poolable object rock01 (4) to pool ID 2 via manager
+00:00:02 : [OK]  ADD rock01 (4) in object pool ISLE2 (id:2)
+00:00:02 : [INFO] Add Poolable object rock01 (5) by seekind ID in parent via manager
+00:00:02 : [INFO] Add Poolable object rock01 (5) to pool ID 2 via manager
+00:00:02 : [OK]  ADD rock01 (5) in object pool ISLE2 (id:2)
+00:00:02 : [INFO] Add Poolable object rock01 (1) by seekind ID in parent via manager
+00:00:02 : [INFO] Add Poolable object rock01 (1) to pool ID 2 via manager
+00:00:02 : [OK]  ADD rock01 (1) in object pool ISLE2 (id:2)
+00:00:02 : [INFO] Add Poolable object rock02 by seekind ID in parent via manager
+00:00:02 : [INFO] Add Poolable object rock02 to pool ID 2 via manager
+00:00:02 : [OK]  ADD rock02 in object pool ISLE2 (id:2)
+00:00:02 : [INFO] Add Poolable object rock02 (3) by seekind ID in parent via manager
+00:00:02 : [INFO] Add Poolable object rock02 (3) to pool ID 2 via manager
+00:00:02 : [OK]  ADD rock02 (3) in object pool ISLE2 (id:2)
+00:00:02 : [INFO] Add Poolable object rock02 (1) by seekind ID in parent via manager
+00:00:02 : [INFO] Add Poolable object rock02 (1) to pool ID 2 via manager
+00:00:02 : [OK]  ADD rock02 (1) in object pool ISLE2 (id:2)
+00:00:02 : [INFO] Add Poolable object rock02 (4) by seekind ID in parent via manager
+00:00:02 : [INFO] Add Poolable object rock02 (4) to pool ID 2 via manager
+00:00:02 : [OK]  ADD rock02 (4) in object pool ISLE2 (id:2)
+00:00:02 : [INFO] Add Poolable object rock02 (2) by seekind ID in parent via manager
+00:00:02 : [INFO] Add Poolable object rock02 (2) to pool ID 2 via manager
+00:00:02 : [OK]  ADD rock02 (2) in object pool ISLE2 (id:2)
+00:00:02 : [INFO] Add Poolable object rock01 by seekind ID in parent via manager
+00:00:02 : [INFO] Add Poolable object rock01 to pool ID 2 via manager
+00:00:02 : [OK]  ADD rock01 in object pool ISLE2 (id:2)
+00:00:02 : [INFO] Add Poolable object rock01 (1) by seekind ID in parent via manager
+00:00:02 : [INFO] Add Poolable object rock01 (1) to pool ID 2 via manager
+00:00:02 : [OK]  ADD rock01 (1) in object pool ISLE2 (id:2)
+00:00:02 : [INFO] Add Poolable object rock02 by seekind ID in parent via manager
+00:00:02 : [INFO] Add Poolable object rock02 to pool ID 2 via manager
+00:00:02 : [OK]  ADD rock02 in object pool ISLE2 (id:2)
+00:00:02 : [INFO] Add Poolable object rock02 (1) by seekind ID in parent via manager
+00:00:02 : [INFO] Add Poolable object rock02 (1) to pool ID 2 via manager
+00:00:02 : [OK]  ADD rock02 (1) in object pool ISLE2 (id:2)
+00:00:02 : [INFO] Add Poolable object rock01 by seekind ID in parent via manager
+00:00:02 : [INFO] Add Poolable object rock01 to pool ID 2 via manager
+00:00:02 : [OK]  ADD rock01 in object pool ISLE2 (id:2)
+00:00:02 : [INFO] Add Poolable object rock01 (2) by seekind ID in parent via manager
+00:00:02 : [INFO] Add Poolable object rock01 (2) to pool ID 2 via manager
+00:00:02 : [OK]  ADD rock01 (2) in object pool ISLE2 (id:2)
+00:00:02 : [INFO] Add Poolable object rock01 (3) by seekind ID in parent via manager
+00:00:02 : [INFO] Add Poolable object rock01 (3) to pool ID 2 via manager
+00:00:02 : [OK]  ADD rock01 (3) in object pool ISLE2 (id:2)
+00:00:02 : [INFO] Add Poolable object rock01 (4) by seekind ID in parent via manager
+00:00:02 : [INFO] Add Poolable object rock01 (4) to pool ID 2 via manager
+00:00:02 : [OK]  ADD rock01 (4) in object pool ISLE2 (id:2)
+00:00:02 : [INFO] Add Poolable object rock01 (5) by seekind ID in parent via manager
+00:00:02 : [INFO] Add Poolable object rock01 (5) to pool ID 2 via manager
+00:00:02 : [OK]  ADD rock01 (5) in object pool ISLE2 (id:2)
+00:00:02 : [INFO] Add Poolable object rock01 (1) by seekind ID in parent via manager
+00:00:02 : [INFO] Add Poolable object rock01 (1) to pool ID 2 via manager
+00:00:02 : [OK]  ADD rock01 (1) in object pool ISLE2 (id:2)
+00:00:02 : [INFO] Add Poolable object rock02 by seekind ID in parent via manager
+00:00:02 : [INFO] Add Poolable object rock02 to pool ID 2 via manager
+00:00:02 : [OK]  ADD rock02 in object pool ISLE2 (id:2)
+00:00:02 : [INFO] Add Poolable object rock02 (3) by seekind ID in parent via manager
+00:00:02 : [INFO] Add Poolable object rock02 (3) to pool ID 2 via manager
+00:00:02 : [OK]  ADD rock02 (3) in object pool ISLE2 (id:2)
+00:00:02 : [INFO] Add Poolable object rock02 (1) by seekind ID in parent via manager
+00:00:02 : [INFO] Add Poolable object rock02 (1) to pool ID 2 via manager
+00:00:02 : [OK]  ADD rock02 (1) in object pool ISLE2 (id:2)
+00:00:02 : [INFO] Add Poolable object rock02 (4) by seekind ID in parent via manager
+00:00:02 : [INFO] Add Poolable object rock02 (4) to pool ID 2 via manager
+00:00:02 : [OK]  ADD rock02 (4) in object pool ISLE2 (id:2)
+00:00:02 : [INFO] Add Poolable object rock02 (2) by seekind ID in parent via manager
+00:00:02 : [INFO] Add Poolable object rock02 (2) to pool ID 2 via manager
+00:00:02 : [OK]  ADD rock02 (2) in object pool ISLE2 (id:2)
+00:00:02 : [INFO] Add Poolable object rock01 (2) by seekind ID in parent via manager
+00:00:02 : [INFO] Add Poolable object rock01 (2) to pool ID 2 via manager
+00:00:02 : [OK]  ADD rock01 (2) in object pool ISLE2 (id:2)
+00:00:02 : [INFO] Add Poolable object rock01 by seekind ID in parent via manager
+00:00:02 : [INFO] Add Poolable object rock01 to pool ID 2 via manager
+00:00:02 : [OK]  ADD rock01 in object pool ISLE2 (id:2)
+00:00:02 : [INFO] Add Poolable object rock01 (2) by seekind ID in parent via manager
+00:00:02 : [INFO] Add Poolable object rock01 (2) to pool ID 2 via manager
+00:00:02 : [OK]  ADD rock01 (2) in object pool ISLE2 (id:2)
+00:00:02 : [INFO] Add Poolable object rock01 (3) by seekind ID in parent via manager
+00:00:02 : [INFO] Add Poolable object rock01 (3) to pool ID 2 via manager
+00:00:02 : [OK]  ADD rock01 (3) in object pool ISLE2 (id:2)
+00:00:02 : [INFO] Add Poolable object rock01 (4) by seekind ID in parent via manager
+00:00:02 : [INFO] Add Poolable object rock01 (4) to pool ID 2 via manager
+00:00:02 : [OK]  ADD rock01 (4) in object pool ISLE2 (id:2)
+00:00:02 : [INFO] Add Poolable object rock01 (5) by seekind ID in parent via manager
+00:00:02 : [INFO] Add Poolable object rock01 (5) to pool ID 2 via manager
+00:00:02 : [OK]  ADD rock01 (5) in object pool ISLE2 (id:2)
+00:00:02 : [INFO] Add Poolable object rock01 (1) by seekind ID in parent via manager
+00:00:02 : [INFO] Add Poolable object rock01 (1) to pool ID 2 via manager
+00:00:02 : [OK]  ADD rock01 (1) in object pool ISLE2 (id:2)
+00:00:02 : [INFO] Add Poolable object rock02 by seekind ID in parent via manager
+00:00:02 : [INFO] Add Poolable object rock02 to pool ID 2 via manager
+00:00:02 : [OK]  ADD rock02 in object pool ISLE2 (id:2)
+00:00:02 : [INFO] Add Poolable object rock02 (3) by seekind ID in parent via manager
+00:00:02 : [INFO] Add Poolable object rock02 (3) to pool ID 2 via manager
+00:00:02 : [OK]  ADD rock02 (3) in object pool ISLE2 (id:2)
+00:00:02 : [INFO] Add Poolable object rock02 (1) by seekind ID in parent via manager
+00:00:02 : [INFO] Add Poolable object rock02 (1) to pool ID 2 via manager
+00:00:02 : [OK]  ADD rock02 (1) in object pool ISLE2 (id:2)
+00:00:02 : [INFO] Add Poolable object rock02 (4) by seekind ID in parent via manager
+00:00:02 : [INFO] Add Poolable object rock02 (4) to pool ID 2 via manager
+00:00:02 : [OK]  ADD rock02 (4) in object pool ISLE2 (id:2)
+00:00:02 : [INFO] Add Poolable object rock02 (2) by seekind ID in parent via manager
+00:00:02 : [INFO] Add Poolable object rock02 (2) to pool ID 2 via manager
+00:00:02 : [OK]  ADD rock02 (2) in object pool ISLE2 (id:2)
+00:00:02 : [INFO] Add Poolable object rock01 (2) by seekind ID in parent via manager
+00:00:02 : [INFO] Add Poolable object rock01 (2) to pool ID 2 via manager
+00:00:02 : [OK]  ADD rock01 (2) in object pool ISLE2 (id:2)
+00:00:02 : [INFO] Add Poolable object rock01 by seekind ID in parent via manager
+00:00:02 : [INFO] Add Poolable object rock01 to pool ID 2 via manager
+00:00:02 : [OK]  ADD rock01 in object pool ISLE2 (id:2)
+00:00:02 : [INFO] Add Poolable object rock01 (2) by seekind ID in parent via manager
+00:00:02 : [INFO] Add Poolable object rock01 (2) to pool ID 2 via manager
+00:00:02 : [OK]  ADD rock01 (2) in object pool ISLE2 (id:2)
+00:00:02 : [INFO] Add Poolable object rock01 (3) by seekind ID in parent via manager
+00:00:02 : [INFO] Add Poolable object rock01 (3) to pool ID 2 via manager
+00:00:02 : [OK]  ADD rock01 (3) in object pool ISLE2 (id:2)
+00:00:02 : [INFO] Add Poolable object rock01 (4) by seekind ID in parent via manager
+00:00:02 : [INFO] Add Poolable object rock01 (4) to pool ID 2 via manager
+00:00:02 : [OK]  ADD rock01 (4) in object pool ISLE2 (id:2)
+00:00:02 : [INFO] Add Poolable object rock01 (5) by seekind ID in parent via manager
+00:00:02 : [INFO] Add Poolable object rock01 (5) to pool ID 2 via manager
+00:00:02 : [OK]  ADD rock01 (5) in object pool ISLE2 (id:2)
+00:00:02 : [INFO] Add Poolable object rock01 (1) by seekind ID in parent via manager
+00:00:02 : [INFO] Add Poolable object rock01 (1) to pool ID 2 via manager
+00:00:02 : [OK]  ADD rock01 (1) in object pool ISLE2 (id:2)
+00:00:02 : [INFO] Add Poolable object rock02 by seekind ID in parent via manager
+00:00:02 : [INFO] Add Poolable object rock02 to pool ID 2 via manager
+00:00:02 : [OK]  ADD rock02 in object pool ISLE2 (id:2)
+00:00:02 : [INFO] Add Poolable object rock02 (3) by seekind ID in parent via manager
+00:00:02 : [INFO] Add Poolable object rock02 (3) to pool ID 2 via manager
+00:00:02 : [OK]  ADD rock02 (3) in object pool ISLE2 (id:2)
+00:00:02 : [INFO] Add Poolable object rock02 (1) by seekind ID in parent via manager
+00:00:02 : [INFO] Add Poolable object rock02 (1) to pool ID 2 via manager
+00:00:02 : [OK]  ADD rock02 (1) in object pool ISLE2 (id:2)
+00:00:02 : [INFO] Add Poolable object rock02 (4) by seekind ID in parent via manager
+00:00:02 : [INFO] Add Poolable object rock02 (4) to pool ID 2 via manager
+00:00:02 : [OK]  ADD rock02 (4) in object pool ISLE2 (id:2)
+00:00:02 : [INFO] Add Poolable object rock02 (2) by seekind ID in parent via manager
+00:00:02 : [INFO] Add Poolable object rock02 (2) to pool ID 2 via manager
+00:00:02 : [OK]  ADD rock02 (2) in object pool ISLE2 (id:2)
+00:00:02 : [INFO] Add Poolable object rock01 (2) by seekind ID in parent via manager
+00:00:02 : [INFO] Add Poolable object rock01 (2) to pool ID 2 via manager
+00:00:02 : [OK]  ADD rock01 (2) in object pool ISLE2 (id:2)
+00:00:02 : [INFO] Add Poolable object Cube by seekind ID in parent via manager
+00:00:02 : [INFO] Add Poolable object Cube to pool ID 0 via manager
+00:00:02 : [OK]  ADD Cube in object pool ISLE0 (id:0)
+00:00:02 : [INFO] Add Poolable object Cube (1) by seekind ID in parent via manager
+00:00:02 : [INFO] Add Poolable object Cube (1) to pool ID 0 via manager
+00:00:02 : [OK]  ADD Cube (1) in object pool ISLE0 (id:0)
+00:00:02 : [INFO] Add Poolable object Cube (2) by seekind ID in parent via manager
+00:00:02 : [INFO] Add Poolable object Cube (2) to pool ID 0 via manager
+00:00:02 : [OK]  ADD Cube (2) in object pool ISLE0 (id:0)
+00:00:02 : [INFO] Add Poolable object ROCK3 (2) by seekind ID in parent via manager
+00:00:02 : [INFO] Add Poolable object ROCK3 (2) to pool ID 0 via manager
+00:00:02 : [OK]  ADD ROCK3 (2) in object pool ISLE0 (id:0)
+00:00:02 : [INFO] Add Poolable object ROCK3 (1) by seekind ID in parent via manager
+00:00:02 : [INFO] Add Poolable object ROCK3 (1) to pool ID 0 via manager
+00:00:02 : [OK]  ADD ROCK3 (1) in object pool ISLE0 (id:0)
+00:00:02 : [INFO] Add Poolable object ROCK3 (4) by seekind ID in parent via manager
+00:00:02 : [INFO] Add Poolable object ROCK3 (4) to pool ID 0 via manager
+00:00:02 : [OK]  ADD ROCK3 (4) in object pool ISLE0 (id:0)
+00:00:02 : [INFO] Add Poolable object ROCK3 (3) by seekind ID in parent via manager
+00:00:02 : [INFO] Add Poolable object ROCK3 (3) to pool ID 0 via manager
+00:00:02 : [OK]  ADD ROCK3 (3) in object pool ISLE0 (id:0)
+00:00:02 : [INFO] Add Poolable object ROCK3 by seekind ID in parent via manager
+00:00:02 : [INFO] Add Poolable object ROCK3 to pool ID 0 via manager
+00:00:02 : [OK]  ADD ROCK3 in object pool ISLE0 (id:0)
+00:00:02 : [INFO] Add Poolable object ROCK2 (1) by seekind ID in parent via manager
+00:00:02 : [INFO] Add Poolable object ROCK2 (1) to pool ID 0 via manager
+00:00:02 : [OK]  ADD ROCK2 (1) in object pool ISLE0 (id:0)
+00:00:02 : [INFO] Add Poolable object ROCK2 by seekind ID in parent via manager
+00:00:02 : [INFO] Add Poolable object ROCK2 to pool ID 0 via manager
+00:00:02 : [OK]  ADD ROCK2 in object pool ISLE0 (id:0)
+00:00:02 : [INFO] Add Poolable object ROCK1 (1) by seekind ID in parent via manager
+00:00:02 : [INFO] Add Poolable object ROCK1 (1) to pool ID 0 via manager
+00:00:02 : [OK]  ADD ROCK1 (1) in object pool ISLE0 (id:0)
+00:00:02 : [INFO] Add Poolable object ROCK1 by seekind ID in parent via manager
+00:00:02 : [INFO] Add Poolable object ROCK1 to pool ID 0 via manager
+00:00:02 : [OK]  ADD ROCK1 in object pool ISLE0 (id:0)
+00:00:02 : [INFO] Add Poolable object thintorus (3) by seekind ID in parent via manager
+00:00:02 : [FAIL] Retrieve ObjectPool for thintorus (3) in parent hierarchy
+00:00:02 : [INFO] Add Poolable object thintorus (4) by seekind ID in parent via manager
+00:00:02 : [FAIL] Retrieve ObjectPool for thintorus (4) in parent hierarchy
+00:00:02 : [INFO] Add Poolable object thintorus (2) by seekind ID in parent via manager
+00:00:02 : [FAIL] Retrieve ObjectPool for thintorus (2) in parent hierarchy
+00:00:02 : [INFO] Add Poolable object thintorus (1) by seekind ID in parent via manager
+00:00:02 : [FAIL] Retrieve ObjectPool for thintorus (1) in parent hierarchy
+00:00:02 : [INFO] Add Poolable object thintorus by seekind ID in parent via manager
+00:00:02 : [FAIL] Retrieve ObjectPool for thintorus in parent hierarchy
+00:00:02 : [INFO] Add Poolable object torus (2) by seekind ID in parent via manager
+00:00:02 : [FAIL] Retrieve ObjectPool for torus (2) in parent hierarchy
+00:00:02 : [INFO] Add Poolable object torus (1) by seekind ID in parent via manager
+00:00:02 : [FAIL] Retrieve ObjectPool for torus (1) in parent hierarchy
+00:00:02 : [INFO] Add Poolable object torus (3) by seekind ID in parent via manager
+00:00:02 : [FAIL] Retrieve ObjectPool for torus (3) in parent hierarchy
+00:00:02 : [INFO] Add Poolable object torus by seekind ID in parent via manager
+00:00:02 : [FAIL] Retrieve ObjectPool for torus in parent hierarchy
+00:00:02 : [INFO]  LightDetector RT dimensions : 0x0
+00:00:02 : [INFO] OTCModifier::OnPoolSleep : rock01
+00:00:02 : [INFO] OTCModifier::OnPoolSleep : rock01 (2)
+00:00:02 : [INFO] OTCModifier::OnPoolSleep : rock01 (3)
+00:00:02 : [INFO] OTCModifier::OnPoolSleep : rock01 (4)
+00:00:02 : [INFO] OTCModifier::OnPoolSleep : rock01 (5)
+00:00:02 : [INFO] OTCModifier::OnPoolSleep : rock01 (1)
+00:00:02 : [INFO] OTCModifier::OnPoolSleep : rock02
+00:00:02 : [INFO] OTCModifier::OnPoolSleep : rock02 (3)
+00:00:02 : [INFO] OTCModifier::OnPoolSleep : rock02 (1)
+00:00:02 : [INFO] OTCModifier::OnPoolSleep : rock02 (4)
+00:00:02 : [INFO] OTCModifier::OnPoolSleep : rock02 (2)
+00:00:02 : [INFO] OTCModifier::OnPoolSleep : rock01
+00:00:02 : [INFO] OTCModifier::OnPoolSleep : rock01 (1)
+00:00:02 : [INFO] OTCModifier::OnPoolSleep : rock02
+00:00:02 : [INFO] OTCModifier::OnPoolSleep : rock02 (1)
+00:00:02 : [INFO] OTCModifier::OnPoolSleep : rock01
+00:00:02 : [INFO] OTCModifier::OnPoolSleep : rock01 (2)
+00:00:02 : [INFO] OTCModifier::OnPoolSleep : rock01 (3)
+00:00:02 : [INFO] OTCModifier::OnPoolSleep : rock01 (4)
+00:00:02 : [INFO] OTCModifier::OnPoolSleep : rock01 (5)
+00:00:02 : [INFO] OTCModifier::OnPoolSleep : rock01 (1)
+00:00:02 : [INFO] OTCModifier::OnPoolSleep : rock02
+00:00:02 : [INFO] OTCModifier::OnPoolSleep : rock02 (3)
+00:00:02 : [INFO] OTCModifier::OnPoolSleep : rock02 (1)
+00:00:02 : [INFO] OTCModifier::OnPoolSleep : rock02 (4)
+00:00:02 : [INFO] OTCModifier::OnPoolSleep : rock02 (2)
+00:00:02 : [INFO] OTCModifier::OnPoolSleep : rock01 (2)
+00:00:02 : [INFO] OTCModifier::OnPoolSleep : rock01
+00:00:02 : [INFO] OTCModifier::OnPoolSleep : rock01 (2)
+00:00:02 : [INFO] OTCModifier::OnPoolSleep : rock01 (3)
+00:00:02 : [INFO] OTCModifier::OnPoolSleep : rock01 (4)
+00:00:02 : [INFO] OTCModifier::OnPoolSleep : rock01 (5)
+00:00:02 : [INFO] OTCModifier::OnPoolSleep : rock01 (1)
+00:00:02 : [INFO] OTCModifier::OnPoolSleep : rock02
+00:00:02 : [INFO] OTCModifier::OnPoolSleep : rock02 (3)
+00:00:02 : [INFO] OTCModifier::OnPoolSleep : rock02 (1)
+00:00:02 : [INFO] OTCModifier::OnPoolSleep : rock02 (4)
+00:00:02 : [INFO] OTCModifier::OnPoolSleep : rock02 (2)
+00:00:02 : [INFO] OTCModifier::OnPoolSleep : rock01 (2)
+00:00:02 : [INFO] OTCModifier::OnPoolSleep : rock01
+00:00:02 : [INFO] OTCModifier::OnPoolSleep : rock01 (2)
+00:00:02 : [INFO] OTCModifier::OnPoolSleep : rock01 (3)
+00:00:02 : [INFO] OTCModifier::OnPoolSleep : rock01 (4)
+00:00:02 : [INFO] OTCModifier::OnPoolSleep : rock01 (5)
+00:00:02 : [INFO] OTCModifier::OnPoolSleep : rock01 (1)
+00:00:02 : [INFO] OTCModifier::OnPoolSleep : rock02
+00:00:02 : [INFO] OTCModifier::OnPoolSleep : rock02 (3)
+00:00:02 : [INFO] OTCModifier::OnPoolSleep : rock02 (1)
+00:00:02 : [INFO] OTCModifier::OnPoolSleep : rock02 (4)
+00:00:02 : [INFO] OTCModifier::OnPoolSleep : rock02 (2)
+00:00:02 : [INFO] OTCModifier::OnPoolSleep : rock01 (2)
+00:00:02 : [INFO] Pool ID 2 Disabled
+00:00:02 : [INFO] Pool ID 1 Disabled
+00:00:02 : [OK] Create chain for InteractibleBox(Clone)
+00:00:02 : [INFO] Add Poolable object InteractibleBox(Clone) by seekind ID in parent via manager
+00:00:02 : [INFO] Add Poolable object InteractibleBox(Clone) to pool ID 0 via manager
+00:00:02 : [OK]  ADD InteractibleBox(Clone) in object pool ISLE0 (id:0)
+00:00:05 : [INFO] output GTL : 0,389082
+00:00:07 : [INFO] output GTL : 0,389156
+00:00:07 : [INFO] output GTL : 0,3897697
+00:00:07 : [INFO] output GTL : 0,3898548
+00:00:07 : [INFO] output GTL : 0,389965
+00:00:08 : [INFO] output GTL : 0,3900449
+00:00:08 : [INFO] output GTL : 0,390613
+00:00:08 : [INFO] output GTL : 0,3906966
+00:00:08 : [INFO] output GTL : 0,3913066
+00:00:08 : [INFO] output GTL : 0,3914054
+00:00:08 : [INFO] output GTL : 0,3915038
+00:00:08 : [INFO] output GTL : 0,3915786
+00:00:08 : [INFO] output GTL : 0,3921675
+00:00:08 : [INFO] output GTL : 0,3922465
+00:00:08 : [INFO] output GTL : 0,3928671
+00:00:08 : [INFO] output GTL : 0,3929551
+00:00:08 : [INFO] output GTL : 0,3930609
+00:00:08 : [INFO] output GTL : 0,3931372
+00:00:08 : [INFO] output GTL : 0,3937169
+00:00:08 : [INFO] output GTL : 0,3937963
+00:00:08 : [INFO] output GTL : 0,3944002
+00:00:08 : [INFO] output GTL : 0,3944927
+00:00:08 : [INFO] output GTL : 0,3945939
+00:00:08 : [INFO] output GTL : 0,3946708
+00:00:08 : [INFO] output GTL : 0,3952532
+00:00:08 : [INFO] output GTL : 0,3953378
+00:00:08 : [INFO] output GTL : 0,3957159
+00:00:08 : [INFO] output GTL : 0,3957974
+00:00:08 : [INFO] output GTL : 0,3962285
+00:00:08 : [INFO] output GTL : 0,3963167
+00:00:08 : [INFO] output GTL : 0,3967365
+00:00:08 : [INFO] output GTL : 0,3968253
+00:00:08 : [INFO] output GTL : 0,3972472
+00:00:08 : [INFO] output GTL : 0,3973294
+00:00:09 : [INFO] output GTL : 0,3977571
+00:00:09 : [INFO] output GTL : 0,3978437
+00:00:09 : [INFO] output GTL : 0,3982579
+00:00:09 : [INFO] output GTL : 0,3983433
+00:00:09 : [INFO] output GTL : 0,3987592
+00:00:09 : [INFO] output GTL : 0,3988521
+00:00:09 : [INFO] output GTL : 0,3992532
+00:00:09 : [INFO] output GTL : 0,3993413
+00:00:09 : [INFO] output GTL : 0,3997375
+00:00:09 : [INFO] output GTL : 0,3998249
+00:00:09 : [INFO] output GTL : 0,4002302
+00:00:09 : [INFO] output GTL : 0,4003161
+00:00:09 : [INFO] output GTL : 0,4007189
+00:00:09 : [INFO] output GTL : 0,4008074
+00:00:09 : [INFO] output GTL : 0,4012073
+00:00:09 : [INFO] output GTL : 0,401292
+00:00:09 : [INFO] output GTL : 0,4016929
+00:00:09 : [INFO] output GTL : 0,4017841
+00:00:09 : [INFO] output GTL : 0,4021879
+00:00:09 : [INFO] output GTL : 0,4022775
+00:00:09 : [INFO] output GTL : 0,4026829
+00:00:09 : [INFO] output GTL : 0,40277
+00:00:09 : [INFO] output GTL : 0,4031665
+00:00:09 : [INFO] output GTL : 0,4032488
+00:00:09 : [INFO] output GTL : 0,4036579
+00:00:09 : [INFO] output GTL : 0,4037464
+00:00:09 : [INFO] output GTL : 0,4039551
+00:00:10 : [INFO] output GTL : 0,4018004
+00:00:10 : [INFO] output GTL : 0,4013695
+00:00:10 : [INFO] output GTL : 0,3991992
+00:00:10 : [INFO] output GTL : 0,3987377
+00:00:10 : [INFO] output GTL : 0,3965903
+00:00:10 : [INFO] output GTL : 0,3961192
+00:00:10 : [INFO] output GTL : 0,3939734
+00:00:10 : [INFO] output GTL : 0,3935181
+00:00:10 : [INFO] output GTL : 0,3913413
+00:00:10 : [INFO] output GTL : 0,3908654
+00:00:10 : [INFO] output GTL : 0,3886954
+00:00:10 : [INFO] output GTL : 0,3882458
+00:00:10 : [INFO] output GTL : 0,3860955
+00:00:10 : [INFO] output GTL : 0,3856169
+00:00:10 : [INFO] output GTL : 0,3814225
+00:00:10 : [INFO] output GTL : 0,3809624
+00:00:10 : [INFO] output GTL : 0,3788266
+00:00:10 : [INFO] output GTL : 0,3783588
+00:00:10 : [INFO] output GTL : 0,3762257
+00:00:10 : [INFO] output GTL : 0,3757709
+00:00:10 : [INFO] output GTL : 0,3736177
+00:00:10 : [INFO] output GTL : 0,3731338
+00:00:10 : [INFO] output GTL : 0,3710145
+00:00:10 : [INFO] output GTL : 0,3705631
+00:00:10 : [INFO] output GTL : 0,3684049
+00:00:10 : [INFO] output GTL : 0,3679646
+00:00:10 : [INFO] output GTL : 0,3658102
+00:00:11 : [INFO] output GTL : 0,3653441
+00:00:11 : [INFO] output GTL : 0,3632165
+00:00:11 : [INFO] output GTL : 0,3627666
+00:00:11 : [INFO] output GTL : 0,3606008
+00:00:11 : [INFO] output GTL : 0,3601674
+00:00:11 : [INFO] output GTL : 0,3579779
+00:00:11 : [INFO] output GTL : 0,3575209
+00:00:11 : [INFO] output GTL : 0,3553644
+00:00:11 : [INFO] output GTL : 0,3548899
+00:00:11 : [INFO] output GTL : 0,3527425
+00:00:11 : [INFO] output GTL : 0,3522801
+00:00:11 : [INFO] output GTL : 0,3501431
+00:00:11 : [INFO] output GTL : 0,3497013
+00:00:11 : [INFO] output GTL : 0,3475375
+00:00:11 : [INFO] output GTL : 0,3469805
+00:00:11 : [INFO] output GTL : 0,3448906
+00:00:11 : [INFO] output GTL : 0,3444021
+00:00:11 : [INFO] output GTL : 0,3422582
+00:00:11 : [INFO] output GTL : 0,3417428
+00:00:11 : [INFO] output GTL : 0,3396538
+00:00:11 : [INFO] output GTL : 0,3391717
+00:00:11 : [INFO] output GTL : 0,3370549
+00:00:11 : [INFO] output GTL : 0,3365648
+00:00:11 : [INFO] output GTL : 0,3344343
+00:00:11 : [INFO] output GTL : 0,3339623
+00:00:11 : [INFO] output GTL : 0,3318185
+00:00:11 : [INFO] output GTL : 0,331349
+00:00:11 : [INFO] output GTL : 0,3292201
+00:00:11 : [INFO] output GTL : 0,3287534
+00:00:11 : [INFO] output GTL : 0,3266077
+00:00:12 : [INFO] output GTL : 0,3261313
+00:00:12 : [INFO] output GTL : 0,3244531
+00:00:12 : [INFO] output GTL : 0,3241824
+00:00:12 : [INFO] output GTL : 0,3228276
+00:00:12 : [INFO] output GTL : 0,3225519
+00:00:12 : [INFO] output GTL : 0,3211904
+00:00:12 : [INFO] output GTL : 0,3209091
+00:00:12 : [INFO] output GTL : 0,3195533
+00:00:12 : [INFO] output GTL : 0,3192801
+00:00:12 : [INFO] output GTL : 0,3178967
+00:00:12 : [INFO] output GTL : 0,3176203
+00:00:12 : [INFO] output GTL : 0,3162333
+00:00:12 : [INFO] output GTL : 0,3159477
+00:00:12 : [INFO] output GTL : 0,314597
+00:00:12 : [INFO] output GTL : 0,3143143
+00:00:12 : [INFO] output GTL : 0,3129538
+00:00:12 : [INFO] output GTL : 0,3126647
+00:00:12 : [INFO] output GTL : 0,3113248
+00:00:12 : [INFO] output GTL : 0,3110352
+00:00:12 : [INFO] output GTL : 0,3096804
+00:00:12 : [INFO] output GTL : 0,3093783
+00:00:12 : [INFO] output GTL : 0,3080219
+00:00:12 : [INFO] output GTL : 0,3077432
+00:00:12 : [INFO] output GTL : 0,3063707
+00:00:12 : [INFO] output GTL : 0,3060979
+00:00:12 : [INFO] output GTL : 0,3047357
+00:00:12 : [INFO] output GTL : 0,304467
+00:00:13 : [INFO] output GTL : 0,3031188
+00:00:13 : [INFO] output GTL : 0,302842
+00:00:13 : [INFO] output GTL : 0,3014952
+00:00:13 : [INFO] output GTL : 0,3012116
+00:00:13 : [INFO] output GTL : 0,299869
+00:00:13 : [INFO] output GTL : 0,299579
+00:00:13 : [INFO] output GTL : 0,2981988
+00:00:13 : [INFO] output GTL : 0,2979269
+00:00:13 : [INFO] output GTL : 0,2965763
+00:00:13 : [INFO] output GTL : 0,2962967
+00:00:13 : [INFO] output GTL : 0,2949379
+00:00:13 : [INFO] output GTL : 0,2946389
+00:00:13 : [INFO] output GTL : 0,2933146
+00:00:13 : [INFO] output GTL : 0,293012
+00:00:13 : [INFO] output GTL : 0,2916887
+00:00:13 : [INFO] output GTL : 0,2913983
+00:00:13 : [INFO] output GTL : 0,2900655
+00:00:13 : [INFO] output GTL : 0,2897821
+00:00:13 : [INFO] output GTL : 0,2884479
+00:00:13 : [INFO] output GTL : 0,2881544
+00:00:13 : [INFO] output GTL : 0,2868204
+00:00:13 : [INFO] output GTL : 0,2865201
+00:00:13 : [INFO] output GTL : 0,2852175
+00:00:13 : [INFO] output GTL : 0,2849323
+00:00:13 : [INFO] output GTL : 0,2836083
+00:00:13 : [INFO] output GTL : 0,2833043
+00:00:13 : [INFO] output GTL : 0,281996
+00:00:13 : [INFO] output GTL : 0,2817026
+00:00:13 : [INFO] output GTL : 0,2803711
+00:00:13 : [INFO] output GTL : 0,2800863
+00:00:13 : [INFO] output GTL : 0,2787327
+00:00:14 : [INFO] output GTL : 0,2784476
+00:00:14 : [INFO] output GTL : 0,2770953
+00:00:14 : [INFO] output GTL : 0,2768052
+00:00:14 : [INFO] output GTL : 0,275463
+00:00:14 : [INFO] output GTL : 0,2751836
+00:00:14 : [INFO] output GTL : 0,2749902
+00:00:14 : [INFO] output GTL : 0,274892
+00:00:14 : [INFO] output OTC : 0,4999989
+00:00:14 : [INFO] output GTL : 0,2744396
+00:00:14 : [INFO] output OTC : 0,4999654
+00:00:14 : [INFO] output GTL : 0,2743404
+00:00:14 : [INFO] output OTC : 0,4999506
+00:00:14 : [INFO] output GTL : 0,273892
+00:00:14 : [INFO] output OTC : 0,4998521
+00:00:14 : [INFO] output GTL : 0,2737852
+00:00:14 : [INFO] output OTC : 0,4998263
+00:00:14 : [INFO] output GTL : 0,2733078
+00:00:14 : [INFO] output OTC : 0,4996748
+00:00:14 : [INFO] output GTL : 0,2732129
+00:00:14 : [INFO] output OTC : 0,4996364
+00:00:14 : [INFO] output GTL : 0,2727612
+00:00:14 : [INFO] output OTC : 0,4994214
+00:00:14 : [INFO] output GTL : 0,2726648
+00:00:14 : [INFO] output OTC : 0,4993693
+00:00:14 : [INFO] output GTL : 0,2722008
+00:00:14 : [INFO] output OTC : 0,4991011
+00:00:14 : [INFO] output GTL : 0,2721021
+00:00:14 : [INFO] output OTC : 0,4990373
+00:00:14 : [INFO] output GTL : 0,271649
+00:00:14 : [INFO] output OTC : 0,4987152
+00:00:14 : [INFO] output GTL : 0,2715517
+00:00:14 : [INFO] output OTC : 0,4986393
+00:00:14 : [INFO] output GTL : 0,2711033
+00:00:14 : [INFO] output OTC : 0,4982572
+00:00:14 : [INFO] output GTL : 0,2710063
+00:00:14 : [INFO] output OTC : 0,4981658
+00:00:14 : [INFO] output GTL : 0,2705539
+00:00:14 : [INFO] output OTC : 0,4977279
+00:00:14 : [INFO] output GTL : 0,2704533
+00:00:14 : [INFO] output OTC : 0,497623
+00:00:14 : [INFO] output GTL : 0,270003
+00:00:14 : [INFO] output OTC : 0,4971319
+00:00:14 : [INFO] output GTL : 0,2699016
+00:00:14 : [INFO] output OTC : 0,4970177
+00:00:14 : [INFO] output GTL : 0,2694548
+00:00:15 : [INFO] output OTC : 0,4964559
+00:00:15 : [INFO] output GTL : 0,2693565
+00:00:15 : [INFO] output OTC : 0,4963304
+00:00:15 : [INFO] output GTL : 0,2688985
+00:00:15 : [INFO] output OTC : 0,4957194
+00:00:15 : [INFO] output GTL : 0,2688012
+00:00:15 : [INFO] output OTC : 0,4955749
+00:00:15 : [INFO] output GTL : 0,2683499
+00:00:15 : [INFO] output OTC : 0,4949127
+00:00:15 : [INFO] output GTL : 0,2682479
+00:00:15 : [INFO] output OTC : 0,49477
+00:00:15 : [INFO] output GTL : 0,2678008
+00:00:15 : [INFO] output OTC : 0,4940432
+00:00:15 : [INFO] output GTL : 0,2677084
+00:00:15 : [INFO] output OTC : 0,4938798
+00:00:15 : [INFO] output GTL : 0,2672558
+00:00:15 : [INFO] output OTC : 0,4930898
+00:00:15 : [INFO] output GTL : 0,267158
+00:00:15 : [INFO] output OTC : 0,4929162
+00:00:15 : [INFO] output GTL : 0,2667023
+00:00:15 : [INFO] output OTC : 0,492085
+00:00:15 : [INFO] output GTL : 0,2666056
+00:00:15 : [INFO] output OTC : 0,491899
+00:00:15 : [INFO] output GTL : 0,2661588
+00:00:15 : [INFO] output OTC : 0,4910129
+00:00:15 : [INFO] output GTL : 0,2660621
+00:00:15 : [INFO] output OTC : 0,4908131
+00:00:15 : [INFO] output GTL : 0,2656158
+00:00:15 : [INFO] output OTC : 0,4901038
+00:00:15 : [INFO] output GTL : 0,2655182
+00:00:15 : [INFO] output OTC : 0,4898988
+00:00:15 : [INFO] output GTL : 0,2651802
+00:00:15 : [INFO] output OTC : 0,4889972
+00:00:15 : [INFO] output GTL : 0,2650848
+00:00:15 : [INFO] output OTC : 0,4887563
+00:00:15 : [INFO] output GTL : 0,2646763
+00:00:15 : [INFO] output OTC : 0,4877321
+00:00:15 : [INFO] output GTL : 0,2645699
+00:00:15 : [INFO] output OTC : 0,4875011
+00:00:15 : [INFO] output GTL : 0,2641302
+00:00:15 : [INFO] output OTC : 0,4863889
+00:00:15 : [INFO] output GTL : 0,2640336
+00:00:15 : [INFO] output OTC : 0,4861609
+00:00:15 : [INFO] output GTL : 0,2635805
+00:00:15 : [INFO] output OTC : 0,4849998
+00:00:15 : [INFO] output GTL : 0,2634899
+00:00:15 : [INFO] output OTC : 0,4847526
+00:00:15 : [INFO] output GTL : 0,2630398
+00:00:15 : [INFO] output OTC : 0,4835108
+00:00:15 : [INFO] output GTL : 0,2629463
+00:00:15 : [INFO] output OTC : 0,4832273
+00:00:15 : [INFO] output GTL : 0,2624874
+00:00:15 : [INFO] output OTC : 0,4819379
+00:00:15 : [INFO] output GTL : 0,2623851
+00:00:15 : [INFO] output OTC : 0,4816324
+00:00:15 : [INFO] output GTL : 0,2619303
+00:00:15 : [INFO] output OTC : 0,4803117
+00:00:15 : [INFO] output GTL : 0,261825
+00:00:15 : [INFO] output OTC : 0,4800277
+00:00:15 : [INFO] output GTL : 0,2613794
+00:00:16 : [INFO] output OTC : 0,478588
+00:00:16 : [INFO] output GTL : 0,2612855
+00:00:16 : [INFO] output OTC : 0,4782519
+00:00:16 : [INFO] output GTL : 0,2608196
+00:00:16 : [INFO] output OTC : 0,4768375
+00:00:16 : [INFO] output GTL : 0,2607132
+00:00:16 : [INFO] output OTC : 0,4765245
+00:00:16 : [INFO] output GTL : 0,2602738
+00:00:16 : [INFO] output OTC : 0,4750113
+00:00:16 : [INFO] output GTL : 0,2601784
+00:00:16 : [INFO] output OTC : 0,4746619
+00:00:16 : [INFO] output GTL : 0,259726
+00:00:16 : [INFO] output OTC : 0,4730943
+00:00:16 : [INFO] output GTL : 0,2596235
+00:00:16 : [INFO] output OTC : 0,4726824
+00:00:16 : [INFO] output GTL : 0,259172
+00:00:16 : [INFO] output OTC : 0,4711496
+00:00:16 : [INFO] output GTL : 0,2590556
+00:00:16 : [INFO] output OTC : 0,4705474
+00:00:16 : [INFO] output GTL : 0,2586299
+00:00:16 : [INFO] output OTC : 0,4691532
+00:00:16 : [INFO] output GTL : 0,2584657
+00:00:16 : [INFO] output OTC : 0,4686586
+00:00:16 : [INFO] output GTL : 0,2583398
+00:00:16 : [INFO] output OTC : 0,4671699
+00:00:16 : [INFO] output OTC : 0,4666475
+00:00:16 : [INFO] output OTC : 0,4651563
+00:00:16 : [INFO] output OTC : 0,4647187
+00:00:16 : [INFO] output OTC : 0,4630475
+00:00:16 : [INFO] output GTL : 0,2582854
+00:00:16 : [INFO] output OTC : 0,4626455
+00:00:16 : [INFO] output GTL : 0,2580804
+00:00:16 : [INFO] output OTC : 0,4608719
+00:00:16 : [INFO] output GTL : 0,2580317
+00:00:16 : [INFO] output OTC : 0,46045
+00:00:16 : [INFO] output GTL : 0,2578203
+00:00:16 : [INFO] output OTC : 0,458604
+00:00:16 : [INFO] output GTL : 0,2577707
+00:00:16 : [INFO] output OTC : 0,4582041
+00:00:16 : [INFO] output GTL : 0,2575568
+00:00:16 : [INFO] output OTC : 0,4563213
+00:00:16 : [INFO] output GTL : 0,2575111
+00:00:16 : [INFO] output OTC : 0,4559004
+00:00:16 : [INFO] output GTL : 0,2572988
+00:00:16 : [INFO] output OTC : 0,4539834
+00:00:16 : [INFO] output GTL : 0,257252
+00:00:16 : [INFO] output OTC : 0,4534923
+00:00:16 : [INFO] output GTL : 0,2570415
+00:00:16 : [INFO] output OTC : 0,4515666
+00:00:16 : [INFO] output GTL : 0,2569882
+00:00:16 : [INFO] output OTC : 0,4510981
+00:00:16 : [INFO] output GTL : 0,2567822
+00:00:16 : [INFO] output OTC : 0,449104
+00:00:16 : [INFO] output GTL : 0,2567327
+00:00:16 : [INFO] output OTC : 0,4486323
+00:00:16 : [INFO] output GTL : 0,2565246
+00:00:16 : [INFO] output OTC : 0,4464975
+00:00:16 : [INFO] output GTL : 0,2564759
+00:00:16 : [INFO] output OTC : 0,4460195
+00:00:16 : [INFO] output GTL : 0,2562586
+00:00:17 : [INFO] output OTC : 0,4438118
+00:00:17 : [INFO] output GTL : 0,2562105
+00:00:17 : [INFO] output OTC : 0,4433036
+00:00:17 : [INFO] output GTL : 0,2559913
+00:00:17 : [INFO] output OTC : 0,4406519
+00:00:17 : [INFO] output GTL : 0,2559414
+00:00:17 : [INFO] output OTC : 0,4393421
+00:00:17 : [INFO] output GTL : 0,2556848
+00:00:17 : [INFO] output OTC : 0,4382202
+00:00:17 : [INFO] output GTL : 0,2555601
+00:00:17 : [INFO] output OTC : 0,4371277
+00:00:17 : [INFO] output GTL : 0,2554544
+00:00:17 : [INFO] output OTC : 0,4345096
+00:00:17 : [INFO] output GTL : 0,2553524
+00:00:17 : [INFO] output OTC : 0,4335979
+00:00:17 : [INFO] output GTL : 0,2551115
+00:00:17 : [INFO] output OTC : 0,4322814
+00:00:17 : [INFO] output GTL : 0,2550287
+00:00:17 : [INFO] output OTC : 0,4317682
+00:00:17 : [INFO] output GTL : 0,2549102
+00:00:17 : [INFO] output OTC : 0,4288611
+00:00:17 : [INFO] output GTL : 0,2548643
+00:00:17 : [INFO] output OTC : 0,4283636
+00:00:17 : [INFO] output GTL : 0,2546076
+00:00:17 : [INFO] output OTC : 0,4245464
+00:00:17 : [INFO] output GTL : 0,2545642
+00:00:17 : [INFO] output OTC : 0,423997
+00:00:17 : [INFO] output GTL : 0,2542361
+00:00:17 : [INFO] output OTC : 0,423488
+00:00:17 : [INFO] output GTL : 0,2541896
+00:00:17 : [INFO] output OTC : 0,4230121
+00:00:17 : [INFO] output GTL : 0,2541466
+00:00:17 : [INFO] output OTC : 0,4190122
+00:00:17 : [INFO] output GTL : 0,2541065
+00:00:17 : [INFO] output OTC : 0,4184652
+00:00:17 : [INFO] output GTL : 0,2537748
+00:00:17 : [INFO] output OTC : 0,4144732
+00:00:17 : [INFO] output GTL : 0,25373
+00:00:17 : [INFO] output OTC : 0,4138737
+00:00:17 : [INFO] output GTL : 0,253408
+00:00:17 : [INFO] output OTC : 0,4133017
+00:00:17 : [INFO] output GTL : 0,2533603
+00:00:17 : [INFO] output OTC : 0,4127957
+00:00:17 : [INFO] output GTL : 0,253315
+00:00:17 : [INFO] output OTC : 0,4086569
+00:00:17 : [INFO] output GTL : 0,253275
+00:00:17 : [INFO] output OTC : 0,4080747
+00:00:17 : [INFO] output GTL : 0,252952
+00:00:17 : [INFO] output OTC : 0,4053578
+00:00:17 : [INFO] output GTL : 0,2529072
+00:00:17 : [INFO] output OTC : 0,40468
+00:00:17 : [INFO] output GTL : 0,2526999
+00:00:17 : [INFO] output OTC : 0,4014229
+00:00:17 : [INFO] output GTL : 0,2526486
+00:00:17 : [INFO] output OTC : 0,4008017
+00:00:17 : [INFO] output GTL : 0,2524047
+00:00:17 : [INFO] output OTC : 0,3978083
+00:00:17 : [INFO] output GTL : 0,2523587
+00:00:17 : [INFO] output OTC : 0,3972232
+00:00:17 : [INFO] output GTL : 0,2521388
+00:00:18 : [INFO] output OTC : 0,3944346
+00:00:18 : [INFO] output GTL : 0,2520962
+00:00:18 : [INFO] output OTC : 0,3937754
+00:00:18 : [INFO] output GTL : 0,2518948
+00:00:18 : [INFO] output OTC : 0,3906124
+00:00:18 : [INFO] output GTL : 0,2518475
+00:00:18 : [INFO] output OTC : 0,3899326
+00:00:18 : [INFO] output GTL : 0,251623
+00:00:18 : [INFO] output OTC : 0,3867606
+00:00:18 : [INFO] output GTL : 0,2515751
+00:00:18 : [INFO] output OTC : 0,3860522
+00:00:18 : [INFO] output GTL : 0,2513539
+00:00:18 : [INFO] output OTC : 0,3825215
+00:00:18 : [INFO] output GTL : 0,2513049
+00:00:18 : [INFO] output OTC : 0,3818235
+00:00:18 : [INFO] output GTL : 0,2510629
+00:00:18 : [INFO] output OTC : 0,3789887
+00:00:18 : [INFO] output GTL : 0,2510155
+00:00:18 : [INFO] output OTC : 0,3782761
+00:00:18 : [INFO] output GTL : 0,2508244
+00:00:18 : [INFO] output OTC : 0,3748778
+00:00:18 : [INFO] output GTL : 0,2507767
+00:00:18 : [INFO] output OTC : 0,3741876
+00:00:18 : [INFO] output GTL : 0,2505512
+00:00:18 : [INFO] output OTC : 0,3707699
+00:00:18 : [INFO] output GTL : 0,2505058
+00:00:18 : [INFO] output OTC : 0,3682575
+00:00:18 : [INFO] output GTL : 0,2502827
+00:00:18 : [INFO] output OTC : 0,3665648
+00:00:18 : [INFO] output GTL : 0,2501206
+00:00:18 : [INFO] output OTC : 0,3658195
+00:00:18 : [INFO] output GTL : 0,2500122
+00:00:18 : [INFO] output OTC : 0,3623188
+00:00:18 : [INFO] output GTL : 0,25
+00:00:18 : [INFO] output OTC : 0,3615576
+00:00:18 : [INFO] output OTC : 0,3579912
+00:00:18 : [INFO] output OTC : 0,3572142
+00:00:18 : [INFO] output OTC : 0,3536389
+00:00:18 : [INFO] output OTC : 0,3528564
+00:00:18 : [INFO] output GTL : 0,2503411
+00:00:18 : [INFO] output OTC : 0,3492042
+00:00:18 : [INFO] output GTL : 0,2504152
+00:00:18 : [INFO] output OTC : 0,3484023
+00:00:18 : [INFO] output GTL : 0,2507585
+00:00:18 : [INFO] output OTC : 0,3447022
+00:00:18 : [INFO] output GTL : 0,2508333
+00:00:18 : [INFO] output OTC : 0,3439326
+00:00:18 : [INFO] output GTL : 0,2511759
+00:00:18 : [INFO] output OTC : 0,3400959
+00:00:18 : [INFO] output GTL : 0,2512467
+00:00:18 : [INFO] output OTC : 0,3393234
+00:00:18 : [INFO] output GTL : 0,2515969
+00:00:18 : [INFO] output OTC : 0,3354611
+00:00:18 : [INFO] output GTL : 0,2516669
+00:00:18 : [INFO] output OTC : 0,3346666
+00:00:18 : [INFO] output GTL : 0,2520143
+00:00:18 : [INFO] output OTC : 0,3308192
+00:00:18 : [INFO] output GTL : 0,2520853
+00:00:18 : [INFO] output OTC : 0,3299633
+00:00:18 : [INFO] output GTL : 0,2524266
+00:00:19 : [INFO] output OTC : 0,3260809
+00:00:19 : [INFO] output GTL : 0,252502
+00:00:19 : [INFO] output OTC : 0,3252256
+00:00:19 : [INFO] output GTL : 0,2528416
+00:00:19 : [INFO] output OTC : 0,3211956
+00:00:19 : [INFO] output GTL : 0,2529159
+00:00:19 : [INFO] output OTC : 0,3203141
+00:00:19 : [INFO] output GTL : 0,2532636
+00:00:19 : [INFO] output OTC : 0,3162491
+00:00:19 : [INFO] output GTL : 0,2533391
+00:00:19 : [INFO] output OTC : 0,3153538
+00:00:19 : [INFO] output GTL : 0,2536851
+00:00:19 : [INFO] output OTC : 0,311268
+00:00:19 : [INFO] output GTL : 0,2537607
+00:00:19 : [INFO] output OTC : 0,308259
+00:00:19 : [INFO] output GTL : 0,2541037
+00:00:19 : [INFO] output OTC : 0,3062399
+00:00:19 : [INFO] output GTL : 0,254354
+00:00:19 : [INFO] output OTC : 0,305364
+00:00:19 : [INFO] output GTL : 0,2545208
+00:00:19 : [INFO] output OTC : 0,301093
+00:00:19 : [INFO] output GTL : 0,254593
+00:00:19 : [INFO] output OTC : 0,3001383
+00:00:19 : [INFO] output GTL : 0,2549422
+00:00:19 : [INFO] output OTC : 0,3
+00:00:19 : [INFO] output GTL : 0,2550198
+00:00:19 : [INFO] output GTL : 0,2553688
+00:00:19 : [INFO] output GTL : 0,2554379
+00:00:19 : [INFO] output GTL : 0,255788
+00:00:19 : [INFO] output GTL : 0,2558631
+00:00:19 : [INFO] output GTL : 0,256206
+00:00:19 : [INFO] output GTL : 0,2562768
+00:00:19 : [INFO] output GTL : 0,2566321
+00:00:19 : [INFO] output GTL : 0,2567081
+00:00:19 : [INFO] output GTL : 0,2570511
+00:00:19 : [INFO] output GTL : 0,2571237
+00:00:19 : [INFO] output GTL : 0,2574693
+00:00:19 : [INFO] output GTL : 0,2575423
+00:00:19 : [INFO] output GTL : 0,2578879
+00:00:19 : [INFO] output GTL : 0,2579659
+00:00:19 : [INFO] output GTL : 0,2583094
+00:00:19 : [INFO] output GTL : 0,258382
+00:00:19 : [INFO] output GTL : 0,258729
+00:00:20 : [INFO] output GTL : 0,2588017
+00:00:20 : [INFO] output GTL : 0,2591531
+00:00:20 : [INFO] output GTL : 0,2592267
+00:00:20 : [INFO] output GTL : 0,2595688
+00:00:20 : [INFO] output GTL : 0,2596455
+00:00:20 : [INFO] output GTL : 0,2599928
+00:00:20 : [INFO] output GTL : 0,2600691
+00:00:20 : [INFO] output GTL : 0,2604179
+00:00:20 : [INFO] output GTL : 0,2604889
+00:00:20 : [INFO] output GTL : 0,2608387
+00:00:20 : [INFO] output GTL : 0,2609124
+00:00:20 : [INFO] output GTL : 0,2612657
+00:00:20 : [INFO] output GTL : 0,2613375
+00:00:20 : [INFO] output GTL : 0,261687
+00:00:20 : [INFO] output GTL : 0,2617623
+00:00:20 : [INFO] output GTL : 0,2621084
+00:00:20 : [INFO] output GTL : 0,2621814
+00:00:20 : [INFO] output GTL : 0,2625363
+00:00:20 : [INFO] output GTL : 0,2626215
+00:00:20 : [INFO] output GTL : 0,2629578
+00:00:20 : [INFO] output GTL : 0,2629785
+00:00:20 : [INFO] output GTL : 0,2633296
+00:00:20 : [INFO] output GTL : 0,2634065
+00:00:20 : [INFO] output GTL : 0,2637326
+00:00:20 : [INFO] output GTL : 0,2638061
+00:00:20 : [INFO] output GTL : 0,2641383
+00:00:20 : [INFO] output GTL : 0,264209
+00:00:21 : [INFO] output GTL : 0,2645461
+00:00:21 : [INFO] output GTL : 0,2646158
+00:00:21 : [INFO] output GTL : 0,2649561
+00:00:21 : [INFO] output GTL : 0,2650359
+00:00:21 : [INFO] output GTL : 0,2653606
+00:00:21 : [INFO] output GTL : 0,2654301
+00:00:21 : [INFO] output GTL : 0,2657664
+00:00:21 : [INFO] output GTL : 0,2658438
+00:00:21 : [INFO] output GTL : 0,266172
+00:00:21 : [INFO] output GTL : 0,2662436
+00:00:21 : [INFO] output GTL : 0,2665856
+00:00:21 : [INFO] output GTL : 0,2666574
+00:00:21 : [INFO] output GTL : 0,2669944
+00:00:21 : [INFO] output GTL : 0,2670619
+00:00:21 : [INFO] output GTL : 0,2673941
+00:00:21 : [INFO] output GTL : 0,2674678
+00:00:21 : [INFO] output GTL : 0,2678007
+00:00:21 : [INFO] output GTL : 0,2678721
+00:00:21 : [INFO] output GTL : 0,2682099
+00:00:21 : [INFO] output GTL : 0,2682824
+00:00:21 : [INFO] output GTL : 0,2686144
+00:00:21 : [INFO] output GTL : 0,2686855
+00:00:21 : [INFO] output GTL : 0,2690187
+00:00:21 : [INFO] output GTL : 0,2690898
+00:00:21 : [INFO] output GTL : 0,2694253
+00:00:21 : [INFO] output GTL : 0,2694981
+00:00:21 : [INFO] output GTL : 0,269834
+00:00:21 : [INFO] output GTL : 0,2699062
+00:00:21 : [INFO] output GTL : 0,2702428
+00:00:21 : [INFO] output GTL : 0,2703145
+00:00:21 : [INFO] output GTL : 0,2706527
+00:00:22 : [INFO] output GTL : 0,2707235
+00:00:22 : [INFO] output GTL : 0,271057
+00:00:22 : [INFO] output GTL : 0,271132
+00:00:22 : [INFO] output GTL : 0,2714684
+00:00:22 : [INFO] output GTL : 0,2715416
+00:00:22 : [INFO] output GTL : 0,2718773
+00:00:22 : [INFO] output GTL : 0,2719474
+00:00:22 : [INFO] output GTL : 0,2722981
+00:00:22 : [INFO] output GTL : 0,2723725
+00:00:22 : [INFO] output GTL : 0,2726884
+00:00:22 : [INFO] output GTL : 0,2727582
+00:00:22 : [INFO] output GTL : 0,273102
+00:00:22 : [INFO] output GTL : 0,2731749
+00:00:22 : [INFO] output GTL : 0,2735096
+00:00:22 : [INFO] output GTL : 0,2735811
+00:00:22 : [INFO] output GTL : 0,2739191
+00:00:22 : [INFO] output GTL : 0,2739914
+00:00:22 : [INFO] output GTL : 0,2743307
+00:00:22 : [INFO] output GTL : 0,2744007
+00:00:22 : [INFO] output GTL : 0,2747371
+00:00:22 : [INFO] output GTL : 0,2748058
+00:00:22 : [INFO] output GTL : 0,2751445
+00:00:22 : [INFO] output GTL : 0,2752118
+00:00:22 : [INFO] output GTL : 0,2755274
+00:00:22 : [INFO] output GTL : 0,2755378
+00:00:22 : [INFO] output GTL : 0,2755885
+00:00:23 : [INFO] output GTL : 0,2755999
+00:00:23 : [INFO] output GTL : 0,2756501
+00:00:23 : [INFO] output GTL : 0,2756611
+00:00:23 : [INFO] output GTL : 0,2757111
+00:00:23 : [INFO] output GTL : 0,2757221
+00:00:23 : [INFO] output GTL : 0,275774
+00:00:23 : [INFO] output GTL : 0,2757846
+00:00:23 : [INFO] output GTL : 0,2758376
+00:00:23 : [INFO] output GTL : 0,2758479
+00:00:23 : [INFO] output GTL : 0,2759004
+00:00:23 : [INFO] output GTL : 0,2759114
+00:00:23 : [INFO] output GTL : 0,2759641
+00:00:23 : [INFO] output GTL : 0,2759753
+00:00:23 : [INFO] output GTL : 0,2760253
+00:00:23 : [INFO] output GTL : 0,2760361
+00:00:23 : [INFO] output GTL : 0,276086
+00:00:23 : [INFO] output GTL : 0,2760968
+00:00:23 : [INFO] output GTL : 0,2761476
+00:00:23 : [INFO] output GTL : 0,2761591
+00:00:23 : [INFO] output GTL : 0,2762092
+00:00:23 : [INFO] output GTL : 0,2762197
+00:00:23 : [INFO] output GTL : 0,2762714
+00:00:23 : [INFO] output GTL : 0,2762822
+00:00:23 : [INFO] output GTL : 0,2763335
+00:00:23 : [INFO] output GTL : 0,2763441
+00:00:23 : [INFO] output GTL : 0,2763945
+00:00:23 : [INFO] output GTL : 0,2764058
+00:00:23 : [INFO] output GTL : 0,2764564
+00:00:23 : [INFO] output GTL : 0,2764675
+00:00:23 : [INFO] output GTL : 0,2765183
+00:00:23 : [INFO] output GTL : 0,2765299
+00:00:24 : [INFO] output GTL : 0,2765795
+00:00:24 : [INFO] output GTL : 0,2765903
+00:00:24 : [INFO] output GTL : 0,2766407
+00:00:24 : [INFO] output GTL : 0,2766544
+00:00:24 : [INFO] output GTL : 0,2767018
+00:00:24 : [INFO] output GTL : 0,2767128
+00:00:24 : [INFO] output GTL : 0,2767627
+00:00:24 : [INFO] output GTL : 0,2767736
+00:00:24 : [INFO] output GTL : 0,2768238
+00:00:24 : [INFO] output GTL : 0,2768349
+00:00:24 : [INFO] output GTL : 0,2768854
+00:00:24 : [INFO] output GTL : 0,2768966
+00:00:24 : [INFO] output GTL : 0,2769469
+00:00:24 : [INFO] output GTL : 0,2769572
+00:00:24 : [INFO] output GTL : 0,2770087
+00:00:24 : [INFO] output GTL : 0,2770196
+00:00:24 : [INFO] output GTL : 0,2770697
+00:00:24 : [INFO] output GTL : 0,2770812
+00:00:24 : [INFO] output GTL : 0,2771447
+00:00:24 : [INFO] output GTL : 0,2771714
+00:00:24 : [INFO] output GTL : 0,2771962
+00:00:24 : [INFO] output GTL : 0,2772075
+00:00:24 : [INFO] output GTL : 0,2772602
+00:00:24 : [INFO] output GTL : 0,2772718
+00:00:24 : [INFO] output GTL : 0,2773253
+00:00:24 : [INFO] output GTL : 0,2773375
+00:00:24 : [INFO] output GTL : 0,2773886
+00:00:24 : [INFO] output GTL : 0,2774003
+00:00:24 : [INFO] output GTL : 0,2774121
+00:00:25 : [INFO] output GTL : 0,2769243
+00:00:25 : [INFO] output GTL : 0,2768145
+00:00:25 : [INFO] output GTL : 0,2763323
+00:00:25 : [INFO] output GTL : 0,2762078
+00:00:25 : [INFO] output GTL : 0,2757401
+00:00:25 : [INFO] output GTL : 0,2756007
+00:00:25 : [INFO] output GTL : 0,2751609
+00:00:25 : [INFO] output GTL : 0,2747769
+00:00:25 : [INFO] output GTL : 0,2744187
+00:00:25 : [INFO] output GTL : 0,2742125
+00:00:25 : [INFO] output GTL : 0,2739793
+00:00:25 : [INFO] output GTL : 0,2738863
+00:00:25 : [INFO] output GTL : 0,273413
+00:00:25 : [INFO] output GTL : 0,2733079
+00:00:25 : [INFO] output GTL : 0,2730207
+00:00:25 : [INFO] output GTL : 0,27279
+00:00:25 : [INFO] output GTL : 0,2724587
+00:00:25 : [INFO] output GTL : 0,272362
+00:00:25 : [INFO] output GTL : 0,2718887
+00:00:25 : [INFO] output GTL : 0,2717859
+00:00:25 : [INFO] output GTL : 0,2713204
+00:00:25 : [INFO] output GTL : 0,2712237
+00:00:25 : [INFO] output GTL : 0,2707582
+00:00:25 : [INFO] output GTL : 0,2705905
+00:00:25 : [INFO] output GTL : 0,2700713
+00:00:26 : [INFO] output GTL : 0,2686369
+00:00:26 : [INFO] output GTL : 0,2681395
+00:00:26 : [INFO] output GTL : 0,2679457
+00:00:26 : [INFO] output GTL : 0,2677821
+00:00:26 : [INFO] output GTL : 0,2676253
+00:00:26 : [INFO] output GTL : 0,2672002
+00:00:26 : [INFO] output GTL : 0,2670407
+00:00:26 : [INFO] output GTL : 0,2666138
+00:00:26 : [INFO] output GTL : 0,2664547
+00:00:26 : [INFO] output GTL : 0,2660384
+00:00:26 : [INFO] output GTL : 0,2658827
+00:00:26 : [INFO] output GTL : 0,2654595
+00:00:26 : [INFO] output GTL : 0,2653044
+00:00:26 : [INFO] output GTL : 0,2648805
+00:00:26 : [INFO] output GTL : 0,2647268
+00:00:26 : [INFO] output GTL : 0,264314
+00:00:26 : [INFO] output GTL : 0,2641547
+00:00:26 : [INFO] output GTL : 0,2637401
+00:00:26 : [INFO] output GTL : 0,2635825
+00:00:26 : [INFO] output GTL : 0,2631587
+00:00:26 : [INFO] output GTL : 0,2630035
+00:00:26 : [INFO] output GTL : 0,2625888
+00:00:26 : [INFO] output GTL : 0,2624285
+00:00:26 : [INFO] output GTL : 0,2619839
+00:00:26 : [INFO] output GTL : 0,2618237
+00:00:26 : [INFO] output GTL : 0,2614046
+00:00:26 : [INFO] output GTL : 0,2612494
+00:00:26 : [INFO] output GTL : 0,2608303
+00:00:26 : [INFO] output GTL : 0,2606695
+00:00:26 : [INFO] output GTL : 0,2602526
+00:00:26 : [INFO] output GTL : 0,2600878
+00:00:26 : [INFO] output GTL : 0,259675
+00:00:26 : [INFO] output GTL : 0,2595198
+00:00:27 : [INFO] output GTL : 0,2591012
+00:00:27 : [INFO] output GTL : 0,2589434
+00:00:27 : [INFO] output GTL : 0,2585351
+00:00:27 : [INFO] output GTL : 0,2585669
+00:00:27 : [INFO] output GTL : 0,2585797
+00:00:27 : [INFO] output GTL : 0,2586111
+00:00:27 : [INFO] output GTL : 0,2586242
+00:00:27 : [INFO] output GTL : 0,2586557
+00:00:27 : [INFO] output GTL : 0,2586679
+00:00:27 : [INFO] output GTL : 0,2587004
+00:00:27 : [INFO] output GTL : 0,2587126
+00:00:27 : [INFO] output GTL : 0,2587448
+00:00:27 : [INFO] output GTL : 0,2587568
+00:00:27 : [INFO] output GTL : 0,2587898
+00:00:27 : [INFO] output GTL : 0,2588017
+00:00:27 : [INFO] output GTL : 0,2588346
+00:00:27 : [INFO] output GTL : 0,2588473
+00:00:27 : [INFO] output GTL : 0,2588791
+00:00:27 : [INFO] output GTL : 0,2588913
+00:00:27 : [INFO] output GTL : 0,2589236
+00:00:27 : [INFO] output GTL : 0,2589359
+00:00:27 : [INFO] output GTL : 0,2589683
+00:00:27 : [INFO] output GTL : 0,2589806
+00:00:27 : [INFO] output GTL : 0,2590127
+00:00:27 : [INFO] output GTL : 0,2590246
+00:00:27 : [INFO] output GTL : 0,2590576
+00:00:27 : [INFO] output GTL : 0,25907
+00:00:27 : [INFO] output GTL : 0,2591029
+00:00:27 : [INFO] output GTL : 0,2591156
+00:00:28 : [INFO] output GTL : 0,2591516
+00:00:28 : [INFO] output GTL : 0,2591743
+00:00:28 : [INFO] output GTL : 0,259192
+00:00:28 : [INFO] output GTL : 0,2592937
+00:00:28 : [INFO] output GTL : 0,2593226
+00:00:28 : [INFO] output GTL : 0,2593347
+00:00:28 : [INFO] output GTL : 0,2593546
+00:00:28 : [INFO] output GTL : 0,2593668
+00:00:28 : [INFO] output GTL : 0,259396
+00:00:28 : [INFO] output GTL : 0,2594083
+00:00:28 : [INFO] output GTL : 0,2594407
+00:00:28 : [INFO] output GTL : 0,2594533
+00:00:28 : [INFO] output GTL : 0,2594848
+00:00:28 : [INFO] output GTL : 0,259497
+00:00:28 : [INFO] output GTL : 0,2595295
+00:00:28 : [INFO] output GTL : 0,2595415
+00:00:28 : [INFO] output GTL : 0,2595744
+00:00:28 : [INFO] output GTL : 0,2595866
+00:00:28 : [INFO] output GTL : 0,2596183
+00:00:28 : [INFO] output GTL : 0,2596315
+00:00:28 : [INFO] output GTL : 0,2596678
+00:00:28 : [INFO] output GTL : 0,2596883
+00:00:28 : [INFO] output GTL : 0,2597072
+00:00:28 : [INFO] output GTL : 0,2597214
+00:00:28 : [INFO] output GTL : 0,2597517
+00:00:28 : [INFO] output GTL : 0,2597792
+00:00:28 : [INFO] output GTL : 0,2598001
+00:00:28 : [INFO] output GTL : 0,2598129
+00:00:28 : [INFO] output GTL : 0,2598415
+00:00:28 : [INFO] output GTL : 0,2598539
+00:00:29 : [INFO] output GTL : 0,2598857
+00:00:29 : [INFO] output GTL : 0,2598979
+00:00:29 : [INFO] output GTL : 0,2599301
+00:00:29 : [INFO] output GTL : 0,2599422
+00:00:29 : [INFO] output GTL : 0,2599746
+00:00:29 : [INFO] output GTL : 0,2599878
+00:00:29 : [INFO] output GTL : 0,2599902
+00:00:29 : [INFO] output GTL : 0,2602503
+00:00:29 : [INFO] output GTL : 0,2603496
+00:00:29 : [INFO] output GTL : 0,260612
+00:00:29 : [INFO] output GTL : 0,2607137

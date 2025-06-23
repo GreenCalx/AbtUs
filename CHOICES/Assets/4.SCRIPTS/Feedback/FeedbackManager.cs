@@ -76,6 +76,7 @@ public class FeedbackMatrix
         if (feedbacks[iF.tag].Contains(iF))
             return;
         feedbacks[iF.tag].Add(iF);
+        iF.matrixRow = feedbacks[iF.tag];
     }
 
     public void RemoveFeedback(Feedback iF)
@@ -167,7 +168,7 @@ public class Feedback
 {
     public int tag { get; set; }
     public GameFeedback originator;
-    private FeedbackChain matrixRow;
+    public FeedbackChain matrixRow;
     private bool m_isDirty;
     public bool isDirty
     {

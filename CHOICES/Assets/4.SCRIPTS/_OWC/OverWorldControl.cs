@@ -167,7 +167,8 @@ public class OverWorldControl : MonoBehaviour
     public List<OWCListener> GTLListeners;
 
     [Header("Modifier tweaks")]
-    public float gtlCrossfadeTime = 10f;
+    public float gtlVolCrossfadeTime = 10f;
+    public float gtlSunCrossfadeTime = 10f;
 
     [Header("Internals")]
     private Coroutine gtlCrossfadeVolCo;
@@ -286,8 +287,6 @@ public class OverWorldControl : MonoBehaviour
     }
     public void RefreshGTLMods()
     {
-        return;
-        
         if (crossfadingVolDone)
         {
             if (gtlCrossfadeVolCo != null)
@@ -298,16 +297,16 @@ public class OverWorldControl : MonoBehaviour
 
             if (MainGTL_A.isActive)
             {
-                if (gtlLookupTable.TryUpdateProfile(MainGTL_B, MainGTL_A.modifierTarget.sharedProfile, GloomyToLush))
+                if (gtlLookupTable.TryUpdateProfile(MainGTL_B, MainGTL_A.modifierTarget.sharedProfile))
                 {
-                    gtlCrossfadeVolCo = StartCoroutine(CrossfadeVolCo(gtlCrossfadeTime, MainGTL_A, MainGTL_B));
+                    gtlCrossfadeVolCo = StartCoroutine(CrossfadeVolCo(gtlVolCrossfadeTime, MainGTL_A, MainGTL_B));
                 }
             }
             else if (MainGTL_B.isActive)
             {
-                if (gtlLookupTable.TryUpdateProfile(MainGTL_A, MainGTL_B.modifierTarget.sharedProfile, GloomyToLush))
+                if (gtlLookupTable.TryUpdateProfile(MainGTL_A, MainGTL_B.modifierTarget.sharedProfile))
                 {
-                    gtlCrossfadeVolCo = StartCoroutine(CrossfadeVolCo(gtlCrossfadeTime, MainGTL_B, MainGTL_A));
+                    gtlCrossfadeVolCo = StartCoroutine(CrossfadeVolCo(gtlSunCrossfadeTime, MainGTL_B, MainGTL_A));
                 }
             }
         }
@@ -322,7 +321,7 @@ public class OverWorldControl : MonoBehaviour
                     StopCoroutine(gtlCrossfadeSunsCo);
                     gtlCrossfadeSunsCo = null;
                 }
-                gtlCrossfadeSunsCo = StartCoroutine(CrossfadeSunsCo(gtlCrossfadeTime));
+                gtlCrossfadeSunsCo = StartCoroutine(CrossfadeSunsCo(gtlSunCrossfadeTime));
             }
                         
         }

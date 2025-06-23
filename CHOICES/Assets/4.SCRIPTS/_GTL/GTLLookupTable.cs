@@ -5,70 +5,83 @@ using UnityEngine;
 using UnityEngine.Rendering;
 using UnityEngine.Rendering.HighDefinition;
 
+[Serializable]
+public class GTLLookupUnit
+{
+    public float GtL_Factor;
+    public WORLD_AXIS axisConstraint;
+}
+[Serializable]
+public class GTLLookupVolumeUnit : GTLLookupUnit
+{
+    public VolumeProfile volumeProfile;
+}
+[Serializable]
+public class GTLLookupLightUnit : GTLLookupUnit
+{
+    public Light light;
+}
+[Serializable]
+public class GTLLookupWaterUnit : GTLLookupUnit
+{
+    public WaterSurface water;
+}
+    
 public class GTLLookupTable : MonoBehaviour
 {
     public float NeutralVal = 0.5f;
-
-    [Serializable]
-    public class GTLLookupUnit
-    {
-        public float GtL_Factor;
-        public WORLD_AXIS axisConstraint;
-    }
-    [Serializable]
-    public class GTLLookupVolumeUnit : GTLLookupUnit
-    {
-        public VolumeProfile volumeProfile;
-    }
-    [Serializable]
-    public class GTLLookupLightUnit : GTLLookupUnit
-    {
-        public Light light;
-    }
-    [Serializable]
-    public class GTLLookupWaterUnit : GTLLookupUnit
-    {
-        public WaterSurface water;
-    }
-
-    public List<GTLLookupVolumeUnit> volumeUnits;
+    public VolumeTableSO volumeUnits;
     public List<GTLLookupLightUnit> lightUnits;
     public List<GTLLookupWaterUnit> waterUnits;
 
-    public bool TryUpdateProfile(GTLVolumeMod iMod, VolumeProfile iActiveProfile, float iGTLFactor)
+    public bool TryUpdateProfile(GTLVolumeMod iMod, VolumeProfile iActiveProfile)
     {
-        List<VolumeProfile> eligibleProfiles = new List<VolumeProfile>();
+        List<GTLLookupVolumeUnit> eligibleProfiles = new List<GTLLookupVolumeUnit>();
 
         float lushMag = OverWorldControl.Instance.LushMagnitude;
         float gloomMag = OverWorldControl.Instance.GloomyMagnitude;
 
         bool isLush = lushMag > 0f;
         bool isGloom = gloomMag > 0f;
-        foreach (GTLLookupVolumeUnit u in volumeUnits)
+        foreach (GTLLookupVolumeUnit u in volumeUnits.volumeUnits)
         {
-            if (u.volumeProfile == iActiveProfile)
-                continue;
-            else if (!isLush && !isGloom)
+            // if (u.volumeProfile == iActiveProfile)
+            //     continue;
+            if (!isLush && !isGloom)
             {
                 if (u.axisConstraint == WORLD_AXIS.ZERO)
-                    eligibleProfiles.Add(u.volumeProfile);
+                    eligibleProfiles.Add(u);
             }
             else if (isLush && (u.axisConstraint == WORLD_AXIS.LUSH))
             {
                 if (lushMag >= u.GtL_Factor)
-                    eligibleProfiles.Add(u.volumeProfile);
+                    eligibleProfiles.Add(u);
             }
             else if (isGloom && (u.axisConstraint == WORLD_AXIS.GLOOMY))
             {
                 if (gloomMag >= u.GtL_Factor)
-                    eligibleProfiles.Add(u.volumeProfile);
+                    eligibleProfiles.Add(u);
             }
         }
         if (eligibleProfiles.Count == 0)
             return false;
 
-        int selectedProfile = UnityEngine.Random.Range(0, eligibleProfiles.Count);
-        iMod.ChangeTarget(eligibleProfiles[selectedProfile]);
+        // pick highest value
+        float highest = 0f;
+        GTLLookupVolumeUnit selected = null;
+        foreach (GTLLookupVolumeUnit u in eligibleProfiles)
+        {
+            if (u.GtL_Factor > highest)
+            {
+                highest = u.GtL_Factor;
+                selected = u;
+            }
+        }
+
+        if (selected.volumeProfile == iActiveProfile)
+            return false;
+
+        iMod.ChangeTarget(selected.volumeProfile);
         return true;
     }
 

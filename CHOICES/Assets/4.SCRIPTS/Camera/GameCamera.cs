@@ -17,7 +17,7 @@ public class GameCamera : MonoBehaviour
 
         if (isPlayerCam)
         {
-            Camera.onPostRender += OnPostRenderCB;
+           // Camera.onPostRender += OnPostRenderCB;
         }
     }
 

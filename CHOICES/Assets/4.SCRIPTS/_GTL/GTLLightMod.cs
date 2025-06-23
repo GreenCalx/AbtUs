@@ -5,25 +5,45 @@ using UnityEngine.Rendering;
 [Serializable]
 public class GTLLightMod : GTLModifier<Light, Light>
 {
-    //public Light light;
-    public Quaternion initRot = Quaternion.identity;
+    private class LightSnapshot
+    {
+        public Quaternion rotation;
+        public float intensity;
+        public Color color;
+        public float colorTemperature;
 
+        public LightSnapshot(Light iLight)
+        {
+            rotation = iLight.transform.rotation;
+            intensity = iLight.intensity;
+            color = iLight.color;
+            colorTemperature = iLight.colorTemperature;
+        }
+    }
+    public Light initLight;
+    private LightSnapshot prevSnap;
+    private LightSnapshot currSnap;
     void Start()
     {
-        initRot = transform.rotation;
         modifierTarget.enabled = isActive;
         init();
+        modifierTarget = initLight;
     }
     public override void ChangeTarget(Light iLight)
     {
-        modifierTarget = iLight;
+        prevSnap = new LightSnapshot(modifierTarget);
+        currSnap = new LightSnapshot(iLight);
+
+        modifierTarget = iLight; 
         weight = 0f;
     }
 
     public override void ChangeTargetWeight(float iValue)
     {
-        // TODO : intensity lerp from init value to 0 & vice versa ?
-        transform.rotation = Quaternion.Lerp(initRot, modifierTarget.transform.rotation, iValue);
+        transform.rotation = Quaternion.Lerp(prevSnap.rotation, currSnap.rotation, iValue);
+        modifierTarget.intensity = Utils.Lerp(prevSnap.intensity, currSnap.intensity, iValue);
+        modifierTarget.colorTemperature = Utils.Lerp(prevSnap.colorTemperature, currSnap.colorTemperature, iValue);
+        modifierTarget.color = Color.Lerp(prevSnap.color, currSnap.color, iValue);
     }
 
     public override void Deactivate() 

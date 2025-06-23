@@ -34,6 +34,7 @@ public class TSTFeedbackMatrix
             Assert.That(fMatrix.feedbacks.Count == i);
             Assert.That(fMatrix.outputs.Keys.Count == i);
 
+            // Test Add/Remove feedback in matrix
             foreach (var gf in gameFeedbacks)
             {
                 Feedback f = fMatrix.BuildFeedback(gf);
@@ -47,10 +48,13 @@ public class TSTFeedbackMatrix
 
                 fMatrix.RemoveFeedback(f);
                 if (i == 0)
-                { Assert.That(fMatrix.feedbacks.Count == 0);}
+                { Assert.That(fMatrix.feedbacks.Count == 0); }
                 else
                 { Assert.That(fMatrix.feedbacks[(int)fData1.tag].Count == 0); }
             }
+
+            // Test matrix outputs
+            // TODO
         }
     }
 

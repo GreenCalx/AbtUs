@@ -1,0 +1,50 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 7554b8834952f2b469ec31c2974d7269, type: 3}
+  m_Name: GTLTable
+  m_EditorClassIdentifier: 
+  volumeUnits:
+  - GtL_Factor: 1
+    axisConstraint: 5
+    volumeProfile: {fileID: 11400000, guid: f31b4dac4bb4cc643bdc70b99ed2e03a, type: 2}
+  - GtL_Factor: 0.8
+    axisConstraint: 5
+    volumeProfile: {fileID: 11400000, guid: 06f382a5b9606164d9ac0248b1ea2737, type: 2}
+  - GtL_Factor: 0.6
+    axisConstraint: 5
+    volumeProfile: {fileID: 11400000, guid: 0ddb992ad1a95e349b445063fb617288, type: 2}
+  - GtL_Factor: 0.4
+    axisConstraint: 5
+    volumeProfile: {fileID: 11400000, guid: d6cc1c0ca9dcf824c9a0ec2cb8c9886b, type: 2}
+  - GtL_Factor: 0.2
+    axisConstraint: 5
+    volumeProfile: {fileID: 11400000, guid: 589b116069097f44cb43fb87cf0a3b65, type: 2}
+  - GtL_Factor: 0
+    axisConstraint: 0
+    volumeProfile: {fileID: 11400000, guid: 8ba92e2dd7f884a0f88b98fa2d235fe7, type: 2}
+  - GtL_Factor: 0.2
+    axisConstraint: 6
+    volumeProfile: {fileID: 11400000, guid: 08d8f130b83c0ee4ca9200fca840795b, type: 2}
+  - GtL_Factor: 0.4
+    axisConstraint: 6
+    volumeProfile: {fileID: 11400000, guid: c164136aeff639a4b996d90c828bb719, type: 2}
+  - GtL_Factor: 0.6
+    axisConstraint: 6
+    volumeProfile: {fileID: 11400000, guid: ac9acd8a6c61c694db01ef7e4f464ed5, type: 2}
+  - GtL_Factor: 0.8
+    axisConstraint: 6
+    volumeProfile: {fileID: 11400000, guid: 7c1287fd8134df7419342280a3ca4bcd, type: 2}
+  - GtL_Factor: 1
+    axisConstraint: 6
+    volumeProfile: {fileID: 11400000, guid: 88384ddab28a5144eb2790bf9248cfd2, type: 2}
+  lightUnits: []
+  waterUnits: []
