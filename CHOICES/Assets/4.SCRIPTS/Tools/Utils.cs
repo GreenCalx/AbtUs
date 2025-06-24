@@ -18,7 +18,7 @@ public static class Utils
         ioCurve.ClearKeys();
 
         int n_steps = 10;
-        for (int i=0; i <= n_steps; i++)
+        for (int i = 0; i <= n_steps; i++)
         {
             float x_curve = (float)i / (float)n_steps;
             float y_curve = CauchySample(iX0, iQ, x_curve);
@@ -30,7 +30,7 @@ public static class Utils
     public static T GetComp<T>(GameObject iGO)
     {
         T comp = iGO.GetComponent<T>();
-        if (comp!=null)
+        if (comp != null)
             return comp;
         return iGO.GetComponentInParent<T>();
     }
@@ -59,11 +59,21 @@ public static class Utils
 
     public static float Remap(float iVal, float iOldMin, float iOldMax, float iNewMin, float iNewMax)
     {
-        return iNewMin + (iVal/(iOldMax - iOldMin))*(iNewMax-iNewMin);
+        return iNewMin + (iVal / (iOldMax - iOldMin)) * (iNewMax - iNewMin);
     }
-    
+
     public static bool IsNaN(Vector3 iVec)
     {
         return (float.IsNaN(iVec.x) || float.IsNaN(iVec.y) || float.IsNaN(iVec.z));
+    }
+
+    public static void Split<T>(T[] iSourceArr, int index, out T[] left, out T[] right)
+    {
+        int rlen = iSourceArr.Length - index;
+        left = new T[index];
+        right = new T[rlen];
+
+        Array.Copy(iSourceArr, 0, left, 0, index);
+        Array.Copy(iSourceArr, index, right, 0, rlen);
     }
 }

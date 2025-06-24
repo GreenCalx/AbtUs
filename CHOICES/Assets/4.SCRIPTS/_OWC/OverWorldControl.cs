@@ -462,12 +462,14 @@ public class OverWorldControl : MonoBehaviour
             mod.ChangeMaterials(newMats);
         }
 
-        foreach(MTOTerrain t in mtoTerrains)
+        foreach (MTOTerrain t in mtoTerrains)
         {
             List<TerrainLayer> newPalette = mtoLookupTable.ScoutForTerrainLayersChange(t, MineralToOrganic);
-            if (newPalette==null)
+            if (newPalette == null)
                 continue;
             t.ChangeLayers(newPalette);
+
+            t.RefreshTrees();
         }
 
         foreach (OWCListener listener in MTOListeners)

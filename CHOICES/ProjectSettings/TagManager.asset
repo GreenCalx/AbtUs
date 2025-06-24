@@ -7,6 +7,8 @@ TagManager:
   - LEVEL0
   - LEVEL1
   - GlowSpotHolder
+  - MINERAL
+  - ORGANIC
   layers:
   - Default
   - TransparentFX

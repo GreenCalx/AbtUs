@@ -3,6 +3,8 @@ using UnityEngine;
 public static class Constants
 {
     public const string suffix_Instance = "(Instance)";
+    public const string tag_Mineral = "MINERAL";
+    public const string tag_Organic = "ORGANIC";
     // ----------------------------------------------------
     // SHADERS
     // global parm
