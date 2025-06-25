@@ -1,4 +1,5 @@
 using UnityEngine;
+using UnityEngine.Rendering;
 
 public class GameCamera : MonoBehaviour
 {
@@ -6,6 +7,9 @@ public class GameCamera : MonoBehaviour
     public Camera cam;
     public Vector3 camRotAsEulers;
     public LayerMask InteractibleRCMaskLayer;
+    public RenderTexture _lumRT;
+
+    private CommandBuffer _commandBuffer;
 
     // Start is called once before the first execution of Update after the MonoBehaviour is created
     void Start()
@@ -17,7 +21,23 @@ public class GameCamera : MonoBehaviour
 
         if (isPlayerCam)
         {
-           // Camera.onPostRender += OnPostRenderCB;
+            // Camera.onPostRender += OnPostRenderCB;
+
+            _commandBuffer = new CommandBuffer();
+            var lookMatrix = Matrix4x4.LookAt(transform.position, transform.position + transform.forward, transform.up);
+            var scaleMatrix = Matrix4x4.TRS(Vector3.zero, Quaternion.identity, Vector3.one);
+            var viewMatrix = scaleMatrix * lookMatrix.inverse;
+            _commandBuffer.SetViewMatrix(viewMatrix);
+            _commandBuffer.SetProjectionMatrix(cam.projectionMatrix);
+
+            _commandBuffer.name = "LumBuff";
+            int lumRT = Shader.PropertyToID("_lumRT");
+            _commandBuffer.GetTemporaryRT(lumRT, 1920, 1080, 0, FilterMode.Point, RenderTextureFormat.RG16, RenderTextureReadWrite.Linear, 0, false);
+            _commandBuffer.Blit(BuiltinRenderTextureType.CameraTarget, lumRT);
+            _commandBuffer.Blit(lumRT, _lumRT);
+            cam.AddCommandBuffer(CameraEvent.BeforeImageEffects, _commandBuffer);
+            
+            Graphics.ExecuteCommandBuffer(_commandBuffer);
         }
     }
 
@@ -25,7 +45,14 @@ public class GameCamera : MonoBehaviour
     void Update()
     {
         if (isPlayerCam)
-            Managers.Instance.Camera.lastRender = cam.activeTexture;   
+            Managers.Instance.Camera.lastRender = cam.activeTexture;
+        Graphics.ExecuteCommandBuffer(_commandBuffer);
+    }
+
+    public RenderTexture GetLumRT()
+    {
+        
+        return _lumRT;
     }
 
     public void VClampedRotation(Vector3 iDeltaRot, float iClampMin, float iClampMax)

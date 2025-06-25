@@ -6890,8 +6890,8 @@
     "m_ObjectId": "55f4b8bc9fe7400e83ed90f3147a60ae",
     "m_Title": "CHAOS DISTORSION",
     "m_Position": {
-        "x": -5730.00048828125,
-        "y": -1431.0001220703125
+        "x": -5730.0,
+        "y": -1431.0
     }
 }
 
@@ -7448,8 +7448,8 @@
     "m_ObjectId": "68154eb01e4f454fa7620a0b9c5b8ea0",
     "m_Title": "Displacement",
     "m_Position": {
-        "x": -59.00006103515625,
-        "y": -3208.000244140625
+        "x": -59.0,
+        "y": -3208.0
     }
 }
 
@@ -8345,8 +8345,8 @@
     "m_ObjectId": "7f8b4efce80c4bd2b720a3f3f9459065",
     "m_Title": "Normals",
     "m_Position": {
-        "x": -1107.0001220703125,
-        "y": -987.0000610351563
+        "x": -1107.0,
+        "y": -987.0
     }
 }
 
@@ -8405,8 +8405,8 @@
     "m_ObjectId": "802bd2db801d4f8ca8818a586225880f",
     "m_Title": "Albedo",
     "m_Position": {
-        "x": -1028.0001220703125,
-        "y": -2153.000244140625
+        "x": -1028.0,
+        "y": -2153.0
     }
 }
 
@@ -10202,7 +10202,7 @@
     "m_SGVersion": 0,
     "m_Type": "UnityEditor.Rendering.HighDefinition.ShaderGraph.SystemData",
     "m_ObjectId": "a093ec2811b94a429b8d0286756c49c6",
-    "m_MaterialNeedsUpdateHash": 279958,
+    "m_MaterialNeedsUpdateHash": 279894,
     "m_SurfaceType": 1,
     "m_RenderingPass": 4,
     "m_BlendMode": 0,
@@ -10238,7 +10238,7 @@
     "m_ObjectId": "a0fc76fc2e3e45b1a9f95a0e25c2efdb",
     "m_Title": "Mask",
     "m_Position": {
-        "x": -1355.0001220703125,
+        "x": -1355.0,
         "y": 203.0
     }
 }

@@ -6,7 +6,7 @@ using System.Collections.Generic;
 using static EventLog;
 public class LightDetector : MonoBehaviour, IFeedbackEval
 {
-    public Camera lightCam;
+    public GameCamera playerCam;
     public Texture2D tex;
     private RenderTexture LightCamRT;
     private Coroutine renderCo;
@@ -42,20 +42,19 @@ public class LightDetector : MonoBehaviour, IFeedbackEval
         float warmup = Time.time;
         while ((Time.time - warmup ) < WarmUpTime ) { yield return null; }
 
-        LightCamRT = lightCam.activeTexture;
-        RTWidth = LightCamRT.width;
-        RTHeight = LightCamRT.height ;
-        tex = new Texture2D(  RTWidth, RTHeight, TextureFormat.R8, false);
+        //LightCamRT = playerCam.GetLumRT();
+        tex = new Texture2D(  1920, 1080, TextureFormat.RG16_SIGNED, false);
         
         float lerpStartTime = 0f;
         float frac = 0f;
         while (true)
         {
             GPUReqDonne = false;
+            //LightCamRT = playerCam.GetLumRT();
             AsyncGPUReadback.Request(
-                LightCamRT,
+                playerCam.GetLumRT(),
                 0, // mipmap
-                TextureFormat.R8, OnCompleteReadback);
+                TextureFormat.RG16_SIGNED, OnCompleteReadback);
 
             while(!GPUReqDonne) { yield return null; }
 
@@ -88,7 +87,6 @@ public class LightDetector : MonoBehaviour, IFeedbackEval
 
          tex.LoadRawTextureData(request.GetData<uint>());
          tex.Apply();
-        //Graphics.Blit(LightCamRT, tex);
         Color32[] colors = tex.GetPixels32();
 
         LuminancePrev = Luminance;
@@ -96,10 +94,11 @@ public class LightDetector : MonoBehaviour, IFeedbackEval
         for (int i = 0; i < colors.Length; i++)
         {
             // https://en.wikipedia.org/wiki/Relative_luminance
+            LuminanceNext +=(0.7152f * colors[i].g) + (0.0722f * colors[i].b);
             //LuminanceNext += (0.2126f * colors[i].r) + (0.7152f * colors[i].g) + (0.0722f * colors[i].b);
-            LuminanceNext += colors[i].r;
+            //LuminanceNext += colors[i].r;
         }
-        LuminanceNext /= (RTWidth * RTHeight);
+        LuminanceNext /= colors.Length;
 
         LuminanceNext = Utils.Remap(LuminanceNext, 0f, 100f, 0f, 1f);
         if (isFirstPass)

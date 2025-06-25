@@ -205,13 +205,13 @@ MonoBehaviour:
       NearBlurMaxRadius:
       - 2
       - 4
-      - 7
+      - 6.649
       FarBlurSampleCount: 04000000070000000e000000
       FarBlurMaxRadius:
       - 5
       - 8
-      - 13
-      DoFResolution: 040000000200000001000000
+      - 3.36
+      DoFResolution: 040000000200000002000000
       DoFHighQualityFiltering: 000101
       DoFPhysicallyBased: 000000
       AdaptiveSamplingWeight:
