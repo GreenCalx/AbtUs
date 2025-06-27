@@ -25,15 +25,11 @@ public class GameFeedback : MonoBehaviour
 
     public AnimationCurve fInfluenceCurve;
 
-    private void Start()
-    {
-        fbm = FeedbackManager.Instance;
-    }
-
     public void Init(IFeedbackEval iEvaluator)
     {
+        fbm = Managers.Instance.FBM;
         evaluatorTarget = iEvaluator;
-        FeedbackManager.Instance.RegisterGameFeedback(this, evaluatorTarget.feedbackEvaluator);
+        fbm.RegisterGameFeedback(this, evaluatorTarget.feedbackEvaluator);
        // Utils.CauchyToAnimCurve(ref fInfluenceCurve, 0.5f, 0.25f);
     }
 

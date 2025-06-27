@@ -11,7 +11,7 @@ public class ObjectPool : MonoBehaviour
     public List<IPoolable> pool = new List<IPoolable>();
     public Bounds bounds;
     public Transform player;
-    private bool enabled = false;
+    private bool IsEnabled = false;
 
     void OnDrawGizmosSelected()
     {
@@ -26,7 +26,7 @@ public class ObjectPool : MonoBehaviour
         if (player == null)
         {
             FAIL("No player ref in ObjectPool. Deactivating.");
-            enabled = false;
+            IsEnabled = false;
         }
     }
 
@@ -56,20 +56,20 @@ public class ObjectPool : MonoBehaviour
 
     public void OnEnable()
     {
-        if (enabled)
+        if (IsEnabled)
             return;
             
         foreach (IPoolable obj in pool)
         {
             obj.OnPoolAwake();
         }
-        INFO("Pool ID " + id + " Enabled");
-        enabled = true;
+        INFO("Pool ID " + id + " IsEnabled");
+        IsEnabled = true;
     }
 
     public void OnDisable()
     {
-        if (!enabled)
+        if (!IsEnabled)
             return;
             
         foreach (IPoolable obj in pool)
@@ -77,7 +77,7 @@ public class ObjectPool : MonoBehaviour
             obj.OnPoolSleep();
         }
         INFO("Pool ID " + id + " Disabled");
-        enabled = false;
+        IsEnabled = false;
     }
 
 

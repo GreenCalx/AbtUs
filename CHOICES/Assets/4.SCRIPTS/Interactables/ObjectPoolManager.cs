@@ -25,7 +25,8 @@ public class ObjectPoolManager : MonoBehaviour, IFeedbackEval
     [Header("MAND REFS")]
     public List<ObjectPool> pools;
     public int startPoolID = 0;
-    public GameFeedback mto_feedback;
+    public GameObject prefab_mtoFeedback;
+    private GameFeedback mto_feedback;
 
     [Header("Internals")]
     public List<int> activePools;
@@ -34,7 +35,7 @@ public class ObjectPoolManager : MonoBehaviour, IFeedbackEval
     private int mineralPool = 0;
     private int organicPool = 0;
 
-    public void Awake()
+    public void Init()
     {
         int index = 0;
         foreach (ObjectPool pool in pools)
@@ -42,15 +43,17 @@ public class ObjectPoolManager : MonoBehaviour, IFeedbackEval
             pool.id = index;
             index++;
         }
-    }
 
-    void Start()
-    {
-        if (mto_feedback != null)
-            mto_feedback.Init(this);
+        mto_feedback = Instantiate(prefab_mtoFeedback, transform).GetComponent<GameFeedback>();
+        mto_feedback.Init(this);
 
         activePools = new List<int>();
         activePools.Add(startPoolID);
+    }
+
+    void OnDestroy()
+    {
+
     }
 
     public virtual float feedbackEvaluator()
@@ -136,7 +139,7 @@ public class ObjectPoolManager : MonoBehaviour, IFeedbackEval
         }
         pools[iPoolID].OnDisable();
         activePools.Remove(iPoolID);
-        activePools = activePools.Where(e => e != null).ToList();
+        //activePools = activePools.Where(e => e != null).ToList();
     }
 
     public void EnableSolo(int iPoolID)

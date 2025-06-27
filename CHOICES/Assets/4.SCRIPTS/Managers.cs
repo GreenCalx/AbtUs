@@ -9,6 +9,7 @@ public class Managers : MonoBehaviour
     public CameraManager Camera;
     public ObjectChainManager ObjectChains;
     public ObjectPoolManager ObjectPools;
+    public FeedbackManager FBM;
 
     private static Managers instance = null;
     public static Managers Instance => instance;
@@ -28,16 +29,37 @@ public class Managers : MonoBehaviour
 
     void Start()
     {
-        Sound = GetComponent<SoundManager>();
-        Camera = GetComponent<CameraManager>();
-        ObjectChains = GetComponent<ObjectChainManager>();
-        ObjectPools = GetComponent<ObjectPoolManager>();
+        StartCoroutine(InitChain());
+
+#if UNITY_EDITOR
 
         if (GameSettings.Instance.LogEvents)
         {
             EventLog.Init();
             StartCoroutine(LogCo());
         }
+#endif
+    }
+
+    IEnumerator InitChain()
+    {
+        Sound           = GetComponent<SoundManager>();
+        Sound.Init();
+
+        Camera          = GetComponent<CameraManager>();
+        Camera.Init();
+
+        // NEED OWC
+        while (OverWorldControl.Instance == null ) { yield return null; }
+
+        FBM = GetComponent<FeedbackManager>();
+        FBM.Init(3);
+
+        ObjectChains    = GetComponent<ObjectChainManager>();
+        ObjectChains.Init();
+
+        ObjectPools     = GetComponent<ObjectPoolManager>();
+        ObjectPools.Init();
     }
 
     void OnDestroy()

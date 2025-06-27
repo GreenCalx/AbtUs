@@ -247,29 +247,14 @@ public class Feedback
 
 public class FeedbackManager : MonoBehaviour
 {
-    private static FeedbackManager instance = null;
-    public static FeedbackManager Instance => instance;
     [SerializeField]
     private OverWorldControl OWC;
     public FeedbackMatrix fMatrix;
     public float syncStep = 0.2f;
     private float lastSyncTime = 0f;
-    public void Awake()
+    public void Init(int iSize)
     {
-        if (instance != null && instance != this)
-        {
-            Destroy(this.gameObject);
-            return;
-        }
-        else
-        {
-            instance = this;
-        }
-        fMatrix = new FeedbackMatrix(3);
-    }
-
-    public void Start()
-    {
+        fMatrix = new FeedbackMatrix(iSize);
         OWC = OverWorldControl.Instance;
         lastSyncTime = Time.time;
     }

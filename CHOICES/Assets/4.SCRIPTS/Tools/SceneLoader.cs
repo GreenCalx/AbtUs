@@ -121,7 +121,8 @@ public class SceneLoader : MonoBehaviour
             yield return StartCoroutine(runningCoroutine);
         }
 
-        Destroy(transitionAnimator_Inst.gameObject);
+        if (transitionAnimator_Inst!=null)
+            Destroy(transitionAnimator_Inst.gameObject);
         INFO("operation finished");
         operationFinished = true;
         operationProgress = 1f;
@@ -158,22 +159,12 @@ public class SceneLoader : MonoBehaviour
     {
         INFO("Loading Complete Callback");
 
-        // var activeSceneName = SceneManager.GetActiveScene().name;
-
-        // // note toffa : previous scene can have an active listener and it will pollute the logs
-
-        // // we deactivate the current one and reactivate after.
-
-        // var listener = GameObject.FindObjectsOfType<AudioListener>();
-
-        // foreach (var g in listener)
-
-        //     if (g.gameObject.scene.name == activeSceneName) g.enabled = false;
-
-        // INFO("Disable audiolistener in " + SceneManager.GetActiveScene().name);
     }
 
-
+    void OnDestroy()
+    {
+        
+    }
 
     IEnumerator loading(string iSceneName)
     {

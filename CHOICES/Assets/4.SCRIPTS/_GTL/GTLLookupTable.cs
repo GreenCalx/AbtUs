@@ -67,7 +67,7 @@ public class GTLLookupTable : MonoBehaviour
             return false;
 
         // pick highest value
-        float highest = 0f;
+        float highest = -1f;
         GTLLookupVolumeUnit selected = null;
         foreach (GTLLookupVolumeUnit u in eligibleProfiles)
         {

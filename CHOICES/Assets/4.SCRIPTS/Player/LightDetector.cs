@@ -22,6 +22,9 @@ public class LightDetector : MonoBehaviour, IFeedbackEval
 
     public int RTWidth, RTHeight;
 
+    // CS
+
+
     // Start is called once before the first execution of Update after the MonoBehaviour is created
     void Start()
     {
@@ -31,7 +34,6 @@ public class LightDetector : MonoBehaviour, IFeedbackEval
         Luminance = 0f;
         LuminancePrev = 0f;
         LuminanceNext = 0f;
-        INFO(" LightDetector RT dimensions : " + RTWidth + "x" + RTHeight);
 
         if (renderCo == null)
             renderCo = StartCoroutine(RenderCo());
@@ -39,24 +41,39 @@ public class LightDetector : MonoBehaviour, IFeedbackEval
 
     IEnumerator RenderCo()
     {
-        float warmup = Time.time;
-        while ((Time.time - warmup ) < WarmUpTime ) { yield return null; }
+        while (playerCam==null)
+        { yield return null; }
+        while (playerCam.GetLumRT() == null)
+        { yield return null; }
+        while (!playerCam.GetLumRT().IsCreated())
+        { yield return null; }
 
-        //LightCamRT = playerCam.GetLumRT();
-        tex = new Texture2D(  1920, 1080, TextureFormat.RG16_SIGNED, false);
+        RenderTexture lRT = playerCam.GetLumRT();
+        lRT.GenerateMips();
+        Vector2 v = Utils.GetMipsSize(lRT, lRT.mipmapCount - 3, true);
+        Debug.Log("V.x = " + v.x + " V.y = " + v.y);
+
+        tex = new Texture2D( 8, 8, TextureFormat.RGFloat, false);
         
         float lerpStartTime = 0f;
         float frac = 0f;
+        
+        
         while (true)
         {
             GPUReqDonne = false;
             //LightCamRT = playerCam.GetLumRT();
+            playerCam.refreshCmdLum = true;
+            while (playerCam.refreshCmdLum){ yield return null; }
+            lRT = playerCam.GetLumRT();
+            lRT.GenerateMips();
+            Debug.Log("mimap count : " + playerCam.GetLumRT().mipmapCount);
             AsyncGPUReadback.Request(
-                playerCam.GetLumRT(),
-                0, // mipmap
-                TextureFormat.RG16_SIGNED, OnCompleteReadback);
+                lRT,
+                lRT.mipmapCount - 6, // mipmap
+                TextureFormat.RGFloat, OnCompleteReadback);
 
-            while(!GPUReqDonne) { yield return null; }
+            while (!GPUReqDonne) { yield return null; }
 
             lerpStartTime = Time.time;
             while (Time.time - lerpStartTime < RefreshRateInSec)
@@ -76,7 +93,6 @@ public class LightDetector : MonoBehaviour, IFeedbackEval
 
     void OnDestroy()
     {
-
         Destroy(tex);
     }
 
@@ -85,8 +101,20 @@ public class LightDetector : MonoBehaviour, IFeedbackEval
         if (request.hasError)
             return;
 
-         tex.LoadRawTextureData(request.GetData<uint>());
-         tex.Apply();
+        tex.LoadRawTextureData(request.GetData<float>());
+        tex.Apply();
+
+        // ReadPixelLuminance.SetTexture(kernelID, "inputTexture", tex);
+        // ReadPixelLuminance.SetBuffer(kernelID, "outputBuffer", outputBuffer);
+        // ReadPixelLuminance.SetFloat("w", tex.width);
+        // ReadPixelLuminance.SetFloat("h", tex.height);
+
+        // ReadPixelLuminance.Dispatch(kernelID, tex.width/8, tex.height/8, 1);
+
+        // float[] outputArray = new float[tex.width*tex.height];
+        // outputBuffer.GetData(outputArray);
+        //Color color = new Color(outputArray[0], outputArray[1], 0, 255);
+
         Color32[] colors = tex.GetPixels32();
 
         LuminancePrev = Luminance;
@@ -94,7 +122,7 @@ public class LightDetector : MonoBehaviour, IFeedbackEval
         for (int i = 0; i < colors.Length; i++)
         {
             // https://en.wikipedia.org/wiki/Relative_luminance
-            LuminanceNext +=(0.7152f * colors[i].g) + (0.0722f * colors[i].b);
+            LuminanceNext += (0.2126f * colors[i].r) + (0.7152f * colors[i].g);
             //LuminanceNext += (0.2126f * colors[i].r) + (0.7152f * colors[i].g) + (0.0722f * colors[i].b);
             //LuminanceNext += colors[i].r;
         }

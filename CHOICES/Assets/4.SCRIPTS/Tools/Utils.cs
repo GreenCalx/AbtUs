@@ -7,6 +7,41 @@ public class IntEvent : UnityEvent<int> {}
 
 public static class Utils
 {
+    public static Vector2 GetMipsSize(RenderTexture iRT, int iMipsLevel, bool iForcePow2)
+    {
+
+        if (!iRT.useMipMap)
+            return Vector2.zero;
+
+        float width = iRT.width;
+        float height = iRT.height;
+        if (width == height)
+        {
+            int mipsize = (int)Mathf.Pow(2, iMipsLevel);
+            return new Vector2(mipsize, mipsize);
+        }
+
+        float mip_w = width;
+        float mip_h = height;
+        int i = 0;
+        while (i <= iMipsLevel)
+        {
+            mip_w /= 2f;
+            mip_h /= 2f;
+            i++;
+        }
+        if (iForcePow2)
+        {
+            float pow2_w = 1;
+            float pow2_h = 1;
+            while (pow2_w < mip_h) { pow2_w *= 2; }
+            while (pow2_h < mip_h) { pow2_h *= 2; }
+
+            mip_w = pow2_w;
+            mip_h = pow2_h;
+        }
+        return new Vector2(mip_w, mip_h);
+    }
     // Returns f(iX) of cauchy PDF
     public static float CauchySample(float iX0, float iQ, float iXSample)
     {

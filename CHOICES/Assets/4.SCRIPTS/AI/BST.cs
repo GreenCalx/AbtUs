@@ -75,7 +75,7 @@ public class BST<T, C, V>   where  T : BSTToken
         BSTNode n = GetNodeFromState(iState);
         if (n!=null)
         {
-            n.nodeExitCallbacks = iCB;
+            n.nodeExitCallbacks += iCB;
         }
     }
 

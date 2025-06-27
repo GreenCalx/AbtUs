@@ -90,15 +90,15 @@ public class ObjectChainManager : MonoBehaviour, IFeedbackEval
     [Header("Refs")]
     public GameObject prefab_ChainLineRenderer;
     public GameObject prefab_AltChainLineRenderer;
-    public GameFeedback otc_feedback;
+    public GameObject prefab_otcFeedback;
+    private GameFeedback otc_feedback;
 
     [Header("Internals")]
     public List<ObjectChain<InteractibleObject>> chains = new List<ObjectChain<InteractibleObject>>();
 
-    void Start()
+    public void Init()
     {
-        if (otc_feedback == null)
-            Debug.LogError("otc_feedback ref missing on ObjectChainManager.");
+        otc_feedback = Instantiate(prefab_otcFeedback, transform).GetComponent<GameFeedback>();
         otc_feedback.Init(this);
     }
 

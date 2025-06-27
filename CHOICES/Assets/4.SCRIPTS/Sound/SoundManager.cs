@@ -58,7 +58,7 @@ public class SoundManager : MonoBehaviour
     private Coroutine lerpPitchCoroutine;
 
     #region UNITY
-    void Awake()
+    public void Init()
     {
         fxAudioCanals = new List<AudioSource>( new AudioSource[fxChannels]);
         playQueue = new List<AudioSource>(0);

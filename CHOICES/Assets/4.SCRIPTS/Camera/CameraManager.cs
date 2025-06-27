@@ -16,11 +16,10 @@ public class CameraManager : MonoBehaviour
     public Vector3 registeredPosition;
     public RenderTexture lastRender;
 
-    void Start()
+    public void Init()
     {
         initPlayerCamParent = playerCam.transform.parent;
         initPlayerFOV = playerCam.cam.fieldOfView;
-        
     }
 
     public void RegisterPlayerCamTransform()

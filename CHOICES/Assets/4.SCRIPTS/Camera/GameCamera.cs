@@ -8,8 +8,8 @@ public class GameCamera : MonoBehaviour
     public Vector3 camRotAsEulers;
     public LayerMask InteractibleRCMaskLayer;
     public RenderTexture _lumRT;
-
     private CommandBuffer _commandBuffer;
+    public bool refreshCmdLum = false;
 
     // Start is called once before the first execution of Update after the MonoBehaviour is created
     void Start()
@@ -25,19 +25,32 @@ public class GameCamera : MonoBehaviour
 
             _commandBuffer = new CommandBuffer();
             var lookMatrix = Matrix4x4.LookAt(transform.position, transform.position + transform.forward, transform.up);
-            var scaleMatrix = Matrix4x4.TRS(Vector3.zero, Quaternion.identity, Vector3.one);
+            var scaleMatrix = Matrix4x4.TRS(Vector3.zero, Quaternion.identity, new Vector3(1, 1, -1));
             var viewMatrix = scaleMatrix * lookMatrix.inverse;
             _commandBuffer.SetViewMatrix(viewMatrix);
             _commandBuffer.SetProjectionMatrix(cam.projectionMatrix);
+            // _commandBuffer.EnableScissorRect(
+            //     new Rect(
+            //         Screen.width / 4f, Screen.height / 4f,
+            //         3f*Screen.width / 4f, 3f*Screen.height / 4f
+            //     )
+            // );
 
             _commandBuffer.name = "LumBuff";
             int lumRT = Shader.PropertyToID("_lumRT");
-            _commandBuffer.GetTemporaryRT(lumRT, 1920, 1080, 0, FilterMode.Point, RenderTextureFormat.RG16, RenderTextureReadWrite.Linear, 0, false);
-            _commandBuffer.Blit(BuiltinRenderTextureType.CameraTarget, lumRT);
-            _commandBuffer.Blit(lumRT, _lumRT);
-            cam.AddCommandBuffer(CameraEvent.BeforeImageEffects, _commandBuffer);
+            //_commandBuffer.GetTemporaryRT(lumRT, -1, -1, 0, FilterMode.Point, RenderTextureFormat.RG16, RenderTextureReadWrite.Linear, 1, false);
+            _commandBuffer.SetRenderTarget(lumRT);
             
-            Graphics.ExecuteCommandBuffer(_commandBuffer);
+            _commandBuffer.Blit(BuiltinRenderTextureType.CameraTarget, lumRT);
+            //_commandBuffer.Blit(lumRT, _lumRT, new Vector2(0.5f,0.5f), new Vector2(0.5f,0.5f));
+            _commandBuffer.Blit(lumRT, _lumRT);
+            //_commandBuffer.Blit(lumRT, _lumRT);
+
+            _commandBuffer.ReleaseTemporaryRT(lumRT);
+
+            cam.AddCommandBuffer(CameraEvent.BeforeImageEffects, _commandBuffer);
+
+            refreshCmdLum = true;
         }
     }
 
@@ -46,12 +59,20 @@ public class GameCamera : MonoBehaviour
     {
         if (isPlayerCam)
             Managers.Instance.Camera.lastRender = cam.activeTexture;
-        Graphics.ExecuteCommandBuffer(_commandBuffer);
+        if (refreshCmdLum)
+        {
+            Graphics.ExecuteCommandBuffer(_commandBuffer);
+            refreshCmdLum = false;
+        }
+    }
+
+    public void RefreshLumRT()
+    {
+
     }
 
     public RenderTexture GetLumRT()
     {
-        
         return _lumRT;
     }
 

@@ -1,0 +1,23 @@
+// Each #kernel tells which function to compile; you can have many kernels
+#pragma kernel ReadPixelLuminance
+
+// Input texture
+Texture2D<float2> inputTexture;
+
+// Output buffer
+#pragma bind_buffer(name: outputBuffer, binding: 0)
+RWStructuredBuffer<float>  outputBuffer;
+//RWStructuredBuffer<float>  outputBuffer;
+float w, h;
+SamplerState _LinearClamp;
+[numthreads(8,8,1)]
+void ReadPixelLuminance (uint2 id : SV_DispatchThreadID)
+{
+    //float2 uv = float2(id.x/w, id.y/h);
+    float2 color = inputTexture.Load(int3(id.x, id.y, 0));
+    //float4 t = inputTexture.SampleLevel(_LinearClamp, uv, 0);
+    //outputBuffer[id.x + id.y] = (0.2126f * color[0]) + (0.7152f * color[1]);
+    //outputBuffer[id.x + id.y] = color;
+    outputBuffer[id.x + id.y] = (0.2126f * color[0]) + (0.7152f * color[1]);
+    //outputBuffer[id.x + id.y] = color[0];
+}
