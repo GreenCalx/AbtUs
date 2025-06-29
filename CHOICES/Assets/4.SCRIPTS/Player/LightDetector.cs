@@ -13,12 +13,12 @@ public class LightDetector : MonoBehaviour, IFeedbackEval
     public float Luminance { private set; get; }
     private float LuminancePrev, LuminanceNext;
     public float RefreshRateInSec = 2f;
-    [Range(0,8)]
-    public int ResolutionFactor = 2;
     public GameFeedback LuminanceFeedback;
     private bool GPUReqDonne = false;
     private bool isFirstPass = true;
     public float WarmUpTime = 10f;
+    public int mipLevel = 7;
+    private Color32[] colors;
 
     public int RTWidth, RTHeight;
 
@@ -48,30 +48,22 @@ public class LightDetector : MonoBehaviour, IFeedbackEval
         while (!playerCam.GetLumRT().IsCreated())
         { yield return null; }
 
-        RenderTexture lRT = playerCam.GetLumRT();
-        lRT.GenerateMips();
-        Vector2 v = Utils.GetMipsSize(lRT, lRT.mipmapCount - 3, true);
-        Debug.Log("V.x = " + v.x + " V.y = " + v.y);
 
-        tex = new Texture2D( 8, 8, TextureFormat.RGFloat, false);
-        
+        int tex_w = playerCam.GetLumRT().width >> mipLevel;
+        int tex_h = playerCam.GetLumRT().height >> mipLevel;
+        tex = new Texture2D(tex_w, tex_h, TextureFormat.RGBA32, false);
+        colors = new Color32[tex_w * tex_h];
+
         float lerpStartTime = 0f;
         float frac = 0f;
-        
         
         while (true)
         {
             GPUReqDonne = false;
-            //LightCamRT = playerCam.GetLumRT();
-            playerCam.refreshCmdLum = true;
-            while (playerCam.refreshCmdLum){ yield return null; }
-            lRT = playerCam.GetLumRT();
-            lRT.GenerateMips();
-            Debug.Log("mimap count : " + playerCam.GetLumRT().mipmapCount);
             AsyncGPUReadback.Request(
-                lRT,
-                lRT.mipmapCount - 6, // mipmap
-                TextureFormat.RGFloat, OnCompleteReadback);
+                playerCam.GetLumRT(),
+                mipLevel,
+                TextureFormat.RGBA32, OnCompleteReadback);
 
             while (!GPUReqDonne) { yield return null; }
 
@@ -101,9 +93,13 @@ public class LightDetector : MonoBehaviour, IFeedbackEval
         if (request.hasError)
             return;
 
-        tex.LoadRawTextureData(request.GetData<float>());
-        tex.Apply();
+        //Graphics.Blit(playerCam.GetLumRT(), tex);
 
+        //tex.ReadPixels(new Rect(0, 0, playerCam.GetLumRT().width, playerCam.GetLumRT().height), 0, 0);
+        //tex = new Texture2D( playerCam.GetLumRT().width, playerCam.GetLumRT().height, TextureFormat.RGBA32, false);
+        tex.LoadRawTextureData(request.GetData<uint>());
+        tex.Apply(true);
+        //tex.desiredMipmapLevel = 5;
         // ReadPixelLuminance.SetTexture(kernelID, "inputTexture", tex);
         // ReadPixelLuminance.SetBuffer(kernelID, "outputBuffer", outputBuffer);
         // ReadPixelLuminance.SetFloat("w", tex.width);
@@ -115,20 +111,29 @@ public class LightDetector : MonoBehaviour, IFeedbackEval
         // outputBuffer.GetData(outputArray);
         //Color color = new Color(outputArray[0], outputArray[1], 0, 255);
 
-        Color32[] colors = tex.GetPixels32();
+
+        //StartCoroutine(UpdateLuminance());
+        UpdateLuminance();
+    }
+
+    void UpdateLuminance()
+    {
+        //while (!tex.IsRequestedMipmapLevelLoaded()) { yield return null; }
+        
+        colors = tex.GetPixels32();
 
         LuminancePrev = Luminance;
         LuminanceNext = 0f;
         for (int i = 0; i < colors.Length; i++)
         {
             // https://en.wikipedia.org/wiki/Relative_luminance
-            LuminanceNext += (0.2126f * colors[i].r) + (0.7152f * colors[i].g);
-            //LuminanceNext += (0.2126f * colors[i].r) + (0.7152f * colors[i].g) + (0.0722f * colors[i].b);
+            //LuminanceNext += (0.2126f * colors[i].r) + (0.7152f * colors[i].g);
+            LuminanceNext += (0.2126f * colors[i].r) + (0.7152f * colors[i].g) + (0.0722f * colors[i].b);
             //LuminanceNext += colors[i].r;
         }
         LuminanceNext /= colors.Length;
 
-        LuminanceNext = Utils.Remap(LuminanceNext, 0f, 100f, 0f, 1f);
+        LuminanceNext = Utils.Remap(LuminanceNext, 0f, 80f, 0f, 1f);
         if (isFirstPass)
         {
             LuminancePrev = LuminanceNext;
@@ -136,13 +141,12 @@ public class LightDetector : MonoBehaviour, IFeedbackEval
         }
         GPUReqDonne = true;
         //LuminanceFeedback.fData.baseValue = Luminance;
-
     }
 
     public float feedbackEvaluator()
     {
         //  chain root doesn't count towards chaos
-        float lumVal = Utils.Remap( Luminance, 0f, 1f, -1f, 1f);
+        float lumVal = Utils.Remap(Luminance, 0f, 1f, -1f, 1f);
         UIGame.Instance.DbgLightDetecRefresh(this);
         //Debug.Log(Luminance + " : " + lumVal);
         // if (Luminance < 0.5f)
