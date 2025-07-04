@@ -38,7 +38,6 @@ public class GTLModifier<T, K> : OWCModifier
     {
         weight = 0f;
         isActive = false;
-
     }
 
     public virtual void Activate()

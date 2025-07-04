@@ -21,7 +21,7 @@ MonoBehaviour:
     m_Value: 0
   exposure:
     m_OverrideState: 1
-    m_Value: 9.06
+    m_Value: 4.14
   multiplier:
     m_OverrideState: 0
     m_Value: 1
@@ -57,43 +57,43 @@ MonoBehaviour:
     m_Value: {fileID: 0}
   airDensityR:
     m_OverrideState: 1
-    m_Value: 0.677
+    m_Value: 0.766
   airDensityG:
     m_OverrideState: 1
-    m_Value: 0.212
+    m_Value: 0.276
   airDensityB:
     m_OverrideState: 1
-    m_Value: 0.268
+    m_Value: 0.214
   airTint:
     m_OverrideState: 1
-    m_Value: {r: 0, g: 0, b: 0, a: 1}
+    m_Value: {r: 0.5283019, g: 0.002491996, b: 0.03435923, a: 1}
   airMaximumAltitude:
     m_OverrideState: 1
-    m_Value: 1000
+    m_Value: 1000000
   aerosolDensity:
     m_OverrideState: 1
-    m_Value: 0.337
+    m_Value: 0.14
   aerosolTint:
     m_OverrideState: 1
-    m_Value: {r: 0, g: 0, b: 0, a: 1}
+    m_Value: {r: 0.99999994, g: 0.99528295, b: 0.99528295, a: 1}
   aerosolMaximumAltitude:
     m_OverrideState: 1
-    m_Value: 8289.296
+    m_Value: 500000
   aerosolAnisotropy:
     m_OverrideState: 1
     m_Value: 0.642
   ozoneDensityDimmer:
     m_OverrideState: 1
-    m_Value: 0.049
+    m_Value: 0.356
   ozoneMinimumAltitude:
-    m_OverrideState: 1
+    m_OverrideState: 0
     m_Value: 20000
   ozoneLayerWidth:
-    m_OverrideState: 1
+    m_OverrideState: 0
     m_Value: 20000
   groundTint:
     m_OverrideState: 1
-    m_Value: {r: 0.47255272, g: 0.017127136, b: 0, a: 1}
+    m_Value: {r: 0.122641504, g: 0.1043775, b: 0.09313812, a: 1}
   groundColorTexture:
     m_OverrideState: 0
     m_Value: {fileID: 0}
@@ -101,7 +101,7 @@ MonoBehaviour:
     m_OverrideState: 0
     m_Value: {fileID: 0}
   groundEmissionMultiplier:
-    m_OverrideState: 1
+    m_OverrideState: 0
     m_Value: 1
   planetRotation:
     m_OverrideState: 1
@@ -110,28 +110,28 @@ MonoBehaviour:
     m_OverrideState: 0
     m_Value: {fileID: 0}
   spaceEmissionMultiplier:
-    m_OverrideState: 1
+    m_OverrideState: 0
     m_Value: 1
   spaceRotation:
-    m_OverrideState: 1
+    m_OverrideState: 0
     m_Value: {x: 0, y: 0, z: 0}
   colorSaturation:
     m_OverrideState: 1
-    m_Value: 0
+    m_Value: 1
   alphaSaturation:
-    m_OverrideState: 1
-    m_Value: 0.5
+    m_OverrideState: 0
+    m_Value: 1
   alphaMultiplier:
-    m_OverrideState: 1
+    m_OverrideState: 0
     m_Value: 1
   horizonTint:
     m_OverrideState: 1
-    m_Value: {r: 0.8490566, g: 0, b: 0, a: 1}
+    m_Value: {r: 0.7830189, g: 0.47595268, b: 0, a: 1}
   zenithTint:
     m_OverrideState: 1
-    m_Value: {r: 1, g: 0, b: 0, a: 1}
+    m_Value: {r: 0.697635, g: 1, b: 0.4575472, a: 1}
   horizonZenithShift:
-    m_OverrideState: 1
+    m_OverrideState: 0
     m_Value: -1
   m_SkyVersion: 2
   m_ObsoleteEarthPreset:
@@ -143,6 +143,34 @@ MonoBehaviour:
   planetCenterPosition:
     m_OverrideState: 0
     m_Value: {x: 0, y: -6378100, z: 0}
+--- !u!114 &-5585196103677423214
+MonoBehaviour:
+  m_ObjectHideFlags: 3
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 4b8bcdf71d7fafa419fca1ed162f5fc9, type: 3}
+  m_Name: ColorAdjustments
+  m_EditorClassIdentifier: 
+  active: 1
+  postExposure:
+    m_OverrideState: 1
+    m_Value: 2
+  contrast:
+    m_OverrideState: 1
+    m_Value: 10
+  colorFilter:
+    m_OverrideState: 1
+    m_Value: {r: 0.7152901, g: 0.8867924, b: 0.71614575, a: 1}
+  hueShift:
+    m_OverrideState: 1
+    m_Value: 9
+  saturation:
+    m_OverrideState: 1
+    m_Value: 20
 --- !u!114 &-4151792930034644520
 MonoBehaviour:
   m_ObjectHideFlags: 3
@@ -170,37 +198,37 @@ MonoBehaviour:
     m_Value: {r: 0.5, g: 0.5, b: 0.5, a: 1}
   tint:
     m_OverrideState: 1
-    m_Value: {r: 0, g: 0, b: 0, a: 1}
+    m_Value: {r: 0.99999994, g: 0.91197985, b: 0.6650943, a: 1}
   maxFogDistance:
-    m_OverrideState: 1
+    m_OverrideState: 0
     m_Value: 5000
   mipFogMaxMip:
-    m_OverrideState: 1
+    m_OverrideState: 0
     m_Value: 0.5
   mipFogNear:
-    m_OverrideState: 1
+    m_OverrideState: 0
     m_Value: 0
   mipFogFar:
-    m_OverrideState: 1
+    m_OverrideState: 0
     m_Value: 1000
   baseHeight:
-    m_OverrideState: 1
-    m_Value: 500
+    m_OverrideState: 0
+    m_Value: 0
   maximumHeight:
     m_OverrideState: 1
-    m_Value: 5000
+    m_Value: 100
   meanFreePath:
     m_OverrideState: 1
-    m_Value: 2
+    m_Value: 400
   enableVolumetricFog:
     m_OverrideState: 1
-    m_Value: 0
+    m_Value: 1
   albedo:
     m_OverrideState: 1
-    m_Value: {r: 1, g: 0.017543858, b: 0, a: 1}
+    m_Value: {r: 0.9858491, g: 0.99714226, b: 1, a: 1}
   globalLightProbeDimmer:
-    m_OverrideState: 1
-    m_Value: 0.5
+    m_OverrideState: 0
+    m_Value: 1
   depthExtent:
     m_OverrideState: 1
     m_Value: 64
@@ -211,7 +239,7 @@ MonoBehaviour:
     m_OverrideState: 1
     m_Value: 0.65
   sliceDistributionUniformity:
-    m_OverrideState: 1
+    m_OverrideState: 0
     m_Value: 0.75
   multipleScatteringIntensity:
     m_OverrideState: 0
@@ -244,13 +272,13 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: d7fd9488000d3734a9e00ee676215985, type: 3}
-  m_Name: SAF_GloomyT5
+  m_Name: SAF_Mutable
   m_EditorClassIdentifier: 
   components:
   - {fileID: 1142777632297148762}
   - {fileID: -7724654706381055090}
   - {fileID: -4151792930034644520}
-  - {fileID: 6859274090713448604}
+  - {fileID: -5585196103677423214}
 --- !u!114 &1142777632297148762
 MonoBehaviour:
   m_ObjectHideFlags: 3
@@ -295,31 +323,3 @@ MonoBehaviour:
     m_OverrideState: 1
     m_Value: 0
   m_Version: 1
---- !u!114 &6859274090713448604
-MonoBehaviour:
-  m_ObjectHideFlags: 3
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 0}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 4b8bcdf71d7fafa419fca1ed162f5fc9, type: 3}
-  m_Name: ColorAdjustments
-  m_EditorClassIdentifier: 
-  active: 1
-  postExposure:
-    m_OverrideState: 1
-    m_Value: 0
-  contrast:
-    m_OverrideState: 1
-    m_Value: 5
-  colorFilter:
-    m_OverrideState: 1
-    m_Value: {r: 1, g: 0, b: 0.82725763, a: 1}
-  hueShift:
-    m_OverrideState: 1
-    m_Value: 77
-  saturation:
-    m_OverrideState: 1
-    m_Value: -56.7

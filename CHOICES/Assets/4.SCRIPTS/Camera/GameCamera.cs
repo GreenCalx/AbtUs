@@ -9,8 +9,7 @@ public class GameCamera : MonoBehaviour
     public Camera cam;
     public Vector3 camRotAsEulers;
     public LayerMask InteractibleRCMaskLayer;
-    public RenderTexture _lumRT;
-    public bool refreshCmdLum = false;
+ 
 
 
     // Start is called once before the first execution of Update after the MonoBehaviour is created
@@ -52,11 +51,6 @@ public class GameCamera : MonoBehaviour
         if ((iHDCam == null) || (iHDCam.camera == null))
             return;
         // Command buffers here
-    }
-
-    public RenderTexture GetLumRT()
-    {
-        return _lumRT;
     }
 
     public void VClampedRotation(Vector3 iDeltaRot, float iClampMin, float iClampMax)

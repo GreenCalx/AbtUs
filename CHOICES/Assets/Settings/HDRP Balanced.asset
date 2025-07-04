@@ -16,8 +16,8 @@ MonoBehaviour:
     supportShadowMask: 0
     supportSSR: 0
     supportSSRTransparent: 0
-    supportSSAO: 1
-    supportSSGI: 1
+    supportSSAO: 0
+    supportSSGI: 0
     supportSubsurfaceScattering: 1
     sssSampleBudget:
       m_Values: 140000002800000050000000
@@ -31,11 +31,11 @@ MonoBehaviour:
     supportVolumetricClouds: 0
     supportLightLayers: 1
     renderingLayerMaskBuffer: 0
-    supportWater: 0
-    waterSimulationResolution: 128
+    supportWater: 1
+    waterSimulationResolution: 64
     supportWaterExclusion: 1
     supportWaterDecals: 1
-    waterDecalAtlasSize: 1024
+    waterDecalAtlasSize: 512
     maximumWaterDecalCount: 48
     waterScriptInteractionsMode: 0
     waterFullCPUSimulation: 0
@@ -312,9 +312,9 @@ MonoBehaviour:
       - 0.5
       - 0.5
     gpuResidentDrawerSettings:
-      mode: 0
-      smallMeshScreenPercentage: 0
-      enableOcclusionCullingInCameras: 0
+      mode: 1
+      smallMeshScreenPercentage: 1
+      enableOcclusionCullingInCameras: 1
       useDepthPrepassForOccluders: 1
     m_ObsoleteLightLayerName0: Light LayerDefault
     m_ObsoleteLightLayerName1: InteriorOnly
@@ -548,4 +548,4 @@ MonoBehaviour:
   - {fileID: 0}
   - {fileID: 11400000, guid: 2b7005ba3a4d8474b8cdc34141ad766e, type: 2}
   - {fileID: 0}
-  m_PrefilterUseLegacyLightmaps: 0
+  m_PrefilterUseLegacyLightmaps: 1

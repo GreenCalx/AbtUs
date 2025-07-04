@@ -1,5 +1,6 @@
 using UnityEngine;
 using UnityEngine.Rendering;
+using UnityEngine.Rendering.HighDefinition;
 using System;
 using System.Collections;
 using System.Collections.Generic;
@@ -17,13 +18,8 @@ public class LightDetector : MonoBehaviour, IFeedbackEval
     private bool GPUReqDonne = false;
     private bool isFirstPass = true;
     public float WarmUpTime = 10f;
-    public int mipLevel = 7;
-    private Color32[] colors;
 
-    public int RTWidth, RTHeight;
-
-    // CS
-
+    public RenderTexture lumRT;
 
     // Start is called once before the first execution of Update after the MonoBehaviour is created
     void Start()
@@ -43,26 +39,22 @@ public class LightDetector : MonoBehaviour, IFeedbackEval
     {
         while (playerCam==null)
         { yield return null; }
-        while (playerCam.GetLumRT() == null)
-        { yield return null; }
-        while (!playerCam.GetLumRT().IsCreated())
-        { yield return null; }
 
-
-        int tex_w = playerCam.GetLumRT().width >> mipLevel;
-        int tex_h = playerCam.GetLumRT().height >> mipLevel;
-        tex = new Texture2D(tex_w, tex_h, TextureFormat.RGBA32, false);
-        colors = new Color32[tex_w * tex_h];
-
+        tex = new Texture2D(1, 1, TextureFormat.RGBA32, false);
         float lerpStartTime = 0f;
         float frac = 0f;
         
         while (true)
         {
+            yield return new WaitForEndOfFrame();
+
+            while (OverWorldControl.Instance.IsGTLCrossfading()) { yield return null; }
+
             GPUReqDonne = false;
-            AsyncGPUReadback.Request(
-                playerCam.GetLumRT(),
-                mipLevel,
+            UpdateLuminance();
+            var req = AsyncGPUReadback.Request(
+                lumRT,
+                lumRT.mipmapCount - 1,
                 TextureFormat.RGBA32, OnCompleteReadback);
 
             while (!GPUReqDonne) { yield return null; }
@@ -90,67 +82,36 @@ public class LightDetector : MonoBehaviour, IFeedbackEval
 
     void OnCompleteReadback(AsyncGPUReadbackRequest request)
     {
+        if (!request.done)
+            return;
         if (request.hasError)
             return;
 
-        //Graphics.Blit(playerCam.GetLumRT(), tex);
-
-        //tex.ReadPixels(new Rect(0, 0, playerCam.GetLumRT().width, playerCam.GetLumRT().height), 0, 0);
-        //tex = new Texture2D( playerCam.GetLumRT().width, playerCam.GetLumRT().height, TextureFormat.RGBA32, false);
         tex.LoadRawTextureData(request.GetData<uint>());
-        tex.Apply(true);
-        //tex.desiredMipmapLevel = 5;
-        // ReadPixelLuminance.SetTexture(kernelID, "inputTexture", tex);
-        // ReadPixelLuminance.SetBuffer(kernelID, "outputBuffer", outputBuffer);
-        // ReadPixelLuminance.SetFloat("w", tex.width);
-        // ReadPixelLuminance.SetFloat("h", tex.height);
+        tex.Apply(false);
 
-        // ReadPixelLuminance.Dispatch(kernelID, tex.width/8, tex.height/8, 1);
-
-        // float[] outputArray = new float[tex.width*tex.height];
-        // outputBuffer.GetData(outputArray);
-        //Color color = new Color(outputArray[0], outputArray[1], 0, 255);
-
-
-        //StartCoroutine(UpdateLuminance());
         UpdateLuminance();
     }
 
     void UpdateLuminance()
     {
-        //while (!tex.IsRequestedMipmapLevelLoaded()) { yield return null; }
-        
-        colors = tex.GetPixels32();
-
         LuminancePrev = Luminance;
-        LuminanceNext = 0f;
-        for (int i = 0; i < colors.Length; i++)
-        {
-            // https://en.wikipedia.org/wiki/Relative_luminance
-            //LuminanceNext += (0.2126f * colors[i].r) + (0.7152f * colors[i].g);
-            LuminanceNext += (0.2126f * colors[i].r) + (0.7152f * colors[i].g) + (0.0722f * colors[i].b);
-            //LuminanceNext += colors[i].r;
-        }
-        LuminanceNext /= colors.Length;
+        Color c = tex.GetPixel(0,0);
+        LuminanceNext = c[0];
 
-        LuminanceNext = Utils.Remap(LuminanceNext, 0f, 80f, 0f, 1f);
+        Debug.Log(LuminanceNext);
         if (isFirstPass)
         {
             LuminancePrev = LuminanceNext;
             isFirstPass = false;
         }
         GPUReqDonne = true;
-        //LuminanceFeedback.fData.baseValue = Luminance;
     }
 
     public float feedbackEvaluator()
     {
-        //  chain root doesn't count towards chaos
         float lumVal = Utils.Remap(Luminance, 0f, 1f, -1f, 1f);
         UIGame.Instance.DbgLightDetecRefresh(this);
-        //Debug.Log(Luminance + " : " + lumVal);
-        // if (Luminance < 0.5f)
-        //     return -(1f-Luminance);
         return lumVal;
     }
 }

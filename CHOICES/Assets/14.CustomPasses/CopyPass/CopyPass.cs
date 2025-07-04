@@ -26,7 +26,6 @@ public class CopyPass : CustomPass
     }
 
     public RenderTexture outputRenderTexture;
-
     [SerializeField, HideInInspector]
     Shader customCopyShader;
     Material customCopyMaterial;
@@ -41,6 +40,9 @@ public class CopyPass : CustomPass
 
     protected override void Setup(ScriptableRenderContext renderContext, CommandBuffer cmd)
     {
+        if (outputRenderTexture == null)
+            return;
+            
         if (customCopyShader == null)
             customCopyShader = Shader.Find("Hidden/FullScreen/CustomCopy");
         customCopyMaterial = CoreUtils.CreateEngineMaterial(customCopyShader);

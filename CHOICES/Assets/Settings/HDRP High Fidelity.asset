@@ -39,7 +39,7 @@ MonoBehaviour:
     maximumWaterDecalCount: 48
     waterScriptInteractionsMode: 0
     waterFullCPUSimulation: 0
-    supportComputeThickness: 0
+    supportComputeThickness: 1
     computeThicknessResolution: 1
     computeThicknessLayerMask:
       serializedVersion: 2
@@ -48,7 +48,7 @@ MonoBehaviour:
     supportTransparentBackface: 1
     supportTransparentDepthPrepass: 1
     supportTransparentDepthPostpass: 1
-    colorBufferFormat: 48
+    colorBufferFormat: 74
     supportCustomPass: 1
     customBufferFormat: 12
     supportedLitShaderMode: 2
@@ -95,12 +95,12 @@ MonoBehaviour:
       reflectionCubemapSize: 256
       maxEnvLightsOnScreen: 32
       reflectionCacheCompressed: 1
-      reflectionProbeFormat: 48
-      reflectionProbeTexCacheSize: 4096
+      reflectionProbeFormat: 74
+      reflectionProbeTexCacheSize: 2048
       reflectionProbeTexLastValidCubeMip: 3
       reflectionProbeTexLastValidPlanarMip: 0
       reflectionProbeDecreaseResToFit: 1
-      skyReflectionSize: 2048
+      skyReflectionSize: 1024
       skyLightingOverrideLayerMask:
         serializedVersion: 2
         m_Bits: 262144
@@ -312,9 +312,9 @@ MonoBehaviour:
       - 0.5
       - 0.5
     gpuResidentDrawerSettings:
-      mode: 0
+      mode: 1
       smallMeshScreenPercentage: 0
-      enableOcclusionCullingInCameras: 0
+      enableOcclusionCullingInCameras: 1
       useDepthPrepassForOccluders: 1
     m_ObsoleteLightLayerName0: Light LayerDefault
     m_ObsoleteLightLayerName1: InteriorOnly
@@ -546,4 +546,4 @@ MonoBehaviour:
   m_ObsoleteDiffusionProfileSettingsList:
   - {fileID: 0}
   - {fileID: 0}
-  m_PrefilterUseLegacyLightmaps: 0
+  m_PrefilterUseLegacyLightmaps: 1

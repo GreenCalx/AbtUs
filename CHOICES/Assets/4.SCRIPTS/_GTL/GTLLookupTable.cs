@@ -34,7 +34,7 @@ public class GTLLookupTable : MonoBehaviour
     public List<GTLLookupLightUnit> lightUnits;
     public List<GTLLookupWaterUnit> waterUnits;
 
-    public bool TryUpdateProfile(GTLVolumeMod iMod, VolumeProfile iActiveProfile)
+    public bool TryUpdateProfile(GTLVolumeMod iMod, Volume iVirtualVolLerp)
     {
         List<GTLLookupVolumeUnit> eligibleProfiles = new List<GTLLookupVolumeUnit>();
 
@@ -78,10 +78,13 @@ public class GTLLookupTable : MonoBehaviour
             }
         }
 
-        if (selected.volumeProfile == iActiveProfile)
+        if (selected.volumeProfile == iVirtualVolLerp.sharedProfile)
             return false;
 
         iMod.ChangeTarget(selected.volumeProfile);
+
+        iVirtualVolLerp.sharedProfile = selected.volumeProfile;
+
         return true;
     }
 

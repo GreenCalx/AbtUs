@@ -31,7 +31,7 @@ public class PlayerController : MonoBehaviour
     public bool freezeToggle;
     public bool isMoving = false;
     public bool isRunning = false;
-
+    public bool openMenu = false;
 
     [Header("Internals")]
     public InteractibleObject targetedInteractibleObject;
@@ -84,47 +84,54 @@ public class PlayerController : MonoBehaviour
         playerDoCancel = Input.GetButton("Cancel");
         freezeToggle = Input.GetButton("Freeze");
 
+        openMenu = Input.GetKey(KeyCode.Escape);
+
         isMoving = (hMove != 0f) || (vMove != 0f);
     }
 
     private void ProcessInputs()
     {
-        // player action
-        if (elapsedActionTimeLatch >= actionTimeLatch)
+        if (openMenu)
         {
-            if (playerDoAction)
-            {
-                if (targetedInteractibleObject != null)
-                {
-                    if (!playerInAction)
-                    {
-                        playerInAction = true;
-                        targetedInteractibleObject.OnInteract(this);
-                    }
-                    else
-                    {
-                        targetedInteractibleObject.OnContinueInteract(this);
-                        playerInAction = targetedInteractibleObject ? targetedInteractibleObject.IsInAction() : false;
+            Application.Quit();
+        }
 
+        // player action
+            if (elapsedActionTimeLatch >= actionTimeLatch)
+            {
+                if (playerDoAction)
+                {
+                    if (targetedInteractibleObject != null)
+                    {
+                        if (!playerInAction)
+                        {
+                            playerInAction = true;
+                            targetedInteractibleObject.OnInteract(this);
+                        }
+                        else
+                        {
+                            targetedInteractibleObject.OnContinueInteract(this);
+                            playerInAction = targetedInteractibleObject ? targetedInteractibleObject.IsInAction() : false;
+
+                        }
+                        elapsedActionTimeLatch = 0f;
                     }
+                }
+
+                if (playerDoCancel && playerInAction)
+                {
+                    playerInAction = false;
+                    targetedInteractibleObject.OnCancelInteract(this);
+                    elapsedActionTimeLatch = 0f;
+                }
+
+                // freeze cam / movement
+                if (freezeToggle && (elapsedActionTimeLatch >= actionTimeLatch))
+                {
+                    freeze_inputs = !freeze_inputs;
                     elapsedActionTimeLatch = 0f;
                 }
             }
-
-            if (playerDoCancel && playerInAction)
-            {
-                playerInAction = false;
-                targetedInteractibleObject.OnCancelInteract(this);
-                elapsedActionTimeLatch = 0f;
-            }
-
-            // freeze cam / movement
-            if (freezeToggle && (elapsedActionTimeLatch >= actionTimeLatch))
-            {
-                freeze_inputs = !freeze_inputs;
-                elapsedActionTimeLatch = 0f;
-            }
-        }
 
 
         if (freeze_inputs)

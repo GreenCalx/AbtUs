@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.Events;
 using Unity.Mathematics;
+using UnityEngine.Rendering;
 
 using System.Linq;
 
@@ -151,8 +152,9 @@ public class OverWorldControl : MonoBehaviour
     public OTCLookupTable otcLookupTable;
 
     [Header("Modifier Manual References")]
-    public GTLVolumeMod MainGTL_A;
-    public GTLVolumeMod MainGTL_B;
+    public GTLVolumeMod MainVolGTL;
+    
+    public Volume VirtualVolLerpTarget;
     public GTLLightMod MainSunGTL;
     [Header("Modifier Auto References")]
     public List<GTLVolumeMod> GTLExtraVolMods;
@@ -173,8 +175,8 @@ public class OverWorldControl : MonoBehaviour
     [Header("Internals")]
     private Coroutine gtlCrossfadeVolCo;
     private Coroutine gtlCrossfadeSunsCo;
-    private bool crossfadingVolDone = true;
-    private bool crossfadingSunDone = true;
+    public bool crossfadingVolDone = true;
+    public bool crossfadingSunDone = true;
     private static OverWorldControl instance = null;
     public static OverWorldControl Instance => instance;
 
@@ -257,8 +259,7 @@ public class OverWorldControl : MonoBehaviour
             GTLVolumeMod asVol = iGTLMod as GTLVolumeMod;
             if (asVol.gtlType == GTL_TYPE.MAIN)
             {
-                if      (MainGTL_A==null)   { MainGTL_A = asVol; }
-                else if (MainGTL_B==null)   { MainGTL_B = asVol; }
+                if (MainVolGTL==null)   { MainVolGTL = asVol; }
             }
             else if (!GTLExtraVolMods.Contains(asVol))
             {
@@ -295,18 +296,11 @@ public class OverWorldControl : MonoBehaviour
                 gtlCrossfadeVolCo = null;
             }
 
-            if (MainGTL_A.isActive)
+            if (MainVolGTL.isReady)
             {
-                if (gtlLookupTable.TryUpdateProfile(MainGTL_B, MainGTL_A.modifierTarget.sharedProfile))
+                if (gtlLookupTable.TryUpdateProfile(MainVolGTL, VirtualVolLerpTarget))
                 {
-                    gtlCrossfadeVolCo = StartCoroutine(CrossfadeVolCo(gtlVolCrossfadeTime, MainGTL_A, MainGTL_B));
-                }
-            }
-            else if (MainGTL_B.isActive)
-            {
-                if (gtlLookupTable.TryUpdateProfile(MainGTL_A, MainGTL_B.modifierTarget.sharedProfile))
-                {
-                    gtlCrossfadeVolCo = StartCoroutine(CrossfadeVolCo(gtlSunCrossfadeTime, MainGTL_B, MainGTL_A));
+                    gtlCrossfadeVolCo = StartCoroutine(CrossfadeVolCo(gtlVolCrossfadeTime));
                 }
             }
         }
@@ -362,30 +356,41 @@ public class OverWorldControl : MonoBehaviour
         crossfadingSunDone = true;
     }
 
-    public IEnumerator CrossfadeVolCo(float iCrossfadeTime, GTLVolumeMod iFrom, GTLVolumeMod iTo)
+    public IEnumerator CrossfadeVolCo(float iCrossfadeTime)
     {
         crossfadingVolDone = false;
-        iTo.Activate();
+        //iTo.Activate();
 
         float elapsedTime = 0f;
         while ( elapsedTime < iCrossfadeTime )
         {
             elapsedTime += Time.deltaTime;
             float frac = elapsedTime / iCrossfadeTime;
-            iFrom.weight = 1f - frac;
-            iTo.weight = frac;
+
+            foreach (var vc in VirtualVolLerpTarget.sharedProfile.components)
+            {
+                VolumeComponent mainVC = MainVolGTL.GetComp(vc);
+                vc.Override(mainVC, frac);
+            }
+            
             yield return null;
         }
-        iFrom.Deactivate();
+        //MainVolGTL.modifierTarget.sharedProfile = VirtualVolLerpTarget.sharedProfile;
+        // iFrom.Deactivate();
 
-        iFrom.isActive = false;
-        iTo.isActive = true;
+        // iFrom.isActive = false;
+        // iTo.isActive = true;
         crossfadingVolDone = true;
     }
 
     public bool GTLIsZero()
     {
         return ( !(GloomyMagnitude>0f) && !(LushMagnitude>0f) );
+    }
+
+    public bool IsGTLCrossfading()
+    {
+        return !crossfadingSunDone && !crossfadingVolDone;
     }
     #endregion
 

@@ -10,6 +10,7 @@ public class Managers : MonoBehaviour
     public ObjectChainManager ObjectChains;
     public ObjectPoolManager ObjectPools;
     public FeedbackManager FBM;
+    public RenderingManager Rendering;
 
     private static Managers instance = null;
     public static Managers Instance => instance;
@@ -43,23 +44,25 @@ public class Managers : MonoBehaviour
 
     IEnumerator InitChain()
     {
-        Sound           = GetComponent<SoundManager>();
+        Sound = GetComponent<SoundManager>();
         Sound.Init();
 
-        Camera          = GetComponent<CameraManager>();
+        Camera = GetComponent<CameraManager>();
         Camera.Init();
 
         // NEED OWC
-        while (OverWorldControl.Instance == null ) { yield return null; }
+        while (OverWorldControl.Instance == null) { yield return null; }
 
         FBM = GetComponent<FeedbackManager>();
         FBM.Init(3);
 
-        ObjectChains    = GetComponent<ObjectChainManager>();
+        ObjectChains = GetComponent<ObjectChainManager>();
         ObjectChains.Init();
 
-        ObjectPools     = GetComponent<ObjectPoolManager>();
+        ObjectPools = GetComponent<ObjectPoolManager>();
         ObjectPools.Init();
+
+        Rendering = GetComponent<RenderingManager>();
     }
 
     void OnDestroy()

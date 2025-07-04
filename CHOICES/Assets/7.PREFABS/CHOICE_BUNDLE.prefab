@@ -2610,6 +2610,10 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   isPlayerCam: 0
   cam: {fileID: 2816311456005196566}
+  camRotAsEulers: {x: 0, y: 0, z: 0}
+  InteractibleRCMaskLayer:
+    serializedVersion: 2
+    m_Bits: 0
 --- !u!1001 &1120898374905542523
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -2828,6 +2832,11 @@ PrefabInstance:
       propertyPath: 'm_Materials.Array.data[0]'
       value: 
       objectReference: {fileID: 2100000, guid: eaf544126b7ddd44f93a532fc42ab5be, type: 2}
+    - target: {fileID: -5508480032456691446, guid: df0316482d6eecc4b827d82bfa877839,
+        type: 3}
+      propertyPath: m_StaticEditorFlags
+      value: 2147483647
+      objectReference: {fileID: 0}
     - target: {fileID: -3517486099886242773, guid: df0316482d6eecc4b827d82bfa877839,
         type: 3}
       propertyPath: m_TagString
@@ -2868,10 +2877,20 @@ PrefabInstance:
       propertyPath: m_StaticEditorFlags
       value: 2147483647
       objectReference: {fileID: 0}
+    - target: {fileID: -896821174582342952, guid: df0316482d6eecc4b827d82bfa877839,
+        type: 3}
+      propertyPath: m_StaticEditorFlags
+      value: 2147483647
+      objectReference: {fileID: 0}
     - target: {fileID: 350343172286427443, guid: df0316482d6eecc4b827d82bfa877839,
         type: 3}
       propertyPath: m_Layer
       value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: 350343172286427443, guid: df0316482d6eecc4b827d82bfa877839,
+        type: 3}
+      propertyPath: m_StaticEditorFlags
+      value: 2147483647
       objectReference: {fileID: 0}
     - target: {fileID: 919132149155446097, guid: df0316482d6eecc4b827d82bfa877839,
         type: 3}
@@ -3151,9 +3170,19 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   def: {fileID: 11400000, guid: 5bc47674b9593324a805b716f9c02c01, type: 2}
   targetedTransfrom: {fileID: 0}
+  targetRend: {fileID: 0}
+  intersectionCheckMask:
+    serializedVersion: 2
+    m_Bits: 0
+  feedback: {fileID: 0}
+  nature: 0
   puzzle: {fileID: 4013843522905737778}
+  selectionFX: {fileID: 0}
+  shaderCom: {fileID: 0}
   RB: {fileID: 0}
+  mainCollider: {fileID: 0}
   IsInActionChain: 0
+  isDuplicata: 0
 --- !u!1 &3523588332401265783 stripped
 GameObject:
   m_CorrespondingSourceObject: {fileID: -6263350643120396561, guid: df0316482d6eecc4b827d82bfa877839,
@@ -3458,7 +3487,7 @@ PrefabInstance:
     - target: {fileID: 919132149155446097, guid: 7ff71f3bbffce904484328be9d2d4de7,
         type: 3}
       propertyPath: m_StaticEditorFlags
-      value: 0
+      value: 2147483647
       objectReference: {fileID: 0}
     m_RemovedComponents:
     - {fileID: 8185978609995362810, guid: 7ff71f3bbffce904484328be9d2d4de7, type: 3}
@@ -3652,6 +3681,11 @@ PrefabInstance:
         type: 3}
       propertyPath: m_Layer
       value: 15
+      objectReference: {fileID: 0}
+    - target: {fileID: 919132149155446097, guid: 7ff71f3bbffce904484328be9d2d4de7,
+        type: 3}
+      propertyPath: m_StaticEditorFlags
+      value: 2147483647
       objectReference: {fileID: 0}
     m_RemovedComponents:
     - {fileID: 8185978609995362810, guid: 7ff71f3bbffce904484328be9d2d4de7, type: 3}
