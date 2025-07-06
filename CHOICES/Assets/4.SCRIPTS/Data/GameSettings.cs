@@ -18,6 +18,7 @@ public class GameSettings : MonoBehaviour
         else
         {
             instance = this;
+            DontDestroyOnLoad(this.gameObject);
         }
     }
     [Header("Debug")]

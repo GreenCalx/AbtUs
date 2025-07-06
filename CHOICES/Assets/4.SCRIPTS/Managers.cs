@@ -2,9 +2,11 @@ using UnityEngine;
 using UnityEngine.Events;
 using System;
 using System.Collections;
+using UnityEngine.SceneManagement;
 
 public class Managers : MonoBehaviour
 {
+    public Scene managedScene;
     public SoundManager Sound;
     public CameraManager Camera;
     public ObjectChainManager ObjectChains;
@@ -25,6 +27,7 @@ public class Managers : MonoBehaviour
         else
         {
             instance = this;
+            managedScene = gameObject.scene;
         }
     }
 
@@ -32,18 +35,18 @@ public class Managers : MonoBehaviour
     {
         StartCoroutine(InitChain());
 
-#if UNITY_EDITOR
-
         if (GameSettings.Instance.LogEvents)
         {
             EventLog.Init();
             StartCoroutine(LogCo());
         }
-#endif
     }
 
     IEnumerator InitChain()
     {
+        while( SceneManager.GetActiveScene() != managedScene )
+        { yield return null;  }
+
         Sound = GetComponent<SoundManager>();
         Sound.Init();
 

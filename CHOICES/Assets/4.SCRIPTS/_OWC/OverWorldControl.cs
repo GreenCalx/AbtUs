@@ -317,7 +317,6 @@ public class OverWorldControl : MonoBehaviour
                 }
                 gtlCrossfadeSunsCo = StartCoroutine(CrossfadeSunsCo(gtlSunCrossfadeTime));
             }
-                        
         }
 
         // Lights

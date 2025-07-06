@@ -1,0 +1,31 @@
+// Each #kernel tells which function to compile; you can have many kernels
+#pragma kernel CSBridge
+
+// Create a RenderTexture with enableRandomWrite flag and set it
+// with cs.SetTexture
+struct BridgeBrick
+{
+    float3 initPosition;
+    float3 position;
+};
+
+RWStructuredBuffer<BridgeBrick> bricks;
+int width;
+int height;
+float resolution;
+float targetZ;
+float lerpValue;
+
+[numthreads(10,1,1)]
+void CSBridge (uint3 id : SV_DispatchThreadID)
+{
+
+        float x = id.x / width;
+        float y = id.y / height;
+        BridgeBrick b = bricks[id.x + width*id.y];
+
+        b.position.z = lerp(b.initPosition.z, targetZ, lerpValue);
+
+        bricks[id.x + width*id.y] = b;
+
+}
