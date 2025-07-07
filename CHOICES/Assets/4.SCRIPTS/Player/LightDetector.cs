@@ -99,7 +99,6 @@ public class LightDetector : MonoBehaviour, IFeedbackEval
         Color c = tex.GetPixel(0,0);
         LuminanceNext = c[0];
 
-        Debug.Log(LuminanceNext);
         if (isFirstPass)
         {
             LuminancePrev = LuminanceNext;

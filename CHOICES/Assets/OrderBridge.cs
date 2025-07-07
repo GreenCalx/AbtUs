@@ -15,6 +15,8 @@ public class OrderBridge : MonoBehaviour
     public GameObject brickPrefab;
     public int xcount = 50;
     public int ycount = 50;
+    public int brick_sizex = 2;
+    public int brick_sizey = 2;
     private List<GameObject> objects;
     private BridgeBrick[] data;
     public float targetZ = 5f;
@@ -52,21 +54,23 @@ public class OrderBridge : MonoBehaviour
     void CreateBridge()
     {
         objects = new List<GameObject>();
+
         data = new BridgeBrick[xcount * ycount];
         for (int y = 0; y < ycount; y++)
         {
             for (int x = 0; x < xcount; x++)
             {
-                CreateBrick(x, y);
+                CreateBrick(x, y, brick_sizex, brick_sizey);
             }
         }
     }
 
-    void CreateBrick(int x, int y)
+    void CreateBrick(int x, int y, int sizex, int sizey)
     {
         GameObject brick = Instantiate(brickPrefab);
         brick.transform.parent = transform;
-        brick.transform.localPosition = new Vector3(x, y, UnityEngine.Random.Range(10f, 40f));
+        brick.transform.localPosition = new Vector3(x*sizex, y*sizey, UnityEngine.Random.Range(10f, 20f));
+        brick.transform.localScale = new Vector3(sizex, 1f, sizey);
 
         objects.Add(brick);
 
@@ -107,6 +111,7 @@ public class OrderBridge : MonoBehaviour
         while (OverWorldControl.Instance.OrderMagnitude > 0f)
         {
             lerp = Mathf.Clamp01(OverWorldControl.Instance.OrderMagnitude*2f);
+            Debug.Log("lerp : " + lerp);
             OnOrder();
             yield return null;
         }

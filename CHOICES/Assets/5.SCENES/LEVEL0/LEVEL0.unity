@@ -2487,8 +2487,10 @@ MonoBehaviour:
   cs: {fileID: 7200000, guid: 0ced3412b0b73f84492b7ff10c467f5f, type: 3}
   brickPrefab: {fileID: 7321329543330304239, guid: 5a67a88ead51edf439463a270e70ef6f,
     type: 3}
-  xcount: 10
-  ycount: 100
+  xcount: 5
+  ycount: 50
+  brick_sizex: 2
+  brick_sizey: 2
   targetZ: 5
   animTime: 5
 --- !u!4 &1778932416
@@ -5796,13 +5798,18 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 6531702765253527374, guid: 5fabb3c500418244f938110bb767413d,
         type: 3}
+      propertyPath: fData.baseValue
+      value: 0.25
+      objectReference: {fileID: 0}
+    - target: {fileID: 6531702765253527374, guid: 5fabb3c500418244f938110bb767413d,
+        type: 3}
       propertyPath: fData.useIntertia
       value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 6531702765253527374, guid: 5fabb3c500418244f938110bb767413d,
         type: 3}
       propertyPath: fData.timeToReachMaxInertia
-      value: 5
+      value: 2.5
       objectReference: {fileID: 0}
     - target: {fileID: 6531702765253527374, guid: 5fabb3c500418244f938110bb767413d,
         type: 3}

@@ -19,13 +19,7 @@ float lerpValue;
 [numthreads(10,1,1)]
 void CSBridge (uint3 id : SV_DispatchThreadID)
 {
-
-        float x = id.x / width;
-        float y = id.y / height;
         BridgeBrick b = bricks[id.x + width*id.y];
-
         b.position.z = lerp(b.initPosition.z, targetZ, lerpValue);
-
         bricks[id.x + width*id.y] = b;
-
 }
